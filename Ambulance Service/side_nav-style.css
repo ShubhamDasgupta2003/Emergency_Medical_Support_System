@@ -1,0 +1,27 @@
+.main-container
+{
+    /* border: 2px solid red; */
+    height: 200vh;
+    display: flex;
+    justify-content: left;
+
+}
+.filter-bar
+{
+    /* border: 2px solid rgb(0, 148, 52); */
+    background-color: rgb(196, 255, 249);
+    width: 15vw;
+    height: 500px;
+    position: sticky;
+    top: 70px;
+    margin: 11px;
+    padding: 9px;
+
+}
+.content
+{
+   /* border: 2px solid rgb(0, 148, 52);  */
+   width: 85vw;
+   margin: 11px;
+   padding: 9px;
+}
