@@ -7,7 +7,7 @@
 }
 .container
 {
-    border: 2px solid red;
+    /* border: 2px solid red; */
     height: 200vh;
 }
 .navbar
@@ -17,7 +17,7 @@
     display: flex;
     padding: 7px;
     position: sticky;
-    top: 1px;
+    top: 0px;
 }
 .navbar ul
 {
@@ -66,10 +66,22 @@
     padding: 3px;
     margin: 5px;
     border-radius: 7px;
-    border-width: 1px;
+    border-width: 0px;
     color: white;
 }
 .btn-danger
 {
     background-color: rgb(220,53,69);
+}
+.btn-primary
+{
+    background-color:rgb(17, 127, 236);
+    font-size: 1.1rem;
+    padding: 7px;
+}
+.btn-secondary
+{
+    background-color:rgb(183, 183, 183);
+    color: black;
+    font-size: 0.9rem;
 }
