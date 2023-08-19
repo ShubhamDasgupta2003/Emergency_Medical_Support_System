@@ -100,3 +100,10 @@
     font-size: 0.83rem;
     padding: 7px;
 }
+.btn-secondary-orange
+{
+    background-color:rgb(255, 140, 0);
+    color: rgb(0, 0, 0);
+    font-size: 0.9rem;
+    padding: 7px;
+}

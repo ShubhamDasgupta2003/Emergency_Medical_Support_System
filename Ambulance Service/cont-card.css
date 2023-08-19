@@ -1,0 +1,50 @@
+.cards {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+    width: 100%; 
+    display: grid;
+    /* Define Auto Row size */
+    grid-auto-rows: max-content; 
+    /*Define our columns */
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
+    grid-gap: 1rem;
+}
+.card {
+    border-radius: 10px;
+    padding: 20px;
+    color: #000000;
+    height: fit-content;
+    background-color: rgb(61, 204, 199);
+    margin: auto auto;
+    box-shadow: inset rgb(201, 201, 201) -2px -2px 7px;
+}
+.card img
+{
+    width: 310px;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    display: block;
+    margin: 0px auto;
+}
+.card-name
+{
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 5px 9px;
+}
+.card-address
+{
+    font-size: 0.92rem;
+    margin: 5px 9px;
+}
+.card-status
+{
+    font-size: 1.12rem;
+    font-weight: 800;
+    margin: 5px 9px;
+}
+.card button
+{
+    float: right;
+}
