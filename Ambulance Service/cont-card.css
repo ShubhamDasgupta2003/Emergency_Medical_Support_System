@@ -2,15 +2,16 @@
 
 .cards {
     max-width: 1200px;
-    margin: 30px 40px;
+    margin: 30px 90px;
     padding: 0 20px;
     width: 100%; 
     display: grid;
+    justify-content: right;
     /* Define Auto Row size */
     grid-auto-rows: max-content; 
     /*Define our columns */
-    grid-template-columns: repeat(auto-fill, minmax(229px, 1fr)); 
-    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    grid-gap: 1.26rem;
 }
 .card {
     border-radius: 10px;
@@ -20,7 +21,7 @@
     width: fit-content;
     background-color: rgb(104, 216, 214);
     margin: auto auto;
-    box-shadow: inset rgb(172, 172, 172) -2px -2px 9px;
+    box-shadow: inset rgb(78, 163, 162) -2px -2px 9px;
     font-family: 'Montserrat', sans-serif;
 }
 .card img
@@ -41,30 +42,37 @@
 }
 .card-address
 {
-    font-size: 0.92rem;
+    font-size: 0.82rem;
     margin: 5px 9px;
 }
 .card-type
 {
     font-size: 0.92rem;
+    font-weight: 600;
     margin: 5px 9px;
+    background-color: rgb(227, 150, 150);
+    padding: 3px;
 }
 .card-fare
 {
     font-size: 0.89rem;
+    display:block;
     float: right;
     margin: 5px 9px;
     font-weight: 900;
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+    border-radius: 9px;
     color: red;
 }
 .card-status
 {
-    font-size: 1.12rem;
+    font-size: 1.01rem;
     font-weight: 800;
     margin: 5px 9px;
-    display: inline;
+    /* background-color: rgb(227, 150, 150); */
 }
 .card button
 {
-    float: right;
+    float:left;
 }

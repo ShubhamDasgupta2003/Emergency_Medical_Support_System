@@ -8,7 +8,7 @@
 .container
 {
     /* border: 2px solid red; */
-    height: 200vh;
+    /* height: 200vh; */
 }
 .navbar
 {
@@ -26,7 +26,7 @@
     display: flex;
     list-style: none;
     /* border: 2px solid green; */
-    justify-content: center;
+    justify-content: right;
     align-items: center;
     width: 100%;
     padding: 7px;
@@ -108,4 +108,11 @@
     color: rgb(0, 0, 0);
     font-size: 0.9rem;
     padding: 7px;
+}
+.btn-srch-btn
+{
+    background-color:rgb(179, 179, 179);
+    font-size: 1.36rem;
+    padding: 7px;
+    border-radius: 0px 7px 7px 0px;
 }
