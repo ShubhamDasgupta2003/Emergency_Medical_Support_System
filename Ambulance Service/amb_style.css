@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&family=Poppins&display=swap');
 
+body
+{
+    background-color: rgb(234, 241, 240);
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
 *
 {
     margin: 0px;
@@ -7,13 +13,14 @@
 }
 .container
 {
-    /* border: 2px solid red; */
     /* height: 200vh; */
 }
 .navbar
 {
     /* border: 2px solid rgb(8, 0, 255); */
+    width: 100%;
     background-color: rgb(7, 190, 184);
+    margin: 0px auto;
     display: flex;
     padding: 7px;
     position: sticky;
@@ -34,10 +41,19 @@
 .navbar li a
 {
     text-decoration: none;
-    margin-left: 45px;
+    display: inline;
+    margin-left: 25px;
+    padding: 7px;
+    font-size: 0.9rem;
+    justify-content: space-between;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     color: white;
+    border-radius: 10px;
+}
+.navbar li a:hover
+{
+    background-color:  rgb(24, 153, 148);
 }
 .account-details
 {
@@ -45,11 +61,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 5px;
+    margin: 5px 20px;
 }
 .account-avatar
 {
-    margin: 5px;
+    margin: 5px auto;
     margin-bottom: 7px;
 }
 .brand
@@ -95,7 +111,7 @@
     font-size: 0.9rem;
     padding: 7px;
 }
-.btn-secondary-pink
+.btn-secondary-green
 {
     background-color:rgb(7, 190, 184);
     color: rgb(255, 255, 255);
