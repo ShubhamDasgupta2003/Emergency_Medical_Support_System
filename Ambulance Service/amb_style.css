@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&family=Poppins&display=swap');
 
+body
+{
+    background-color: rgb(234, 241, 240);
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
 *
 {
     margin: 0px;
@@ -7,7 +13,7 @@
 }
 .container
 {
-    overflow-x: hidden;
+    /* height: 200vh; */
 }
 .navbar
 {
@@ -37,11 +43,17 @@
     text-decoration: none;
     display: inline;
     margin-left: 25px;
+    padding: 7px;
     font-size: 0.9rem;
     justify-content: space-between;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     color: white;
+    border-radius: 10px;
+}
+.navbar li a:hover
+{
+    background-color:  rgb(24, 153, 148);
 }
 .account-details
 {

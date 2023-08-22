@@ -51,6 +51,9 @@
     margin: 0px;
     /* border-radius: 0px 0px 0px 0px; */
     border:1px solid rgb(189, 189, 189);
-    font-family: 'Montserrat', sans-serif;
-    
+    font-family: 'Montserrat', sans-serif;   
+}
+.search-bar:hover
+{
+    background-color: rgb(235, 235, 235);
 }
