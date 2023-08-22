@@ -71,15 +71,15 @@ main {
     border-radius: 10px;
 }
 .bed{
-    background-color:darkkhaki;
+    background-color:  rgb(227, 150, 150);
     border-radius: 5px;
     font-weight: bold;
-    color: whitesmoke;
+    color: black;
     font-size: 1.2rem;
     margin-top: 10px;
 }
 button {
-    background-color: #2874f0;
+    background-color: #c11c1c;
     color: #fff;
     border: none;
     padding:10px 20px;
@@ -112,6 +112,7 @@ button {
 }
 .foot, .foot a{
   text-decoration: none;
+  background-color: #d2f3ef;
   color: black;
   text-align: center;
 }
