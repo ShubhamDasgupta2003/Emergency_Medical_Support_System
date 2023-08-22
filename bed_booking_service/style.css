@@ -1,0 +1,118 @@
+* {
+    font-family: "Arima Madurai", sans-serif;
+  }
+  
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    display: inline-flex;
+    background: #07BEB8;
+    color: white;
+    box-shadow: 1px 3px 4px #e6e6e6;
+    align-items: center;
+  }
+  
+  .navigation {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 25px;
+  }
+  .brand {
+    flex: 1;
+    margin: 0 25px;
+  }
+  .menu {
+    display: flex;
+    list-style: none;
+    margin-right: 25px;
+  }
+  .menu li a {
+    color: inherit;
+    text-decoration: none;
+    margin: 0 15px;
+  }
+  /* done */
+  .menu li a:hover {
+    text-decoration: underline;
+  }
+  *{
+    margin: 0;padding: 0;
+}
+
+/* Basic styling */
+body {
+    /* font-family: 'Dosis', sans-serif; */
+font-family: 'Montserrat', sans-serif;
+    background-color: #68D8D6;
+}
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1px;
+    margin-top: 60px;
+}
+
+.container {
+    background-color: #C4FFF9;
+    padding: 5px;
+    margin: 15px;
+    text-align: center;
+    border: 5px solid white;
+    border-radius: 30px;
+    width: 30%;
+}
+
+.image {
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+.bed{
+    background-color:  rgb(227, 150, 150);
+    border-radius: 5px;
+    font-weight: bold;
+    color: black;
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+button {
+    background-color: #c11c1c;
+    color: #fff;
+    border: none;
+    padding:10px 20px;
+    margin-top: 3px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/* styling search bar */
+.search input[type=text]{
+  width:300px;
+  height:25px;
+  border-radius:25px;
+  border: none;
+}
+   
+.search{
+  float:right;
+  margin-top:7px;
+}
+   
+.search button{
+  background-color: #0074D9;
+  color: #f2f2f2;
+  float: right;
+  padding: 5px 10px;
+  margin-right: 16px;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+}
+.foot, .foot a{
+  text-decoration: none;
+  background-color: #d2f3ef;
+  color: black;
+  text-align: center;
+}
