@@ -1,0 +1,44 @@
+.nav-container
+{
+    /* border: 2px solid red; */
+    background-color: rgb(156, 234, 239);
+    height: 50px;
+    display: flex;
+    padding: 7px;
+}
+.search-navbar
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 7px;
+}
+.full-srch-bar
+{
+    display: flex;
+    /* width: 100%; */
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    /* border: 2px solid rebeccapurple; */
+    /* background-color: rgb(0, 162, 255); */
+    border-radius: 10px;
+}
+
+.srch-btn
+{
+    margin-left: 0px;
+}
+.search-bar
+{
+    width: 40vw;
+    height: 25px;
+    padding: 7px;
+    margin: 9px;
+    margin-right: 0px;
+    border-radius: 7px 0px 0px 7px;
+    border: 1px solid rgb(189, 189, 189);
+    font-family: 'Montserrat', sans-serif;
+    
+}

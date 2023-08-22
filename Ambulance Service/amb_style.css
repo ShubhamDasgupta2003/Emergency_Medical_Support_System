@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&family=Poppins&display=swap');
+
+*
+{
+    margin: 0px;
+    padding: 0px;
+}
+.container
+{
+    /* border: 2px solid red; */
+    /* height: 200vh; */
+}
+.navbar
+{
+    /* border: 2px solid rgb(8, 0, 255); */
+    background-color: rgb(7, 190, 184);
+    display: flex;
+    padding: 7px;
+    position: sticky;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+}
+.navbar ul
+{
+    display: flex;
+    list-style: none;
+    /* border: 2px solid green; */
+    justify-content: right;
+    align-items: center;
+    width: 100%;
+    padding: 7px;
+}
+.navbar li a
+{
+    text-decoration: none;
+    margin-left: 45px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: white;
+}
+.account-details
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.account-avatar
+{
+    margin: 5px;
+    margin-bottom: 7px;
+}
+.brand
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn
+{
+    width: max-content;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 900;
+    padding: 3px;
+    margin: 5px;
+    border-radius: 7px;
+    border-width: 0px;
+    color: white;
+}
+.btn:hover
+{
+    /* background-color: rgba(169, 169, 169, 0.824); */
+    filter: grayscale(50%);
+    border: 1px solid rgb(255, 255, 255);
+}
+.btn-danger
+{
+    background-color: rgb(220,53,69);
+    padding: 7px;
+}
+.btn-primary
+{
+    background-color:rgb(17, 127, 236);
+    font-size: 1.1rem;
+    padding: 7px;
+}
+.btn-secondary-grey
+{
+    background-color:rgb(183, 183, 183);
+    color: black;
+    font-size: 0.9rem;
+    padding: 7px;
+}
+.btn-secondary-pink
+{
+    background-color:rgb(7, 190, 184);
+    color: rgb(255, 255, 255);
+    font-size: 0.83rem;
+    padding: 7px;
+}
+.btn-secondary-orange
+{
+    background-color:rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-size: 0.9rem;
+    padding: 7px;
+}
+.btn-srch-btn
+{
+    background-color:rgb(179, 179, 179);
+    font-size: 1.36rem;
+    padding: 7px;
+    border-radius: 0px 7px 7px 0px;
+}

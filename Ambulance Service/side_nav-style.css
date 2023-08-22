@@ -1,0 +1,29 @@
+.main-container
+{
+    /* border: 2px solid rgb(144, 7, 0); */
+    /* height: 200vh; */
+    display: flex;
+    justify-content: center;
+    margin: 5px auto;
+
+}
+.filter-bar
+{
+    /* border: 2px solid rgb(0, 148, 52); */
+    background-color: rgb(196, 255, 249);
+    width: 15rem;
+    height: 500px;
+    position: fixed;
+    top: 120px;
+    left: 2px;
+    margin: 11px 2px;
+    padding: 9px;
+
+}
+.content
+{
+   /* border: 2px solid rgb(0, 148, 52);  */
+   width: 85vw;
+   margin: 11px;
+   padding: 9px;
+}
