@@ -27,6 +27,8 @@ html{
 /* search bar  */
 .search-bar {
     display: flex;
+    margin: auto 35px;
+    width: 50rem;
     /* gap: 10px; */
 }
 
@@ -124,12 +126,13 @@ section:nth-child(even){
 .search-navbar
 {
     display: flex;
+    margin: 2px auto;
     align-items:center;
     justify-content:center;
     position: absolute;
     top: 8rem;
     width: 100%;
-    padding:1.1rem 9%;
+    padding:1.6rem 9%;
     z-index:999;
     box-shadow:0 .5rem 1.5rem rgba(0,0,0,.1);
     background: #fff;

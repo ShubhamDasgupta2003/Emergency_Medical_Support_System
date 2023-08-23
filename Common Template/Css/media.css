@@ -6,7 +6,7 @@
 {
     display: none;
 }
-@media (max-width:977px) 
+@media (max-width:1356px) 
 {
     #srchbar-above
     {
@@ -14,7 +14,21 @@
     }
     #srchbar-below
     {
-        display: block;
+        display: flex;
     }
-
+}
+@media (max-width:434px)
+{
+    .search-bar {
+        display: flex;
+        margin: auto 35px;
+        width: 40rem;
+        height: 5rem;
+        /* gap: 10px; */
+    }
+    .search-bar button
+    {
+        width: 5.7rem;
+    }
+    
 }
