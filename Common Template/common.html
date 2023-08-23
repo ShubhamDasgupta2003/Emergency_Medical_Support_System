@@ -3,94 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
-    <link rel="stylesheet" href="navbar.css">
-    <link rel="stylesheet" href="searchbar.css">
-    <link rel="stylesheet" href="footer.css">
-    <link rel="stylesheet" href="media.css">
-    <title>Ambulance Booking|24x7 service</title>
+    <title>Document</title>
+    <!-- cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- bootStrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- css -->
+    <link rel="stylesheet" href="Css/Home.css">
+    <link rel="stylesheet" href="Css/navLink.css">
+    <link rel="stylesheet" href="Css/media.css">
+    <!-- <link rel="stylesheet" href="Css/BloodBank.css"> -->
+
+
+
 </head>
 <body>
-    <div class="container">
-        <!-- main navbar -->
-        <div class="navbar">
-            <div class="brand">
-                <i class="fa-solid fa-kit-medical fa-2xl"></i>
-            </div>
-            <form class="full-srch-bar" id="srchbar-above">
-                <button class="btn btn-secondary-green" id="locate-btn"><i class="fa-solid fa-location-crosshairs"></i> <span>Detect my location</span> </button>
-
-                <input type="text" class="search-bar" placeholder="Search ambulance service name, location">
-
-                <button class="srch-btn btn btn-srch-btn"><i class="fa fa-search"></i></button>
-            </form>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">About us</a></li>
-                <li><a href="#">Contact us</a></li>
-            </ul>
-            <div class="account-details">
-                <i class="fa-solid fa-user fa-lg account-avatar"></i>
-            </div>
+    <!-- header section start -->
+    <header class="header">
+        <a href="#" class="logo"><i class="fa-solid fa-heart-pulse"></i>medcare</a>
+        <div class="search-bar" id="srchbar-above">
+            <button class="get-location" id="get-location-btn">Get Location</button>
+            <input type="text" placeholder="Search...">
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
-        <!-- search bar -->
-            <div class="search-navbar" id="srchbar-below">
-                <form class="full-srch-bar">
-                    <button class="btn btn-secondary-green" id="locate-btn"><i class="fa-solid fa-location-crosshairs"></i> <span>Detect my location</span> </button>
-
-                    <input type="text" class="search-bar" placeholder="Search ambulance service name, location">
-
-                    <button class="srch-btn btn btn-srch-btn"><i class="fa fa-search"></i></button>
-                </form>
-            </div>
-
-        <div class="main-container">
-
-            <!-- Your code goes here -->
-
-        </div>
-
+        <nav class="navbar">
+            <a class="navlink" href="#home">Home</a>
+            <a class="navlink" href="#services">Services</a>
+            <a class="navlink" href="#about">about</a>
+            <a class="navlink" href="#ContactUs">contact Us</a>
+        </nav>
         
-        <!-- Footer bar -->
-    <footer>
-        <div class="footer-top">
-            <div class="footer-logo"><i class="fa-solid fa-kit-medical fa-2xl"></i></div>
-            <div class="footer-txt">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta facilis maxime eius ad id qui quos quod corporis non minus! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro, voluptates 
-            </div>
+        <i class="fa-solid fa-user fa-lg account-avatar"></i>
+        <div id="menu-btn" class="fa fa-bars"> </div>
+    </header>
+
+    <!-- header section end -->
+    <div class="search-navbar" id="srchbar-below">
+        <div class="search-bar">
+            <button class="get-location" id="get-location-btn">Get Location</button>
+            <input type="text" placeholder="Search...">
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
-        <div class="footer-bottom">
-            <div class="company-col footer-link-col">
-                <h2>Company</h2>
-                <ul>
-                    <li>About Company</li>
-                    <li>Customer's Speak</li>
-                    <li>In the News</li>
-                    <li>Terms and Conditions</li>
-                    <li>Privacy Policy</li>
-                    <li>Contact</li>
-                </ul>
-            </div>
-            <div class="shopping-col footer-link-col">
-                <h2>Shopping</h2>
-                <ul>
-                    <li>Browse by Manufacturers</li>
-                    <li>Health Articles</li>
-                    <li>Offers / Coupons</li>
-                    <li>FAQs</li>
-                </ul>
-            </div>
-            <div class="link-col footer-link-col">
-                <h2>Useful Links</h2>
-                <ul>
-                    <li>Home</li>
-                    <li>About us</li>
-                    <li>Services</li>
-                    <li>Contact us</li>
-                </ul>
-            </div>
-        </div>
-    </footer>
+    </div>
+
+
+
+    <!-- Blood section  start-->
+
+    <!-- icon section  start-->
+
+
+   
+    <!-- review section end  -->
+    <script src="common.js"></script>
 </body>
 </html>
