@@ -1,23 +1,17 @@
-.nav-container
-{
-    /* border: 2px solid red; */
-    background-color: rgb(156, 234, 239);
-    height: 50px;
-    display: flex;
-    padding: 7px;
-}
+
 .search-navbar
 {
+    background-color: rgb(156, 234, 239);
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 100vw;
     padding: 7px;
 }
 .full-srch-bar
 {
     display: flex;
-    /* width: 100%; */
+    width: 100%;
     justify-content: center;
     align-items: flex-end;
     padding: 0px;
