@@ -3,9 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="searchbar.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="media.css">
+    <title>Ambulance Booking|24x7 service</title>
 </head>
 <body>
-    
+    <div class="container">
+        <!-- main navbar -->
+        <div class="navbar">
+            <div class="brand">
+                <i class="fa-solid fa-kit-medical fa-2xl"></i>
+            </div>
+            <form class="full-srch-bar" id="srchbar-above">
+                <button class="btn btn-secondary-green" id="locate-btn"><i class="fa-solid fa-location-crosshairs"></i> <span>Detect my location</span> </button>
+
+                <input type="text" class="search-bar" placeholder="Search ambulance service name, location">
+
+                <button class="srch-btn btn btn-srch-btn"><i class="fa fa-search"></i></button>
+            </form>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Contact us</a></li>
+            </ul>
+            <div class="account-details">
+                <i class="fa-solid fa-user fa-lg account-avatar"></i>
+            </div>
+        </div>
+        <!-- search bar -->
+            <div class="search-navbar" id="srchbar-below">
+                <form class="full-srch-bar">
+                    <button class="btn btn-secondary-green" id="locate-btn"><i class="fa-solid fa-location-crosshairs"></i> <span>Detect my location</span> </button>
+
+                    <input type="text" class="search-bar" placeholder="Search ambulance service name, location">
+
+                    <button class="srch-btn btn btn-srch-btn"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+
+        <div class="main-container">
+
+            <!-- Your code goes here -->
+
+        </div>
+
+        
+        <!-- Footer bar -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-logo"><i class="fa-solid fa-kit-medical fa-2xl"></i></div>
+            <div class="footer-txt">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta facilis maxime eius ad id qui quos quod corporis non minus! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro, voluptates 
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="company-col footer-link-col">
+                <h2>Company</h2>
+                <ul>
+                    <li>About Company</li>
+                    <li>Customer's Speak</li>
+                    <li>In the News</li>
+                    <li>Terms and Conditions</li>
+                    <li>Privacy Policy</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+            <div class="shopping-col footer-link-col">
+                <h2>Shopping</h2>
+                <ul>
+                    <li>Browse by Manufacturers</li>
+                    <li>Health Articles</li>
+                    <li>Offers / Coupons</li>
+                    <li>FAQs</li>
+                </ul>
+            </div>
+            <div class="link-col footer-link-col">
+                <h2>Useful Links</h2>
+                <ul>
+                    <li>Home</li>
+                    <li>About us</li>
+                    <li>Services</li>
+                    <li>Contact us</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

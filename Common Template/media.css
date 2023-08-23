@@ -1,0 +1,20 @@
+#srchbar-above
+{
+    margin-left: 5rem;
+}
+#srchbar-below
+{
+    display: none;
+}
+@media (max-width:977px) 
+{
+    #srchbar-above
+    {
+        display: none;
+    }
+    #srchbar-below
+    {
+        display: block;
+    }
+
+}
