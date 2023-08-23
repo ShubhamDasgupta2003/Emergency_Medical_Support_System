@@ -37,4 +37,24 @@
 }
 /* Get Location button end*/
 
+/* New styles for the mobile search bar */
+.mobile-search-bar {
+    display: none; /* Initially hide the mobile search bar */
+    width:100%;
+    position: absolute;
+    margin-top: 60px;
+}
+@media (max-width: 768px) {
+    .rs{
+        display: none;
+    }
+    .mobile-search-bar {
+        display: block; /* Display the mobile search bar on smaller screens */
+        
+    }
+
+}  
+
+
+
 
