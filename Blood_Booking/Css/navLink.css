@@ -45,7 +45,7 @@
     margin-top: 60px;
 }
 @media (max-width: 768px) {
-    .rs{
+    .rs{ 
         display: none;
     }
     .mobile-search-bar {
