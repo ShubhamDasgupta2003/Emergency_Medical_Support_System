@@ -37,6 +37,12 @@
     border-radius: 5px 0px 0px 5px;
     color: white;
 }
+.btn:hover
+{
+    background-color: white;
+    color: var(--green);
+    border: 1px solid var(--green);
+}
 /* Get Location button end*/
 
 

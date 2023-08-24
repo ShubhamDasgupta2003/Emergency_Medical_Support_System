@@ -8,6 +8,10 @@
     --text-shadow:.4rem .4rem 0 rgba(0,0,0,.2);
     --border:.2rem solid var(--green);
 }
+body
+{
+    background-color: rgb(243, 255, 253);
+}
 *{
     font-family: 'Poppins',sans-serif;
     margin:0; padding:0;
@@ -118,7 +122,7 @@ html{
 }
 
 
-.header .logo{
+.logo{
     font-size: 2.5rem;
     color: var(--black);
 }

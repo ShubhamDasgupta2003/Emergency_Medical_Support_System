@@ -1,6 +1,7 @@
 footer
 {
-    background: linear-gradient(0deg, rgba(1,194,169,1) 20%, rgba(255,255,255,1) 50%);
+    /* background: linear-gradient(0deg, rgba(1,194,169,1) 20%, rgba(255,255,255,1) 50%); */
+    background-color: rgb(247, 247, 247);
     /* border: 2px solid red; */
     display: flex;
     flex-direction: column;
@@ -11,6 +12,7 @@ footer
     justify-content: center;
     align-items: center;
     padding: 10px;
+    font-size: 1.2rem;
 }
 .footer-top
 {
@@ -26,6 +28,12 @@ footer
     margin: 25px;
     padding: 11px;
     justify-content: flex-start;
+}
+.footer-txt
+{
+    display: flex;
+    margin: 2px auto;
+    padding: 5rem;
 }
 .footer-bottom
 {
