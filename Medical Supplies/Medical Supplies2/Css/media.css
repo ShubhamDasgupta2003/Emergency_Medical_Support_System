@@ -1,0 +1,39 @@
+#srchbar-above
+{
+    margin-left: 5rem;
+}
+#srchbar-below
+{
+    display: none;
+}
+
+@media (max-width:1356px) 
+{
+    .contents
+    {
+        margin-top: 7rem;
+    }
+    #srchbar-above
+    {
+        display: none;
+    }
+    #srchbar-below
+    {
+        display: flex;
+    }
+}
+@media (max-width:434px)
+{
+    .search-bar {
+        display: flex;
+        margin: auto 35px;
+        width: 40rem;
+        height: 5rem;
+        /* gap: 10px; */
+    }
+    .search-bar button
+    {
+        width: 5.7rem;
+    }
+    
+}
