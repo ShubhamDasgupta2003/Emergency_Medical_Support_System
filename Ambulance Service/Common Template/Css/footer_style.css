@@ -1,15 +1,13 @@
 footer
 {
-    background: rgb(1,194,169);
     background: linear-gradient(0deg, rgba(1,194,169,1) 20%, rgba(255,255,255,1) 50%);
     /* border: 2px solid red; */
     display: flex;
     flex-direction: column;
     position: relative;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    bottom: -5rem;
     margin-top: 100px;
+    width: 100vw;
     justify-content: center;
     align-items: center;
     padding: 10px;
