@@ -38,26 +38,28 @@
 }
 .card-name
 {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     font-weight: 600;
     margin: 9px 9px;
+    color: var(--black);
 }
 .card-address
 {
-    font-size: 0.82rem;
+    font-size: 1.0rem;
     margin: 5px 9px;
+    color: var(--light-color);
 }
 .card-type
 {
-    font-size: 0.92rem;
+    font-size: 1.3rem;
     font-weight: 600;
     margin: 5px 9px;
-    background-color: rgb(227, 150, 150);
+    /* background-color: rgb(227, 150, 150); */
     padding: 3px;
 }
 .card-fare
 {
-    font-size: 0.89rem;
+    font-size: 1.5rem;
     display:block;
     float: right;
     margin: 5px 9px;
@@ -77,4 +79,10 @@
 .card button
 {
     float:left;
+    background-color: var(--green);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 3px;
+    border-radius: 7px;
 }
