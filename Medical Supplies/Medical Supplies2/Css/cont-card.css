@@ -13,6 +13,7 @@
     /*Define our columns */
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
     grid-gap: 1.26rem;
+    padding:2rem 9%;
 }
 .card {
     border-radius: 10px;
