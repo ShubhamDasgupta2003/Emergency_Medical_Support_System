@@ -1,0 +1,32 @@
+
+.segmented-navigation {
+  position: relative;
+  top: 100px;
+  background-color: #f2f2f2;
+  padding: 8px;
+}
+
+.segmented-item {
+  display: inline-block;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 4px;
+  cursor: pointer;
+}
+
+.segmented-item.active {
+  background-color: #007bff;
+  color: #fff;
+}
+@media(max-width:1351px){
+  .segmented-navigation {
+    top: 170px;
+  }
+  
+}
+
+          
