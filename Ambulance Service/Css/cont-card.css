@@ -45,7 +45,7 @@
 }
 .card-address
 {
-    font-size: 1.0rem;
+    font-size: 1.2rem;
     margin: 5px 9px;
     color: var(--light-color);
 }
@@ -71,9 +71,10 @@
 }
 .card-status
 {
-    font-size: 1.01rem;
+    font-size: 1rem;
     font-weight: 800;
     margin: 5px 9px;
+    float: right;
     /* background-color: rgb(227, 150, 150); */
 }
 .card button

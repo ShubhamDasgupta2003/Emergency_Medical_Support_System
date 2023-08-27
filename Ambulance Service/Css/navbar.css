@@ -127,8 +127,11 @@ html{
     color: var(--black);
 }
 
-.account{
-    font-size: 2rem;
+
+#user-avatar
+{
+
+    text-decoration: none;
     color: var(--black);
 }
 
@@ -185,10 +188,10 @@ html{
         transition: none;
         
     }
-
     #user-avatar::before
     {
         display: flex;
+        color: var(--black);
         position: relative;
         right: 10px;
         justify-content: right;
