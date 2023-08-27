@@ -1,0 +1,48 @@
+/* navlink start  */
+.navlink{
+    position:relative;
+}
+.navlink::after{
+    content: '';
+    opacity: 0;
+    transition: all 0.2s;
+    height: 2.5px;
+    width: 100%;
+    background-color: var(--light-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.navlink:hover::after{
+    opacity: 1;
+}
+
+/* navlink end  */
+
+/* Get Location button start*/
+.get-location {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar .get-location {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    width: 13rem;
+    padding: 5px;
+    background-color: var(--green);
+    border: none;
+    border-radius: 5px 0px 0px 5px;
+    color: white;
+}
+.btn:hover
+{
+    background-color: white;
+    color: var(--green);
+    border: 1px solid var(--green);
+}
+/* Get Location button end*/
+
+
