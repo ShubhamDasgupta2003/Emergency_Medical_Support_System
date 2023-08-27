@@ -1,0 +1,12 @@
+.body-container
+{
+    display: inline-block;
+    position: relative;
+    /* top: 9rem; */
+    height: 100vh;
+}
+
+.contents
+{
+    padding: 4.2rem;
+}
