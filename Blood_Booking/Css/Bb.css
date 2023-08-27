@@ -1,14 +1,14 @@
-.card span{
+.blood-gr{
     color:red;
 }
 .card h2{
-    font-size:15px;
+    font-size:13px;
 }
 .card p{
-    font-size:20px;
+    font-size:17px;
     padding-left: 0%;
 }
-.card button{
+.card .buy{
     height: 35px;
     width: 70px;
     margin-top: 9px;
