@@ -1,0 +1,15 @@
+.card span{
+    color:red;
+}
+.card h2{
+    font-size:15px;
+}
+.card p{
+    font-size:20px;
+    padding-left: 0%;
+}
+.card button{
+    height: 35px;
+    width: 70px;
+    margin-top: 9px;
+}
