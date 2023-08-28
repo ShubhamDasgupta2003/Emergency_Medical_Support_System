@@ -130,7 +130,6 @@ html{
 
 #user-avatar
 {
-
     text-decoration: none;
     color: var(--black);
 }
@@ -188,7 +187,7 @@ html{
         transition: none;
         
     }
-    #user-avatar::before
+    #user-avatar
     {
         display: flex;
         color: var(--black);

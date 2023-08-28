@@ -20,20 +20,33 @@
     #srchbar-below
     {
         display: flex;
+        justify-content: center;
+
+    }
+    #srchbar-below .search-bar
+    {
+        display: flex;
+        justify-content: center;
+    }
+    #srchbar-below .srch-btn
+    {
+        font-size: 2rem;
+        padding: 0.5rem 0.5rem;
     }
 }
 @media (max-width:434px)
 {
-    .search-bar {
+    #srchbar-below .search-bar {
         display: flex;
-        margin: auto 35px;
+        margin: auto 0px;
         width: 40rem;
         height: 5rem;
         /* gap: 10px; */
     }
-    .search-bar button
+    #srchbar-below .srch-btn
     {
-        width: 5.7rem;
+
+        width: 10rem;
     }
     
 }
