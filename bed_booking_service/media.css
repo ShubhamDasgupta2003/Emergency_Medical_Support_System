@@ -20,6 +20,18 @@
     #srchbar-below
     {
         display: flex;
+        justify-content: center;
+
+    }
+    #srchbar-below .search-bar
+    {
+        display: flex;
+        justify-content: center;
+    }
+    #srchbar-below .srch-btn
+    {
+        font-size: 2rem;
+        padding: 0.5rem 0.5rem;
     }
 }
 @media (max-width:434px)
