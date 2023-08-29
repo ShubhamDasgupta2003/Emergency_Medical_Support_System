@@ -1,12 +1,15 @@
 .body-container
 {
-    display: inline-block;
     position: relative;
-    /* top: 9rem; */
+    top: 9rem;
     height: 100vh;
 }
 
 .contents
 {
     padding: 4.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

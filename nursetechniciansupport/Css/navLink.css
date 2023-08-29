@@ -28,12 +28,20 @@
 
 .search-bar .get-location {
     cursor: pointer;
-    width: 100px;
+    display: flex;
+    justify-content: center;
+    width: 13rem;
     padding: 5px;
     background-color: var(--green);
     border: none;
     border-radius: 5px 0px 0px 5px;
     color: white;
+}
+.btn:hover
+{
+    background-color: white;
+    color: var(--green);
+    border: 1px solid var(--green);
 }
 /* Get Location button end*/
 

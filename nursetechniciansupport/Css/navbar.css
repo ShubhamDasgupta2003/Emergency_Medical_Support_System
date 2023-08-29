@@ -8,6 +8,10 @@
     --text-shadow:.4rem .4rem 0 rgba(0,0,0,.2);
     --border:.2rem solid var(--green);
 }
+body
+{
+    background-color: rgb(243, 255, 253);
+}
 *{
     font-family: 'Poppins',sans-serif;
     margin:0; padding:0;
@@ -29,7 +33,7 @@ html{
     display: flex;
     margin: auto 35px;
     width: 50rem;
-
+    /* gap: 10px; */
 }
 
 .search-bar input[type="text"] {
@@ -41,7 +45,10 @@ html{
 
 .search-bar button {
     cursor: pointer;
-    width: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
     padding: 5px 0px;
     background-color: var(--green);
     border: none;
@@ -115,13 +122,16 @@ html{
 }
 
 
-.header .logo{
+.logo{
     font-size: 2.5rem;
     color: var(--black);
 }
 
-.account{
-    font-size: 2rem;
+
+#user-avatar
+{
+
+    text-decoration: none;
     color: var(--black);
 }
 
@@ -178,10 +188,10 @@ html{
         transition: none;
         
     }
-
     #user-avatar::before
     {
         display: flex;
+        color: var(--black);
         position: relative;
         right: 10px;
         justify-content: right;
