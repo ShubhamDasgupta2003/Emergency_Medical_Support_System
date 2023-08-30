@@ -1,11 +1,9 @@
-
 .segmented-navigation {
   position: relative;
-  top: 100px;
+  top: 30px;
   background-color: #f2f2f2;
   padding: 8px;
 }
-
 .segmented-item {
   display: inline-block;
   padding: 8px 16px;
@@ -19,14 +17,11 @@
 }
 
 .segmented-item.active {
-  background-color: #007bff;
+  background-color: var(--green);
   color: #fff;
 }
-@media(max-width:1351px){
+@media (max-width: 1351px) {
   .segmented-navigation {
-    top: 170px;
+    top: 100px;
   }
-  
 }
-
-          

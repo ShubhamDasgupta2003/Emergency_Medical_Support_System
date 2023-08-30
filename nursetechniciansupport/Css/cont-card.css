@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&family=Poppins&display=swap');
+
+.cards {
+    max-width: 1200px;
+    margin: 30px 90px;
+    padding: 0 2px;
+    width: 100%; 
+}
+.card {
+    border-radius: 10px;
+    padding: 20px;
+    color: #000000;
+    height: max-content;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    margin: auto auto;
+    box-shadow: inset rgb(180, 180, 180) -2px -2px 9px;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 50px;
+    display: flex;
+}
+.card img
+{
+    width: 200px;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    background-color: white;
+    border-radius: 10px;
+    display: block;
+    margin: 0px auto;
+}
+.card button
+{
+    float:left;
+    background-color: var(--green);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 3px;
+    border-radius: 2px;
+    width: 50px;
+}

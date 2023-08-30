@@ -1,7 +1,7 @@
 footer
 {
     background: rgb(1,194,169);
-    background: linear-gradient(0deg, rgba(1,194,169,1) 20%, rgba(255,255,255,1) 50%);
+    background: linear-gradient(0deg, rgb(205, 209, 208) 20%, rgba(255,255,255,1) 50%);
     /* border: 2px solid red; */
     display: flex;
     flex-direction: column;
