@@ -36,17 +36,24 @@
     display: block;
     margin: 0px auto;
 }
+.card-row
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .card-name
 {
     font-size: 1.5rem;
     font-weight: 600;
     margin: 9px 9px;
-    color: var(--black);
+    color: var(--green);
 }
 .card-address
 {
     font-size: 1.2rem;
     margin: 5px 9px;
+    margin-right: 0px;
     color: var(--light-color);
 }
 .card-type
@@ -69,13 +76,21 @@
     border-radius: 9px;
     color: red;
 }
-.card-status
+#card-status
 {
     font-size: 1rem;
     font-weight: 800;
     margin: 5px 9px;
+    margin-left: 0px;
     float: right;
     /* background-color: rgb(227, 150, 150); */
+
+
+}
+.card-distance
+{
+    font-size: 1.3rem;
+    font-weight: 800;
 }
 .card button
 {
@@ -86,4 +101,17 @@
     font-weight: bold;
     padding: 3px;
     border-radius: 7px;
+}
+
+.stat-active
+{
+    background-color: rgb(0, 222, 0);
+    padding: 3px;
+    border-radius: 10px;
+}
+.stat-busy
+{
+    background-color: rgb(255, 98, 98);
+    padding: 3px;
+    border-radius: 10px;
 }
