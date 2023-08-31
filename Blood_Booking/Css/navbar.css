@@ -189,7 +189,7 @@ html{
         transition: none;
         
     }
-    #user-avatar::before
+    #user-avatar
     {
         display: flex;
         color: var(--black);
