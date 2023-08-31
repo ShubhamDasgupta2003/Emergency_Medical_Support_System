@@ -4,7 +4,7 @@
     border-radius: 0px;
     background-color: rgb(255, 255, 255);
     box-shadow: none;
-    width: max-content;
+    width: min-content;
     position: relative;
     top: 200px;
 }
