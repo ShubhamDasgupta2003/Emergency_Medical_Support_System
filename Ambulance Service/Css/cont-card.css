@@ -28,10 +28,10 @@
 }
 .card img
 {
-    width: 200px;
+    width: 170px;
     aspect-ratio: 3/2;
     object-fit: contain;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     border-radius: 10px;
     display: block;
     margin: 0px auto;
@@ -105,13 +105,13 @@
 
 .stat-active
 {
-    background-color: rgb(0, 222, 0);
+    background-color: rgb(0, 222, 104);
     padding: 3px;
     border-radius: 10px;
 }
 .stat-busy
 {
-    background-color: rgb(255, 98, 98);
+    background-color: rgb(255, 132, 132);
     padding: 3px;
     border-radius: 10px;
 }
