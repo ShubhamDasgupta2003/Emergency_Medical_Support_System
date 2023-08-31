@@ -1,17 +1,19 @@
 .location-window .popup
 {
+    display: flex;
+    flex-direction: column;
     border: 2px solid var(--green);
     border-radius: 0px;
     background-color: rgb(255, 255, 255);
     box-shadow: none;
     width: min-content;
     position: relative;
-    top: 200px;
+    top: 100px;
+    bottom: 5px;
 }
 .location-window
 {
     display: none;
-    /* border: 2px solid green; */
     background-color: rgba(154, 154, 154, 0.628);
     flex-direction: column;
     position: absolute;
@@ -19,7 +21,7 @@
     width: 100%;
     height: 100%;
     z-index: 999;
-    top: 70px;
+    top: 55px;
 }
 
 .card .dismiss-btn
