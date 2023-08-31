@@ -2,7 +2,6 @@
 
 .cards {
     max-width: 1200px;
-    margin: 30px 90px;
     padding: 0 2px;
     width: 100%; 
 }
@@ -24,10 +23,11 @@
     width: 200px;
     aspect-ratio: 3/2;
     object-fit: contain;
-    background-color: white;
+    background-color: transparent;
     border-radius: 10px;
     display: block;
     margin: 0px auto;
+    border-radius: 50%;
 }
 .card button
 {
@@ -40,3 +40,9 @@
     border-radius: 2px;
     width: 50px;
 }
+@media (max-width: 500px) {
+.card{
+    display: block;
+    overflow: hidden;
+}
+  }
