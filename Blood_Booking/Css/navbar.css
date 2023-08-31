@@ -4,7 +4,6 @@
     --green:#00a896;
     --black:#444;
     --light-color:#777;
-    --blue:dodgerblue;
     --box-shadow:.5rem .5rem 0 rgba(22,160,133,.2);
     --text-shadow:.4rem .4rem 0 rgba(0,0,0,.2);
     --border:.2rem solid var(--green);
@@ -131,9 +130,9 @@ html{
 
 #user-avatar
 {
+
     text-decoration: none;
     color: var(--black);
-    font-size: 1.6rem;
 }
 
 .header .logo i{
@@ -189,7 +188,7 @@ html{
         transition: none;
         
     }
-    #user-avatar
+    #user-avatar::before
     {
         display: flex;
         color: var(--black);

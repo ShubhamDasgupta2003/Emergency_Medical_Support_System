@@ -28,33 +28,23 @@
 
 .search-bar .get-location {
     cursor: pointer;
-    width: 100px;
+    display: flex;
+    justify-content: center;
+    width: 13rem;
     padding: 5px;
     background-color: var(--green);
     border: none;
     border-radius: 5px 0px 0px 5px;
     color: white;
 }
-/* Get Location button end*/
-
-/* New styles for the mobile search bar */
-.mobile-search-bar {
-    display: none; /* Initially hide the mobile search bar */
-    width:100%;
-    position: absolute;
-    margin-top: 60px;
+.btn:hover
+{
+    background-color: white;
+    color: var(--green);
+    border: 1px solid var(--green);
 }
-@media (max-width: 768px) {
-    .rs{ 
-        display: none;
-    }
-    .mobile-search-bar {
-        display: block; /* Display the mobile search bar on smaller screens */
-        
-    }
-
-}  
-
-
-
+/* Get Location button end*/
+.fa-lg {
+    font-size: 2em;
+}
 
