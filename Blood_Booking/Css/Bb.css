@@ -5,11 +5,12 @@
     font-size:13px;
 }
 .card p{
-    font-size:17px;
+    font-size:15px;
     padding-left: 0%;
 }
 .card .buy{
     height: 35px;
     width: 70px;
-    margin-top: 9px;
+    /* margin-top: 9px; */
 }
+
