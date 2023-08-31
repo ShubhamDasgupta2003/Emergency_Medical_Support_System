@@ -1,8 +1,9 @@
 .segmented-navigation {
   position: relative;
-  top: 30px;
+  top: 0 px;
   background-color: #f2f2f2;
   padding: 8px;
+  z-index: 998;
 }
 .segmented-item {
   display: inline-block;
@@ -22,6 +23,6 @@
 }
 @media (max-width: 1351px) {
   .segmented-navigation {
-    top: 100px;
+    top: 50px;
   }
 }
