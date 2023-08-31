@@ -87,3 +87,21 @@
     padding: 3px;
     border-radius: 7px;
 }
+
+.card-details .fa-lg{
+    font-size: 1.5em;
+    margin:9px;
+}
+.distance-gr{
+    display: flex;
+    align-items: center;
+}
+.buy-price{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.card-name{
+    color: #00a896;
+    font-size: 17px;
+}
