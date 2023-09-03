@@ -93,6 +93,9 @@ html{
     border-radius: 5px 0px 0px 5px;
     color: white;
 }
+#locationlogo{
+    padding-right: 4px;
+}
 /* Get Location button end*/
 
 .search-navbar
