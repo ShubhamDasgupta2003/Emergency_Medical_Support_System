@@ -89,14 +89,17 @@
 .card button
 {
     /* float:right; */
-    margin-left: 60px;
+    /* margin-left: 60px; */
     background-color: var(--green);
     color: white;
     cursor: pointer;
     font-weight: bold;
-    margin-top: 11px;
+    /* margin-top: 11px; */
     padding: 3px;
     border-radius: 7px;
+    position: relative;
+    top: 5px;
+    left: 52px;
 }
 .font,.call{
     float: left;
