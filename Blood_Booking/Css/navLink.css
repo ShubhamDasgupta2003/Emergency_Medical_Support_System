@@ -44,5 +44,7 @@
     border: 1px solid var(--green);
 }
 /* Get Location button end*/
-
+.fa-map-marker-alt{
+    width: auto;
+}
 
