@@ -99,3 +99,12 @@ input::-webkit-inner-spin-button {
     text-decoration: none;
     color: rgb(255, 255, 255);
 }
+#cnfm-msg
+{
+    color: rgb(0, 170, 0);
+    text-align: center;
+}
+#otp_num
+{
+    color: var(--green);
+}
