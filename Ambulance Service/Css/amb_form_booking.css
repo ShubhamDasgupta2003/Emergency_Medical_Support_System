@@ -79,6 +79,12 @@ input::-webkit-inner-spin-button {
 {
     display: flex;
     align-items: center;
+    /* justify-content: space-evenly; */
+}
+.btn-row
+{
+    display: flex;
+    align-items: center;
     justify-content: space-evenly;
 }
 .column
@@ -103,6 +109,7 @@ input::-webkit-inner-spin-button {
 {
     color: rgb(0, 170, 0);
     text-align: center;
+    margin: 2rem;
 }
 #otp_num
 {
