@@ -8,53 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
-    <!-- CSS part starts here -->
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--green);
-        }
-
-        :root {
-            --green: #00a896;
-            --black: #444;
-            --light-color: #777;
-            --bg: rgb(243, 255, 253);
-        }
-
-        .firstsection {
-            display: flex;
-            justify-content: space-around;
-            margin: 20px 0px;
-        }
-
-        .leftsection {
-            width: 40%;
-            color: white;
-            /* background-color: rgba(130, 234, 101, 0.697); */
-            font-size: 3.6rem;
-            position: relative;
-            top: 99px;
-        }
-
-        .rightsection {
-            width: 30%;
-            /* background-color: rgba(130, 234, 101, 0.697); */
-        }
-
-        .rightsection img {
-            position: relative;
-            right: 66px;
-            top: 31px;
-        }
-
-        #element {
-            color: var(--black);
-        }
-    </style>
-    <!-- css part ends here  -->
+    <link rel="stylesheet" href="text&image.css">
 </head>
 
 <body>
@@ -67,14 +21,13 @@
                     <span id="element"></span>
                 </div>
                 <div class="rightsection">
-                    <img src="medIimage.png" width="500px" alt="">
+                    <img src="medIimage.png" alt="image">
                 </div>
             </div>
         </section>
     </main>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-   <!-- animation part starts here  -->
-   <script>
+    <script>
         var typed = new Typed('#element', {
             strings: ['Hospital.', 'medicine store.', 'Blood bank.', 'Ambulance.', 'medical technician.'],
             typeSpeed: 70,
@@ -82,7 +35,6 @@
             loopCount: Infinity,
         });
     </script>
-    <!-- ends here  -->
 </body>
 
 </html>
