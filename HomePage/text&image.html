@@ -8,13 +8,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/slider.css">
     <!-- CSS part starts here -->
     <style>
         * {
             margin: 0;
             padding: 0;
             font-family: 'Poppins', sans-serif;
-            background-color: var(--green);
+            background-color: var(--bg);
         }
 
         :root {
@@ -32,7 +33,7 @@
 
         .leftsection {
             width: 40%;
-            color: white;
+            color: var(--green);
             /* background-color: rgba(130, 234, 101, 0.697); */
             font-size: 3.6rem;
             position: relative;
@@ -83,6 +84,20 @@
         });
     </script>
     <!-- ends here  -->
+
+    
+    <!-- Automatic image slider starts here -->
+
+    <div class="advtslider">
+        <button class="btn" id="lbtn"><</button>
+        <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Wireless/Shreyansh/BAU/Unrexc/D70978891_INWLD_BAU_Unrec_Uber_PC_Hero_3000x1200._CB594707876_.jpg" alt="" id="advtdisplay" class="fadein">
+        <button class="btn" id="rbtn">></button>
+    </div>
+
+    <!-- Automatic image slider ends here -->
+
+
+    <script src="slider.js"></script>
 </body>
 
 </html>
