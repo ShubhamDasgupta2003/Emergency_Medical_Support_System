@@ -11,13 +11,22 @@
   </head>
   <body>
     <section class="container">
-      <header>Registration Form</header>
+      <div class="title-bar">
+        <img src="logo.png" alt="logo" width="70px">
+        <header>New User Registration Form</header>
+      </div>
       <form action="#" class="form">
-        <div class="input-box">
-          <label>Full Name</label>
-          <input type="text" placeholder="Enter full name" required />
-        </div>
+        <div class="column">
+          <div class="input-box">
+            <label>First Name</label>
+            <input type="text" placeholder="Enter your first name" required />
+          </div>
 
+          <div class="input-box">
+            <label>Last Name</label>
+            <input type="text" placeholder="Enter your last name" required />
+          </div>
+        </div>
         <div class="input-box">
           <label>Email Address</label>
           <input type="text" placeholder="Enter email address" required />
@@ -30,7 +39,7 @@
           </div>
           <div class="input-box">
             <label>Date of Birth</label>
-            <input type="date" placeholder="Enter birth date" required />
+            <input id="dtpick" type="date" placeholder="Enter birth date" required />
           </div>
         </div>
         <div class="column">
@@ -62,7 +71,6 @@
         </div>
         <div class="input-box address">
           <label>Address</label>
-          <input type="text" placeholder="Enter your address" required />
           <div class="column">
             <div class="select-box">
                 <select>
@@ -102,15 +110,16 @@
         <div class="column">
             <div class="input-box">
                 <label>Password</label>
-                <input type="password" placeholder="Enter your password" required />
+                <input id="pswd" type="password" placeholder="Enter your password" required />
             </div>
             <div class="input-box">
                 <label>Confirm Password</label>
-                <input type="text" placeholder="Confirm your password" required />
+                <input id="cnf-pswd"type="text" placeholder="Confirm your password" required />
             </div>
         </div>
-        <button>Submit</button>
+        <button id="sbmt-form">Register</button>
       </form>
     </section>
+    <script src="signup.js"></script>
   </body>
 </html>

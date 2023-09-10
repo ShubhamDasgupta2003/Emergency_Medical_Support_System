@@ -1,17 +1,10 @@
-const form = document.querySelector("form"),
-        nextBtn = form.querySelector(".nextBtn"),
-        backBtn = form.querySelector(".backBtn"),
-        allInput = form.querySelectorAll(".first input");
+const pswd_Box = document.getElementById('pswd');
+const cnf_pswd_Box = document.getElementById('cnf-pswd');
+const sbmt_btn = document.getElementById('sbmt-form');
 
-
-nextBtn.addEventListener("click", ()=> {
-    allInput.forEach(input => {
-        if(input.value != ""){
-            form.classList.add('secActive');
-        }else{
-            form.classList.remove('secActive');
-        }
-    })
+sbmt_btn.addEventListener('click',()=>{
+    if((pswd_Box.value != cnf_pswd_Box.value))
+    {
+        alert("Enter your password correctly!");
+    }
 })
-
-backBtn.addEventListener("click", () => form.classList.remove('secActive'));
