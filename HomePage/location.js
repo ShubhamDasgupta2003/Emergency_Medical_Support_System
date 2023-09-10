@@ -1,8 +1,10 @@
 const locationBtn = document.getElementsByClassName('get-location');
 const locationWin = document.getElementById('loc-win');
 const dismissBtn = document.getElementById('dismiss');
+const root = document.documentElement;
 
-console.log(locationWin);
+console.log(root);
+// console.log(locationWin);
 
 for(let i=0; i<locationBtn.length; i++)
 {
@@ -17,12 +19,14 @@ function openPopup()
     // document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
     document.body.classList.add("disable-scroll");
+    root.classList.add("disable-scroll");
 }
 
 function closePopup()
 {
     locationWin.style.display = 'none';
     document.body.classList.remove("disable-scroll");
+    root.classList.remove("disable-scroll");
 }
 
 // ================== Reverse Geocoding using Pincode =========================

@@ -25,15 +25,6 @@ html{
     scroll-behavior: smooth;
 }
 
-
-
-
-
-
-
-
-
-
 /* section  */
 section{
     padding:2rem 9%;
@@ -237,7 +228,7 @@ section:nth-child(even){
 }
 .services .box-container{
     max-width: 1200px;
-    margin: 30px;
+    /* margin: 30px; */
     margin-bottom: 100px;
     padding: 0 20px;
     width: 100%; 
