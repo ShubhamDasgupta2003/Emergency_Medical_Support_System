@@ -1,0 +1,107 @@
+/* Import Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: linear-gradient(rgb(255, 255, 255), rgb(206, 206, 206))
+}
+
+.title-bar {
+    /* display: flex;
+    align-items: center;
+    background-color: #00a896;
+    border-radius: 5px; */
+    padding-bottom: 3px;
+    border-bottom: 3px solid #00a896;
+}
+
+.container {
+    position: relative;
+    max-width: 700px;
+    /* width: 35%; */
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.421);
+}
+
+.title-bar header {
+    font-size: 1.5rem;
+    margin: auto auto;
+    color: black;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* .container .form {
+    margin-top: 30px;
+} */
+
+.form .input-box {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.input-box label {
+    color: #333;
+}
+
+.form :where(.input-box input, .select-box) {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    color: #707070;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 15px;
+}
+
+.input-box input:focus {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+
+.form button {
+    height: 40px;
+    width: 100%;
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-top: 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: #00a896;
+}
+
+.form button:hover {
+    background: white;
+    color: #00a896;
+    border: 1px solid #00a896;
+}
+
+/* responsive  */
+@media screen and (max-width: 500px) {
+    .form .column {
+        flex-wrap: wrap;
+    }
+}
