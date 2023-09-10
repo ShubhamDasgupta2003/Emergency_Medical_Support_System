@@ -1,0 +1,41 @@
+.segmented-navigation {
+    position: relative;
+    top: 0 px;
+    background-color: #f2f2f2;
+    padding: 8px;
+    z-index: 998;
+  }
+  .segmented-item {
+    display: inline-block;
+    padding: 8px 16px;
+    box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.19);
+    text-decoration: none;
+    background-color: var(--green);
+    color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    margin-right: 4px;
+    cursor: pointer;
+  }
+  
+  .segmented-item.active {
+   
+    color: var(--green);
+    background-color: #fff;
+  }
+  @media (max-width: 1351px) {
+    .segmented-navigation {
+      top: 60px;
+    }
+  }
+
+.segmented-item:hover
+{
+  background-color: white;
+  color:var(--green);
+}
+  
+
+
+
+ 
