@@ -20,7 +20,7 @@
   flex: 50%;
   flex-wrap: wrap;
   border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px;
+  border-bottom-left-radius: 25px;
   text-align: center;
   color:#00a896;
   
@@ -59,14 +59,14 @@ h3{color: #f9f7f7}
   text-align: center;
   font-family: sans-serif;
  
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat';
 }
 .second {
   text-align: center;
   font-family: sans-serif;
   font-size:2em; 
   color: #494949;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat';
   box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   display:flex;
   background-color: #00a896;

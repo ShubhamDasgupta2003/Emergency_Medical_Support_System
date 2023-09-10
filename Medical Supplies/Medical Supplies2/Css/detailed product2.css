@@ -3,6 +3,7 @@
     font-family: sans-serif;
   }
   
+  
   .flex-container {
     display: flex;
     flex-direction: row;
@@ -19,6 +20,7 @@
     flex: 50%;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
+   
   }
   
   .flex-item-right {
@@ -27,6 +29,7 @@
     flex: 50%;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
+    color:white;
   }
   
   /* Responsive layout - makes a one column-layout instead of two-column layout */
@@ -42,7 +45,11 @@
   h1{color: #494949;}
   h3{color: #f9f7f7}
   
-  
+  .image
+  {
+    width: 100%;
+    height: auto;
+  }
   
   
   
@@ -71,6 +78,9 @@
       background-color: #00a896;
       flex-wrap: wrap;
      border-radius: 35px;
+     align-items: center;
+     justify-content: center;
+     
   }
   
   pre {

@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+.advtslider
+{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    margin: 0px 5px;
+    /* border: 2px solid red; */
+    width: auto;
+    height: fit-content;
+}
+.advtslider img
+{
+    width: 95%;
+    margin: 0px;
+    padding: 0px;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    z-index: 100;
+}
+.btn
+{
+    height: 70px;
+    width: 40px;
+    font-size: 1.3rem;
+    border-width: 0px;
+}
+@keyframes fade {
+    0%
+    {
+        filter: opacity(0%);
+    }
+    100%
+    {
+        filter:opacity(100%);
+    }
+}
+@keyframes fade2 {
+    0%
+    {
+        filter: opacity(0%);
+    }
+    100%
+    {
+        filter:opacity(100%);
+    }
+}
+.fadein
+{
+    animation: all;
+    animation-name: fade;
+    animation-duration: 1s;
+    transition: 2ms;
+}
+.fadeout
+{
+    animation: all;
+    animation-name: fade2;
+    animation-duration: 1s;
+    transition: 2ms;
+}
+
+
