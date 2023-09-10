@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Your Title</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
@@ -14,47 +14,70 @@
             margin: 0;
             padding: 0;
             font-family: 'Poppins', sans-serif;
-            background-color: var(--green);
         }
 
         :root {
-            --green: #00a896;
+            --green: #b1eae4;
+            --text: #256c65;
             --black: #444;
             --light-color: #777;
             --bg: rgb(243, 255, 253);
         }
 
+        body {
+            background-color: var(--green);
+        }
+
         .firstsection {
             display: flex;
-            justify-content: space-around;
+            flex-direction: column;
+            align-items: center;
             margin: 20px 0px;
         }
 
         .leftsection {
-            width: 40%;
-            color: white;
-            /* background-color: rgba(130, 234, 101, 0.697); */
-            font-size: 3.6rem;
-            position: relative;
-            top: 99px;
+            width: 100%;
+            text-align: center;
+            color: var(--text);
+            font-size: 2rem;
         }
 
         .rightsection {
-            width: 30%;
-            /* background-color: rgba(130, 234, 101, 0.697); */
+            width: 100%;
+            text-align: center;
         }
 
         .rightsection img {
-            position: relative;
-            right: 66px;
-            top: 31px;
+            max-width: 100%;
+            height: auto;
         }
 
         #element {
             color: var(--black);
         }
+
+        @media screen and (min-width: 768px) {
+            .firstsection {
+                flex-direction: row;
+                justify-content: space-around;
+            }
+
+            .leftsection {
+                width: 40%;
+                font-size: 3.6rem;
+            }
+
+            .rightsection {
+                width: 30%;
+            }
+
+            .rightsection img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
     </style>
-    <!-- css part ends here  -->
+    <!-- CSS part ends here -->
 </head>
 
 <body>
@@ -63,18 +86,18 @@
             <div class="firstsection">
                 <div class="leftsection">
                     Hi, We are here
-                    <div class="">to <span>connects</span></div> you to
+                    <div class="">to <span>connect</span></div> you to
                     <span id="element"></span>
                 </div>
                 <div class="rightsection">
-                    <img src="medIimage.png" width="500px" alt="">
+                    <img src="medIimage.png" alt="">
                 </div>
             </div>
         </section>
     </main>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-   <!-- animation part starts here  -->
-   <script>
+    <!-- Animation part starts here -->
+    <script>
         var typed = new Typed('#element', {
             strings: ['Hospital.', 'medicine store.', 'Blood bank.', 'Ambulance.', 'medical technician.'],
             typeSpeed: 70,
@@ -82,7 +105,7 @@
             loopCount: Infinity,
         });
     </script>
-    <!-- ends here  -->
+    <!-- Animation part ends here -->
 </body>
 
 </html>

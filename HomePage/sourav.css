@@ -1,0 +1,58 @@
+:root {
+    --green: #b1eae4;
+    --text: #256c65;
+    --black: #444;
+    --light-color: #777;
+    --bg: rgb(243, 255, 253);
+    --text-shadow:.4rem .4rem 0 rgba(0,0,0,.2);
+}
+
+.firstsection {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0px;
+}
+
+.leftsection {
+    width: 40%;
+    color: var(--text);
+    /* background-color: rgba(130, 234, 101, 0.697); */
+    font-size: 4.8rem;
+    font-weight: 600;
+    position: relative;
+    top: 99px;
+    /* text-shadow: var(--text-shadow); */
+}
+
+.rightsection {
+    width: 30%;
+    
+    /* background-color: rgba(130, 234, 101, 0.697); */
+}
+
+.rightsection img {
+    position: relative;
+    right: 66px;
+    top: 31px;
+    height: 500px;
+    width: auto;
+}
+
+#element {
+    color: var(--black);
+}
+
+@media (max-width: 434px) { 
+    .sourav img {
+        max-width: 100%;
+        height: auto;
+        width: 300px;
+        margin-top: 100px;
+        margin-left: 50px;
+    }
+
+    .leftsection {
+        font-size: 15px;
+        margin: 30px;
+    }
+}
