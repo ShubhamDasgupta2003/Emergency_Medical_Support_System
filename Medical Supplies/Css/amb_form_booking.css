@@ -1,0 +1,117 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.btn
+{
+    background-color: var(--green);
+    color: white;
+    font-weight: bold;
+    padding: 1.1rem;
+    border-radius: 10px;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+.container
+{
+    /* border: 2px solid red; */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+}
+.card
+{
+    /* border-radius: 10px; */
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    /* border: 3px solid rgb(7, 190, 184); */
+    padding: 20px;
+    color: #000000;
+    height: fit-content;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    margin: auto auto;
+    /* box-shadow: inset rgb(180, 180, 180) -2px -2px 9px; */
+    font-family: 'Montserrat', sans-serif;
+}
+.mandatory
+{
+    color: rgb(255, 64, 64);
+}
+.card img
+{
+    width: 40rem;
+    /* aspect-ratio: 3/2; */
+    object-fit: contain;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+   
+}
+.amb_info_cont
+{
+    font-size: 1.3rem;
+    line-height: 3.5rem;
+    border-bottom: 1px solid rgb(176, 176, 176);
+}
+.patient_info_cont form
+{
+    display: flex;
+    flex-direction: column;
+    margin-top: 4rem;
+    font-size: 1.5rem;
+    /* border-right: 1px solid rgb(203, 203, 203); */
+}
+.patient_info_cont form input
+{
+    border-bottom: 1px solid rgb(223, 223, 223);
+    margin: 1.2rem;
+    font-size: 1.4rem;
+    padding: 1.2rem;
+}
+.patient_info_cont form label
+{
+    font-weight: bold;
+}
+.row
+{
+    display: flex;
+    align-items: center;
+    /* justify-content: space-evenly; */
+}
+.btn-row
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.column
+{
+    display: flex;
+    flex-direction: column;
+}
+.btn:hover.wp-btn a
+{
+    color: var(--green);
+}
+.btn:hover.call-btn a
+{
+    color: var(--green);
+}
+.wp-btn a,.call-btn a
+{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+#cnfm-msg
+{
+    color: rgb(0, 170, 0);
+    text-align: center;
+    margin: 2rem;
+}
+#otp_num
+{
+    color: var(--green);
+}

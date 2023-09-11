@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+  
+  
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    flex-wrap: wrap;
+    border-radius: 25px;
+    margin-bottom: 35px;
+  }
+  
+  .flex-item-left {
+    background-color: #f1f1f1;
+    padding: 10px;
+    flex: 50%;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+   
+  }
+  
+  .flex-item-right {
+    background-color: #00a896;
+    padding: 10px;
+    flex: 50%;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    color:white;
+  }
+  
+  /* Responsive layout - makes a one column-layout instead of two-column layout */
+  @media (max-width: 800px) {
+    .flex-container {
+      flex-direction: column;
+    }
+  }
+  pre {
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+  h1{color: #494949;}
+  h3{color: #f9f7f7}
+  
+  .image
+  {
+    width: 100%;
+    height: auto;
+  }
+  
+  
+  
+  
+  
+  
+  
+  .detail{
+     
+      border-radius: 35px;
+      font-family: sans-serif;
+      display:flex;
+      justify-content: space-around;
+      box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      width:100%;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      border:1rem;
+  }
+  
+  
+  .detail .content{
+      padding: 0.5rem 1rem;
+      display: flex;
+      height: auto;
+      width: 100%;
+      background-color: #00a896;
+      flex-wrap: wrap;
+     border-radius: 35px;
+     align-items: center;
+     justify-content: center;
+     color:white;
+  }
+  
+  pre {
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+  h3{color: #494949;}
+  p{color: #8F8F8F}
+
+
+
+
+
+
+
+  .button {
+    background-color: #11a255f3; 
+    box-shadow: 0 4px 4px 4px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: none;
+    border-radius:25px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+  .button:hover {
+    background-color:white; /* Green */
+    color:#11a255f3;
+  }
