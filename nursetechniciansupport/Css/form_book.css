@@ -1,0 +1,146 @@
+/* css for bed bookinf form */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans', sans-serif;
+  }
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgb(160, 228, 217);
+  }
+  .container {
+    position: relative;
+    max-width: 700px;
+    width: 100%;
+    background: rgb(246, 248, 247);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button 
+  {
+  -webkit-appearance: none;
+  }
+  .line{
+      padding-top: 40px;
+  }
+  .parent .logo{
+      float: left;
+  }
+  .container .form {
+    margin-top: 30px;
+  }
+  .form .input-box {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .input-box label {
+    color: #333;
+  }
+  .form :where(.input-box input, .select-box) {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    color: #707070;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 15px;
+  }
+  .input-box input:focus {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  }
+  .form .column {
+    display: flex;
+    column-gap: 15px;
+  }
+  .form .gender-box {
+      width: 100%;
+    margin-top: 20px;
+  }
+  .gender-box  {
+    color: #333;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+  .form :where(.gender-option, .gender) {
+    display: flex;
+    align-items: center;
+    column-gap: 50px;
+    flex-wrap: wrap;
+  }
+  .form .gender {
+    column-gap: 5px;
+  }
+  .gender input {
+    accent-color: rgb(130, 106, 251);
+  }
+  .form :where(.gender input, .gender label) {
+    cursor: pointer;
+  }
+  .gender label {
+    color: #707070;
+  }
+  .address :where(input, .select-box) {
+    margin-top: 15px;
+  }
+  .select-box select {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    color: #707070;
+    font-size: 1rem;
+  }
+  .form button {
+    height: 55px;
+    width: 100%;
+    color: #333;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-top: 30px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    /* background: #41d6a4c1; */
+    background: rgb(160, 228, 217);
+  }
+  .form button:active {
+    background:rgb(107, 180, 167);
+  }
+  input[type=radio] {
+    border: 0px;
+    width: 100%;
+    height: 20px;
+  }
+  .line{
+    margin: 35px 0px;
+  }
+  /*Responsive*/
+  @media screen and (max-width: 500px) {
+    .form .column {
+      flex-wrap: wrap;
+    }
+    .form :where(.gender-option, .gender) {
+      row-gap: 15px;
+    }
+    .logo img[src="logo2.png"] {
+        width: 70px;
+        padding-top: 15px;
+    }
+    .line{
+      margin: 0px 0px;
+    }
+    .line{
+      margin: 0px 0px;
+    }
+  }

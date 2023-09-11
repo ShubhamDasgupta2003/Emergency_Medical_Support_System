@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration Form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/form_book.css" />
+</head>
+<body>
+    <section class="container">
+        <header>
+            <div class="parent">
+                <div class="logo">
+                    <img src="image/logo.png" alt="logo" width="100px">
+                </div>
+                <div class="info" style="line-height: 18px; text-align: right; padding-top: 24px;">
+                    <div style="font-size: 12pt;"><strong>Naihati Matri Sadan Municipal Hospital</strong></div>
+                    <div style="font-size: 10pt;">&nbsp;6, Rishi Bankim Chandra Road, Naihati, West Bengal 743165</div>
+                    <div style="line-height: 14px;">
+                        <div style="font-size: 9pt;">sourav97972@gmail.com</div>
+                        <div style="font-size: 9pt;">+91-8697921086</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="line"><hr></div>
+        <div>
+            <form class="form">
+                <div class="input-box">
+                    <label>Patient's Full Name</label>
+                    <input type="text" placeholder="Enter full name" required />
+                </div>
+                <div class="gender-box">
+                    <lable>Gender</lable>
+                    <div class="gender-option">
+                        <div class="gender">
+                            <input type="radio" id="check-male" name="gender" checked />
+                            <label for="check-male">
+                                <pre>    male</pre>
+                            </label>
+                        </div>
+                        <div class="gender">
+                            <input type="radio" id="check-female" name="gender" />
+                            <label for="check-female">
+                                <pre>    Female</pre>
+                            </label>
+                        </div>
+                        <div class="input-box" id="age">
+                            <label>Age</label>
+                            <input type="number" placeholder="Enter age" required />
+                        </div>
+                        <div class="column">
+                            <div class="input-box">
+                                <label>Phone Number</label>
+                                <input type="number" placeholder="Enter phone number" required />
+                            </div>
+                            <div class="input-box">
+                                <label>Birth Date</label>
+                                <input type="date" placeholder="Enter birth date" required />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-box address">
+                    <label>Address</label>
+                    <input type="text" placeholder="Enter street address" required />
+                    <div class="column">
+                        <div class="select-box">
+                            <select>
+                                <option hidden>District</option>
+                                <option>Alipurduar</option>
+                                <option>Bankura</option>
+                                <option>Birbhum</option>
+                                <option>Cooch Behar</option>
+                                <option>Dakshin Dinajpur</option>
+                                <option>Darjeeling</option>
+                                <option>Hooghly</option>
+                                <option>Howrah</option>
+                                <option>Jalpaiguri</option>
+                                <option>Jhargram</option>
+                                <option>Kalimpong</option>
+                                <option>Kolkata</option>
+                                <option>Malda</option>
+                                <option>Murshidabad</option>
+                                <option>Nadia</option>
+                                <option>North 24 Parganas</option>
+                                <option>Paschim Bardhaman</option>
+                                <option>Paschim Medinipur</option>
+                                <option>Purba Bardhaman</option>
+                                <option>Purba Medinipur</option>
+                                <option>Purulia</option>
+                                <option>South 24 Parganas</option>
+                                <option>Uttar Dinajpur</option>
+                            </select>
+                        </div>
+                        <input type="text" placeholder="Enter your city" required />
+                    </div>
+                    <div class="column">
+                        <input type="number" placeholder="Enter postal code" required />
+                    </div>
+                    <!-- only change in input id "check-male to pay-yes"&"gender to pay" for payment section -->
+                    <div class="gender-box">
+                        <lable>Payment Complete</lable>
+                        <div class="gender-option">
+                            <div class="gender">
+                                <input type="radio" id="pay-yes" name="pay" checked />
+                                <label for="pay-yes">
+                                    <pre>    yes</pre>
+                                </label>
+                            </div>
+                            <div class="gender">
+                                <input type="radio" id="pay-no" name="pay" />
+                                <label for="pay-no">
+                                    <pre>    no</pre>
+                                </label>
+                            </div>
+                            <button>Submit</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>
