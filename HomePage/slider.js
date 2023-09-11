@@ -1,48 +1,35 @@
-const adv_arr = ["images/Blood_Bank.jpg","images/Blood_Bank.jpg","images/Blood_Bank.jpg"]
+var swiper = new Swiper(".slide-content", {
+    slidesPerView: 3,
+    spaceBetween: 25,
+    loop: true,
+    centerSlide: 'true',
+    fade: 'true',
+    grabCursor: 'true',
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+      dynamicBullets: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
 
-let left = document.getElementById('lbtn');
-let right = document.getElementById('rbtn');
-const advtdispl = document.getElementById('advtdisplay');
-
-console.log(left,right);
-let i = 0;
-right.addEventListener('click',()=>{
-    advtdispl.classList.toggle('fadein');
-    advtdispl.classList.toggle('fadeout');
-    let len = adv_arr.length-1;
-    let ind = i%len+1;
-    advtdispl.src = adv_arr[ind];
-    i++;
-});
-left.addEventListener('click',()=>{
-    advtdispl.classList.toggle('fadein');
-    advtdispl.classList.toggle('fadeout');
-    let len = adv_arr.length-1;
-    if(i==0)
-    {
-        i = len-1;
-    }
-    i--;
-    let ind = i%len+1;
-    advtdispl.src = adv_arr[ind];
-    console.log(ind,i);
-});
-
-let index = 0;
-setInterval('imagechanger()',3000);
-
-function imagechanger()
-{
-    if(index<=adv_arr.length-1)
-    {
-        advtdispl.classList.toggle('fadein');
-        advtdispl.classList.toggle('fadeout');
-        advtdispl.src = adv_arr[index];
-    }
-    else
-    {
-        index = 0;
-    }
-    index++;
-}
-
+    breakpoints:{
+        0: {
+            slidesPerView: 1,
+        },
+        220: {
+            slidesPerView: 2,
+        },
+        450: {
+            slidesPerView: 3,
+        },
+        950: {
+            slidesPerView: 4,
+        },
+        // 1200:{
+        //     slidesPerView: 5,
+        // },
+    },
+  });

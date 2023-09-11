@@ -218,7 +218,7 @@ section:nth-child(even){
     box-shadow:var(--text-shadow) ;
     border-radius:.5rem;
     padding:2.5rem;
-    background: #f1f8f8;
+    background:#f3fffd;
     text-align:center;
     position: relative;
     overflow: hidden;
