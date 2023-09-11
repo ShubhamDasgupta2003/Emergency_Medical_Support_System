@@ -1,4 +1,4 @@
-const adv_arr = ["https://m.media-amazon.com/images/I/51DWgNo1fdL._SX3000_.jpg","https://images-eu.ssl-images-amazon.com/images/G/31/img2020/img21/apparelGW/junatf23/unrecapay/WA_WW_3000._CB603210873_.jpg","https://images-eu.ssl-images-amazon.com/images/G/31/img23/AmazonPay/PD23/V2/Domestic-Prime_PC_Hero_3000x1200_Nectar._CB602511654_.jpg","https://images-eu.ssl-images-amazon.com/images/G/31/img17/Home/AmazonTV/MotionHero2023/3000x1200_Cheer-Up_V1._CB601144149_.jpg","https://m.media-amazon.com/images/I/61f8MRqXnNL._SX3000_.jpg","https://images-eu.ssl-images-amazon.com/images/G/31/prime/acq/PD23/hero/PC_Hero_3000x1200_ft._CB602532181_.jpg","https://images-eu.ssl-images-amazon.com/images/G/31/img21/Wireless/Shreyansh/BAU/Unrexc/D70978891_INWLD_BAU_Unrec_Uber_PC_Hero_3000x1200._CB594707876_.jpg"]
+const adv_arr = ["images/Blood_Bank.jpg","images/Blood_Bank.jpg","images/Blood_Bank.jpg"]
 
 let left = document.getElementById('lbtn');
 let right = document.getElementById('rbtn');

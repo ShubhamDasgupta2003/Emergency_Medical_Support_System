@@ -259,3 +259,10 @@ section:nth-child(even){
     width: 70px;
     height: 49px;
 }
+
+/* slider start */
+.advtslide img{
+   height: 100px;
+   width: 100px;
+}
+/* slider end  */

@@ -13,20 +13,15 @@
 }
 .advtslider img
 {
-    width: 95%;
+    width: fit-content;
+    /* height: ; */
     margin: 0px;
     padding: 0px;
     aspect-ratio: 3/2;
     object-fit: contain;
     z-index: 100;
 }
-.btn
-{
-    height: 70px;
-    width: 40px;
-    font-size: 1.3rem;
-    border-width: 0px;
-}
+
 @keyframes fade {
     0%
     {
