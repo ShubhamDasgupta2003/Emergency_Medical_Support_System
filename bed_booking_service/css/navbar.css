@@ -130,6 +130,13 @@ html{
     color: var(--black);
 }
 
+#user-avatar
+{
+    text-decoration: none;
+    color: var(--black);
+    font-size: 1.6rem;
+}
+
 .account{
     font-size: 2rem;
     color: var(--black);
