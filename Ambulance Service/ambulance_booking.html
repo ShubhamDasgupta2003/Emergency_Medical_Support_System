@@ -31,8 +31,8 @@
             <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <nav class="navbar">
-            <a class="navlink" href="/">Home</a>
-            <a class="navlink" href="/">Services</a>
+            <a class="navlink" href="/HomePage/home.html">Home</a>
+            <a class="navlink" href="/HomePage/home.html#services">Services</a>
             <a class="navlink" href="/">about</a>
             <a class="navlink" href="/">contact Us</a>
         </nav>
@@ -67,7 +67,9 @@
                             <p id="card-status">active</p>
                         </div>
                         <div class="card-row">
-                            <button class="btn btn-secondary-orange">Book ride</button>
+                            <form action="/Ambulance Service/amb_booking_form.html" method="get">
+                                <button class="btn btn-secondary-orange">Book ride</button>
+                            </form>
                             <p class="card-distance"><i class="fa-solid fa-route fa-lg" style="color: #00b37d;"></i> 50Km</p>
                             <p class="card-fare">&#8377 250/-</p>
                         </div>
@@ -216,7 +218,7 @@
         </div>
     </section>
 
-    <script src="amb_booking.js"></script>
+    <!-- <script src="amb_booking.js"></script> -->
     <script src="location.js"></script>
     <script src="amb_status.js"></script>
 </body>
