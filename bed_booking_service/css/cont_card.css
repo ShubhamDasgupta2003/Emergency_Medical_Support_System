@@ -97,9 +97,28 @@
     /* margin-top: 11px; */
     padding: 3px;
     border-radius: 7px;
+    /* position: relative;
+    top: 5px;
+    left: 52px; */
+}
+.card #c1,#c2,#c3,#c4
+{
+    /* float:right; */
+    /* margin-left: 60px; */
+    background-color: var(--green);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    /* margin-top: 11px; */
+    padding: 3px;
+    border-radius: 7px;
     position: relative;
     top: 5px;
     left: 52px;
+}
+.card #c1:hover,#c2:hover,#c3:hover,#c4:hover{
+    background-color:white ;
+    color: var(--green);
 }
 .font,.call{
     float: left;

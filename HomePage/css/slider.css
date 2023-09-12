@@ -1,65 +1,121 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
-
-.advtslider
-{
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    margin: 0px 5px;
-    /* border: 2px solid red; */
-    width: auto;
+.sliderS{
+  box-sizing: border-box;
+  min-height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #EFEFEF;
+  padding: 5px;
+}
+.slide-container {
+    max-width: 1495px;
+    width: 100%;
+    padding: 40px 0;
     height: fit-content;
 }
-.advtslider img
-{
-    width: 95%;
-    margin: 0px;
-    padding: 0px;
-    aspect-ratio: 3/2;
-    object-fit: contain;
-    z-index: 100;
+ .slide-content{
+  margin: 0 40px;
+  overflow: hidden;
+  border-radius: 25px;
 }
-.btn
-{
-    height: 70px;
-    width: 40px;
-    font-size: 1.3rem;
-    border-width: 0px;
+.slide-container .Scard{
+  border-radius: 25px;
+  background-color: #FFF;
 }
-@keyframes fade {
-    0%
-    {
-        filter: opacity(0%);
-    }
-    100%
-    {
-        filter:opacity(100%);
-    }
+.slide-container .image-content,
+.slide-container .Scard-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 14px;
 }
-@keyframes fade2 {
-    0%
-    {
-        filter: opacity(0%);
-    }
-    100%
-    {
-        filter:opacity(100%);
-    }
+.slide-container .image-content{
+  position: relative;
+  row-gap: 5px;
+  padding: 25px 0;
 }
-.fadein
-{
-    animation: all;
-    animation-name: fade;
-    animation-duration: 1s;
-    transition: 2ms;
+.overlay{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #b1dad5;
+  border-radius: 25px 25px 0 25px;
 }
-.fadeout
-{
-    animation: all;
-    animation-name: fade2;
-    animation-duration: 1s;
-    transition: 2ms;
+.overlay::before,
+.overlay::after{
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -40px;
+  height: 40px;
+  width: 40px;
+  background-color: #b1dad5;
+}
+.overlay::after{
+  border-radius: 0 25px 0 0;
+  background-color: #FFF;
+}
+.Scard-image{
+  position: relative;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background: #FFF;
+  padding: 3px;
+}
+.Scard-image .card-img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #444;
+}
+.name{
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+}
+.description{
+  font-size: 14px;
+  color: #707070;
+  text-align: center;
+  padding: 10px;
 }
 
 
+.swiper-navBtn{
+  color: #00a896;
+  transition: color 0.3s ease;
+}
+.swiper-navBtn:hover{
+  color: #00a896;
+}
+.swiper-navBtn::before,
+.swiper-navBtn::after{
+  font-size: 35px;
+}
+.swiper-button-next{
+  right: 0;
+}
+.swiper-button-prev{
+  left: 0;
+}
+.swiper-pagination-bullet{
+  background-color: #41a59b;
+  opacity: 1;
+}
+.swiper-pagination-bullet-active{
+  background-color: #41a59b;
+}
+
+@media screen and (max-width: 768px) {
+  .slide-content{
+    margin: 0 10px;
+  }
+  .swiper-navBtn{
+    display: none;
+  }
+}
