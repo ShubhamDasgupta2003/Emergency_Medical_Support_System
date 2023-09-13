@@ -196,7 +196,7 @@ html{
         
     }
 
-    #user-avatar::before
+    #user-avatar
     {
         display: flex;
         position: relative;
