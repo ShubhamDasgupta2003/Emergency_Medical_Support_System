@@ -1,0 +1,2 @@
+TCPDF is a library used for generating pdf if error arise then clone it from the browser ,you can find by searching TCPDF .
+pdf folder will act as a server for us so when the  pdf generator.php is activated it will generate pdf and save it in the pdf but the content of the pdf must be checked properly for errors only then it will generate proper pdf. 
