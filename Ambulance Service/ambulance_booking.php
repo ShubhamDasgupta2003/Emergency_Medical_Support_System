@@ -67,7 +67,7 @@
                             <p id="card-status">active</p>
                         </div>
                         <div class="card-row">
-                            <button class="btn btn-secondary-orange"><a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/amb_booking_form.php?ambno=WB24A1536">Book ride</a></button>
+                            <button class="btn btn-secondary-orange"><a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/amb_booking_form.php?ambno=">Book ride</a></button>
                             <p class="card-distance"><i class="fa-solid fa-route fa-lg" style="color: #00b37d;"></i> 50Km</p>
                             <p class="card-fare">&#8377 250/-</p>
                         </div>
