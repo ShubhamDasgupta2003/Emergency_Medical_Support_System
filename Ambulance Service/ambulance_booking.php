@@ -1,3 +1,13 @@
+<?php
+    //Path for main config file 
+
+    require_once("F:/xampp/htdocs/Minor Project 5th_Sem/Emergency_Medical_Support_System/db_config/main_config.php");
+
+    $query = "SELECT * FROM ambulance_info";
+    $result = mysqli_query($con,$query);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,25 +66,30 @@
 
             <!-- Your content goes here | check body_cont.css file for css property-->
             <div class="cards">
-                <div class="card">
-                    <img src="https://images.jdmagicbox.com/comp/varanasi/e9/0542px542.x542.200517114047.g7e9/catalogue/narayan-ambulance-service-varanasi-cantt-varanasi-0jqwifqqzh.jpg?clr=" >
-                    <div class="card-details">
-                        <p class="card-name">Netaji Shubhas Ambulance Service</p>
-                        <p class="card-address"><i class="fa-solid fa-location-dot"></i> WestBengal North - 24pgs Halisahar - 743135
-                        </p>
-                        <div class="card-row">
-                            <p class="card-type">Normal/Life-support</p>
-                            <p id="card-status">active</p>
+                <?php
+                    while($rows = $result->fetch_assoc())
+                    {
+                        echo "<div class='card'>
+                        <img src='https://images.jdmagicbox.com/comp/varanasi/e9/0542px542.x542.200517114047.g7e9/catalogue/narayan-ambulance-service-varanasi-cantt-varanasi-0jqwifqqzh.jpg?clr=' >
+                        <div class='card-details'>
+                            <p class='card-name'>$rows[amb_name]</p>
+                            <p class='card-address'><i class='fa-solid fa-location-dot'></i> $rows[amb_town]
+                            </p>
+                            <div class='card-row'>
+                                <p class='card-type'>$rows[amb_type]</p>
+                                <p id='card-status'>$rows[amb_status]</p>
+                            </div>
+                            <div class='card-row'>
+                                <button class='btn btn-secondary-orange'><a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/amb_booking_form.php?ambno=$rows[amb_no]'>Book ride</a></button>
+                                <p class='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i> 50Km</p>
+                                <p class='card-fare'>&#8377 250/-</p>
+                            </div>
+                            
                         </div>
-                        <div class="card-row">
-                            <button class="btn btn-secondary-orange"><a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/amb_booking_form.php?ambno=">Book ride</a></button>
-                            <p class="card-distance"><i class="fa-solid fa-route fa-lg" style="color: #00b37d;"></i> 50Km</p>
-                            <p class="card-fare">&#8377 250/-</p>
-                        </div>
-                        
-                    </div>
-                </div>
-                
+                    </div>";
+                    }
+                ?>
+<!--                 
                 <div class="card">
                     <img src="https://maishacare.com/wp-content/uploads/2022/06/ambulance-service-van-emergency-medical-vehicle-vector-illustration-white-background-ambulance-service-van-emergency-medical-127018462.jpg">
                     <div class="card-details">
@@ -142,7 +157,7 @@
                         </div>
                         
                     </div>
-                </div>
+                </div> -->
             </div>
             
             <!-- Location window popup starts here -->

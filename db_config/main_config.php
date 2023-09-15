@@ -8,11 +8,7 @@
 
     if($con)
     {
-        echo "Database connection succesfull";
-    }
-    else
-    {
-        echo "Error !";
+        echo "Connection established!";
     }
 ?>
 
