@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&family=Poppins&display=swap');
+
+.cards {
+    max-width: 1200px;
+    margin: 30px 90px;
+    margin-bottom: 100px;
+    padding: 0 20px;
+    width: 100%; 
+    display: grid;
+    justify-content: right;
+    /* Define Auto Row size */
+    grid-auto-rows: max-content; 
+    /*Define our columns */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    grid-gap: 1.26rem;
+}
+.card {
+    border-radius: 10px;
+    /* border: 3px solid rgb(7, 190, 184); */
+    padding: 20px;
+    color: #000000;
+    height: fit-content;
+    width: fit-content;
+    background-color: rgb(255, 255, 255);
+    margin: auto auto;
+    box-shadow: inset rgb(180, 180, 180) -2px -2px 9px;
+    font-family: 'Montserrat', sans-serif;
+}
+.card img
+{
+    width: 200px;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    background-color: white;
+    border-radius: 10px;
+    display: block;
+    margin: 0px auto;
+}
+.card-name
+{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 9px 9px;
+    color: var(--black);
+}
+.card-address
+{
+    font-size: 1.2rem;
+    margin: 5px 9px;
+    color: var(--light-color);
+}
+.card-type
+{
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 5px 9px;
+    /* background-color: rgb(227, 150, 150); */
+    padding: 3px;
+}
+.card-fare
+{
+    font-size: 1.5rem;
+    display:block;
+    float: right;
+    margin: 5px 9px;
+    font-weight: 900;
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+    border-radius: 9px;
+    color: red;
+}
+.card-status
+{
+    font-size: 1rem;
+    font-weight: 800;
+    margin: 5px 9px;
+    float: right;
+    /* background-color: rgb(227, 150, 150); */
+}
+.card button
+{
+    float:left;
+    background-color: var(--green);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 3px;
+    border-radius: 7px;
+}
+
+.card-details .fa-lg{
+    font-size: 1.5em;
+    margin:9px;
+}
+.distance-gr{
+    display: flex;
+    align-items: center;
+}
+.buy-price{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.card-name{
+    color: #00a896;
+    font-size: 17px;
+}

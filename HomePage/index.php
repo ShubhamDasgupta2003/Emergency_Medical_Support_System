@@ -15,13 +15,13 @@
     <!-- css -->
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="sourav.css">
-    <link rel="stylesheet" href="/Blood_Booking/Css/navbar.css">
-    <link rel="stylesheet" href="/Blood_Booking/Css/navLink.css">
-    <link rel="stylesheet" href="/Blood_Booking/Css/media.css">
-    <link rel="stylesheet" href="/Blood_Booking/Css/body_cont.css">
-    <link rel="stylesheet" href="/Ambulance Service/Css/footer_style.css">
-    <link rel="stylesheet" href="/Ambulance Service/Css/location_win.css">
-    <link rel="stylesheet" href="/Blood_Booking/Css/cont-card.css">
+    <link rel="stylesheet" href="Css/navbar.css">
+    <link rel="stylesheet" href="Css/navLink.css">
+    <link rel="stylesheet" href="Css/media.css">
+    <link rel="stylesheet" href="Css/body_cont.css">
+    <link rel="stylesheet" href="Css/footer_style.css">
+    <link rel="stylesheet" href="Css/location_win.css">
+    <link rel="stylesheet" href="Css/cont-card.css">
 
    
     <!-- for slider  -->
