@@ -33,17 +33,6 @@
         font-size: 2rem;
         padding: 0.5rem 0.5rem;
     }
-    .cards .card
-    {
-        width: 28rem;
-    }
-}
-@media (max-width:984px)
-{
-    .cards .card
-    {
-        width: 30rem;
-    }
 }
 @media (max-width:434px)
 {
@@ -56,11 +45,7 @@
     }
     #srchbar-below .srch-btn
     {
-
         width: 10rem;
     }
-    .cards .card
-    {
-        width: 35rem;
-    }
+    
 }
