@@ -67,7 +67,7 @@
                             <p id="card-status">active</p>
                         </div>
                         <div class="card-row">
-                            <form action="/Ambulance Service/amb_booking_form.php">
+                            <form action="/Ambulance Service/amb_booking_form.php/">
                                 <button class="btn btn-secondary-orange">Book ride</button>
                             </form>
                             <p class="card-distance"><i class="fa-solid fa-route fa-lg" style="color: #00b37d;"></i> 50Km</p>
