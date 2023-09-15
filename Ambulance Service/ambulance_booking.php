@@ -1,8 +1,7 @@
 <?php
     //Path for main config file 
 
-    require_once("F:/xampp/htdocs/Minor Project 5th_Sem/Emergency_Medical_Support_System/db_config/main_config.php");
-
+    include_once("db_config/main_config.php");
     $query = "SELECT * FROM ambulance_info";
     $result = mysqli_query($con,$query);
 
@@ -13,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ambulance Service | 24x7 | conflict fixed</title>
+    <title>Ambulance Service | 24x7 |Feature branch</title>
     <!-- cdn link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
@@ -24,7 +23,6 @@
     <link rel="stylesheet" href="Css/media.css">
     <link rel="stylesheet" href="Css/footer_style.css">
     <link rel="stylesheet" href="Css/body_cont.css">
-    <link rel="stylesheet" href="/Common Template/Css/footer_style.css">
     <link rel="stylesheet" href="Css/location_win.css">
     <link rel="stylesheet" href="Css/cont-card.css">
 
@@ -36,7 +34,7 @@
     <header class="header">
         <a href="#" class="logo"><i class="fa-solid fa-heart-pulse"></i>medcare</a>
         <div class="search-bar" id="srchbar-above">
-            <button class="get-location btn" id="get-location-btn"><i class="fas fa-map-marker-alt"></i>&nbsp;My location</button>
+            <button class="get-location btn" id="get-location-btn"><i class="fas fa-map-marker-alt"></i></button>
             <input type="text" placeholder="Search ambulance location name...">
             <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
@@ -89,75 +87,6 @@
                     </div>";
                     }
                 ?>
-<!--                 
-                <div class="card">
-                    <img src="https://maishacare.com/wp-content/uploads/2022/06/ambulance-service-van-emergency-medical-vehicle-vector-illustration-white-background-ambulance-service-van-emergency-medical-127018462.jpg">
-                    <div class="card-details">
-                        <p class="card-name">Netaji Shubhas Ambulance Service</p>
-                        <p class="card-address"><i class="fa-solid fa-location-dot"></i> WestBengal North - 24pgs Halisahar - 743135</p>
-                        <div class="card-row">
-                            <p class="card-type">Normal/Life-support</p>
-                            <p id="card-status">busy</p>
-                        </div>
-                        <div class="card-row">
-                            <button class="btn btn-secondary-orange">Book ride</button>
-                            <p class="card-distance"><i class="fa-solid fa-route fa-lg" style="color: #00b37d;"></i> 50Km</p>
-                            <p class="card-fare">&#8377 250/-</p>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://images.jdmagicbox.com/comp/varanasi/e9/0542px542.x542.200517114047.g7e9/catalogue/narayan-ambulance-service-varanasi-cantt-varanasi-0jqwifqqzh.jpg?clr=">
-                    <div class="card-details">
-                        <p class="card-name">Netaji Shubhas Ambulance Service</p>
-                        <p class="card-address"><i class="fa-solid fa-location-dot"></i> WestBengal North - 24pgs Halisahar - 743135</p>
-                        <div class="card-row">
-                            <p class="card-type">Normal/Life-support</p>
-                            <p id="card-status">active</p>
-                        </div>
-                        <div class="card-row">
-                            <button class="btn btn-secondary-orange">Book ride</button>
-                            <p class="card-distance"><i class="fa-solid fa-route fa-lg" style="color: #00b37d;"></i> 50Km</p>
-                            <p class="card-fare">&#8377 250/-</p>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://maishacare.com/wp-content/uploads/2022/06/ambulance-service-van-emergency-medical-vehicle-vector-illustration-white-background-ambulance-service-van-emergency-medical-127018462.jpg">
-                    <div class="card-details">
-                        <p class="card-name">Netaji Shubhas Ambulance Service</p>
-                        <p class="card-address"><i class="fa-solid fa-location-dot"></i> WestBengal North - 24pgs Halisahar - 743135</p>
-                        <div class="card-row">
-                            <p class="card-type">Normal/Life-support</p>
-                            <p id="card-status">active</p>
-                        </div>
-                        <div class="card-row">
-                            <button class="btn btn-secondary-orange">Book ride</button>
-                            <p class="card-distance"><i class="fa-solid fa-route fa-lg" style="color: #00b37d;"></i> 50Km</p>
-                            <p class="card-fare">&#8377 250/-</p>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://maishacare.com/wp-content/uploads/2022/06/ambulance-service-van-emergency-medical-vehicle-vector-illustration-white-background-ambulance-service-van-emergency-medical-127018462.jpg">
-                    <div class="card-details">
-                        <p class="card-name">Netaji Shubhas Ambulance Service</p>
-                        <p class="card-address"><i class="fa-solid fa-location-dot"></i> WestBengal North - 24pgs Halisahar - 743135</p>
-                        <div class="card-row">
-                            <p class="card-type">Normal/Life-support</p>
-                            <p id="card-status">busy</p>
-                        </div>
-                        <div class="card-row">
-                            <button class="btn btn-secondary-orange">Book ride</button>
-                            <p class="card-distance"><i class="fa-solid fa-route fa-lg" style="color: #00b37d;"></i> 50Km</p>
-                            <p class="card-fare">&#8377 250/-</p>
-                        </div>
-                        
-                    </div>
-                </div> -->
             </div>
             
             <!-- Location window popup starts here -->
