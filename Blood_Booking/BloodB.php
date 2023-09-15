@@ -50,13 +50,14 @@
             <button class="srch-btn btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
     </div>
-
+    <?php
+include_once("Backend/config.php");
+    ?>
     <section class="body-container">
         <div class="contents">
 
             <!-- Your content goes here | check body_cont.css file for css property-->
             <div class="cards">
-
                 <div class="card">
                     <img src="images/o-blood-bag-vector-19887495.jpg" >
                     <div class="card-details">
@@ -74,127 +75,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card">
-                    <img src="images/o-blood-bag-vector-19887495.jpg" >
-                    <div class="card-details">
-                        <h1 class="card-name">ABC BloodBank</h1>
-                        <h2 class="card-address"> <i class="fa-solid fa-location-dot"></i>  WestBengal Nadia Badkulla - 741121</h2>
-                       
-                        <div class="distance-gr">
-                            <p class="card-type">Blood Group: <span class="blood-gr">O-</span></p>
-                            <h2 class="card-distance"><i class="fa-solid fa-route fa-lg" style="color: #00b37d;"></i> 50Km</h2>
-
-                        </div>
-                        <div class="buy-price">
-                            <button class="btn buy">Buy</button>
-                            <p class="card-fare">&#8377 1250/-</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/o-blood-bag-vector-19887495.jpg" >
-                    <div class="card-details">
-                        <h1 class="card-name">ABC BloodBank</h1>
-                        <h2 class="card-address"> <i class="fa-solid fa-location-dot"></i>  WestBengal Nadia Badkulla - 741121</h2>
-                       
-                        <div class="distance-gr">
-                            <p class="card-type">Blood Group: <span class="blood-gr">O-</span></p>
-                            <h2 class="card-distance"><i class="fa-solid fa-route fa-lg" style="color: #00b37d;"></i> 50Km</h2>
-
-                        </div>
-                        <div class="buy-price">
-                            <button class="btn buy">Buy</button>
-                            <p class="card-fare">&#8377 1250/-</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/o-blood-bag-vector-19887495.jpg" >
-                    <div class="card-details">
-                        <h1 class="card-name">ABC BloodBank</h1>
-                        <h2 class="card-address"> <i class="fa-solid fa-location-dot"></i>  WestBengal Nadia Badkulla - 741121</h2>
-                       
-                        <div class="distance-gr">
-                            <p class="card-type">Blood Group: <span class="blood-gr">O-</span></p>
-                            <h2 class="card-distance"><i class="fa-solid fa-route fa-lg" style="color: #00b37d;"></i> 50Km</h2>
-
-                        </div>
-                        <div class="buy-price">
-                            <button class="btn buy">Buy</button>
-                            <p class="card-fare">&#8377 1250/-</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/o-blood-bag-vector-19887495.jpg" >
-                    <div class="card-details">
-                        <h1 class="card-name">ABC BloodBank</h1>
-                        <h2 class="card-address"> <i class="fa-solid fa-location-dot"></i>  WestBengal Nadia Badkulla - 741121</h2>
-                       
-                        <div class="distance-gr">
-                            <p class="card-type">Blood Group: <span class="blood-gr">O-</span></p>
-                            <h2 class="card-distance"><i class="fa-solid fa-route fa-lg" style="color: #00b37d;"></i> 50Km</h2>
-
-                        </div>
-                        <div class="buy-price">
-                            <button class="btn buy">Buy</button>
-                            <p class="card-fare">&#8377 1250/-</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/o-blood-bag-vector-19887495.jpg" >
-                    <div class="card-details">
-                        <h1 class="card-name">ABC BloodBank</h1>
-                        <h2 class="card-address"> <i class="fa-solid fa-location-dot"></i>  WestBengal Nadia Badkulla - 741121</h2>
-                       
-                        <div class="distance-gr">
-                            <p class="card-type">Blood Group: <span class="blood-gr">O-</span></p>
-                            <h2 class="card-distance"><i class="fa-solid fa-route fa-lg" style="color: #00b37d;"></i> 50Km</h2>
-
-                        </div>
-                        <div class="buy-price">
-                            <button class="btn buy">Buy</button>
-                            <p class="card-fare">&#8377 1250/-</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/o-blood-bag-vector-19887495.jpg" >
-                    <div class="card-details">
-                        <h1 class="card-name">ABC BloodBank</h1>
-                        <h2 class="card-address"> <i class="fa-solid fa-location-dot"></i>  WestBengal Nadia Badkulla - 741121</h2>
-                       
-                        <div class="distance-gr">
-                            <p class="card-type">Blood Group: <span class="blood-gr">O-</span></p>
-                            <h2 class="card-distance"><i class="fa-solid fa-route fa-lg" style="color: #00b37d;"></i> 50Km</h2>
-
-                        </div>
-                        <div class="buy-price">
-                            <button class="btn buy">Buy</button>
-                            <p class="card-fare">&#8377 1250/-</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/o-blood-bag-vector-19887495.jpg" >
-                    <div class="card-details">
-                        <h1 class="card-name">ABC BloodBank</h1>
-                        <h2 class="card-address"> <i class="fa-solid fa-location-dot"></i>  WestBengal Nadia Badkulla - 741121</h2>
-                       
-                        <div class="distance-gr">
-                            <p class="card-type">Blood Group: <span class="blood-gr">O-</span></p>
-                            <h2 class="card-distance"><i class="fa-solid fa-route fa-lg" style="color: #00b37d;"></i> 50Km</h2>
-
-                        </div>
-                        <div class="buy-price">
-                            <button class="btn buy">Buy</button>
-                            <p class="card-fare">&#8377 1250/-</p>
-                        </div>
-                    </div>
-                </div>
-
-
+               
                 
             </div>
             

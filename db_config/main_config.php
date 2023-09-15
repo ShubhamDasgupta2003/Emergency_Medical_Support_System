@@ -9,6 +9,8 @@
     if($con)
     {
         echo "Connection established!";
+    }else{
+        echo "Connection not established!";
     }
 ?>
 
