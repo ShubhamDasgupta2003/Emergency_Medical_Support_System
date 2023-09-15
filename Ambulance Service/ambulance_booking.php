@@ -31,10 +31,10 @@
             <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <nav class="navbar">
-            <a class="navlink" href="/HomePage/index.html">Home</a>
-            <a class="navlink" href="/HomePage/index.html#services">Services</a>
-            <a class="navlink" href="/HomePage/index.html#review">Review</a>
-            <a class="navlink" href="/HomePage/index.html">Contact Us</a>
+            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/">Home</a>
+            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/#services">Services</a>
+            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/#review">Review</a>
+            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/#footer">Contact Us</a>
         </nav>
 
         <a href="#" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
@@ -67,9 +67,7 @@
                             <p id="card-status">active</p>
                         </div>
                         <div class="card-row">
-                            <form action="/Ambulance Service/amb_booking_form.php/">
-                                <button class="btn btn-secondary-orange">Book ride</button>
-                            </form>
+                            <button class="btn btn-secondary-orange"><a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/amb_booking_form.php?ambno=WB24A1536">Book ride</a></button>
                             <p class="card-distance"><i class="fa-solid fa-route fa-lg" style="color: #00b37d;"></i> 50Km</p>
                             <p class="card-fare">&#8377 250/-</p>
                         </div>
