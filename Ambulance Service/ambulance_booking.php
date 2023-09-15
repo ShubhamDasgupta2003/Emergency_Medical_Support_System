@@ -1,7 +1,7 @@
 <?php
     //Path for main config file 
 
-    require_once("F:/xampp/htdocs/Minor Project 5th_Sem/Emergency_Medical_Support_System/db_config/main_config.php");
+    require_once("D:/xampp/htdocs/Emergency_Medical_Support_System/db_config/main_config.php");
 
     $query = "SELECT * FROM ambulance_info";
     $result = mysqli_query($con,$query);
