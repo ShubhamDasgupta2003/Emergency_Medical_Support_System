@@ -3,7 +3,7 @@
 
     //This php file inserts data into ambulance_info table in mysql
     
-    include("config.php");
+    include("db_config/main_config.php");
     $query ="INSERT INTO `blood_group` VALUES ('3','A+','700');
              INSERT INTO `blood_group` VALUES ('4','A-','950');
              INSERT INTO `blood_group` VALUES ('5','B-','1150');
@@ -16,7 +16,7 @@
             ";
 
     
-    $result = mysqli_multi_query($conn,$query);
+    $result = mysqli_multi_query($con,$query);
 
     if($result)
     {
