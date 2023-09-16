@@ -2,7 +2,7 @@ const locationBtn = document.getElementsByClassName('get-location');
 const locationWin = document.getElementById('loc-win');
 const dismissBtn = document.getElementById('dismiss');
 
-console.log(locationWin);
+// console.log(locationWin);
 
 for(let i=0; i<locationBtn.length; i++)
 {
