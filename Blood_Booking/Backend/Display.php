@@ -4,7 +4,7 @@ $query="SELECT blood_bank.*, blood_group.*
 FROM blood_bank_blood_group
 JOIN blood_group ON blood_bank_blood_group.blood_group_id = blood_group.blood_group_id
 JOIN blood_bank ON blood_bank_blood_group.blood_bank_id = blood_bank.blood_bank_id
-WHERE blood_bank_blood_group.blood_group_id = 1";
+WHERE blood_bank_blood_group.blood_group_id = 3";
 
 $data=mysqli_query($conn,$query);
 
