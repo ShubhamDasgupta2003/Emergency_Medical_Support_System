@@ -62,7 +62,9 @@ function onSuccess(position)
     fetch('https://api.opencagedata.com/geocode/v1/json?q='+latitude+','+longitude+'&key='+api_key)
     .then(response=>(response.json())).then(result=>{
         let details = result.results[0];
-        loc_txt.innerHTML = details['formatted'];
+        let loc_txt = details['formatted'];
+
+        window.location.href = "/Minor Project 5th_Sem/Emergency_Medical_Support_System/location_modify/loc_change.php?lat="+latitude+"&lon="+longitude+"&adrss="+loc_txt;
     })
 }
 
