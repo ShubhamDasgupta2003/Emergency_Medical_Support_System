@@ -41,13 +41,14 @@ rev_btn.addEventListener("click", ()=>{
     .then(result=>{
         let details = result.results[0];
         // console.log(result.results);
-        loc_txt.innerHTML = details['formatted'];
-        loc_geometry = details['geometry'];
+        let loc_txt = details['formatted'];
+        let loc_geometry = details['geometry'];
         let latitude = loc_geometry['lat'];
         let longitude = loc_geometry['lng'];
         // console.log(latitude,longitude);
-    })
 
+        window.location.href = "/Minor Project 5th_Sem/Emergency_Medical_Support_System/location_modify/loc_change.php?lat="+latitude+"&lon="+longitude+"&adrss="+loc_txt;
+    })
 }) 
 
 // ================== Geocoding using Lat & Lon =========================
