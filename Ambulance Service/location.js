@@ -40,12 +40,15 @@ rev_btn.addEventListener("click", ()=>{
     .then(response=>(response.json()))
     .then(result=>{
         let details = result.results[0];
-        // console.log(details['formatted']);
+        // console.log(result.results);
         loc_txt.innerHTML = details['formatted'];
-        console.log(details.components);
+        loc_geometry = details['geometry'];
+        let latitude = loc_geometry['lat'];
+        let longitude = loc_geometry['lng'];
+        // console.log(latitude,longitude);
     })
 
-})
+}) 
 
 // ================== Geocoding using Lat & Lon =========================
 
