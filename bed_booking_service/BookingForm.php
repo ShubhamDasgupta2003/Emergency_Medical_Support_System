@@ -1,3 +1,12 @@
+<?php
+
+    include_once("config.php");
+    $query = "SELECT * FROM hospital_info";
+    $result = mysqli_query($conn,$query);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
