@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="css/media.css">
     <link rel="stylesheet" href="css/body_cont.css">
     <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="/Ambulance Service/Css/location_win.css">
+    <link rel="stylesheet" href="css/location.css">
     <link rel="stylesheet" href="css/cont_card.css">
 
 
@@ -39,10 +39,10 @@
             <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <nav class="navbar">
-            <a class="navlink" href="/HomePage/index.html">Home</a>
-            <a class="navlink" href="/HomePage/index.html#services">Services</a>
-            <a class="navlink" href="/HomePage/index.html#review">Review</a>
-            <a class="navlink" href="/HomePage/index.html#footer">Contact Us</a>
+            <a class="navlink" href="/bed_booking_system/Emergency_Medical_Support_System/HomePage/">Home</a>
+            <a class="navlink" href="/bed_booking_system/Emergency_Medical_Support_System/HomePage/#services">Services</a>
+            <a class="navlink" href="/bed_booking_system/Emergency_Medical_Support_System/HomePage/#review">Review</a>
+            <a class="navlink" href="/bed_booking_system/Emergency_Medical_Support_System/HomePage/#footer">Contact Us</a>
         </nav>
         
         <a href="#" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
@@ -97,99 +97,7 @@
                 }
 
                     ?>
-                <!-- <div class="card">
-                    <img src="image/hospital.jpg" >
-                    <div class="card-details">
-                        <p class="card-name">Naihati Matri Sadan Municipal Hospital</p>
-                        <p class="card-address">6, Rishi Bankim Chandra Road, Naihati Urban, Naihati, West Bengal 743165
-                        </p>
-                        <p class="card-type-male">
-                            <span class="material-symbols-outlined">
-                                man
-                                </span>
-                            <strong>50</strong>
-                        </p>
-                        <p class="card-type-female">
-                            <span class="material-symbols-outlined">
-                                woman
-                                </span>
-                            <strong>50</strong>
-                        </p>
-                        <a href="BookingForm.html" target="_blank">
-                            <button id="c1" class="btn btn-secondary-orange">Book Bed</button>
-                        </a>
-                    </div>
-                </div> -->
-                
-                <!-- <div class="card">
-                    <img src="image/hospital.jpg" >
-                    <div class="card-details">
-                        <p class="card-name">Naihati Matri Sadan Municipal Hospital</p>
-                        <p class="card-address">6, Rishi Bankim Chandra Road, Naihati Urban, Naihati, West Bengal 743165
-                        </p>
-                        <p class="card-type-male">
-                            <span class="material-symbols-outlined">
-                                man
-                                </span>
-                            <strong>50</strong>
-                        </p>
-                        <p class="card-type-female">
-                            <span class="material-symbols-outlined">
-                                woman
-                                </span>
-                            <strong>50</strong>
-                        </p>
-                        <a href="BookingForm.html" target="_blank">
-                            <button id="c2" class="btn btn-secondary-orange">Book Bed</button>
-                        </a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="image/hospital.jpg" >
-                    <div class="card-details">
-                        <p class="card-name">Naihati Matri Sadan Municipal Hospital</p>
-                        <p class="card-address">6, Rishi Bankim Chandra Road, Naihati Urban, Naihati, West Bengal 743165
-                        </p>
-                        <p class="card-type-male">
-                            <span class="material-symbols-outlined">
-                                man
-                                </span>
-                            <strong>50</strong>
-                        </p>
-                        <p class="card-type-female">
-                            <span class="material-symbols-outlined">
-                                woman
-                                </span>
-                            <strong>50</strong>
-                        </p>
-                        <a href="BookingForm.html" target="_blank">
-                            <button id="c3" class="btn btn-secondary-orange">Book Bed</button>
-                        </a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="image/hospital.jpg" >
-                    <div class="card-details">
-                        <p class="card-name">Naihati Matri Sadan Municipal Hospital</p>
-                        <p class="card-address">6, Rishi Bankim Chandra Road, Naihati Urban, Naihati, West Bengal 743165
-                        </p>
-                        <p class="card-type-male">
-                            <span class="material-symbols-outlined">
-                                man
-                                </span>
-                            <strong>50</strong>
-                        </p>
-                        <p class="card-type-female">
-                            <span class="material-symbols-outlined">
-                                woman
-                                </span>
-                            <strong>50</strong>
-                        </p>
-                        <a href="BookingForm.html" target="_blank">
-                            <button id="c4" class="btn btn-secondary-orange">Book Bed</button>
-                        </a>
-                    </div>
-                </div> -->
+
             </div>
             <!-- Location window popup starts here -->
 
