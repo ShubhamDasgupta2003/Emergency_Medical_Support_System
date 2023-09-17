@@ -1,3 +1,12 @@
+<?php
+
+    include_once("config.php");
+    $query = "SELECT * FROM hospital_info";
+    $result = mysqli_query($conn,$query);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +65,39 @@
             <!-- Your content goes here | check body_cont.css file for css property-->
             
             <div class="cards">
-                <div class="card">
+                <?php
+                
+                if($result){
+                    while($row=mysqli_fetch_assoc($result)){
+
+                        echo " <div class='card'>
+                        <img src='image/hospital.jpg' >
+                        <div class='card-details'>
+                            <p class='card-name'>$row[Name]</p>
+                            <p class='card-address'>$row[Address]</p>
+                            <p class='card-type-male'>
+                                <span class='material-symbols-outlined'>
+                                    man
+                                    </span>
+                                <strong>$row[Male_bed_available]</strong>
+                            </p>
+                            <p class='card-type-female'>
+                                <span class='material-symbols-outlined'>
+                                    woman
+                                    </span>
+                                <strong>$row[Female_bed_available]</strong>
+                            </p>
+                            <a href='BookingForm.html' target='_blank'>
+                                <button id='c1' class='btn btn-secondary-orange'>Book Bed</button>
+                            </a>
+                        </div>
+                    </div> ";
+
+                    }
+                }
+
+                    ?>
+                <!-- <div class="card">
                     <img src="image/hospital.jpg" >
                     <div class="card-details">
                         <p class="card-name">Naihati Matri Sadan Municipal Hospital</p>
@@ -78,9 +119,9 @@
                             <button id="c1" class="btn btn-secondary-orange">Book Bed</button>
                         </a>
                     </div>
-                </div>
+                </div> -->
                 
-                <div class="card">
+                <!-- <div class="card">
                     <img src="image/hospital.jpg" >
                     <div class="card-details">
                         <p class="card-name">Naihati Matri Sadan Municipal Hospital</p>
@@ -148,7 +189,7 @@
                             <button id="c4" class="btn btn-secondary-orange">Book Bed</button>
                         </a>
                     </div>
-                </div>
+                </div> -->
             </div>
             <!-- Location window popup starts here -->
 
