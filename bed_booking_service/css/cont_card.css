@@ -101,7 +101,7 @@
     top: 5px;
     left: 52px; */
 }
-.card #c1,#c2,#c3,#c4
+.card a
 {
     /* float:right; */
     /* margin-left: 60px; */
@@ -110,7 +110,7 @@
     cursor: pointer;
     font-weight: bold;
     /* margin-top: 11px; */
-    padding: 3px;
+    /* padding: 3px; */
     border-radius: 7px;
     position: relative;
     top: 5px;

@@ -87,7 +87,7 @@
                                     </span>
                                 <strong>$row[Female_bed_available]</strong>
                             </p>
-                            <a href='BookingForm.html' target='_blank'>
+                            <a href='BookingForm.php' target='_blank'>
                                 <button id='c1' class='btn btn-secondary-orange'>Book Bed</button>
                             </a>
                         </div>
