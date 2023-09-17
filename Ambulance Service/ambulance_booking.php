@@ -78,7 +78,7 @@
                                 <p id='card-status'>$rows[amb_status]</p>
                             </div>
                             <div class='card-row'>
-                                <button class='btn btn-secondary-orange'><a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/amb_booking_form.php?ambno=$rows[amb_no]'>Book ride</a></button>
+                                <a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/amb_booking_form.php?ambno=$rows[amb_no]'><button class='btn btn-secondary-orange'>Book ride</button></a>
                                 <p class='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i> 50Km</p>
                                 <p class='card-fare'>&#8377 $rows[amb_rate]/-</p>
                             </div>
