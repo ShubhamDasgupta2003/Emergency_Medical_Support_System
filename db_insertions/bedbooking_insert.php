@@ -5,17 +5,19 @@
     //This php file inserts data into ambulance_info table in mysql
 
 
-    //first execute this part only for the changes i have made in table properties
-
-    $query = "ALTER TABLE `hospital_info` ADD `Address` VARCHAR(100) NOT NULL AFTER `ContactNo`;
     
-    ALTER TABLE `hospital_info` CHANGE `ContactNo` `ContactNo` BIGINT(10) NOT NULL;
 
-    ALTER TABLE `hospital_info` CHANGE `Address` `Address` VARCHAR(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL;";
+    // $query = "ALTER TABLE `hospital_info` ADD `Address` VARCHAR(100) NOT NULL AFTER `ContactNo`;
+    
+    // ALTER TABLE `hospital_info` CHANGE `ContactNo` `ContactNo` BIGINT(10) NOT NULL;
 
-    //ends here
+    // ALTER TABLE `hospital_info` CHANGE `Address` `Address` VARCHAR(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL;";
 
-    // after execute the above query,comment the above query and un-comment the below query then execute.
+    $query = "ALTER TABLE `patient_booking_info` DROP `Booking_time`;
+
+    ALTER TABLE `patient_booking_info` ADD `Dob` DATE NOT NULL AFTER `Gender`, ADD `Address` VARCHAR(200) NOT NULL AFTER `Dob`, ADD `City` VARCHAR(50) NOT NULL AFTER `Address`, ADD `Pin` INT(10) NOT NULL AFTER `City`;";
+
+    
 
     // $query = "INSERT IGNORE INTO `hospital_info`(`Id`, `Name`, `ContactNo`, `Address`, `State`, `District`, `City`, `Pincode`, `Latitude`, `Longitude`, `Male_bed_available`, `Female_bed_available`, `Bed_charge`) VALUES ('1','Naihati Matri Sadan Municipal Hospital','6384479131','6,Rishi Bankim Chandra Road,Naihati Urban,Naihati,West Bengal 743165','West Bengal','North 24 Parganas','Naihati','743165','22.8885','88.4178','52','48','300');
 

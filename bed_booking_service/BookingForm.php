@@ -1,8 +1,49 @@
 <?php
 
     include_once("config.php");
+    date_default_timezone_set("Asia/Kolkata");
     $query = "SELECT * FROM hospital_info";
     $result = mysqli_query($conn,$query);
+
+    // getting hospitalid(primary key) from url by using get method 
+    // $id=$_GET['hospitalid'];
+    // $sql= "SELECT * FROM `hospital_info` where Id=$id";
+    // $result= mysqli_query($conn,$sql);
+?>
+
+
+
+<?php
+
+if(isset($_POST['submit'])){
+    $name=$_POST["name"];
+    $gender=$_POST['gender'];
+    $age=$_POST['age'];
+    $contact=$_POST['contact'];
+    $dob=$_POST['dob'];
+    $address2=$_POST['address2'];
+    $city=$_POST['city'];
+    $pin=$_POST['pin'];
+    $bookdatetime= date('YY-MM-DD hh:mm:ss');
+
+
+
+    // $sql2="INSERT INTO `patient_booking_info` (Patient_name,Gender,Age,ContactNo,Dob,address2,City,Pin,Booking_date) VALUES ('$name','$gender','$age','$contact','$dob','$address2','$city','$pin','$bookdatetime')";
+     echo "$name,$gender,$age,$contact,$dob,$address2,$city,$pin,$bookdatetime";
+    // $result=mysqli_query($conn,$sql2);
+
+
+    // header("location:bed_booking_cnfm.php");
+
+
+    // if($result){
+    //     echo "data inserted successfully in patient table";
+    // }else{
+    //     echo "failed";
+    // }
+
+}
+
 
 ?>
 
@@ -28,12 +69,22 @@
                     <img src="image/logo.png" alt="logo" width="100px">
                 </div>
                 <div class="info" style="line-height: 18px; text-align: right; padding-top: 24px;">
-                    <div style="font-size: 12pt;"><strong>Naihati Matri Sadan Municipal Hospital</strong></div>
-                    <div style="font-size: 10pt;">&nbsp;6, Rishi Bankim Chandra Road, Naihati, West Bengal 743165</div>
-                    <div style="line-height: 14px;">
-                        <div style="font-size: 9pt;">sourav97972@gmail.com</div>
-                        <div style="font-size: 9pt;">+91-8697921086</div>
-                    </div>
+
+                    <?php
+
+                        // getting hospitalid(primary key) from url by using get method 
+                        $id=$_GET['hospitalid'];
+                        $sql= "SELECT * FROM `hospital_info` where Id=$id";
+                        $result= mysqli_query($conn,$sql);
+                        while($row=mysqli_fetch_assoc($result)){
+
+                        echo "<div style='font-size: 12pt;'><strong>$row[Name]</strong></div>
+                        <div style='font-size: 10pt;'>&nbsp;$row[Address]</div>
+                        <div style='line-height: 14px;'>
+                        <div style='font-size: 9pt;'>$row[District]</div>
+                        <div style='font-size: 9pt;'>$row[ContactNo]</div>
+                    </div>";}
+                    ?>
                 </div>
             </div>
         </header>
@@ -41,22 +92,22 @@
             <hr>
         </div>
         <div>
-            <form class="form">
+            <form method="post" class="form">
                 <div class="input-box">
                     <label>Patient's Full Name</label>
-                    <input type="text" placeholder="Enter full name" required />
+                    <input type="text" name="name" placeholder="Enter full name" required />
                 </div>
                 <div class="gender-box">
                     <lable>Gender</lable>
                     <div class="gender-option">
                         <div class="gender">
-                            <input type="radio" id="check-male" name="gender" checked />
+                            <input type="radio" id="check-male" name="gender" value="male" checked />
                             <label for="check-male">
                                 <pre>    male</pre>
                             </label>
                         </div>
                         <div class="gender">
-                            <input type="radio" id="check-female" name="gender" />
+                            <input type="radio" id="check-female" name="gender" value="Female" />
                             <label for="check-female">
                                 <pre>    Female</pre>
                             </label>
@@ -64,24 +115,24 @@
                         <!-- use strong password showing because of this -> starts here  -->
                         <div class="input-box" id="age">
                             <label>Age</label>
-                            <input type="number" placeholder="Enter age" required />
+                            <input type="number" name="age" placeholder="Enter age" required />
                         </div>
                         <!-- use strong password showing because of this -> ends here  -->
                         <div class="column">
                             <div class="input-box">
                                 <label>Phone Number</label>
-                                <input type="number" placeholder="Enter phone number" required />
+                                <input type="number" name="contact" placeholder="Enter phone number" required />
                             </div>
                             <div class="input-box">
                                 <label>Birth Date</label>
-                                <input type="date" placeholder="Enter birth date" required />
+                                <input type="date" name="dob" placeholder="Enter birth date" required />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="input-box address">
                     <label>Address</label>
-                    <input type="text" placeholder="Enter street address" required />
+                    <input type="text" name="address2" placeholder="Enter street address" required />
                     <div class="column">
                         <div class="select-box">
                             <select>
@@ -111,13 +162,18 @@
                                 <option>Uttar Dinajpur</option>
                             </select>
                         </div>
-                        <input type="text" placeholder="Enter your city" required />
+                        <input type="text" name="city" placeholder="Enter your city" required />
                     </div>
                     <div class="column">
-                        <input type="number" placeholder="Enter postal code" required />
+                        <input type="number" name="pin" placeholder="Enter postal code" required />
                     </div>
                     <!-- only change in input id "check-male to pay-yes"&"gender to pay" for payment section -->
-                    <div class="gender-box">
+
+
+                    <!-- the below option is temporarily not in use  -->
+
+
+                    <!-- <div class="gender-box">
                         <lable>Types of Bed</lable>
                         <div class="gender-option">
                             <div class="gender">
@@ -137,8 +193,8 @@
                                 <label for="pay-no2">
                                     <pre>    ICU</pre>
                                 </label>
-                            </div>
-                            <button class="">Submit</button>
+                            </div> -->
+                            <a href="#"><button type="submit" name="submit">Submit</button></a>
                         </div>
             </form>
         </div>
