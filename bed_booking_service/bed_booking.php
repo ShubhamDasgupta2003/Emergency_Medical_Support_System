@@ -39,10 +39,10 @@
             <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <nav class="navbar">
-            <a class="navlink" href="/bed_booking_system/Emergency_Medical_Support_System/HomePage/">Home</a>
-            <a class="navlink" href="/bed_booking_system/Emergency_Medical_Support_System/HomePage/#services">Services</a>
-            <a class="navlink" href="/bed_booking_system/Emergency_Medical_Support_System/HomePage/#review">Review</a>
-            <a class="navlink" href="/bed_booking_system/Emergency_Medical_Support_System/HomePage/#footer">Contact Us</a>
+            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/">Home</a>
+            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/#services">Services</a>
+            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/#review">Review</a>
+            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/#footer">Contact Us</a>
         </nav>
         
         <a href="#" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
@@ -87,7 +87,7 @@
                                     </span>
                                 <strong>$row[Female_bed_available]</strong>
                             </p>
-                            <a href='BookingForm.html' target='_blank'>
+                            <a href='BookingForm.php?hospitalid=$row[Id]' target='_blank'>
                                 <button id='c1' class='btn btn-secondary-orange'>Book Bed</button>
                             </a>
                         </div>
