@@ -24,13 +24,44 @@ if(isset($_POST['submit'])){
     $address2=$_POST['address2'];
     $city=$_POST['city'];
     $pin=$_POST['pin'];
-    $bookdatetime= date('YY-MM-DD hh:mm:ss');
+    $bookdatetime= date('Y-m-d H:i:s');
 
 
+     //Unique user Id generation php code starts here
+     $adhr_num = $_POST['adhr_num'];
+     $last_4_dig_adhr = substr($adhr_num,-4);
+     $last_3_dig_cont = substr($contact,-3);
+     $random_dig = rand(1,999);
+     $digit = "";
+     if($random_dig>=1 && $random_dig<=9)
+     {
+       $digit = "00"."$random_dig";
+     }
+     else if($random_dig>=10 && $random_dig<=99)
+     {
+       $digit = "0"."$random_dig";
+     }
+     else
+     {
+       $digit = "$random_dig";
+     }
+ 
+     $patient_id = "PNT"."$digit"."$last_3_dig_cont"."$last_4_dig_adhr";
+     //Unique user Id generation php code ends here
 
-    // $sql2="INSERT INTO `patient_booking_info` (Patient_name,Gender,Age,ContactNo,Dob,address2,City,Pin,Booking_date) VALUES ('$name','$gender','$age','$contact','$dob','$address2','$city','$pin','$bookdatetime')";
-     echo "$name,$gender,$age,$contact,$dob,$address2,$city,$pin,$bookdatetime";
+
+     //'storing hospitaal name in patient table accordingly' php code starts here
+     $id=$_GET['hospitalid'];
+     $sql= "SELECT `Name` FROM `hospital_info` where Id=$id";
+     $result= mysqli_query($conn,$sql);
+     $row=mysqli_fetch_assoc($result);
+                        
+    //'storing hospitaal name in patient table accordingly' php code ends here
+
+
+    // $sql2="INSERT INTO `patient_booking_info` (Hospital_name,Patient_id,Patient_name,Gender,Age,ContactNo,Dob,address2,City,Pin,Booking_date) VALUES ('$row[Name]','$patient_id','$name','$gender','$age','$contact','$dob','$address2','$city','$pin','$bookdatetime')";
     // $result=mysqli_query($conn,$sql2);
+     echo "$row[Name],$name,$gender,$age,$contact,$dob,$address2,$city,$pin,$bookdatetime,$patient_id";
 
 
     // header("location:bed_booking_cnfm.php");
@@ -129,6 +160,10 @@ if(isset($_POST['submit'])){
                             </div>
                         </div>
                     </div>
+                    <div class="input-box" id="age">
+                            <label>Aadhaar card</label>
+                            <input type="number" name="adhr_num" placeholder="Enter aadhaar card number" required />
+                        </div>
                 </div>
                 <div class="input-box address">
                     <label>Address</label>
