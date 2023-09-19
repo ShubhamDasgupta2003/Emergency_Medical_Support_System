@@ -1,5 +1,5 @@
 <?php
-$to_email = "";//the receiver email will be used here
+$to_email = "shubhamdasgupta2003@gmail.com";//the receiver email will be used here
 $subject = "welcome";
 $body = "Hi there!
 I, Aatraya Roy,on befalf of our team would like to welcome you on board with project [Emergency Medical Services]!

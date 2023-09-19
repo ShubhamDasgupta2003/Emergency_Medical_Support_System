@@ -6,11 +6,9 @@
 
     $con = mysqli_connect($server,$username,$pswd,$db_name);
 
-    if($con)
+    if(!$con)
     {
-        echo "Connection established!";
-    }else{
-        echo "Connection not established!";
+        echo "Connection error!";
     }
 ?>
 

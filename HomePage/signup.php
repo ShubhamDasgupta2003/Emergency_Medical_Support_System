@@ -1,9 +1,11 @@
 <?php
   include_once("db_config/main_config.php");
+  date_default_timezone_set("Asia/calcutta");
 
-  $lat = $_COOKIE["lat"];
-  $lon = $_COOKIE["lon"];
-  // echo"$lat<br>$lon";
+
+  $lat = number_format($_COOKIE["cur_lat"],7,".","");
+  $lon = number_format($_COOKIE["cur_lon"],7,".","");
+  echo"$lat<br>$lon";
 
   if(isset($_POST['register_user']))
   {
@@ -18,8 +20,10 @@
     $state = $_POST['state'];
     $postcode = $_POST['post_code'];
     $password = password_hash($_POST['pswd'],PASSWORD_DEFAULT);
-    
+    $cur_timestamp = date("l jS \of F Y h:i:s A");
+
     //Unique user Id generation php code starts here
+
     $aadhaar_card_num = $_POST['id_num'];
     $last_4_dig_adhr = substr($aadhaar_card_num,-4);
     $last_3_dig_cont = substr($cont_num,-3);
@@ -38,10 +42,28 @@
       $digit = "$random_dig";
     }
 
-    $user_id = "USR"."$digit"."$last_3_dig_cont"."$last_4_dig_adhr";
+    $user_id = "USR"."$digit"."$last_3_dig_cont"."$last_4_dig_adhr";  //generated userid
+
     //Unique user Id generation php code ends here
-    
-    echo "$fname <br> $lname <br> $email <br> $cont_num <br> $dob <br> $gender <br> $district <br> $city_town <br> $state <br> $postcode <br> $password<br>$user_id<br>";
+
+    $check_dup_reg = "SELECT * FROM user_info WHERE user_email='$email' OR user_contactno='$cont_num'";
+
+    $insert_records = "INSERT INTO `user_info`(`user_id`, `user_first_name`, `user_last_name`, `user_gender`, `password`, `user_email`, `user_contactno`, `state`, `district`, `town_vill`, `pincode`, `last_login`, `curr_lat`, `curr_long`, `lat_in_use`, `long_in_use`, `formatted_adrrs`) VALUES ('$user_id','$fname','$lname','$gender','$password','$email',$cont_num,'$state','$district','$city_town','$postcode','$cur_timestamp',$lat,$lon,'','','')";
+
+    $result = mysqli_query($con,$check_dup_reg);
+    $rows = mysqli_num_rows($result);
+    if($rows>=1)
+    {
+      echo "<script>alert('email-id or mobile number is already registered with us')</script>";
+    }
+    else
+    {
+      $result = mysqli_query($con,$insert_records);
+      if($result)
+      {
+        echo "<script>alert('Successfully Registered')</script>";
+      }
+    }
   }
 ?>
 
@@ -65,7 +87,7 @@
         <div class="column">
           <div class="input-box">
             <label>First Name</label>
-            <input name="fname" type="text" placeholder="Enter your first name" required />
+            <input name="fname" type="text" placeholder="Enter your first name" required/>
           </div>
 
           <div class="input-box">
