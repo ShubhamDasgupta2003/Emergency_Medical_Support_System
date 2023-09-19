@@ -52,7 +52,7 @@ if(isset($_POST['submit'])){
 
      //'storing hospitaal name in patient table accordingly' php code starts here
      $id=$_GET['hospitalid'];
-     $sql= "SELECT `Name` FROM `hospital_info` where Id=$id";
+     $sql= "SELECT * FROM `hospital_info` where Id=$id";
      $result= mysqli_query($conn,$sql);
      $row=mysqli_fetch_assoc($result);
                         
@@ -61,10 +61,12 @@ if(isset($_POST['submit'])){
 
     // $sql2="INSERT INTO `patient_booking_info` (Hospital_name,Patient_id,Patient_name,Gender,Age,ContactNo,Dob,address2,City,Pin,Booking_date) VALUES ('$row[Name]','$patient_id','$name','$gender','$age','$contact','$dob','$address2','$city','$pin','$bookdatetime')";
     // $result=mysqli_query($conn,$sql2);
-     echo "$row[Name],$name,$gender,$age,$contact,$dob,$address2,$city,$pin,$bookdatetime,$patient_id";
 
 
-    // header("location:bed_booking_cnfm.php");
+    //  echo "$row[Name],$name,$gender,$age,$contact,$dob,$address2,$city,$pin,$bookdatetime,$patient_id";
+
+
+    header("location:bed_booking_cnfm.php?hosid=$row[Id]");
 
 
     // if($result){
@@ -229,7 +231,7 @@ if(isset($_POST['submit'])){
                                     <pre>    ICU</pre>
                                 </label>
                             </div> -->
-                            <a href="#"><button type="submit" name="submit">Submit</button></a>
+                            <a href=""><button type="submit" name="submit">Submit</button></a>
                         </div>
             </form>
         </div>

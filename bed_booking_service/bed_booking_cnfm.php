@@ -1,3 +1,9 @@
+<?php
+    include_once("config.php");
+    
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,20 +24,36 @@
         <hr>
         <p id="p1"><u>Hospital information</u></p>
         <div class="hspl-details">
-            <div class="c1"><strong class="attribute1">Name:</strong>Naihati Matri Sadan Municipal Hospital</div>
+
+
+        <?php
+            $id=$_GET['hosid'];
+            $sql= "SELECT * FROM `hospital_info` where Id=$id";
+            $result= mysqli_query($conn,$sql);
+            while($row=mysqli_fetch_assoc($result)){
+                echo"
+                <div class='c1'><strong class='attribute1'>Name:</strong>$row[Name]</div>
+            <div class='c1'><strong class='attribute2'>Address:</strong>$row[Address]</div>
+            <div class='c1'><strong class='attribute7'>District:</strong>$row[District]</div>
+            <div class='c1'><strong class='attribute2'>Number:</strong>$row[ContactNo]</div>
+                ";
+            }
+        ?>
+            <!-- <div class="c1"><strong class="attribute1">Name:</strong>Naihati Matri Sadan Municipal Hospital</div>
             <div class="c1"><strong class="attribute2">Address:</strong>6, Rishi Bankim Chandra Road, Naihati, West
                 Bengal
                 743165
             </div>
-            <div class="c1"><strong class="attribute2">Number:</strong>+91-8697921086</div>
-            <div class="c1"><strong class="attribute1">E-mail:</strong>sourav97972@gmail.com</div>
+            <div class="c1"><strong class="attribute2">District:</strong>+91-8697921086</div>
+            <div class="c1"><strong class="attribute2">Number:</strong>sourav97972@gmail.com</div> -->
         </div>
         <p id="p1"><u>Other information</u></p>
         <div class="other-details">
             <div class="c2"><strong class="attribute3">Patient name:</strong>Sourav paul</div>
             <div class="c2"><strong class="attribute4">Gender:</strong>Male</div>
-            <div class="c2"><strong class="attribute5">Type of Bed:</strong>General ward</div>
-            <div class="c2"><strong class="attribute6">Admission Date & Time:</strong>10.09.2023 | 12:12 pm
+            <div class="c2"><strong class="attribute4">Number:</strong>8697921086</div>
+            <!-- <div class="c2"><strong class="attribute5">Type of Bed:</strong>General ward</div> -->
+            <div class="c2"><strong class="attribute6">Booking Date & Time:</strong>10.09.2023 | 12:12 pm
             </div>
         </div>
         <!-- <p>Go back to <a href="/">Homepage</a></p> -->
