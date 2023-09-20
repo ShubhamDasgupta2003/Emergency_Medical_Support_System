@@ -1,7 +1,5 @@
 <?php
     include_once("config.php");
-    
-
 ?>
 
 <!DOCTYPE html>
@@ -24,8 +22,6 @@
         <hr>
         <p id="p1"><u>Hospital information</u></p>
         <div class="hspl-details">
-
-
         <?php
             $id=$_GET['hosid'];
             $sql= "SELECT * FROM `hospital_info` where Id=$id";
@@ -39,27 +35,29 @@
                 ";
             }
         ?>
-            <!-- <div class="c1"><strong class="attribute1">Name:</strong>Naihati Matri Sadan Municipal Hospital</div>
-            <div class="c1"><strong class="attribute2">Address:</strong>6, Rishi Bankim Chandra Road, Naihati, West
-                Bengal
-                743165
-            </div>
-            <div class="c1"><strong class="attribute2">District:</strong>+91-8697921086</div>
-            <div class="c1"><strong class="attribute2">Number:</strong>sourav97972@gmail.com</div> -->
         </div>
         <p id="p1"><u>Other information</u></p>
         <div class="other-details">
-            <div class="c2"><strong class="attribute3">Patient name:</strong>Sourav paul</div>
-            <div class="c2"><strong class="attribute4">Gender:</strong>Male</div>
-            <div class="c2"><strong class="attribute4">Number:</strong>8697921086</div>
-            <!-- <div class="c2"><strong class="attribute5">Type of Bed:</strong>General ward</div> -->
-            <div class="c2"><strong class="attribute6">Booking Date & Time:</strong>10.09.2023 | 12:12 pm
-            </div>
+                <?php
+                    session_start();
+
+                   $p_id=$_SESSION['p_id'];
+
+                    $sql="SELECT * FROM `patient_booking_info` where Patient_id = '$p_id'";
+                    $result= mysqli_query($conn,$sql);
+                    while($row=mysqli_fetch_assoc($result)){
+                        echo "
+                        <div class='c2'><strong class='attribute3'>Patient name:</strong>$row[Patient_name]</div>
+                <div class='c2'><strong class='attribute8'>Gender:</strong>$row[Gender]</div>
+                 <div class='c2'><strong class='attribute4'>Number:</strong>$row[ContactNo]</div>
+                 <div class='c2'><strong class='attribute6'>Booking Date & Time:</strong>$row[Booking_date]</div>"
+                    ;}
+                ?>
         </div>
         <!-- <p>Go back to <a href="/">Homepage</a></p> -->
         <div class="btns">
             <button class="btn">get route</button>
-            <a href="/HomePage/index.html">
+            <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/">
                 <button class="btn">go to homepage</button>
             </a>
         </div>
