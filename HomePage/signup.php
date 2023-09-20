@@ -5,7 +5,7 @@
 
   $lat = number_format($_COOKIE["cur_lat"],7,".","");
   $lon = number_format($_COOKIE["cur_lon"],7,".","");
-  echo"$lat<br>$lon";
+  // echo"$lat<br>$lon";
 
   if(isset($_POST['register_user']))
   {
@@ -52,7 +52,16 @@
 
     $result = mysqli_query($con,$check_dup_reg);
     $rows = mysqli_num_rows($result);
-    if($rows>=1)
+
+    if(strlen($cont_num) != 10) //validating mobile number
+    {
+      echo "<script>alert('Please enter a valid mobile number')</script>";
+    }
+    else if(strlen($password)<5)
+    {
+      echo "<script>alert('Password should be minimum of 5 characters')</script>";
+    }
+    else if($rows>=1)
     {
       echo "<script>alert('email-id or mobile number is already registered with us')</script>";
     }
@@ -62,6 +71,7 @@
       if($result)
       {
         echo "<script>alert('Successfully Registered')</script>";
+        header("Location:verification_email.php?emailid=$email&name=$fname&userid=$user_id");
       }
     }
   }
@@ -103,11 +113,11 @@
         <div class="column">
           <div class="input-box">
             <label>Phone Number</label>
-            <input name="contact_num" type="number" placeholder="Enter phone number" required />
+            <input name="contact_num" type="number" placeholder="Enter phone number" required minlength="10" maxlength="10"/>
           </div>
           <div class="input-box">
             <label>Date of Birth</label>
-            <input name="dob" id="dtpick" type="date" placeholder="Enter birth date" required />
+            <input name="dob" id="dtpick" type="date" placeholder="Enter birth date" required/>
           </div>
         </div>
         <div class="column">

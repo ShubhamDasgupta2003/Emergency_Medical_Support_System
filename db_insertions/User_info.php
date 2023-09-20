@@ -22,7 +22,9 @@
     
     ALTER TABLE `user_info` CHANGE `lat_in_use` `lat_in_use` FLOAT(10,7) NULL DEFAULT NULL;
     
-    ALTER TABLE `user_info` CHANGE `long_in_use` `long_in_use` FLOAT(10,7) NULL DEFAULT NULL;";
+    ALTER TABLE `user_info` CHANGE `long_in_use` `long_in_use` FLOAT(10,7) NULL DEFAULT NULL;
+    
+    ALTER TABLE `user_info` ADD `email_verified` INT(1) NOT NULL AFTER `formatted_adrrs`;";
 
     
     $result = mysqli_multi_query($con,$query);
