@@ -48,7 +48,7 @@
                     while($row=mysqli_fetch_assoc($result)){
                         echo "
                         <div class='c2'><strong class='attribute3'>Patient name:</strong>$row[Patient_name]</div>
-                <div class='c2'><strong class='attribute4'>Gender:</strong>$row[Gender]</div>
+                <div class='c2'><strong class='attribute8'>Gender:</strong>$row[Gender]</div>
                  <div class='c2'><strong class='attribute4'>Number:</strong>$row[ContactNo]</div>
                  <div class='c2'><strong class='attribute6'>Booking Date & Time:</strong>$row[Booking_date]</div>"
                     ;}
@@ -57,7 +57,7 @@
         <!-- <p>Go back to <a href="/">Homepage</a></p> -->
         <div class="btns">
             <button class="btn">get route</button>
-            <a href="/HomePage/index.html">
+            <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/">
                 <button class="btn">go to homepage</button>
             </a>
         </div>
