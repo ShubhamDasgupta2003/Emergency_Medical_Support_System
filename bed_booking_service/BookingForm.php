@@ -57,7 +57,31 @@ if(isset($_POST['submit'])){
      $sql= "SELECT * FROM `hospital_info` where Id=$id";
      $result= mysqli_query($conn,$sql);
      $row=mysqli_fetch_assoc($result);
-                        
+
+    //  available bed updation code starts here 
+
+     $malebed = $row['Male_bed_available'];
+     $femalebed = $row['Female_bed_available'];
+     if($gender == 'male' ){
+        // $malebed = max(0, $malebed - 1);
+        $malebed-=1;
+        $sql3= "UPDATE `hospital_info` SET Male_bed_available=$malebed WHERE Id=$id";
+        $result=mysqli_query($conn,$sql3);
+        
+     }
+     else{
+        $femalebed-=1;
+        $sql3= "UPDATE `hospital_info` SET Female_bed_available=$femalebed WHERE Id=$id";
+        $result=mysqli_query($conn,$sql3);
+     }
+    //  else($gender == 'female' ){
+    //     // $gender = max(0, $gender - 1);
+    //     $sql3= "UPDATE `hospital_info` SET Female_bed_available= $row[Female_bed_available] - 1";
+    //  }
+     
+    
+      //  available bed updation code ends here 
+
     //'storing hospitaal name in patient table accordingly' php code ends here
 
 
@@ -65,7 +89,7 @@ if(isset($_POST['submit'])){
     $result=mysqli_query($conn,$sql2);
 
 
-     echo "$row[Name],$name,$gender,$age,$contact,$dob,$address2,$city,$pin,$bookdatetime,$patient_id";
+    //  echo "$row[Name],$name,$gender,$age,$contact,$dob,$address2,$city,$pin,$bookdatetime,$patient_id";
 
 
     header("location:bed_booking_cnfm.php?hosid=$row[Id]");
