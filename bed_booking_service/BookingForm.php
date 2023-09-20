@@ -49,6 +49,8 @@ if(isset($_POST['submit'])){
      $patient_id = "PNT"."$digit"."$last_3_dig_cont"."$last_4_dig_adhr";
      //Unique user Id generation php code ends here
 
+     session_start();
+     $_SESSION['p_id'] = "$patient_id";
 
      //'storing hospitaal name in patient table accordingly' php code starts here
      $id=$_GET['hospitalid'];
@@ -59,26 +61,17 @@ if(isset($_POST['submit'])){
     //'storing hospitaal name in patient table accordingly' php code ends here
 
 
-    // $sql2="INSERT INTO `patient_booking_info` (Hospital_name,Patient_id,Patient_name,Gender,Age,ContactNo,Dob,address2,City,Pin,Booking_date) VALUES ('$row[Name]','$patient_id','$name','$gender','$age','$contact','$dob','$address2','$city','$pin','$bookdatetime')";
-    // $result=mysqli_query($conn,$sql2);
+    $sql2="INSERT INTO `patient_booking_info` (Hospital_name,Patient_id,Patient_name,Gender,Age,ContactNo,Dob,address2,City,Pin,Booking_date) VALUES ('$row[Name]','$patient_id','$name','$gender','$age','$contact','$dob','$address2','$city','$pin','$bookdatetime')";
+    $result=mysqli_query($conn,$sql2);
 
 
-    //  echo "$row[Name],$name,$gender,$age,$contact,$dob,$address2,$city,$pin,$bookdatetime,$patient_id";
+     echo "$row[Name],$name,$gender,$age,$contact,$dob,$address2,$city,$pin,$bookdatetime,$patient_id";
 
 
     header("location:bed_booking_cnfm.php?hosid=$row[Id]");
 
-    // session_start();
-    // $_SESSION['p_id'] = "$patient_id";
 
     // header("location:bed_booking_cnfm.php?hosid=$row[Id]&p_id=$patient_id");
-
-
-    // if($result){
-    //     echo "data inserted successfully in patient table";
-    // }else{
-    //     echo "failed";
-    // }
 
 }
 
