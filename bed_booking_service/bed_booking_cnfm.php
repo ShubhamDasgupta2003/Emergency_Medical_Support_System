@@ -49,12 +49,47 @@
         </div>
         <p id="p1"><u>Other information</u></p>
         <div class="other-details">
-            <div class="c2"><strong class="attribute3">Patient name:</strong>Sourav paul</div>
+
+        
+            <!-- $p_id=$_GET['p_id'];
+            $sql3= "SELECT * FROM `patient_booking_info` where Patient_id=$p_id";
+            $result= mysqli_query($conn,$sql3);
+            while($row=mysqli_fetch_assoc($result)){
+                echo "
+                <div class=c2><strong class=attribute3>Patient name:</strong>$row[Patient_name]</div>
+                <div class='c2'><strong class='attribute4'>Gender:</strong>$row[Gender]</div>
+                <div class='c2'><strong class='attribute4'>Number:</strong>$row[ContactNo]</div>
+                // <div class='c2'><strong class='attribute5'>Type of Bed:</strong>General ward</div>
+                <div class='c2'><strong class='attribute6'>Booking Date & Time:</strong>$row[Booking_date]</div>"
+            ;} -->
+
+                <!-- php tag  -->
+                    <!-- session_start();
+
+                   $p_id=$_SESSION['p_id'];
+
+                    $sql="SELECT * FROM `patient_booking_info` where Patient_id = $p_id";
+                    $result= mysqli_query($conn,$sql);
+                    while($row=mysqli_fetch_assoc($result)){
+                        echo "
+                        <div class='c2'><strong class='attribute3'>Patient name:</strong>$row[Patient_name]</div>
+            <div class='c2'><strong class='attribute4'>Gender:</strong>Male</div>
+            <div class='c2'><strong class='attribute4'>Number:</strong>8697921086</div>
+            <div class='c2'><strong class='attribute6'>Booking Date & Time:</strong>10.09.2023 | 12:12 pm
+            </div>
+                        "
+                    ;} -->
+                <!-- php tag end  -->
+
+
+
+
+            <!-- <div class="c2"><strong class="attribute3">Patient name:</strong>Sourav paul</div>
             <div class="c2"><strong class="attribute4">Gender:</strong>Male</div>
             <div class="c2"><strong class="attribute4">Number:</strong>8697921086</div>
-            <!-- <div class="c2"><strong class="attribute5">Type of Bed:</strong>General ward</div> -->
+            <div class="c2"><strong class="attribute5">Type of Bed:</strong>General ward</div>
             <div class="c2"><strong class="attribute6">Booking Date & Time:</strong>10.09.2023 | 12:12 pm
-            </div>
+            </div> -->
         </div>
         <!-- <p>Go back to <a href="/">Homepage</a></p> -->
         <div class="btns">

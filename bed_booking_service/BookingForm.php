@@ -68,6 +68,11 @@ if(isset($_POST['submit'])){
 
     header("location:bed_booking_cnfm.php?hosid=$row[Id]");
 
+    // session_start();
+    // $_SESSION['p_id'] = "$patient_id";
+
+    // header("location:bed_booking_cnfm.php?hosid=$row[Id]&p_id=$patient_id");
+
 
     // if($result){
     //     echo "data inserted successfully in patient table";
