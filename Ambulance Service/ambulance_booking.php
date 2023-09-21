@@ -1,8 +1,23 @@
 <?php
     //Path for main config file 
-
     include_once("db_config/main_config.php");
-    $query = "SELECT * FROM ambulance_info";
+    $lat1 = 22.8818779;
+    $long1 = 88.6000061 ;
+    
+    // $query = "SELECT * FROM ambulance_info";
+
+    $query = "SELECT `amb_no`, `amb_name`, `amb_type`, `amb_status`, `amb_loc_lat`, `amb_loc_long`, `amb_rate`, `amb_contact`, `amb_driver_name`, `amb_state`, `amb_district`, `amb_town`, `amb_loc_pincode`,round((
+        6371 *
+        acos(cos(radians($lat1)) * 
+        cos(radians(amb_loc_lat)) * 
+        cos(radians($long1) - 
+        radians(amb_loc_long)) + 
+        sin(radians($lat1)) * 
+        sin(radians(amb_loc_lat)))
+     )) AS distance FROM `ambulance_info`";
+
+    //   HAVING distance<=100
+
     $result = mysqli_query($con,$query);
 
 ?>
@@ -79,7 +94,7 @@
                             </div>
                             <div class='card-row'>
                                 <a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/amb_booking_form.php?ambno=$rows[amb_no]'><button class='btn btn-secondary-orange'>Book ride</button></a>
-                                <p class='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i> 50Km</p>
+                                <p class='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i> $rows[distance]Km</p>
                                 <p class='card-fare'>&#8377 $rows[amb_rate]/-</p>
                             </div>
                             

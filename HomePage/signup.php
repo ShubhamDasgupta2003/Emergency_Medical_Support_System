@@ -5,7 +5,9 @@
 
   $lat = number_format($_COOKIE["cur_lat"],7,".","");
   $lon = number_format($_COOKIE["cur_lon"],7,".","");
-  // echo"$lat<br>$lon";
+  $address = $_COOKIE['cur_addrss'];
+
+  // echo"$lat<br>$lon<br>$address";
 
   if(isset($_POST['register_user']))
   {
@@ -48,7 +50,7 @@
 
     $check_dup_reg = "SELECT * FROM user_info WHERE user_email='$email' OR user_contactno='$cont_num'";
 
-    $insert_records = "INSERT INTO `user_info`(`user_id`, `user_first_name`, `user_last_name`, `user_gender`, `password`, `user_email`, `user_contactno`, `state`, `district`, `town_vill`, `pincode`, `last_login`, `curr_lat`, `curr_long`, `lat_in_use`, `long_in_use`, `formatted_adrrs`) VALUES ('$user_id','$fname','$lname','$gender','$password','$email',$cont_num,'$state','$district','$city_town','$postcode','$cur_timestamp',$lat,$lon,'','','')";
+    $insert_records = "INSERT INTO `user_info`(`user_id`, `user_first_name`, `user_last_name`, `user_gender`, `password`, `user_email`, `user_contactno`, `state`, `district`, `town_vill`, `pincode`, `last_login`, `curr_lat`, `curr_long`, `lat_in_use`, `long_in_use`, `formatted_adrrs`) VALUES ('$user_id','$fname','$lname','$gender','$password','$email',$cont_num,'$state','$district','$city_town','$postcode','$cur_timestamp',$lat,$lon,'$lat','$lon','$address')";
 
     $result = mysqli_query($con,$check_dup_reg);
     $rows = mysqli_num_rows($result);
