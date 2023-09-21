@@ -1,3 +1,7 @@
+<?php
+include_once ('connection.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,8 +34,8 @@
     <a href="#" class="logo"><i class="fa-solid fa-heart-pulse"></i>medcare</a>
     <div class="search-bar" id="srchbar-above">
         <button class="get-location btn" id="get-location-btn" style="width:50px;"><i class="fas fa-map-marker-alt"></i></button>
-        <input type="text" placeholder="Search">
-        <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <input type="text" placeholder="Search" name=search_data>
+       <button class="btn" value="submit" name="search_data_product"><i class="fa-solid fa-magnifying-glass"></i></button>  
     </div>
     <nav class="navbar">
         <a class="navlink" href="/HomePage/index.html">Home</a>
@@ -42,6 +46,13 @@
     
     
     <a href="#" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
+
+
+    <?php
+     $select_pro=mysqli_query($conn,"select * from `cart` ") or die("query failed");
+     $row_count=mysqli_num_rows($select_pro);
+     ?>
+    <div id="cart"> <a href="cart.php" id="user-cart"><i class="fa-solid fa-cart-shopping fa-2xl"></i><span><sup><?php echo $row_count ?></sup></span></a>
     <div id="menu-btn" class="fa fa-bars"> </div>
 </header>
 
@@ -56,14 +67,14 @@
     
 <div class="hero-section">
     <div class="content">  
-        <p class="sub-heading">Medical Supplies at your Doorstep</p>
+        <p class="sub-heading">Technical Supplies at your Doorstep</p>
     </div>
 </div>
 
 <div class="secondnav">
     <nav class="segmented-navigation">
-        <a href="Medical Supplies2.html" class="segmented-item active">Medical Supplies</a>
-        <a href="Technical Supplies.html" class="segmented-item">Technical Supplies</a>
+        <a href="Medical Supplies.php" class="segmented-item">Medical Supplies</a>
+        <a href="Technical Supplies.php" class="segmented-item active">Technical Supplies</a>
       </nav>
     </div>
 
@@ -72,91 +83,34 @@
 
             <!-- Your content goes here | check body_cont.css file for css property-->
 
-     <div class="main-container">
-        <div class="cards">
-            <div class="card">
-                <img src="image/pain relief/p1.jpg" >
-                <div class="card-details">
-                    <p class="card-name">Medicine</p>
-                    <p class="card-address">.....
-                    </p>
-                    <p class="card-type">Description</p>
-                    <p class="card-fare">&#8377 250/-</p>
-                    <p class="card-status">Available</p>
-                    <a href="Detailed supply.html"><button class="btn btn-secondary-orange">Details</button></a>
-                </div>
-            </div>
+     <div class="cards">
+          <?php
+            $query="SELECT * FROM medical_supplies_TECHNICAL";
+            $result=mysqli_query($conn,$query);
+            $row=mysqli_fetch_array($result);
+            if(mysqli_num_rows($result)>0)
+         {
+            while($row=mysqli_fetch_assoc($result))
+            {
+         
             
-            <div class="card">
-                <img src="image/pain relief/p2.jpg">
-                <div class="card-details">
-                    <p class="card-name">Medicine</p>
-                    <p class="card-address">....</p>
-                    <p class="card-type">Description</p>
-                    <p class="card-fare">&#8377 250/-</p>
-                    <p class="card-status">Available</p>
-                    <button class="btn btn-secondary-orange">Add to Cart</button>
+           echo" <div class='card'>
+                <img src='$row[product_image]' >
+                <div class='card-details'>
+                    <p class='card-name'>$row[product_name]</p>
+                    <p class='card-address'>..... </p>
+                    <p class='card-type'> $row[product_para]</p>
+                    <p class='card-fare'>&#8377 $row[product_rate]</p>
+                    <a href='Detailed Supply.php?pid=$row[product_id]&name=technical'><button class='btn btn-secondary-orange'>Details</button></a>
                 </div>
-            </div>
-            <div class="card">
-                <img src="image/pain relief/p3.jpg">
-                <div class="card-details">
-                    <p class="card-name">Medicine</p>
-                    <p class="card-address">....</p>
-                    <p class="card-type">Description</p>
-                    <p class="card-fare">&#8377 250/-</p>
-                    <p class="card-status">Available</p>
-                    <button class="btn btn-secondary-orange">Add to Cart</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="image/pain relief/p4.jpg">
-                <div class="card-details">
-                    <p class="card-name">Medicine</p>
-                    <p class="card-address">....</p>
-                    <p class="card-type">Description</p>
-                    <p class="card-fare">&#8377 250/-</p>
-                    <p class="card-status">Available</p>
-                    <button class="btn btn-secondary-orange">Add to Cart</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="image/pain relief/p5.jpg">
-                <div class="card-details">
-                    <p class="card-name">Medicine</p>
-                    <p class="card-address">....</p>
-                    <p class="card-type">Description</p>
-                    <p class="card-fare">&#8377 250/-</p>
-                    <p class="card-status">Available</p>
-                    <button class="btn btn-secondary-orange">Add to Cart</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="image/pain relief/p6.jpg">
-                <div class="card-details">
-                    <p class="card-name">Medicine</p>
-                    <p class="card-address">....</p>
-                    <p class="card-type">Description</p>
-                    <p class="card-fare">&#8377 250/-</p>
-                    <p class="card-status">Available</p>
-                    <button class="btn btn-secondary-orange">Add to Cart</button>
-                </div>
+            </div>";
+            
+            }
+         }
+
+        ?>
             </div>
         </div>
-        <!-- <div class="filter-bar">
-            <p>Filter criterions such as type, price, etc goes here</p>
-        </div> -->
-    </div>                 
-</div>
-   
-
-
-
-
-
-
-
-
 
 
 <div class="location-window" id="loc-win">

@@ -1,8 +1,5 @@
 <?php
-session_start();
-$database_name="second";
-$conn=mysqli_connect("localhost","root","",$database_name);
-
+include_once ('connection.php');
 ?>
 
 <!DOCTYPE html>

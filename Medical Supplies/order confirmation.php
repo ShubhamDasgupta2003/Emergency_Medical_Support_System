@@ -1,3 +1,6 @@
+<?php
+include_once ('connection.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking Confirmation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/amb_form_booking.css">
     <link rel="stylesheet" href="css/navlink.css">
@@ -14,17 +16,22 @@
 <body>
     <div class="container">
         <div class="card">
+            <?php
+             $b=$_GET['pgt'];
+            ?>
             <div class="column">
                 <h1 id="cnfm-msg"><i class="fa-solid fa-circle-check fa-bounce fa-2xl" style="color: #27b300;"></i> &nbsp;Booking Confirmed!</h1>
                 <div class="amb_info_cont">
                     <h3>Your Order #orderID is confirmed . Regarding any question about the order contact us with your registered #user-email</h3>
-                    <h1 class="descp" id="title">Product Name</h1>
-                    <p class="descp" id="card-type">GLAXOSMITHKLINE PHARMACEUTICALS LTD Composition CAFFEINE-50MG + PARACETAMOL-650MG Consume Type ORAL In Stock</p>
+                    <p class="descp" id="card-type"></p>
                     <p class="descp" id="card-address"><i class="fa-solid fa-location-dot"></i> Shipping To</p>
                     <p class="descp" id="card-type">WestBengal North - 24pgs Halisahar - 743135</p>
                     <p class="descp" id="card-address"><i class="fa-solid fa-calendar-days"></i>></i> Estimated Arrival</p>
                     <p class="descp" id="card-type">23 March</p>
-                    <h2 class="descp" id="card-fare">&#8377 250/-</h2>
+                    <h2 class="descp" id="card-fare">Total Price: &#8377  <?php echo $b; ?></h2>
+                    <div class="bton">
+                    <?php echo "<a href='Receipt Generator.php?p= $b ' class='btn'>Receipt</a>"; ?>
+                    </div>
                 </div>
             </div>
         </div>
