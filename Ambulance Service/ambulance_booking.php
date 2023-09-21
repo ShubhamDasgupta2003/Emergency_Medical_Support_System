@@ -1,24 +1,56 @@
 <?php
     //Path for main config file 
     include_once("db_config/main_config.php");
-    $lat1 = 22.8818779;
-    $long1 = 88.6000061 ;
-    
+    setcookie("loc_modify","false");
+
+    $lat_in_use = 0.0;
+    $lon_in_use = 0.0;
+    $full_address = "";
+    $loc_query = "SELECT lat_in_use,long_in_use,formatted_adrrs FROM user_info WHERE user_id='USR3597175768'";
+
+    $loc_result = mysqli_query($con,$loc_query);
+    $loc_rows = $loc_result->fetch_assoc();
+
+    if($loc_result)
+    {
+        $lat_in_use = $loc_rows['lat_in_use'];
+        $lon_in_use = $loc_rows['long_in_use'];
+        $full_address = $loc_rows['formatted_adrrs'];
+    }
+    else
+    {
+        echo "error";
+    }
     // $query = "SELECT * FROM ambulance_info";
+
+    if($_COOKIE['loc_modify'] == 'true')
+    {
+        $mod_lat = $_COOKIE['lat_in_use'];
+        $mod_lon = $_COOKIE['lon_in_use'];
+        $mod_addrs = $_COOKIE['address_in_use'];
+
+        // echo "$mod_lat<br>$mod_lon<br>$mod_addrs<br>";
+        $loc_mod_query = "UPDATE user_info SET lat_in_use=$mod_lat,long_in_use=$mod_lon,formatted_adrrs='$mod_addrs' WHERE user_id='USR3597175768'";
+
+        $mod_loc_result = mysqli_query($con,$loc_mod_query);
+
+        if($mod_loc_result)
+        {
+            header("Refresh: 1");
+        }
+    }
 
     $query = "SELECT `amb_no`, `amb_name`, `amb_type`, `amb_status`, `amb_loc_lat`, `amb_loc_long`, `amb_rate`, `amb_contact`, `amb_driver_name`, `amb_state`, `amb_district`, `amb_town`, `amb_loc_pincode`,round((
         6371 *
-        acos(cos(radians($lat1)) * 
+        acos(cos(radians($lat_in_use)) * 
         cos(radians(amb_loc_lat)) * 
-        cos(radians($long1) - 
+        cos(radians($lon_in_use) - 
         radians(amb_loc_long)) + 
-        sin(radians($lat1)) * 
+        sin(radians($lat_in_use)) * 
         sin(radians(amb_loc_lat)))
      )) AS distance FROM `ambulance_info`";
 
     //   HAVING distance<=100
-
-    $result = mysqli_query($con,$query);
 
 ?>
 
@@ -80,6 +112,7 @@
             <!-- Your content goes here | check body_cont.css file for css property-->
             <div class="cards">
                 <?php
+                    $result = mysqli_query($con,$query);
                     while($rows = $result->fetch_assoc())
                     {
                         echo "<div class='card'>
@@ -124,7 +157,11 @@
                     </div>
                     <div class="loc-head">
                         <div class="loc-option-tab">
-                            <label for="" id="location-txt"></label>
+                            <label for="" id="location-txt">
+                                <?php
+                                    echo "$full_address";
+                                ?>
+                            </label>
                         </div>
                     </div>
                 </div>
