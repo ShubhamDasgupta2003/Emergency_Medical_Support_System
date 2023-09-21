@@ -115,7 +115,7 @@ html{
     top:0; left:0;right:0;
     z-index:1000;
     box-shadow:0 .5rem 1.5rem rgba(0,0,0,.1);
-    display: flex;
+    display: grid;
     align-items:center;
     justify-content:space-between;
     background: #fff;
@@ -135,6 +135,14 @@ html{
     color: var(--black);
     font-size: 1.6rem;
 }
+#cart
+{
+
+    text-decoration: none;
+    color: var(--black);
+    
+}
+
 
 .header .logo i{
     color:var(--green);
@@ -218,3 +226,13 @@ html{
         font-size:50%; 
     }
 }
+header .shopping
+{
+ position:relative;
+ text-align: right;
+}
+header .shopping img
+{
+ width:100px
+}
+
