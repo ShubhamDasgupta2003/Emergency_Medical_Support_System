@@ -68,6 +68,10 @@ if(isset($_POST['login'])){
             </div>
         </div>
         <button name="login" id="sbmt-form">login</button>
+        <div class="signuplink">
+          <div class="text">New user?</div>
+          <a href="signup.php">click here</a>
+        </div>
       </form>
     </section>
     <!-- <script src="login_final.js"></script> -->

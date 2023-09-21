@@ -78,7 +78,15 @@ body {
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
 }
 
-
+.signuplink{
+    display: flex;
+    margin: 8px;
+    justify-content: center;
+}
+.signuplink a{
+    text-decoration: none;
+    padding-left: 3px;
+}
 .form button {
     height: 40px;
     width: 100%;
