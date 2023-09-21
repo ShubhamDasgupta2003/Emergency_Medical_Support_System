@@ -1,3 +1,39 @@
+<?php
+// session_start();
+  include_once("db_config/main_config.php");
+
+
+?>
+
+
+<?php
+if(isset($_POST['login'])){
+  $email_num=$_POST['email_number'];
+  $password=$_POST['password'];
+
+ 
+
+  $sql="SELECT * FROM `user_info` WHERE user_email = '$email_num' OR user_contactno = '$email_num'";
+  $result= mysqli_query($con,$sql);
+
+  if($result){
+    $row=mysqli_fetch_assoc($result);
+    $storedpassword= $row['password'];
+
+    if(password_verify($password,$storedpassword)){
+      header("location:index.php");
+    }else{
+      echo "<script>alert('Password incorrect! Enter a valid password')</script>";
+    }
+
+  }
+
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <!---Coding By CodingLab | www.codinglabweb.com--->
 <html lang="en">
@@ -13,18 +49,18 @@
       <div class="title-bar">
         <header>Login</header>
       </div>
-      <form action="#" class="form">
+      <form method="post" class="form">
         <div class="column">
             <div class="input-box">
-                <label>Email</label>
-                <input id="email" type="email" placeholder="Enter your email..." required />
+                <label>Email/Number</label>
+                <input id="email" type="text" name="email_number" placeholder="Enter your email or number" required />
             </div>
             <div class="input-box">
                 <label>Password</label>
-                <input id="pswd"type="password" placeholder="Enter your password..." required />
+                <input id="pswd"type="password" name="password" placeholder="Enter your password" required />
             </div>
         </div>
-        <button id="sbmt-form">login</button>
+        <button name="login" id="sbmt-form">login</button>
       </form>
     </section>
     <!-- <script src="login_final.js"></script> -->
