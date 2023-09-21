@@ -16,17 +16,24 @@ if(isset($_POST['login'])){
   $sql="SELECT * FROM `user_info` WHERE user_email = '$email_num' OR user_contactno = '$email_num'";
   $result= mysqli_query($con,$sql);
 
-  if($result){
-    $row=mysqli_fetch_assoc($result);
-    $storedpassword= $row['password'];
+  if($result && $result-> num_rows ==1){
 
-    if(password_verify($password,$storedpassword)){
-      header("location:index.php");
-    }else{
-      echo "<script>alert('Password incorrect! Enter a valid password')</script>";
+    if($result){
+      $row=mysqli_fetch_assoc($result);
+      $storedpassword= $row['password'];
+  
+      if(password_verify($password,$storedpassword)){
+        header("location:index.php");
+      }else{
+        echo "<script>alert('Password incorrect! Enter a valid password')</script>";
+      }
+  
     }
-
+  }else{
+    echo "<script>alert('Invalid username or password!')</script>";
   }
+
+
 
 }
 
