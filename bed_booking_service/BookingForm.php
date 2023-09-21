@@ -102,6 +102,32 @@ if(isset($_POST['submit'])){
 
 ?>
 
+    <!-- for send mail to hospital for notify them that a patient booked a bed  -->
+
+
+    <!-- if(isset($_POST['submit'])){
+
+        // $mailid = $_GET['emailid'];
+        // $recp_name = $_GET['name'];
+        // $userid = $_GET['userid'];
+
+        $to_email = "sourav97972@gmail.com";//specific hospital email should be here
+        $subject = "Bed booked by a patient";
+        $body = "a bed is booked for patient.Here is the patient details
+        Name: $name
+        Contact number : $contact";
+
+        $headers = "From: emergencymedicalservices23@gmail.com";//this email was created for this project
+
+        if (mail($to_email, $subject, $body, $headers)) {
+            echo "Email sent ";
+        } else {
+            echo "Email failed";
+        }
+    } -->
+
+        <!-- mail code ends here  -->
+
 
 <!DOCTYPE html>
 <html lang="en">
