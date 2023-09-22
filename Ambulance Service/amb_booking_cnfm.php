@@ -1,3 +1,16 @@
+<?php
+    include_once("db_config/main_config.php");
+    $amb_no = $_GET['ambno'];
+    $distance = $_GET['dist'];
+    $query = "SELECT * FROM ambulance_info WHERE amb_no='$amb_no'";
+    $result = mysqli_query($con,$query);
+    if($result)
+    {
+        $rows = $result->fetch_assoc();
+    }
+    $otp_code = rand(1000,9999); 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,26 +29,31 @@
         <div class="card">
             <div class="column">
                 <h1 id="cnfm-msg"><i class="fa-solid fa-circle-check fa-bounce fa-2xl" style="color: #27b300;"></i> &nbsp;Booking Confirmed!</h1>
-                <div class="amb_info_cont">
+                <?php
+                    echo "<div class='amb_info_cont'>
                     <h3>Your ambulance is on it's way and will be here by 15 mins</h3>
-                    <h1 class="descp" id="title">Netaji Subhash Ambulance Service</h1>
-                    <p class="descp" id="card-address"><i class="fa-solid fa-location-dot"></i> WestBengal North - 24pgs Halisahar - 743135</p>
-                    <p class="descp" id="card-type">Normal/Life-support</p>
-                    <p class="descp" id="card-distance"><i class="fa-solid fa-route fa-lg" style="color: #00b37d;"></i> 50Km</p>
-                    <h2 class="descp" id="card-fare">&#8377 250/-</h2>
-                </div>
-                <div class="amb_info_cont">
-                    <h2>Contact details of ambulance driver.</h2>
-                    <p>Driver Name: Subhadip Das</p>
-                    <p>Ambulance No: WB24AB3625</p>
-                    <h2 id="otp_num">OTP - 5801</h2>
-                    <h4><em>Please share your live location on whatsapp and directly talk to your ambulance driver on phone call</em></h4>
-                    <div class="btn-row">
-                        <button class="btn wp-btn"><a href="//wa.me/919748329717"><i class="fa-brands fa-whatsapp fa-xl"></i>+919748329717</a></button>
+                    <h1 class='descp' id='title'>$rows[amb_name]</h1>
+                    <p class='descp' id='card-address'><i class='fa-solid fa-location-dot'></i> $rows[amb_state] $rows[amb_district] $rows[amb_town]</p>
+                    <p class='descp' id='card-type'>$rows[amb_type]</p>
+                    <p class='descp' id='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i> $distance Km</p>
+                    <h2 class='descp' id='card-fare'>&#8377 $rows[amb_rate]/-</h2>
+                </div>";
+                ?>
 
-                        <button class="btn call-btn"><a href="tel:9547568076"><i class="fa-solid fa-phone fa-xl"></i>+919547568076</a></button>
+                <?php
+                    echo "<div class='amb_info_cont'>
+                    <h2>Contact details of ambulance driver.</h2>
+                    <p>Driver Name: $rows[amb_driver_name]</p>
+                    <p>Ambulance No: $rows[amb_no]</p>
+                    <h2 id='otp_num'>OTP - $otp_code</h2>
+                    <h4><em>Please share your live location on whatsapp and directly talk to your ambulance driver on phone call</em></h4>
+                    <div class='btn-row'>
+                        <button class='btn wp-btn'><a href='//wa.me/91$rows[amb_contact]'><i class='fa-brands fa-whatsapp fa-xl'></i>+91$rows[amb_contact]</a></button>
+
+                        <button class='btn call-btn'><a href='tel:$rows[amb_contact]'><i class='fa-solid fa-phone fa-xl'></i>+91$rows[amb_contact]</a></button>
                     </div>
-                </div>
+                </div>";
+                ?>
             </div>
         </div>
     </div>

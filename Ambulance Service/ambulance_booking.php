@@ -50,6 +50,7 @@
         sin(radians(amb_loc_lat)))
      )) AS distance FROM `ambulance_info`";
 
+
     //   HAVING distance<=100
 
 ?>
@@ -126,7 +127,7 @@
                                 <p id='card-status'>$rows[amb_status]</p>
                             </div>
                             <div class='card-row'>
-                                <a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/amb_booking_form.php?ambno=$rows[amb_no]'><button class='btn btn-secondary-orange'>Book ride</button></a>
+                                <a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/amb_booking_form.php?ambno=$rows[amb_no]&dist=$rows[distance]&booklat=$lat_in_use&booklon=$lon_in_use'><button class='btn btn-secondary-orange'>Book ride</button></a>
                                 <p class='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i> $rows[distance]Km</p>
                                 <p class='card-fare'>&#8377 $rows[amb_rate]/-</p>
                             </div>
