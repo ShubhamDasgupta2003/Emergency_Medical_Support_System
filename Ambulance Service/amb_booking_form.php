@@ -1,3 +1,55 @@
+<?php
+    include_once("db_config/main_config.php");
+    date_default_timezone_set("Asia/calcutta");
+    // echo date("l jS \of F Y h:i:s A");
+
+    $slno_query = "SELECT COUNT(*) AS slno FROM user_ambulance";
+    $slno_result = mysqli_query($con,$slno_query);
+    if($slno_result)
+    {
+        $sl_row = $slno_result->fetch_assoc();
+    }
+
+    $bill_id = $sl_row['slno']+1;
+    $random_no = rand(100,999);
+    
+    $invoice_no = "IN#"."$random_no"."$bill_id";    //unique invoice id generated
+
+    $user_id = "USR3597175768";
+    $user_name = "Shubham Dasgupta";
+    $cur_date = date("Y-m-d");
+    $cur_time = date("H:i:s");
+    $amb_no = $_GET['ambno'];
+    $distance = $_GET['dist'];
+    $book_lat = $_GET['booklat'];
+    $book_lon = $_GET['booklon'];
+    // echo $amb_no;
+    $query = "SELECT * FROM ambulance_info WHERE amb_no='$amb_no'";
+    $result = mysqli_query($con,$query);
+    if($result)
+    {
+        $rows = $result->fetch_assoc();
+    }
+    $tot_fare = $rows['amb_rate'];
+    $amb_type = $rows['amb_type'];
+
+    if(isset($_POST['book_ride']))
+    {
+        $patient_name = $_POST['pat_name'];
+        $patient_age = $_POST['pat_age'];
+        $patient_gender = $_POST['gender'];
+
+        $book_ride_query = "INSERT INTO `user_ambulance`(`invoice_no`, `amb_no`, `amb_type`, `user_id`, `user_name`, `patient_name`, `patient_age`, `patient_gender`, `user_book_lat`, `user_book_long`, `booking_date`, `booking_time`, `total_fare`) VALUES ('$invoice_no','$amb_no','$amb_type','$user_id','$user_name','$patient_name','$patient_age','$patient_gender','$book_lat','$book_lon','$cur_date','$cur_time','$tot_fare')";
+
+        $insert_result = mysqli_query($con,$book_ride_query);
+        if($insert_result)
+        {
+            header("Location:amb_booking_cnfm.php?ambno=$amb_no&dist=$distance");
+        }
+    }
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,25 +68,26 @@
         <div class="card">
             <img src="https://maishacare.com/wp-content/uploads/2022/06/ambulance-service-van-emergency-medical-vehicle-vector-illustration-white-background-ambulance-service-van-emergency-medical-127018462.jpg" alt="">
             <div class="column">
-                <div class="amb_info_cont">
-                    <h1 class="descp" id="title">Netaji Subhash Ambulance Service</h1>
-                    <p class="descp" id="card-address"><i class="fa-solid fa-location-dot"></i> WestBengal North - 24pgs Halisahar - 743135</p>
-                    <p class="descp" id="card-type">Normal/Life-support</p>
-                    <p class="descp" id="card-distance"><i class="fa-solid fa-route fa-lg" style="color: #00b37d;"></i> 50Km</p>
-                    <h2 class="descp" id="card-fare">&#8377 250/-</h2>
-    
-                </div>
+                <?php
+                    echo "<div class='amb_info_cont'>
+                    <h1 class='descp' id='title'>$rows[amb_name]</h1>
+                    <h3><p class='descp' id='card-address'><i class='fa-solid fa-location-dot'></i> $rows[amb_state] $rows[amb_district] $rows[amb_town]</p></h3>
+                    <h3><p class='descp' id='card-type'>$rows[amb_type]</p></h3>
+                    <h2><p class='descp' id='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i>&nbsp&nbsp$distance km</p></h2>
+                    <h2 class='descp' id='card-fare'>&#8377 $rows[amb_rate]/-</h2>
+                    </div>";
+                ?>
                 <div class="patient_info_cont">
     
-                    <form action="/Ambulance Service/amb_booking_cnfm.html" method="get">
+                    <form method="post">
                         <label for="">Patient's Full Name<sup class="mandatory">*</sup></label>
-                        <input type="text" name="" id="" placeholder="Enter Patient's full name"  required>
+                        <input type="text" name="pat_name" id="" placeholder="Enter Patient's full name"  required>
 
                         <label for="">Age<sup class="mandatory">*</sup></label>
-                        <input type="number" name="" id="" placeholder="Patient's age" required>
+                        <input type="number" name="pat_age" id="" placeholder="Patient's age" required>
 
                         <label for="">Mobile No.<sup class="mandatory">*</sup></label>
-                        <input type="tel" name="" id="" placeholder="Contact number" required>
+                        <input type="tel" name="cont_num" id="" placeholder="Contact number" required>
 
                         <label for="">Gender<sup class="mandatory">*</sup></label>
                         <div class="row">
@@ -43,7 +96,7 @@
                         </div>
                         <label for="">Pickup Address</label>
                         <input type="text" name="" id="" value="Halisahar 743135" readonly>
-                        <button class="btn">Confirm Ride</button>
+                        <button class="btn" name="book_ride">Confirm Ride</button>
                     </form>
                 </div>
             </div>     
