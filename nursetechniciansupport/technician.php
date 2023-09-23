@@ -31,10 +31,10 @@
             <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <nav class="navbar">
-            <a class="navlink" href="/HomePage/index.html">Home</a>
-            <a class="navlink" href="/HomePage/index.html#services">Services</a>
-            <a class="navlink" href="/HomePage/index.html#review">Review</a>
-            <a class="navlink" href="/HomePage/index.html#footer">contact Us</a>
+            <a class="navlink" href="/HomePage/index.php">Home</a>
+            <a class="navlink" href="/HomePage/index.php#services">Services</a>
+            <a class="navlink" href="/HomePage/index.php#review">Review</a>
+            <a class="navlink" href="/HomePage/index.php#footer">contact Us</a>
         </nav>
 
         <a href="#" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
