@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aya</title>
+    <title>Technician</title>
     <!-- cdn link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
@@ -54,43 +54,44 @@
     <section class="body-container">
         <div>
             <nav class="segmented-navigation">
-                <a href="aya.html" class="segmented-item active">Aya</a>
-                <a href="nurse.html" class="segmented-item">Nurse</a>
-                <a href="technician.html" class="segmented-item">Technician</a>
+                <a href="aya.php" class="segmented-item">Aya</a>
+                <a href="nurse.php" class="segmented-item ">Nurse</a>
+                <a href="technician.php" class="segmented-item active">Technician</a>
               </nav>
             </div>
         <div class="contents">
 
             <!-- Your content goes here | check body_cont.css file for css property-->
-            <div class="cards">
-                <div class="card">
+            <?php
+                    include "connect.php";
+                    $query = "SELECT * FROM emp_medtech em INNER JOIN org_medtech om
+                    ON em.org_id = om.org_id;";
+                    $query_run=mysqli_query($conn,$query);
+                    $check_data= mysqli_num_rows($query_run)>0;
+                    if($check_data){
+                        while($row= mysqli_fetch_assoc($query_run)){
+                            if( $row['org_type']=='m'){
+                            ?>
+
+                        <div class="cards">
+                        <div class="card">
                         <div class="card-part1"> <img
                             src="images/employee.png"
                           /></div>
                           <div class="card-part2">
-                            <strong>Aya Ramesh Roy</strong>
-                            <p><strong>Organization:</strong> XYZ Service</p>
-                           <p> A Medical Technician is a medical professional who plays a vital part in the health care industry by providing support for physicians and hospitals.</p>
-                           <strong><span style="color: red;">INR 500 per day</span></strong>
-                            <br>
-                            <br>
-                            <button class="btn btn-secondary-orange">Book</button></div>
-            </div>
-            <div class="card">
-                        <div class="card-part1"> <img
-                            src="images/employee.png"
-                          /></div>
-                          <div class="card-part2">
-                            <strong>Aya Ramesh Roy</strong>
-                            <p><strong>Organization:</strong> XYZ Service</p>
+                            <strong><?php echo $row['ename']?></strong>
+                            <p><strong>Organization:</strong> <?php echo $row['org_name']?></p>
                             <p> A Medical Technician is a medical professional who plays a vital part in the health care industry by providing support for physicians and hospitals.</p>
-                            <strong><span style="color: red;">INR 500 per day</span></strong>
-                            <br>
+                            <strong><span style="color: red;">INR <?php echo $row['salary']?> Pre</span></strong><br>
                             <br>
                             <button class="btn btn-secondary-orange">Book</button></div>
-            </div>
-    </div>
-            
+                            </div>
+                            </div>
+                            <?php
+                            }
+
+                        }
+                    }?>      
      <!-- Location window popup starts here -->
             <div class="location-window" id="loc-win">
                 <div class="card popup">
