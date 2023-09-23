@@ -87,12 +87,13 @@
                             <br>
                             <button class="btn btn-secondary-orange">Book</button></div>
                             </div> 
+                            </div>
                             <?php
                             }
 
                         }
                     }?>
-    </div>
+    
             
      <!-- Location window popup starts here -->
             <div class="location-window" id="loc-win">
