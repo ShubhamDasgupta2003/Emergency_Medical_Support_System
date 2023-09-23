@@ -1,12 +1,13 @@
 <?php
-// session_start();
   include_once("db_config/main_config.php");
-
 
 ?>
 
 
 <?php
+session_start();
+$_SESSION['is_logged_in'] = 0;
+
 if(isset($_POST['login'])){
   $email_num=$_POST['email_number'];
   $password=$_POST['password'];
@@ -23,8 +24,16 @@ if(isset($_POST['login'])){
       $storedpassword= $row['password'];
   
       if(password_verify($password,$storedpassword)){
+
+        // all the session variables are here 
+        $_SESSION['user_id'] = $row['user_id'];
+        $_SESSION['user_fname'] = $row['user_first_name'];
+        $_SESSION['user_lname'] = $row['user_last_name'];
+        $_SESSION['is_logged_in'] = 1;
+        // ends here 
         header("location:index.php");
       }else{
+        $_SESSION['is_logged_in'] = 0; // if user is not logged in , use this session variable
         echo "<script>alert('Password incorrect! Enter a valid password')</script>";
       }
   
@@ -42,12 +51,10 @@ if(isset($_POST['login'])){
 
 
 <!DOCTYPE html>
-<!---Coding By CodingLab | www.codinglabweb.com--->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" /> -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="css/login.css" />
   </head>
@@ -70,10 +77,9 @@ if(isset($_POST['login'])){
         <button name="login" id="sbmt-form">login</button>
         <div class="signuplink">
           <div class="text">New user?</div>
-          <a href="signup.php">click here</a>
+          <a href="signup.php?refresh=0">click here</a>
         </div>
       </form>
     </section>
-    <!-- <script src="login_final.js"></script> -->
   </body>
 </html>

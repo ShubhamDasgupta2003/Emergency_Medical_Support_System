@@ -1,4 +1,10 @@
 <?php
+
+    session_start();
+
+    echo $_SESSION['user_id'];
+    echo $_SESSION['user_fname'];
+    // echo $_SESSION[''];
     include_once("db_config/main_config.php");
     date_default_timezone_set("Asia/calcutta");
     // echo date("l jS \of F Y h:i:s A");
@@ -20,10 +26,11 @@
     $cur_date = date("Y-m-d");
     $cur_time = date("H:i:s");
     $amb_no = $_GET['ambno'];
+    $pickup = $_GET['book_adrs'];
     $distance = $_GET['dist'];
     $book_lat = $_GET['booklat'];
     $book_lon = $_GET['booklon'];
-    // echo $amb_no;
+    // echo $pickup;
     $query = "SELECT * FROM ambulance_info WHERE amb_no='$amb_no'";
     $result = mysqli_query($con,$query);
     if($result)
@@ -95,7 +102,7 @@
                             <input type="radio" name="gender" value="female"> Female
                         </div>
                         <label for="">Pickup Address</label>
-                        <input type="text" name="" id="" value="Halisahar 743135" readonly>
+                        <textarea type="text" name="" id="" readonly><?php echo $pickup;?></textarea>
                         <button class="btn" name="book_ride">Confirm Ride</button>
                     </form>
                 </div>
