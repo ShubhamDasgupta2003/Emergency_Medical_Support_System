@@ -1,3 +1,8 @@
+<?php
+    include_once("db_config/main_config.php");
+    $_COOKIE[""]
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -224,7 +229,7 @@
                 <img src="images/ambulance.png" alt="">
                 <h3>24x7 Ambulance</h3>
                 <p>  soluta a, pariatur dolore odit vadipisci fugiat..</p>
-                <a href="/Ambulance Service/ambulance_booking.html" class="btn">learn more <span class="fa fa-chevron-right"></span></a>
+                <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/ambulance_booking.php" class="btn">learn more <span class="fa fa-chevron-right"></span></a>
             </div>
 
             <div class="box">

@@ -5,6 +5,9 @@
 
 
 <?php
+session_start();
+$_SESSION['is_logged_in'] = 0;
+
 if(isset($_POST['login'])){
   $email_num=$_POST['email_number'];
   $password=$_POST['password'];
@@ -23,7 +26,6 @@ if(isset($_POST['login'])){
       if(password_verify($password,$storedpassword)){
 
         // all the session variables are here 
-        session_start();
         $_SESSION['user_id'] = $row['user_id'];
         $_SESSION['user_fname'] = $row['user_first_name'];
         $_SESSION['user_lname'] = $row['user_last_name'];
@@ -75,7 +77,7 @@ if(isset($_POST['login'])){
         <button name="login" id="sbmt-form">login</button>
         <div class="signuplink">
           <div class="text">New user?</div>
-          <a href="signup.php">click here</a>
+          <a href="signup.php?refresh=0">click here</a>
         </div>
       </form>
     </section>

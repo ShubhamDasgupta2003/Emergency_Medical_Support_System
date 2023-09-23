@@ -17,7 +17,8 @@ function openPopup()
 {
     locationWin.style.display = 'flex';
     // document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    window.location.href = "#";
+    // document.documentElement.scrollTop = 0;
     document.body.classList.add("disable-scroll");
     root.classList.add("disable-scroll");
 }
