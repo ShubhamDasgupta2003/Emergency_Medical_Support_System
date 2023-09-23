@@ -40,7 +40,7 @@
         }
     }
 
-    $query = "SELECT `amb_no`, `amb_name`, `amb_type`, `amb_status`, `amb_loc_lat`, `amb_loc_long`, `amb_rate`, `amb_contact`, `amb_driver_name`, `amb_state`, `amb_district`, `amb_town`, `amb_loc_pincode`,round((
+    $query = "SELECT `amb_no`, `amb_name`, `amb_type`, `amb_status`, `amb_loc_lat`, `amb_loc_long`, `amb_rate`, `amb_contact`, `amb_driver_name`, `amb_state`, `amb_district`, `amb_town`, `amb_loc_pincode`,ROUND((
         6371 *
         acos(cos(radians($lat_in_use)) * 
         cos(radians(amb_loc_lat)) * 
@@ -48,7 +48,7 @@
         radians(amb_loc_long)) + 
         sin(radians($lat_in_use)) * 
         sin(radians(amb_loc_lat)))
-     )) AS distance FROM `ambulance_info`";
+     ),1) AS distance FROM `ambulance_info`";
 
 
     //   HAVING distance<=100
@@ -128,7 +128,7 @@
                             </div>
                             <div class='card-row'>
                                 <a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/amb_booking_form.php?ambno=$rows[amb_no]&dist=$rows[distance]&booklat=$lat_in_use&booklon=$lon_in_use&book_adrs=$full_address'><button class='btn btn-secondary-orange'>Book ride</button></a>
-                                <p class='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i> $rows[distance]Km</p>
+                                <p class='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i> $rows[distance] Km</p>
                                 <p class='card-fare'>&#8377 $rows[amb_rate]/-</p>
                             </div>
                             

@@ -2,7 +2,7 @@
   $is_refreshed = $_GET['refresh'];
   if($is_refreshed==0)
   {
-    header("Refresh: 0; url=signup.php?refresh=1");
+    header("Refresh: 2; url=signup.php?refresh=1");
   }
 
   include_once("db_config/main_config.php");

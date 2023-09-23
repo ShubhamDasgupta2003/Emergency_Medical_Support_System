@@ -12,7 +12,9 @@
     
     UPDATE `ambulance_info` SET `amb_no` = 'WB24B3446' WHERE `ambulance_info`.`amb_no` = '0';
     
-    ALTER TABLE user_info ADD COLUMN formatted_adrrs varchar(255);";
+    ALTER TABLE user_info ADD COLUMN formatted_adrrs varchar(255);
+    
+    INSERT INTO `ambulance_info` (`amb_no`, `amb_name`, `amb_type`, `amb_status`, `amb_loc_lat`, `amb_loc_long`, `amb_rate`, `amb_contact`, `amb_driver_name`, `amb_state`, `amb_district`, `amb_town`, `amb_loc_pincode`) VALUES ('WB24AZ5732', 'Shivaji Ambulance Service', 'Life-support', 'busy', '22.9171249', '88.4379298', '200', '8697921086', 'Sorav Dutta', 'West Bengal', 'North 24 parganas', 'Halisahar', '743135');";
 
     $result = mysqli_multi_query($con,$query);
 

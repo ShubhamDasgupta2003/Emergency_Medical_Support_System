@@ -1,13 +1,20 @@
 <?php
 
     session_start();
+    session_destroy();
+    $uid =  $_SESSION['user_id'];
+    $ufname =  $_SESSION['user_fname'];
+    $ulname = $_SESSION['user_lname'];
+    $islogin =  $_SESSION['is_logged_in'];
 
-    echo $_SESSION['user_id'];
-    echo $_SESSION['user_fname'];
-    // echo $_SESSION[''];
+    if($islogin!=1)
+    {
+        echo "<script>alert('It seems like you have not logged in\\nPlease login to book your ride');
+        window.location.href = '/minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/login.php'</script>";
+    }
+
     include_once("db_config/main_config.php");
     date_default_timezone_set("Asia/calcutta");
-    // echo date("l jS \of F Y h:i:s A");
 
     $slno_query = "SELECT COUNT(*) AS slno FROM user_ambulance";
     $slno_result = mysqli_query($con,$slno_query);
