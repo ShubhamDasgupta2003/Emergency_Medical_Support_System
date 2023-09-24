@@ -29,6 +29,7 @@ if(isset($_POST['login'])){
         $_SESSION['user_id'] = $row['user_id'];
         $_SESSION['user_fname'] = $row['user_first_name'];
         $_SESSION['user_lname'] = $row['user_last_name'];
+        $_SESSION['user_email'] = $row['user_email'];
         $_SESSION['is_logged_in'] = 1;
         // ends here 
         header("location:index.php");

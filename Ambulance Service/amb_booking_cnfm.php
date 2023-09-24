@@ -2,13 +2,14 @@
     include_once("db_config/main_config.php");
     $amb_no = $_GET['ambno'];
     $distance = $_GET['dist'];
+    $otp_code = $_GET['otp'];
+
     $query = "SELECT * FROM ambulance_info WHERE amb_no='$amb_no'";
     $result = mysqli_query($con,$query);
     if($result)
     {
         $rows = $result->fetch_assoc();
     }
-    $otp_code = rand(1000,9999); 
 ?>
 
 <!DOCTYPE html>

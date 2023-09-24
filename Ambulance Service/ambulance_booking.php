@@ -1,15 +1,20 @@
 <?php
+    session_start();
+    $islogin =  $_SESSION['is_logged_in'];
+    if($islogin!=1)
+    {
+        echo "<script>alert('It seems like you have not logged in\\nPlease login to book your ride');
+        window.location.href = '/minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/login.php'</script>";
+    }
     //Path for main config file 
     include_once("db_config/main_config.php");
 
     //Backend for location modification starts here
     setcookie("loc_modify","false");
 
-    session_start();
     $uid =  $_SESSION['user_id'];
     $ufname =  $_SESSION['user_fname'];
     $ulname = $_SESSION['user_lname'];
-    $islogin =  $_SESSION['is_logged_in'];
 
     $lat_in_use = 0.0;
     $lon_in_use = 0.0;
@@ -56,7 +61,7 @@
         radians(amb_loc_long)) + 
         sin(radians($lat_in_use)) * 
         sin(radians(amb_loc_lat)))
-     ),1) AS distance FROM `ambulance_info`";
+     ),1) AS distance FROM `ambulance_info` WHERE amb_status='active' ORDER BY distance";
 
 
     //   HAVING distance<=100
@@ -132,14 +137,16 @@
                             </p>
                             <div class='card-row'>
                                 <p class='card-type'>$rows[amb_type]</p>
-                                <p id='card-status'>$rows[amb_status]</p>
+                                
                             </div>
                             <div class='card-row'>
-                                <a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/amb_booking_form.php?ambno=$rows[amb_no]&dist=$rows[distance]&booklat=$lat_in_use&booklon=$lon_in_use&book_adrs=$full_address'><button class='btn btn-secondary-orange'>Book ride</button></a>
                                 <p class='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i> $rows[distance] Km</p>
                                 <p class='card-fare'>&#8377 $rows[amb_rate]/-</p>
                             </div>
-                            
+                            <div class='card-row'>
+                                <a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/amb_booking_form.php?ambno=$rows[amb_no]&dist=$rows[distance]&booklat=$lat_in_use&booklon=$lon_in_use&book_adrs=$full_address'><button class='btn btn-secondary-orange'>Book ride</button></a>
+                                <p id='card-status'>$rows[amb_status]</p>
+                            </div>
                         </div>
                     </div>";
                     }

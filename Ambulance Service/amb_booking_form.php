@@ -1,4 +1,5 @@
 <?php
+    //TO DO : Update query to set status busy when amb book_ride
 
     session_start();
     $uid =  $_SESSION['user_id'];
@@ -25,10 +26,10 @@
     $bill_id = $sl_row['slno']+1;
     $random_no = rand(100,999);
     
-    $invoice_no = "IN#"."$random_no"."$bill_id";    //unique invoice id generated
+    $invoice_no = "IN"."$random_no"."$bill_id";    //unique invoice id generated
 
     $user_id = $uid;
-    $user_name = "$ufname"."$ulname";
+    $user_name = "$ufname "."$ulname";
     $cur_date = date("Y-m-d");
     $cur_time = date("H:i:s");
     $amb_no = $_GET['ambno'];
@@ -37,7 +38,9 @@
     $book_lat = $_GET['booklat'];
     $book_lon = $_GET['booklon'];
     // echo $pickup;
+
     $query = "SELECT * FROM ambulance_info WHERE amb_no='$amb_no'";
+
     $result = mysqli_query($con,$query);
     if($result)
     {
@@ -45,7 +48,8 @@
     }
     $tot_fare = $rows['amb_rate'];
     $amb_type = $rows['amb_type'];
-
+    $amb_driver = $rows['amb_driver_name'];
+    $amb_name = $rows['amb_name'];
     if(isset($_POST['book_ride']))
     {
         $patient_name = $_POST['pat_name'];
@@ -54,10 +58,16 @@
 
         $book_ride_query = "INSERT INTO `user_ambulance`(`invoice_no`, `amb_no`, `amb_type`, `user_id`, `user_name`, `patient_name`, `patient_age`, `patient_gender`, `user_book_lat`, `user_book_long`, `booking_date`, `booking_time`, `total_fare`) VALUES ('$invoice_no','$amb_no','$amb_type','$user_id','$user_name','$patient_name','$patient_age','$patient_gender','$book_lat','$book_lon','$cur_date','$cur_time','$tot_fare')";
 
-        $insert_result = mysqli_query($con,$book_ride_query);
-        if($insert_result)
+        $amb_stat_update_query = "UPDATE ambulance_info SET amb_status='busy' WHERE amb_no='$amb_no'";
+
+        $update_result = mysqli_query($con,$amb_stat_update_query);
+        if($update_result)
         {
-            header("Location:amb_booking_cnfm.php?ambno=$amb_no&dist=$distance");
+            $insert_result = mysqli_query($con,$book_ride_query);
+            if($insert_result)
+            {
+                header("Location:amb_invoice_mail.php?ambno=$amb_no&ambname=$amb_name&driver=$amb_driver&fare=$tot_fare&dist=$distance&billno=$invoice_no");
+            }
         }
     }
     
