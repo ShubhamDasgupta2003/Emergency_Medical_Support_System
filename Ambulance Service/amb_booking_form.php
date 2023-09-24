@@ -1,7 +1,6 @@
 <?php
 
     session_start();
-    session_destroy();
     $uid =  $_SESSION['user_id'];
     $ufname =  $_SESSION['user_fname'];
     $ulname = $_SESSION['user_lname'];
@@ -28,8 +27,8 @@
     
     $invoice_no = "IN#"."$random_no"."$bill_id";    //unique invoice id generated
 
-    $user_id = "USR3597175768";
-    $user_name = "Shubham Dasgupta";
+    $user_id = $uid;
+    $user_name = "$ufname"."$ulname";
     $cur_date = date("Y-m-d");
     $cur_time = date("H:i:s");
     $amb_no = $_GET['ambno'];
