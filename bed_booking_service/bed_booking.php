@@ -87,9 +87,12 @@
                                     </span>
                                 <strong>$row[Female_bed_available]</strong>
                             </p>
+                        <div class='card-row' >
+                            <p class='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i> 100 Km</p>
                             <a href='BookingForm.php?hospitalid=$row[Id]' target='_blank'>
                                 <button id='c1' class='btn btn-secondary-orange'>Book Bed</button>
                             </a>
+                        </div>
                         </div>
                     </div> ";
 
