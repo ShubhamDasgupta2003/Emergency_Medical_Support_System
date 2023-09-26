@@ -46,7 +46,8 @@
     {
         $rows = $result->fetch_assoc();
     }
-    $tot_fare = $rows['amb_rate'];
+    $amb_rate = $rows['amb_rate'];
+    $tot_fare = $amb_rate*$distance;
     $amb_type = $rows['amb_type'];
     $amb_driver = $rows['amb_driver_name'];
     $amb_name = $rows['amb_name'];
@@ -92,12 +93,13 @@
             <img src="https://maishacare.com/wp-content/uploads/2022/06/ambulance-service-van-emergency-medical-vehicle-vector-illustration-white-background-ambulance-service-van-emergency-medical-127018462.jpg" alt="">
             <div class="column">
                 <?php
+                    $amb_fare = $distance * $rows['amb_rate'];
                     echo "<div class='amb_info_cont'>
                     <h1 class='descp' id='title'>$rows[amb_name]</h1>
                     <h3><p class='descp' id='card-address'><i class='fa-solid fa-location-dot'></i> $rows[amb_state] $rows[amb_district] $rows[amb_town]</p></h3>
                     <h3><p class='descp' id='card-type'>$rows[amb_type]</p></h3>
                     <h2><p class='descp' id='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i>&nbsp&nbsp$distance km</p></h2>
-                    <h2 class='descp' id='card-fare'>&#8377 $rows[amb_rate]/-</h2>
+                    <h2 class='descp' id='card-fare'>&#8377 $amb_fare/-</h2>
                     </div>";
                 ?>
                 <div class="patient_info_cont">
@@ -121,6 +123,7 @@
                         <textarea type="text" name="" id="" readonly><?php echo $pickup;?></textarea>
                         <button class="btn" name="book_ride">Confirm Ride</button>
                     </form>
+                    <a href="ambulance_booking.php"><button class="btn-danger" name="cancel_ride">Cancel Ride</button></a>
                 </div>
             </div>     
         </div>
