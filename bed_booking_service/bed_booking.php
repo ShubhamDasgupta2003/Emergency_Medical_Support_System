@@ -176,7 +176,11 @@
                     </div>
                     <div class="loc-head">
                         <div class="loc-option-tab">
-                            <label for="" id="location-txt"></label>
+                            <label for="" id="location-txt">
+                                <?php
+                                    echo "$full_address";
+                                ?>
+                            </label>
                         </div>
                     </div>
                 </div>
