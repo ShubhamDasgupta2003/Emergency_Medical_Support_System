@@ -2,6 +2,41 @@
     include_once("config.php");
 ?>
 
+
+
+
+<?php
+
+//get route code starts here
+$id=$_GET['hosid'];
+$query="SELECT `Latitude`,`Longitude` FROM `hospital_info` WHERE Id=$id";
+$result=mysqli_query($conn,$query);
+if($result){
+    $row=mysqli_fetch_assoc($result);
+    $hosp_latitude= $row['Latitude'];
+    $hosp_longitude= $row['Longitude'];
+    //  echo "$hosp_latitude,$hosp_longitude";
+
+
+    echo json_encode(array('Latitude' => $hosp_latitude, 'Longitude' => $hosp_longitude));
+}
+
+
+
+//get route code ends here
+?>
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,7 +91,7 @@
         </div>
         <!-- <p>Go back to <a href="/">Homepage</a></p> -->
         <div class="btns">
-            <button class="btn">get route</button>
+            <button name="get_route" class="btn">get route</button>
             <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/">
                 <button class="btn">go to homepage</button>
             </a>
