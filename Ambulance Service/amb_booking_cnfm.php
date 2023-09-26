@@ -31,13 +31,14 @@
             <div class="column">
                 <h1 id="cnfm-msg"><i class="fa-solid fa-circle-check fa-bounce fa-2xl" style="color: #27b300;"></i> &nbsp;Booking Confirmed!</h1>
                 <?php
+                    $amb_fare = $distance * $rows['amb_rate'];
                     echo "<div class='amb_info_cont'>
                     <h3>Your ambulance is on it's way and will be here by 15 mins</h3>
                     <h1 class='descp' id='title'>$rows[amb_name]</h1>
                     <p class='descp' id='card-address'><i class='fa-solid fa-location-dot'></i> $rows[amb_state] $rows[amb_district] $rows[amb_town]</p>
                     <p class='descp' id='card-type'>$rows[amb_type]</p>
                     <p class='descp' id='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i> $distance Km</p>
-                    <h2 class='descp' id='card-fare'>&#8377 $rows[amb_rate]/-</h2>
+                    <h2 class='descp' id='card-fare'>&#8377 $amb_fare/-</h2>
                 </div>";
                 ?>
 
