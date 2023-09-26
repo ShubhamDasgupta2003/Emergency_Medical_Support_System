@@ -174,9 +174,9 @@ if(isset($_POST['submit'])){
         $subject = "Confirmation and Information for Your Hospital Bed Reservation";
         $body = "Dear $recp_name,
 
-------------------------------------------------------------------------------------------------------------------
+We are writing to confirm and provide important information regardinyoureservation for a hospital bed at $hosp_name . We appreciate your trust in our Swasth Sampark services and look forward to assisting you in future.
 
-We are writing to confirm and provide important information regarding youreservation for a hospital bed at $hosp_name . We appreciate your trust in ouSwasth Sampark services and look forward to assisting you in future.
+---------------------------------------------------------------------------
 
 
 Patient details:
