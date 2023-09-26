@@ -2,41 +2,6 @@
     include_once("config.php");
 ?>
 
-
-
-
-<?php
-
-//get route code starts here
-$id=$_GET['hosid'];
-$query="SELECT `Latitude`,`Longitude` FROM `hospital_info` WHERE Id=$id";
-$result=mysqli_query($conn,$query);
-if($result){
-    $row=mysqli_fetch_assoc($result);
-    $hosp_latitude= $row['Latitude'];
-    $hosp_longitude= $row['Longitude'];
-    //  echo "$hosp_latitude,$hosp_longitude";
-
-
-    echo json_encode(array('Latitude' => $hosp_latitude, 'Longitude' => $hosp_longitude));
-}
-
-
-
-//get route code ends here
-?>
-
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
