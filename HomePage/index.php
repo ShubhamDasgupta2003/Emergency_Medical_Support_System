@@ -243,7 +243,7 @@
                 <img src="images/bed.png" alt="">
                 <h3>Book Bed </h3>
                 <p> soluta a, pariatur dolore odit vadipisci fugiat.</p>
-                <a href="/bed_booking_service/bed_booking.html" class="btn">learn more <span class="fa fa-chevron-right"></span></a>
+                <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/bed_booking_service/bed_booking.php" class="btn">learn more <span class="fa fa-chevron-right"></span></a>
             </div>
 
             <div class="box">

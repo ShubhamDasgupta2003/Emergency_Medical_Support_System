@@ -27,6 +27,7 @@ if(isset($_POST['submit'])){
     $age=$_POST['age'];
     $contact=$_POST['contact'];
     $dob=$_POST['dob'];
+    $p_email=$_POST['email'];
     $address2=$_POST['address2'];
     $city=$_POST['city'];
     $pin=$_POST['pin'];
@@ -91,7 +92,7 @@ if(isset($_POST['submit'])){
     //'storing hospitaal name in patient table accordingly' php code ends here
 
 
-    $sql2="INSERT INTO `patient_booking_info` (Hospital_name,Patient_id,Patient_name,Gender,Age,ContactNo,Dob,address2,City,Pin,Booking_date) VALUES ('$row[Name]','$patient_id','$name','$gender','$age','$contact','$dob','$address2','$city','$pin','$bookdatetime')";
+    $sql2="INSERT INTO `patient_booking_info` (Hospital_name,Patient_id,Patient_name,Gender,Age,ContactNo,Dob,email,address2,City,Pin,Booking_date) VALUES ('$row[Name]','$patient_id','$name','$gender','$age','$contact','$dob','$email','$address2','$city','$pin','$bookdatetime')";
     $result=mysqli_query($conn,$sql2);
 
 
@@ -108,31 +109,61 @@ if(isset($_POST['submit'])){
 
 ?>
 
-    <!-- for send mail to hospital for notify them that a patient booked a bed  -->
 
 
-    <!-- if(isset($_POST['submit'])){
 
-        // $mailid = $_GET['emailid'];
-        // $recp_name = $_GET['name'];
-        // $userid = $_GET['userid'];
+<!-- 
+        $id=$_GET['hospitalid'];
+        $sql= "SELECT * FROM `hospital_info` where Id=$id";
+        $result= mysqli_query($conn,$sql);
+        $row=mysqli_fetch_assoc($result);
 
-        $to_email = "sourav97972@gmail.com";//specific hospital email should be here
-        $subject = "Bed booked by a patient";
-        $body = "a bed is booked for patient.Here is the patient details
-        Name: $name
-        Contact number : $contact";
 
-        $headers = "From: emergencymedicalservices23@gmail.com";//this email was created for this project
+
+
+if(isset($_POST['submit'])){
+
+
+        $email = $p_email;
+        $recp_name = $name;
+        $p_contact = $contact;
+        $p_id= $patient_id;
+
+        $hosp_name= "$row[Name]";
+        $hosp_contact= "$row[ContactNo]";
+        $hosp_address= "$row[Address]";
+
+
+        $to_email = "$email";
+        $subject = "Confirmation and Information for Your Hospital Bed Reservation";
+        $body = "Dear $recp_name,
+
+We are writing to confirm and provide important information regardinyoureservation for a hospital bed at $hosp_name . We appreciate your trust in our Swasth Sampark services and look forward to assisting you in future.
+
+---------------------------------------------------------------------------
+
+
+Patient details:
+
+Patient name: $recp_name
+Patient id: $p_id
+
+Hospital details:
+
+Name: $hosp_name
+Contact number: $hosp_contact
+Address: $hosp_address";
+
+        $headers = "From: emergencymedicalservices23@gmail.com";
 
         if (mail($to_email, $subject, $body, $headers)) {
             echo "Email sent ";
         } else {
             echo "Email failed";
         }
-    } -->
+} -->
 
-        <!-- mail code ends here  -->
+
 
 
 <!DOCTYPE html>
@@ -216,6 +247,10 @@ if(isset($_POST['submit'])){
                             </div>
                         </div>
                     </div>
+                    <div class="input-box" id="age">
+                            <label>Email address</label>
+                            <input type="email" name="email" placeholder="Enter email address" required />
+                        </div>
                     <div class="input-box" id="age">
                             <label>Aadhaar card</label>
                             <input type="number" name="adhr_num" placeholder="Enter aadhaar card number" required />

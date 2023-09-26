@@ -56,7 +56,7 @@
         </div>
         <!-- <p>Go back to <a href="/">Homepage</a></p> -->
         <div class="btns">
-            <button class="btn">get route</button>
+            <button name="get_route" class="btn">get route</button>
             <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/">
                 <button class="btn">go to homepage</button>
             </a>

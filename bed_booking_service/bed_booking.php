@@ -1,9 +1,62 @@
 <?php
 
     include_once("config.php");
-    $query = "SELECT * FROM hospital_info";
-    $result = mysqli_query($conn,$query);
+    session_start();
+    // $query = "SELECT * FROM hospital_info";
+    // $result = mysqli_query($conn,$query);
 
+    //Backend for location modification starts here
+    setcookie("loc_modify","false");
+
+    $uid =  $_SESSION['user_id'];
+    $ufname =  $_SESSION['user_fname'];
+    $ulname = $_SESSION['user_lname'];
+
+    $lat_in_use = 0.0;
+    $lon_in_use = 0.0;
+    $full_address = "";
+    $loc_query = "SELECT lat_in_use,long_in_use,formatted_adrrs FROM user_info WHERE user_id='$uid'";
+
+    $loc_result = mysqli_query($conn,$loc_query);
+    $loc_rows = $loc_result->fetch_assoc();
+
+    if($loc_result)
+    {
+        $lat_in_use = $loc_rows['lat_in_use'];
+        $lon_in_use = $loc_rows['long_in_use'];
+        $full_address = $loc_rows['formatted_adrrs'];
+    }
+    else
+    {
+        echo "error";
+    }
+
+    if($_COOKIE['loc_modify'] == 'true')
+    {
+        $mod_lat = $_COOKIE['lat_in_use'];
+        $mod_lon = $_COOKIE['lon_in_use'];
+        $mod_addrs = $_COOKIE['address_in_use'];
+
+        $loc_mod_query = "UPDATE user_info SET lat_in_use=$mod_lat,long_in_use=$mod_lon,formatted_adrrs='$mod_addrs' WHERE user_id='$uid'";
+
+        $mod_loc_result = mysqli_query($conn,$loc_mod_query);
+
+        if($mod_loc_result)
+        {
+            header("Refresh: 1");
+        }
+    }
+        //Backend for location modification ends here
+
+    $query= "SELECT `Id`, `Name`, `ContactNo`, `email`, `Address`, `State`, `District`, `City`, `Pincode`, `Latitude`, `Longitude`, `Male_bed_available`, `Female_bed_available`, `Bed_charge`, ROUND((
+    6371 *
+    acos(cos(radians($lat_in_use)) * 
+    cos(radians(Latitude)) * 
+    cos(radians($lon_in_use) - 
+    radians(Longitude)) + 
+    sin(radians($lat_in_use)) * 
+    sin(radians(Latitude)))
+    ),1) AS distance FROM `hospital_info` ORDER BY distance";
 ?>
 
 
@@ -67,6 +120,7 @@
             <div class="cards">
                 <?php
                 
+                $result = mysqli_query($conn,$query);
                 if($result){
                     while($row=mysqli_fetch_assoc($result)){
 
@@ -87,9 +141,12 @@
                                     </span>
                                 <strong>$row[Female_bed_available]</strong>
                             </p>
+                        <div class='card-row' >
+                            <p class='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i>$row[distance] Km</p>
                             <a href='BookingForm.php?hospitalid=$row[Id]' target='_blank'>
                                 <button id='c1' class='btn btn-secondary-orange'>Book Bed</button>
                             </a>
+                        </div>
                         </div>
                     </div> ";
 
