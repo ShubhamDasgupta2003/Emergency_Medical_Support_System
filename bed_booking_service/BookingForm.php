@@ -2,10 +2,6 @@
 
     include_once("config.php");
     session_start();
-    if($_SESSION['is_logged_in'] == 0){
-        header("refresh:0 ; url=/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/login.php");
-        echo "<script>alert('Please login before book bed. Press ok to go to login page.')</script>";
-    }
 
     date_default_timezone_set("Asia/Kolkata");
     $query = "SELECT * FROM hospital_info";
