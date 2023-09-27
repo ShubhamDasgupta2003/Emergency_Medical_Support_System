@@ -10,7 +10,7 @@ $userid = $_SESSION['user_id'];
 $ambno = $_GET['ambno'];
 $ambname = $_GET['ambname'];
 $ambdriver = $_GET['driver'];
-$ambfare = $_GET['fare'];
+$amb_fare = $_GET['fare'];
 $ambdist = $_GET['dist'];
 $billno = $_GET['billno'];
 
@@ -26,7 +26,7 @@ Ambulance no: $ambno
 Distance travelling: $ambdist Km
 
 You can pay via any of your preferred payment method
-Your subtotal amount is: Rs $ambfare /-
+Your subtotal amount is: Rs $amb_fare /-
 
 Your driver will contact you when he reaches your destination.
 He will help you to handle the patient properly.

@@ -80,6 +80,9 @@ if(isset($_POST['login'])){
           <div class="text">New user?</div>
           <a href="signup.php?refresh=0">click here</a>
         </div>
+        <div class="signuplink">
+        <a href="signup.php?refresh=0">Forgot password</a>
+        </div>
       </form>
     </section>
   </body>

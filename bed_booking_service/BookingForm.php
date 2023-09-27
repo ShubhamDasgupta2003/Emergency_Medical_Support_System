@@ -109,42 +109,10 @@ if(isset($_POST['submit'])){
 
 ?>
 
-    <!-- for send mail to hospital for notify them that a patient booked a bed  -->
+
+
 
 <!-- 
-    $p_id=$_SESSION['p_id'];
-
-    $p_mail_query = "SELECT * FROM `patient_booking_info` WHERE Patient_id = '$p_id'";
-    $result=mysqli_query($conn,$p_mail_query);
-    if($result){
-        $p_row=mysqli_fetch_assoc($result);
-    }else{
-        echo "error";
-    }
-    if(isset($_POST['submit'])){
-
-        $email = $p_row['email'];
-        $recp_name = $p_row['name'];
-        // $userid = $_GET['userid'];
-        $contact = $p_row['ContactNo'];
-
-        $to_email = "$email";
-        $subject = "Bed booked successfully";
-        $body = "Your bed booking is done. Here are the details
-        Patient name: $recp_name
-        Contact number : $contact";
-
-        $headers = "From: emergencymedicalservices23@gmail.com";//this email was created for this project
-
-        if (mail($to_email, $subject, $body, $headers)) {
-            echo "Email sent ";
-        } else {
-            echo "Email failed";
-        }
-    } -->
-
-<?php
-
         $id=$_GET['hospitalid'];
         $sql= "SELECT * FROM `hospital_info` where Id=$id";
         $result= mysqli_query($conn,$sql);
@@ -155,20 +123,16 @@ if(isset($_POST['submit'])){
 
 if(isset($_POST['submit'])){
 
-    //patient details vriables starts here
+
         $email = $p_email;
         $recp_name = $name;
-        // $userid = $_GET['userid'];
         $p_contact = $contact;
         $p_id= $patient_id;
-    //patient details vriables ends here
 
-    //hospital details vriables starts here
         $hosp_name= "$row[Name]";
         $hosp_contact= "$row[ContactNo]";
         $hosp_address= "$row[Address]";
 
-    //hospital details vriables ends here
 
         $to_email = "$email";
         $subject = "Confirmation and Information for Your Hospital Bed Reservation";
@@ -190,18 +154,16 @@ Name: $hosp_name
 Contact number: $hosp_contact
 Address: $hosp_address";
 
-        $headers = "From: emergencymedicalservices23@gmail.com";//this email was created for this project
+        $headers = "From: emergencymedicalservices23@gmail.com";
 
         if (mail($to_email, $subject, $body, $headers)) {
             echo "Email sent ";
         } else {
             echo "Email failed";
         }
-}
-?>
+} -->
 
 
-        <!-- mail code ends here  -->
 
 
 <!DOCTYPE html>

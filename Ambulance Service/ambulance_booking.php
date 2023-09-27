@@ -105,8 +105,9 @@
             <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/#review">Review</a>
             <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/#footer">Contact Us</a>
         </nav>
-
-        <a href="#" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
+        <div class="user-column">
+            <a href="#" id="user-avatar" title="<?php echo "$ufname";?>"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
+        </div>
         
         <div id="menu-btn" class="fa fa-bars"> </div>
     </header>
@@ -129,6 +130,7 @@
                     $result = mysqli_query($con,$query);
                     while($rows = $result->fetch_assoc())
                     {
+                        $amb_fare = $rows['amb_rate']*$rows['distance'];
                         echo "<div class='card'>
                         <img src='https://images.jdmagicbox.com/comp/varanasi/e9/0542px542.x542.200517114047.g7e9/catalogue/narayan-ambulance-service-varanasi-cantt-varanasi-0jqwifqqzh.jpg?clr=' >
                         <div class='card-details'>
@@ -141,7 +143,7 @@
                             </div>
                             <div class='card-row'>
                                 <p class='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i> $rows[distance] Km</p>
-                                <p class='card-fare'>&#8377 $rows[amb_rate]/-</p>
+                                <p class='card-fare'>&#8377 $amb_fare/-</p>
                             </div>
                             <div class='card-row'>
                                 <a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/amb_booking_form.php?ambno=$rows[amb_no]&dist=$rows[distance]&booklat=$lat_in_use&booklon=$lon_in_use&book_adrs=$full_address'><button class='btn btn-secondary-orange'>Book ride</button></a>

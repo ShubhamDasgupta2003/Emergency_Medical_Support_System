@@ -68,7 +68,7 @@ function onSuccess(position)
     fetch('https://api.opencagedata.com/geocode/v1/json?q='+latitude+','+longitude+'&key='+api_key)
     .then(response=>(response.json())).then(result=>{
         let details = result.results[0];
-        loc_txt.innerHTML = details['formatted'];
+        let loc_txt = details['formatted'];
         document.cookie = "address_in_use= "+loc_txt;
         document.cookie = "loc_modify= "+true;
         window.location.reload();

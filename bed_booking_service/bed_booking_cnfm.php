@@ -1,42 +1,47 @@
 <?php
     include_once("config.php");
+    session_start();
 ?>
 
-
-
+<!-- get route feature starts here  -->
 
 <?php
 
-//get route code starts here
-$id=$_GET['hosid'];
-$query="SELECT `Latitude`,`Longitude` FROM `hospital_info` WHERE Id=$id";
-$result=mysqli_query($conn,$query);
-if($result){
-    $row=mysqli_fetch_assoc($result);
-    $hosp_latitude= $row['Latitude'];
-    $hosp_longitude= $row['Longitude'];
-    //  echo "$hosp_latitude,$hosp_longitude";
+
+if(isset($_POST['get_route'])){
+    $id=$_GET['hosid'];
+$sql= "SELECT * FROM `hospital_info` where Id=$id";
+$result= mysqli_query($conn,$sql);
+$row=mysqli_fetch_assoc($result);
 
 
-    echo json_encode(array('Latitude' => $hosp_latitude, 'Longitude' => $hosp_longitude));
+
+$u_id= $_SESSION['user_id'];
+$u_sql="SELECT `lat_in_use`,`long_in_use` FROM `user_info` WHERE user_id='$u_id'";
+$result= mysqli_query($conn,$u_sql);
+$u_row=mysqli_fetch_assoc($result);
+
+
+$currentlatitude = $u_row['lat_in_use'];
+$currentlongitude = $u_row['long_in_use'];
+$destinationlatitude = $row['Latitude'];
+$destinationlongitude = $row['Longitude'];
+
+
+$googleMapsURL = "https://www.google.com/maps/dir/?api=1&origin={$currentlatitude},{$currentlongitude}&destination={$destinationlatitude},{$destinationlongitude}&travelmode=driving";
+
+
+
+header("Location: $googleMapsURL");
+}else{
+    echo "<script><alert>geolocation not available for this browser.</alert></script>";
 }
 
 
 
-//get route code ends here
 ?>
 
-
-
-
-
-
-
-
-
-
-
-
+<!-- get route feature ends here  -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,7 +79,7 @@ if($result){
         <p id="p1"><u>Other information</u></p>
         <div class="other-details">
                 <?php
-                    session_start();
+                    // session_start();
 
                    $p_id=$_SESSION['p_id'];
 
@@ -91,7 +96,7 @@ if($result){
         </div>
         <!-- <p>Go back to <a href="/">Homepage</a></p> -->
         <div class="btns">
-            <button name="get_route" class="btn">get route</button>
+            <form method="post"><button name="get_route" class="btn">get route</button></form>
             <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/">
                 <button class="btn">go to homepage</button>
             </a>

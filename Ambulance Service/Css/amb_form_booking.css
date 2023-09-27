@@ -12,6 +12,24 @@ input::-webkit-inner-spin-button {
     font-size: 1.4rem;
     cursor: pointer;
 }
+.btn-danger
+{
+    background-color: rgb(203, 88, 88);
+    color: white;
+    font-weight: bold;
+    padding: 1.1rem;
+    border-radius: 10px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    width: 100%;
+}
+.btn-danger:hover
+{
+    background-color: rgb(255, 255, 255);
+    color: rgb(203, 88, 88);
+    border: 1px solid rgb(203, 88, 88);
+}
 .container
 {
     /* border: 2px solid red; */

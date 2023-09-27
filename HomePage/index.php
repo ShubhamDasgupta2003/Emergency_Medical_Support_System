@@ -1,6 +1,6 @@
 <?php
     include_once("db_config/main_config.php");
-    $_COOKIE[""]
+    
 ?>
 
 <!DOCTYPE html>
