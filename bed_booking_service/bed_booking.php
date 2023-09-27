@@ -196,7 +196,10 @@
                 <div class="footer-top">
                     <a href="#" class="logo"><i class="fa-solid fa-heart-pulse"></i>medcare</a>
                     <div class="footer-txt">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta facilis maxime eius ad id qui quos quod corporis non minus! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro, voluptates 
+                    Our online platform simplifies the process of reserving hospital beds swiftly and efficiently, ensuring timely access to critical medical resources.
+                    Experience hassle-free hospital bed reservations through our online service, designed for ease and accessibility during urgent times.
+                    We strive to make securing hospital beds a seamless experience by offering a user-friendly online platform, making healthcare accessibility a priority.
+                    Our online hospital bed booking service connects patients with the right care swiftly, providing a stress-free solution for medical bed reservations.
                     </div>
                 </div>
                 <div class="footer-bottom">
