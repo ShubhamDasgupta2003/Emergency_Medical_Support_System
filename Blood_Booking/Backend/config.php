@@ -10,7 +10,7 @@ $conn = new mysqli($servername, $username, $password,$dbname);
 
 // Check connection
 if ($conn) {
-  echo "conection succesfull";
+  // echo "conection succesfull";
 }else{
 
     echo "Not connected";

@@ -2,6 +2,10 @@
 
     include_once("config.php");
     session_start();
+    if($_SESSION['is_logged_in'] == 0){
+        header("refresh:0 ; url=/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/login.php");
+        echo "<script>alert('Please login before proceeding to the next page.')</script>";
+    }
     // $query = "SELECT * FROM hospital_info";
     // $result = mysqli_query($conn,$query);
 
@@ -87,7 +91,7 @@
     <header class="header">
         <a href="#" class="logo"><i class="fa-solid fa-heart-pulse"></i>medcare</a>
         <div class="search-bar" id="srchbar-above">
-            <button class="get-location btn" id="get-location-btn"><i id="locationlogo" class="fas fa-map-marker-alt"></i> </i>Get location</button>
+            <button class="get-location btn" id="get-location-btn"><i id="locationlogo" class="fas fa-map-marker-alt"></i> </i></button>
             <input type="text" placeholder="Search...">
             <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
@@ -106,7 +110,7 @@
     <!-- header section end -->
     <div class="search-navbar" id="srchbar-below">
         <div class="search-bar">
-            <button class="get-location btn" id="get-location-btn">Get Location</button>
+            <button class="get-location btn" id="get-location-btn"><i id="locationlogo" class="fas fa-map-marker-alt"></i></button>
             <input type="text" placeholder="Search...">
             <button class="srch-btn btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
@@ -192,7 +196,10 @@
                 <div class="footer-top">
                     <a href="#" class="logo"><i class="fa-solid fa-heart-pulse"></i>medcare</a>
                     <div class="footer-txt">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta facilis maxime eius ad id qui quos quod corporis non minus! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro, voluptates 
+                    Our online platform simplifies the process of reserving hospital beds swiftly and efficiently, ensuring timely access to critical medical resources.
+                    Experience hassle-free hospital bed reservations through our online service, designed for ease and accessibility during urgent times.
+                    We strive to make securing hospital beds a seamless experience by offering a user-friendly online platform, making healthcare accessibility a priority.
+                    Our online hospital bed booking service connects patients with the right care swiftly, providing a stress-free solution for medical bed reservations.
                     </div>
                 </div>
                 <div class="footer-bottom">
