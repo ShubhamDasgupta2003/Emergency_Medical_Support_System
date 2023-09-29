@@ -37,6 +37,7 @@
     $distance = $_GET['dist'];
     $book_lat = $_GET['booklat'];
     $book_lon = $_GET['booklon'];
+    $tot_fare = $_GET['amb_fare'];
     // echo $pickup;
 
     $query = "SELECT * FROM ambulance_info WHERE amb_no='$amb_no'";
@@ -47,7 +48,6 @@
         $rows = $result->fetch_assoc();
     }
     $amb_rate = $rows['amb_rate'];
-    $tot_fare = $amb_rate*$distance;
     $amb_type = $rows['amb_type'];
     $amb_driver = $rows['amb_driver_name'];
     $amb_name = $rows['amb_name'];
@@ -99,7 +99,7 @@
                     <h3><p class='descp' id='card-address'><i class='fa-solid fa-location-dot'></i> $rows[amb_state] $rows[amb_district] $rows[amb_town]</p></h3>
                     <h3><p class='descp' id='card-type'>$rows[amb_type]</p></h3>
                     <h2><p class='descp' id='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i>&nbsp&nbsp$distance km</p></h2>
-                    <h2 class='descp' id='card-fare'>&#8377 $amb_fare/-</h2>
+                    <h2 class='descp' id='card-fare'>&#8377 $tot_fare/-</h2>
                     </div>";
                 ?>
                 <div class="patient_info_cont">
