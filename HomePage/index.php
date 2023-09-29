@@ -1,6 +1,6 @@
 <?php
     include_once("db_config/main_config.php");
-    
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -56,12 +56,8 @@
             <a href="profile.php" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
 
             <?php
-                include("db_config/main_config.php");
-                $sql="SELECT  `user_first_name` FROM user_info WHERE user_id='USR3020861122'";
-                $res=mysqli_query($con,$sql) or die("error in sql query");
-                $row=mysqli_fetch_assoc($res);
-                echo"
-                 <h3>$row[user_first_name]</h3> ";
+            
+                echo"<h3>$_SESSION[user_fname]</h3>";
             ?>
 
 
