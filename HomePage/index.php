@@ -56,8 +56,14 @@
             <a href="profile.php" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
 
             <?php
-            
-                echo"<h3>$_SESSION[user_fname]</h3>";
+                if($_SESSION['is_logged_in'] == 1)
+                {
+                    echo"<h3>$_SESSION[user_fname]</h3>";
+                }
+                else
+                {
+                    echo"<h3>Guest</h3>";
+                }
             ?>
 
 

@@ -1,11 +1,9 @@
 <?php
-
-include 'db_config/main_config.php';
-if($_SESSION['is_logged_in']==0){
-    header("location:login.php");
-}else{
-    header("location:profile.php");
-}
+    include 'db_config/main_config.php';
+    session_start();
+    if($_SESSION['is_logged_in']==0){
+        header("location:login.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -59,12 +57,7 @@ if($_SESSION['is_logged_in']==0){
             <a href="profile.php" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
 
             <?php
-                include("db_config/main_config.php");
-                $sql="SELECT  `user_first_name` FROM user_info WHERE user_id='USR3020861122'";
-                $res=mysqli_query($con,$sql) or die("error in sql query");
-                $row=mysqli_fetch_assoc($res);
-                echo"
-                 <h3>$row[user_first_name]</h3> ";
+                echo"<h3>$_SESSION[user_fname]</h3> ";
             ?>
 
 
@@ -79,7 +72,7 @@ if($_SESSION['is_logged_in']==0){
         
         <div class="profile">
             <?php
-         $select = mysqli_query($con, "SELECT * FROM `user_info` WHERE user_id = 'USR3020861122'") or die('query failed');
+         $select = mysqli_query($con, "SELECT * FROM `user_info` WHERE user_id = '$_SESSION[user_id]'") or die('query failed');
          if(mysqli_num_rows($select) > 0){
             $fetch = mysqli_fetch_assoc($select);
          }
