@@ -3,6 +3,8 @@
 include 'db_config/main_config.php';
 if($_SESSION['is_logged_in']==0){
     header("location:login.php");
+}else{
+    header("location:profile.php");
 }
 ?>
 
