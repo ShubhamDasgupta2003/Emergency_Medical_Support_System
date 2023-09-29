@@ -1,0 +1,212 @@
+:root{
+    --blue:#3498db;
+    --dark-blue:#2980b9;
+    --red:#e74c3c;
+    --dark-red:#c0392b;
+    --black:#333;
+    --white:#fff;
+    --light-bg:#eee;
+    --box-shadow:0 5px 10px rgba(0,0,0,.1);
+ }
+.p_btn,
+.delete-btn{
+   width: 80%;
+   border-radius: 8px;
+   padding:10px 30px;
+   color:var(--white);
+   display: block;
+   text-align: center;
+   cursor: pointer;
+   font-size: 20px;
+   margin-top: 10px;
+   margin-left: 10%;
+}
+
+.p_btn{
+   background-color: var(--blue);
+}
+
+.p_btn:hover{
+   background-color: var(--dark-blue);
+}
+
+.delete-btn{
+   background-color: var(--red);
+}
+
+.delete-btn:hover{
+   background-color: var(--dark-red);
+}
+
+.message{
+   margin:10px 0;
+   width: 100%;
+   border-radius: 5px;
+   padding:10px;
+   text-align: center;
+   background-color: var(--red);
+   color:var(--white);
+   font-size: 20px;
+}
+
+/* .form-container{
+   min-height: 100vh;
+   background-color: var(--light-bg);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding:20px;
+}
+
+.form-container form{
+   padding:20px;
+   background-color: var(--white);
+   box-shadow: var(--box-shadow);
+   text-align: center;
+   width: 500px;
+   border-radius: 5px;
+}
+
+.form-container form h3{
+   margin-bottom: 10px;
+   font-size: 30px;
+   color:var(--black);
+   text-transform: uppercase;
+}
+
+.form-container form .box{
+   width: 100%;
+   border-radius: 5px;
+   padding:12px 14px;
+   font-size: 18px;
+   color:var(--black);
+   margin:10px 0;
+   background-color: var(--light-bg);
+}
+
+.form-container form p{
+   margin-top: 15px;
+   font-size: 20px;
+   color:var(--black);
+}
+
+.form-container form p a{
+   color:var(--red);
+}
+
+.form-container form p a:hover{
+   text-decoration: underline;
+} */
+
+.profile_container{
+   min-height: 100vh;
+   background-color: var(--light-bg);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding:20px;
+   align-items: center;
+}
+
+.profile_container .profile{
+   padding:20px;
+   background-color: var(--white);
+   box-shadow: var(--box-shadow);
+   text-align: center;
+   width: 400px;
+   border-radius: 5px;
+}
+
+.profile_container .profile img{
+   height: 150px;
+   width: 150px;
+   border-radius: 50%;
+   object-fit: cover;
+   margin-bottom: 5px;
+}
+
+.profile_container .profile h3{
+   margin:5px 0;
+   font-size: 20px;
+   color:var(--black);
+}
+
+.profile_container .profile p{
+   margin-top: 20px;
+   color:var(--black);
+   font-size: 20px;
+}
+
+.profile_container .profile p a{
+   color:var(--red);
+}
+
+.profile_container .profile p a:hover{
+   text-decoration: underline;
+}
+/* 
+.update-profile{
+   min-height: 100vh;
+   background-color: var(--light-bg);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding:20px;
+}
+
+.update-profile form{
+   padding:20px;
+   background-color: var(--white);
+   box-shadow: var(--box-shadow);
+   text-align: center;
+   width: 700px;
+   text-align: center;
+   border-radius: 5px;
+}
+
+.update-profile form img{
+   height: 200px;
+   width: 200p;
+   border-radius: 50%;
+   object-fit: cover;
+   margin-bottom: 5px;
+}
+
+.update-profile form .flex{
+   display: flex;
+   justify-content: space-between;
+   margin-bottom: 20px;
+   gap:15px;
+}
+
+.update-profile form .flex .inputBox{
+   width: 49%;
+}
+
+.update-profile form .flex .inputBox span{
+   text-align: left;
+   display: block;
+   margin-top: 15px;
+   font-size: 17px;
+   color:var(--black);
+}
+
+.update-profile form .flex .inputBox .box{
+   width: 100%;
+   border-radius: 5px;
+   background-color: var(--light-bg);
+   padding:12px 14px;
+   font-size: 17px;
+   color:var(--black);
+   margin-top: 10px;
+}
+
+@media (max-width:650px){
+   .update-profile form .flex{
+      flex-wrap: wrap;
+      gap:0;
+   }
+   .update-profile form .flex .inputBox{
+      width: 100%;
+   }
+} */

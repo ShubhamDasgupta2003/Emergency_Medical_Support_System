@@ -101,7 +101,7 @@
   <body>
     <section class="container">
       <div class="title-bar">
-        <img src="logo.png" alt="logo" width="70px">
+        <img src="images/logo.png" alt="logo" width="70px">
         <header>New User Registration Form</header>
       </div>
       <form class="form" method="post">

@@ -19,7 +19,7 @@
    
     <!-- css -->
     <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="sourav.css">
+    <link rel="stylesheet" href="css/sourav.css">
     <link rel="stylesheet" href="Css/navbar.css">
     <link rel="stylesheet" href="Css/navLink.css">
     <link rel="stylesheet" href="Css/media.css">
@@ -52,7 +52,20 @@
         </nav>
         
         
-        <a href="#" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
+        <div class="user-avatar-container">
+            <a href="profile.php" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
+
+            <?php
+                include("db_config/main_config.php");
+                $sql="SELECT  `user_first_name` FROM user_info WHERE user_id='USR3020861122'";
+                $res=mysqli_query($con,$sql) or die("error in sql query");
+                $row=mysqli_fetch_assoc($res);
+                echo"
+                 <h3>$row[user_first_name]</h3> ";
+            ?>
+
+
+        </div>
         <div id="menu-btn" class="fa fa-bars"> </div>
     </header>
 
@@ -236,7 +249,7 @@
                 <img src="images/blood-bag.png" alt="">
                 <h3>Book Blood </h3>
                 <p> soluta a, pariatur dolore odit vadipisci fugiat.</p>
-                <a href="/Blood_Booking/BloodB.html" class="btn">learn more <span class="fa fa-chevron-right"></span></a>
+                <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/Blood_Booking/BloodB.php" class="btn">learn more <span class="fa fa-chevron-right"></span></a>
             </div>
 
             <div class="box">
@@ -341,8 +354,13 @@
             </div>    
         </div>
     </section>
+
+    
     <!-- about section start  -->
-    <section class="" id="footer">
+    <section class="" id="footer"style="
+    padding-left: 0px;
+    padding-right: 0px;
+">
         <div class="footer-top">
             <a href="#" class="logo"><i class="fa-solid fa-heart-pulse"></i>medcare</a>
             <div class="footer-txt">
@@ -382,10 +400,10 @@
         </div>
     </section>
     <!-- about section end-->
-    <script src="Home.js"></script>
-    <script src="sorav.js"></script>
-    <script src="location.js"></script>
-    <script src="slider.js"></script>
+    <script src="js/Home.js"></script>
+    <script src="js/sorav.js"></script>
+    <script src="js/location.js"></script>
+    <script src="js/slider.js"></script>
     <script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.js"></script>
 
 <!-- JavaScript -->
