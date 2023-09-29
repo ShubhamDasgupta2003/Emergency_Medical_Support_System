@@ -209,7 +209,7 @@
         <button id="sbmt-form" name="register_user">Register</button>
       </form>
     </section>
-    <script src="signup.js"></script>
-    <script src="location_signup.js"></script>
+    <script src="js/signup.js"></script>
+    <script src="js/location_signup.js"></script>
   </body>
 </html>
