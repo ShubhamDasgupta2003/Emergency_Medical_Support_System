@@ -409,6 +409,6 @@
 <!-- JavaScript -->
 <!--Uncomment this line-->
 <script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/script.js"></script>
-<script src="slider.js"></script>
+<script src="js/slider.js"></script>
 </body>
 </html>
