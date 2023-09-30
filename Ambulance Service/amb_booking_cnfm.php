@@ -54,6 +54,9 @@
 
                         <button class='btn call-btn'><a href='tel:$rows[amb_contact]'><i class='fa-solid fa-phone fa-xl'></i>+91$rows[amb_contact]</a></button>
                     </div>
+                    <div class='btn-row'>
+                        <a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php'><button class='btn'><i class='fa-solid fa-house'></i>&nbsp&nbspHome</button></a>
+                    </div>
                 </div>";
                 ?>
             </div>
