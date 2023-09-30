@@ -163,30 +163,16 @@
           <div class="column">
             <div class="select-box" >
                 <select name="district">
-                    <option hidden>District</option>
-                    <option value="Alipurduar">Alipurduar</option>
-                    <option value="Bankura">Bankura</option>
-                    <option value="Birbhum">Birbhum</option>
-                    <option value="Cooch Behar">Cooch Behar</option>
-                    <option value="Dakshin Dinajpur">Dakshin Dinajpur</option>
-                    <option value="Darjeeling">Darjeeling</option>
-                    <option value="Hooghly">Hooghly</option>
-                    <option value="Howrah">Howrah</option>
-                    <option value="Jalpaiguri">Jalpaiguri</option>
-                    <option value="Jhargram">Jhargram</option>
-                    <option value="Kalimpong">Kalimpong</option>
-                    <option value="Kolkata">Kolkata</option>
-                    <option value="Malda">Malda</option>
-                    <option value="Murshidabad">Murshidabad</option>
-                    <option value="Nadia">Nadia</option>
-                    <option value="North 24 Parganas">North 24 Parganas</option>
-                    <option value="Paschim Bardhaman">Paschim Bardhaman</option>
-                    <option value="Paschim Medinipur">Paschim Medinipur</option>
-                    <option value="Purba Bardhaman">Purba Bardhaman</option>
-                    <option value="Purba Medinipur">Purba Medinipur</option>
-                    <option value="Purulia">Purulia</option>
-                    <option value="South 24 Parganas">South 24 Parganas</option>
-                    <option value="Uttar Dinajpur">Uttar Dinajpur</option>
+                <option value="" selected disabled>Select District</option >
+                <?php
+                include("connection.php");
+                    // include("connection.php");
+                     $sql="SELECT * FROM districts";
+                     $res=mysqli_query($con,$sql) or die("query unsuccesfull");
+                     while($row=mysqli_fetch_assoc($res)){
+                     echo"
+                     <option value=$row[value]>$row[name]</option>";
+                    }?>
                 </select>
             </div>
             <input type="text" placeholder="Enter your city/vill" required name="city-vill">

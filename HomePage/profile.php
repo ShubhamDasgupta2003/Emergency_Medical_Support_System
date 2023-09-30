@@ -1,5 +1,5 @@
 <?php
-    include 'db_config/main_config.php';
+    include'db_config/main_config.php';
     session_start();
     if($_SESSION['is_logged_in']==0){
         header("location:login.php");
@@ -81,7 +81,7 @@
       <h3><?php echo "Welcome $fetch[user_first_name] $fetch[user_last_name]"; ?></h3>
       <a href="updateProfile.php" class="p_btn">update profile</a>
       <a href="logout.php" class="delete-btn">logout</a>
-      <p>new <a href="login.php">login</a> or <a href="register.php">register</a></p>
+      <p>new <a href="login.php">login</a> or <a href="signup.php">register</a></p>
     </div>
     
     <!-- user profile section end -->
