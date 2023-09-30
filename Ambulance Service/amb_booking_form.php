@@ -24,9 +24,9 @@
     }
 
     $bill_id = $sl_row['slno']+1;
-    $random_no = rand(100,999);
+    $random_no = rand(1000,9999);
     
-    $invoice_no = "IN"."$random_no"."$bill_id";    //unique invoice id generated
+    $invoice_no = "AMB-INV-"."$random_no"."$bill_id";    //unique invoice id generated
 
     $user_id = $uid;
     $user_name = "$ufname "."$ulname";
