@@ -255,8 +255,8 @@
             </div>
 
             <div class="box">
-                <img src="images/bed.png" alt="">
-                <h3>Book Bed </h3>
+                <img src="images/hospital.png" alt="">
+                <h3>Book Hospital Bed </h3>
                 <p>Efficiently book hospital beds online for immediate medical care access.</p>
                 <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/bed_booking_service/bed_booking.php" class="btn">learn more <span class="fa fa-chevron-right"></span></a>
             </div>
