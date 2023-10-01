@@ -65,7 +65,7 @@ $query = "SELECT
 FROM blood_bank_blood_group
 JOIN blood_group ON blood_bank_blood_group.blood_group_id = blood_group.blood_group_id
 JOIN blood_bank ON blood_bank_blood_group.blood_bank_id = blood_bank.blood_bank_id
-WHERE blood_bank_blood_group.blood_group_id = SELECT `blood_group_id` FROM `blood_group` WHERE `group_name` = '$b_gr'
+WHERE blood_bank_blood_group.blood_group_id = 3
 ORDER BY distance";
 
 
