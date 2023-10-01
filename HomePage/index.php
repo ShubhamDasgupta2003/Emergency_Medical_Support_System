@@ -1,6 +1,6 @@
 <?php
     include_once("db_config/main_config.php");
-    
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +19,7 @@
    
     <!-- css -->
     <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="sourav.css">
+    <link rel="stylesheet" href="css/sourav.css">
     <link rel="stylesheet" href="Css/navbar.css">
     <link rel="stylesheet" href="Css/navLink.css">
     <link rel="stylesheet" href="Css/media.css">
@@ -44,6 +44,50 @@
             <input type="text" placeholder="Search">
             <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
+        
+   <script> 
+        function handleLocationButtonClick() {
+        <?php
+        if ($_SESSION['is_logged_in'] == 1) {
+            echo "showLocationPopup();";
+        } else {
+            echo "alert('Please login first.');";
+        }
+        ?>
+        }
+
+        function showLocationPopup() {
+            var locationWindowHTML = `
+        <div class="location-window" id="loc-win">
+            <div class="card popup">
+                <button class="dismiss-btn" id="dismiss">&times;</button>
+                <div class="loc-head">
+                    <span>Enter an Indian pincode here</span>
+                    <div class="loc-option-tab">
+                        <input type="number" name="pincode" placeholder="Pincode here" id="zipcode">
+                        <button class="btn" id="pin-apply">Apply</button>
+                    </div>
+                </div>
+                <div class="loc-head">
+                    <span>Allow to access your location</span>
+                    <div class="loc-option-tab">
+                        <button class="get-location btn" id="det-location"><i class="fa-solid fa-location-crosshairs"></i>Detect my location</button>
+                    </div>
+                </div>
+                <div class="loc-head">
+                    <div class="loc-option-tab">
+                        <label for="" id="location-txt"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Inject the HTML content into the locationWindowContainer
+    document.getElementById('locationWindowContainer').innerHTML = locationWindowHTML;
+        }
+   </script>
+
         <nav class="navbar">
             <a class="navlink" href="#home">Home</a>
             <a class="navlink" href="#services">Services</a>
@@ -52,7 +96,22 @@
         </nav>
         
         
-        <a href="#" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
+        <div class="user-avatar-container">
+            <a href="profile.php" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
+
+            <?php
+                if(@$_SESSION['is_logged_in'] == 1)
+                {
+                    echo"<h3>$_SESSION[user_fname]</h3>";
+                }
+                else
+                {
+                    echo"<h3>Guest</h3>";
+                }
+            ?>
+
+
+        </div>
         <div id="menu-btn" class="fa fa-bars"> </div>
     </header>
 
@@ -194,7 +253,7 @@
 
     <!-- Location window popup starts here -->
             
-    <div class="location-window" id="loc-win">
+    <!-- <div class="location-window" id="loc-win">
         <div class="card popup">
             <button class="dismiss-btn" id="dismiss">&times</button>
             <div class="loc-head">
@@ -216,7 +275,8 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
+
     <!-- Location window popup ends here -->
     
      <!-- service section start -->
@@ -236,13 +296,13 @@
                 <img src="images/blood-bag.png" alt="">
                 <h3>Book Blood </h3>
                 <p> soluta a, pariatur dolore odit vadipisci fugiat.</p>
-                <a href="/Blood_Booking/BloodB.html" class="btn">learn more <span class="fa fa-chevron-right"></span></a>
+                <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/Blood_Booking/BloodB.php" class="btn">learn more <span class="fa fa-chevron-right"></span></a>
             </div>
 
             <div class="box">
-                <img src="images/bed.png" alt="">
-                <h3>Book Bed </h3>
-                <p> soluta a, pariatur dolore odit vadipisci fugiat.</p>
+                <img src="images/hospital.png" alt="">
+                <h3>Book Hospital Bed </h3>
+                <p>Efficiently book hospital beds online for immediate medical care access.</p>
                 <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/bed_booking_service/bed_booking.php" class="btn">learn more <span class="fa fa-chevron-right"></span></a>
             </div>
 
@@ -341,8 +401,13 @@
             </div>    
         </div>
     </section>
+
+    
     <!-- about section start  -->
-    <section class="" id="footer">
+    <section class="" id="footer"style="
+    padding-left: 0px;
+    padding-right: 0px;
+">
         <div class="footer-top">
             <a href="#" class="logo"><i class="fa-solid fa-heart-pulse"></i>medcare</a>
             <div class="footer-txt">
@@ -382,15 +447,15 @@
         </div>
     </section>
     <!-- about section end-->
-    <script src="Home.js"></script>
-    <script src="sorav.js"></script>
-    <script src="location.js"></script>
-    <script src="slider.js"></script>
+    <script src="js/Home.js"></script>
+    <script src="js/sorav.js"></script>
+    <script src="js/location.js"></script>
+    <script src="js/slider.js"></script>
     <script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.js"></script>
 
 <!-- JavaScript -->
 <!--Uncomment this line-->
 <script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/script.js"></script>
-<script src="slider.js"></script>
+<script src="js/slider.js"></script>
 </body>
 </html>

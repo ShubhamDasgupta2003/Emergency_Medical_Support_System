@@ -3,7 +3,7 @@
     $amb_no = $_GET['ambno'];
     $distance = $_GET['dist'];
     $otp_code = $_GET['otp'];
-
+    $fare = $_GET['fare'];
     $query = "SELECT * FROM ambulance_info WHERE amb_no='$amb_no'";
     $result = mysqli_query($con,$query);
     if($result)
@@ -38,7 +38,7 @@
                     <p class='descp' id='card-address'><i class='fa-solid fa-location-dot'></i> $rows[amb_state] $rows[amb_district] $rows[amb_town]</p>
                     <p class='descp' id='card-type'>$rows[amb_type]</p>
                     <p class='descp' id='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i> $distance Km</p>
-                    <h2 class='descp' id='card-fare'>&#8377 $amb_fare/-</h2>
+                    <h2 class='descp' id='card-fare'>&#8377 $fare/-</h2>
                 </div>";
                 ?>
 
@@ -53,6 +53,9 @@
                         <button class='btn wp-btn'><a href='//wa.me/91$rows[amb_contact]'><i class='fa-brands fa-whatsapp fa-xl'></i>+91$rows[amb_contact]</a></button>
 
                         <button class='btn call-btn'><a href='tel:$rows[amb_contact]'><i class='fa-solid fa-phone fa-xl'></i>+91$rows[amb_contact]</a></button>
+                    </div>
+                    <div class='btn-row'>
+                        <a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php'><button class='btn'><i class='fa-solid fa-house'></i>&nbsp&nbspHome</button></a>
                     </div>
                 </div>";
                 ?>

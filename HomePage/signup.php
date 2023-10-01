@@ -59,7 +59,7 @@
 
     $check_dup_reg = "SELECT * FROM user_info WHERE user_email='$email' OR user_contactno='$cont_num'";
 
-    $insert_records = "INSERT INTO `user_info`(`user_id`, `user_first_name`, `user_last_name`, `user_gender`, `password`, `user_email`, `user_contactno`, `state`, `district`, `town_vill`, `pincode`, `last_login`, `curr_lat`, `curr_long`, `lat_in_use`, `long_in_use`, `formatted_adrrs`) VALUES ('$user_id','$fname','$lname','$gender','$password','$email',$cont_num,'$state','$district','$city_town','$postcode','$cur_timestamp',$lat,$lon,'$lat','$lon','$address')";
+    $insert_records = "INSERT INTO `user_info`(`user_id`, `user_first_name`, `user_last_name`, `user_gender`,`user_dob`, `password`, `user_email`, `user_contactno`, `state`, `district`, `town_vill`, `pincode`, `last_login`, `curr_lat`, `curr_long`, `lat_in_use`, `long_in_use`, `formatted_adrrs`) VALUES ('$user_id','$fname','$lname','$gender','$dob','$password','$email',$cont_num,'$state','$district','$city_town','$postcode','$cur_timestamp',$lat,$lon,'$lat','$lon','$address')";
 
     $result = mysqli_query($con,$check_dup_reg);
     $rows = mysqli_num_rows($result);
@@ -101,7 +101,7 @@
   <body>
     <section class="container">
       <div class="title-bar">
-        <img src="logo.png" alt="logo" width="70px">
+        <img src="images/logo.png" alt="logo" width="70px">
         <header>New User Registration Form</header>
       </div>
       <form class="form" method="post">
@@ -163,30 +163,16 @@
           <div class="column">
             <div class="select-box" >
                 <select name="district">
-                    <option hidden>District</option>
-                    <option value="Alipurduar">Alipurduar</option>
-                    <option value="Bankura">Bankura</option>
-                    <option value="Birbhum">Birbhum</option>
-                    <option value="Cooch Behar">Cooch Behar</option>
-                    <option value="Dakshin Dinajpur">Dakshin Dinajpur</option>
-                    <option value="Darjeeling">Darjeeling</option>
-                    <option value="Hooghly">Hooghly</option>
-                    <option value="Howrah">Howrah</option>
-                    <option value="Jalpaiguri">Jalpaiguri</option>
-                    <option value="Jhargram">Jhargram</option>
-                    <option value="Kalimpong">Kalimpong</option>
-                    <option value="Kolkata">Kolkata</option>
-                    <option value="Malda">Malda</option>
-                    <option value="Murshidabad">Murshidabad</option>
-                    <option value="Nadia">Nadia</option>
-                    <option value="North 24 Parganas">North 24 Parganas</option>
-                    <option value="Paschim Bardhaman">Paschim Bardhaman</option>
-                    <option value="Paschim Medinipur">Paschim Medinipur</option>
-                    <option value="Purba Bardhaman">Purba Bardhaman</option>
-                    <option value="Purba Medinipur">Purba Medinipur</option>
-                    <option value="Purulia">Purulia</option>
-                    <option value="South 24 Parganas">South 24 Parganas</option>
-                    <option value="Uttar Dinajpur">Uttar Dinajpur</option>
+                <option value="" selected disabled>Select District</option >
+                <?php
+                include("connection.php");
+                    // include("connection.php");
+                     $sql="SELECT * FROM districts";
+                     $res=mysqli_query($con,$sql) or die("query unsuccesfull");
+                     while($row=mysqli_fetch_assoc($res)){
+                     echo"
+                     <option value=$row[value]>$row[name]</option>";
+                    }?>
                 </select>
             </div>
             <input type="text" placeholder="Enter your city/vill" required name="city-vill">
@@ -209,7 +195,7 @@
         <button id="sbmt-form" name="register_user">Register</button>
       </form>
     </section>
-    <script src="signup.js"></script>
-    <script src="location_signup.js"></script>
+    <script src="js/signup.js"></script>
+    <script src="js/location_signup.js"></script>
   </body>
 </html>

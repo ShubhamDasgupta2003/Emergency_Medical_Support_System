@@ -45,7 +45,7 @@ $headers = "From: emergencymedicalservices23@gmail.com";//this email was created
 
 if (mail($to_email, $subject, $body, $headers)) {
     echo "<script>alert('Ride Booked Successfully \\n A booking confirmation is sent to your mail');
-    window.location.href = '/minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/amb_booking_cnfm.php?ambno=$ambno&dist=$ambdist&otp=$otp_code'</script>";
+    window.location.href = '/minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/amb_booking_cnfm.php?ambno=$ambno&dist=$ambdist&otp=$otp_code&fare=$amb_fare'</script>";
     
 } else {
     echo "Email failed";

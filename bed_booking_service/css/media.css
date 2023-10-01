@@ -33,6 +33,19 @@
         font-size: 2rem;
         padding: 0.5rem 0.5rem;
     }
+    .cards .card
+    {
+        width: 31rem;
+        height: fit-content;
+    }
+}
+@media (max-width:984px)
+{
+    .cards .card
+    {
+    width: 33rem;
+    height: fit-content;
+    }
 }
 @media (max-width:434px)
 {
@@ -48,5 +61,9 @@
 
         width: 10rem;
     }
-    
+    .cards .card
+    {
+        width: 35rem;
+        height: fit-content;
+    }
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,48 +22,54 @@
 
 
 </head>
+
 <body>
     <!-- header section start -->
     <header class="header">
         <a href="#" class="logo"><i class="fa-solid fa-heart-pulse"></i>medcare</a>
         <div class="search-bar" id="srchbar-above">
-            <button class="get-location btn" id="get-location-btn" style="width:50px;"><i class="fas fa-map-marker-alt"></i></button>
+            <button class="get-location btn" id="get-location-btn" style="width:50px;"><i
+                    class="fas fa-map-marker-alt"></i></button>
             <input type="text" placeholder="Search">
             <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <nav class="navbar">
-            <a class="navlink" href="/HomePage/index.html">Home</a>
-            <a class="navlink" href="/HomePage/index.html#services">Services</a>
-            <a class="navlink" href="/HomePage/index.html#review">Review</a>
-            <a class="navlink" href="/HomePage/index.html#footer">contact Us</a>
+            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php">Home</a>
+            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php#services">Services</a>
+            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php#review">Review</a>
+            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php#footer">contact Us</a>
         </nav>
-        
-        
+
+
         <a href="#" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
+        <!-- <div class="user-avatar-container">
+            <h3>User Name</h3> 
+        </div> -->
         <div id="menu-btn" class="fa fa-bars"> </div>
     </header>
 
     <!-- header section end -->
     <div class="search-navbar" id="srchbar-below">
         <div class="search-bar">
-            <button class="get-location btn" id="get-location-btn" style="width:50px;"><i class="fas fa-map-marker-alt"></i></button>
+            <button class="get-location btn" id="get-location-btn" style="width:50px;"><i
+                    class="fas fa-map-marker-alt"></i></button>
             <input type="text" placeholder="Search...">
             <button class="srch-btn btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
     </div>
     <?php
-include_once("Backend/config.php");
-include("Backend/Display.php");
+    include_once("Backend/config.php");
+    include("Backend/Display.php");
     ?>
     <section class="body-container">
         <div class="contents">
 
-            
+
             <!-- Your content goes here | check body_cont.css file for css property-->
             <div class="cards">
                 <?php
-                 while($arr=mysqli_fetch_assoc($data)){
-                    echo"<div class='card'>
+                while ($arr = mysqli_fetch_assoc($data)) {
+                    echo "<div class='card'>
                     <img src='images/o-blood-bag-vector-19887495.jpg'>
                     <div class='card-details'>
                         <h1 class='card-name'>$arr[name]</h1>
@@ -74,17 +81,16 @@ include("Backend/Display.php");
 
                         </div>
                         <div class='buy-price'>
-                            <button class='btn buy'>Buy</button>
+                        <a href='bookingForm.php'><button class='btn buy'>Buy</button></a>
                             <p class='card-fare'>&#8377 $arr[price]/-</p>
                         </div>
                     </div>
                 </div>";
-                 }
-                
-               ?>
-                
+                }
+
+                ?>
             </div>
-            
+
             <!-- Location window popup starts here -->
             <div class="location-window" id="loc-win">
                 <div class="card popup">
@@ -99,7 +105,8 @@ include("Backend/Display.php");
                     <div class="loc-head">
                         <span>Allow to access your location</span>
                         <div class="loc-option-tab">
-                            <button class="get-location btn" id="det-location"><i class="fa-solid fa-location-crosshairs"></i>Detect my location</button>
+                            <button class="get-location btn" id="det-location"><i
+                                    class="fa-solid fa-location-crosshairs"></i>Detect my location</button>
                         </div>
                     </div>
                     <div class="loc-head">
@@ -116,7 +123,9 @@ include("Backend/Display.php");
                 <div class="footer-top">
                     <a href="#" class="logo"><i class="fa-solid fa-heart-pulse"></i>medcare</a>
                     <div class="footer-txt">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta facilis maxime eius ad id qui quos quod corporis non minus! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro, voluptates 
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta facilis maxime eius ad id qui
+                        quos quod corporis non minus! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro,
+                        voluptates
                     </div>
                 </div>
                 <div class="footer-bottom">
@@ -151,11 +160,12 @@ include("Backend/Display.php");
                     </div>
                 </div>
             </footer>
-        <!-- contents class ends here -->
+            <!-- contents class ends here -->
         </div>
     </section>
 
     <script src="index.js"></script>
     <script src="location.js"></script>
 </body>
+
 </html>

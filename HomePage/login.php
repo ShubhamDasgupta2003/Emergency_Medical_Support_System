@@ -17,7 +17,7 @@ if(isset($_POST['login'])){
   $sql="SELECT * FROM `user_info` WHERE user_email = '$email_num' OR user_contactno = '$email_num'";
   $result= mysqli_query($con,$sql);
 
-  if($result && $result-> num_rows ==1){
+  if($result && $result-> num_rows==1){
 
     if($result){
       $row=mysqli_fetch_assoc($result);

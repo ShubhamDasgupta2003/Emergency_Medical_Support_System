@@ -1,16 +1,12 @@
 <?php
 
-    include_once("config.php");
-    session_start();
+    include_once("Backend/config.php");
+    // session_start();
 
     date_default_timezone_set("Asia/Kolkata");
     $query = "SELECT * FROM hospital_info";
     $result = mysqli_query($conn,$query);
 
-    // getting hospitalid(primary key) from url by using get method 
-    // $id=$_GET['hospitalid'];
-    // $sql= "SELECT * FROM `hospital_info` where Id=$id";
-    // $result= mysqli_query($conn,$sql);
 ?>
 
 
@@ -77,17 +73,7 @@ if(isset($_POST['submit'])){
         $sql3= "UPDATE `hospital_info` SET Female_bed_available=$femalebed WHERE Id=$id";
         $result=mysqli_query($conn,$sql3);
      }
-    //  else($gender == 'female' ){
-    //     // $gender = max(0, $gender - 1);
-    //     $sql3= "UPDATE `hospital_info` SET Female_bed_available= $row[Female_bed_available] - 1";
-    //  }
-     
     
-      //  available bed updation code ends here 
-
-    //'storing hospitaal name in patient table accordingly' php code ends here
-
-
     $sql2="INSERT INTO `patient_booking_info` (Hospital_name,Patient_id,Patient_name,Gender,Age,ContactNo,Dob,email,address2,City,Pin,Booking_date) VALUES ('$row[Name]','$patient_id','$name','$gender','$age','$contact','$dob','$email','$address2','$city','$pin','$bookdatetime')";
     $result=mysqli_query($conn,$sql2);
 
@@ -105,59 +91,6 @@ if(isset($_POST['submit'])){
 
 ?>
 
-
-
-
-<!-- 
-        $id=$_GET['hospitalid'];
-        $sql= "SELECT * FROM `hospital_info` where Id=$id";
-        $result= mysqli_query($conn,$sql);
-        $row=mysqli_fetch_assoc($result);
-
-
-
-
-if(isset($_POST['submit'])){
-
-
-        $email = $p_email;
-        $recp_name = $name;
-        $p_contact = $contact;
-        $p_id= $patient_id;
-
-        $hosp_name= "$row[Name]";
-        $hosp_contact= "$row[ContactNo]";
-        $hosp_address= "$row[Address]";
-
-
-        $to_email = "$email";
-        $subject = "Confirmation and Information for Your Hospital Bed Reservation";
-        $body = "Dear $recp_name,
-
-We are writing to confirm and provide important information regardinyoureservation for a hospital bed at $hosp_name . We appreciate your trust in our Swasth Sampark services and look forward to assisting you in future.
-
----------------------------------------------------------------------------
-
-
-Patient details:
-
-Patient name: $recp_name
-Patient id: $p_id
-
-Hospital details:
-
-Name: $hosp_name
-Contact number: $hosp_contact
-Address: $hosp_address";
-
-        $headers = "From: emergencymedicalservices23@gmail.com";
-
-        if (mail($to_email, $subject, $body, $headers)) {
-            echo "Email sent ";
-        } else {
-            echo "Email failed";
-        }
-} -->
 
 
 
@@ -289,33 +222,6 @@ Address: $hosp_address";
                     <div class="column">
                         <input type="number" name="pin" placeholder="Enter postal code" required />
                     </div>
-                    <!-- only change in input id "check-male to pay-yes"&"gender to pay" for payment section -->
-
-
-                    <!-- the below option is temporarily not in use  -->
-
-
-                    <!-- <div class="gender-box">
-                        <lable>Types of Bed</lable>
-                        <div class="gender-option">
-                            <div class="gender">
-                                <input type="radio" id="pay-yes" name="pay" checked />
-                                <label for="pay-yes">
-                                    <pre>    General ward</pre>
-                                </label>
-                            </div>
-                            <div class="gender">
-                                <input type="radio" id="pay-no" name="pay" />
-                                <label for="pay-no">
-                                    <pre>    Private room</pre>
-                                </label>
-                            </div>
-                            <div class="gender">
-                                <input type="radio" id="pay-no2" name="pay" />
-                                <label for="pay-no2">
-                                    <pre>    ICU</pre>
-                                </label>
-                            </div> -->
                             <a href=""><button type="submit" name="submit">Submit</button></a>
                         </div>
             </form>
