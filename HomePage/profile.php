@@ -38,9 +38,9 @@
         </div>
         <nav class="navbar">
             <a class="navlink" href="index.php">Home</a>
-            <a class="navlink" href="#services">Services</a>
-            <a class="navlink" href="#review">Review</a>
-            <a class="navlink" href="#footer">contact Us</a>
+            <a class="navlink" href="index.php#services">Services</a>
+            <a class="navlink" href="index.php#review">Review</a>
+            <a class="navlink" href="index.php#footer">contact Us</a>
         </nav>
         
          <!-- header section end -->

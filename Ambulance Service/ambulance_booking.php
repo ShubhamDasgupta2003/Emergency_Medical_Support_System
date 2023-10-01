@@ -100,10 +100,10 @@
             <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <nav class="navbar">
-            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/">Home</a>
-            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/#services">Services</a>
-            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/#review">Review</a>
-            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/#footer">Contact Us</a>
+            <a class="navlink" href="index.php">Home</a>
+            <a class="navlink" href="index.php#services">Services</a>
+            <a class="navlink" href="index.php#review">Review</a>
+            <a class="navlink" href="index.php#footer">Contact Us</a>
         </nav>
         <div class="user-column">
             <a href="#" id="user-avatar" title="<?php echo "$ufname";?>"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>

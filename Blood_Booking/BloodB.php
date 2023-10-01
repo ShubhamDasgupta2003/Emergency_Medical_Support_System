@@ -1,3 +1,16 @@
+<?php
+    session_start();
+    $islogin =  $_SESSION['is_logged_in'];
+    if($islogin!=1)
+    {
+        echo "<script>alert('It seems like you have not logged in\\nPlease login to book blood');
+        window.location.href = '/minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/login.php'</script>";
+    }
+    //Path for main config file 
+    include("Backend/config.php");
+    include("Display.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,16 +64,16 @@
     <!-- header section end -->
     <div class="search-navbar" id="srchbar-below">
         <div class="search-bar">
+            <form action="Display.php" action="post">
             <button class="get-location btn" id="get-location-btn" style="width:50px;"><i
                     class="fas fa-map-marker-alt"></i></button>
-            <input type="text" placeholder="Search...">
-            <button class="srch-btn btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <input type="text" name="s_value" placeholder="Search...">
+            <button class="srch-btn btn" type="submit" name="search"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <!-- <button ></button> -->
+            </form>
         </div>
     </div>
-    <?php
-    include_once("Backend/config.php");
-    include("Backend/Display.php");
-    ?>
+
     <section class="body-container">
         <div class="contents">
 
@@ -68,16 +81,18 @@
             <!-- Your content goes here | check body_cont.css file for css property-->
             <div class="cards">
                 <?php
+                include("Backend/Display.php");
+                $data = mysqli_query($conn,$query);
                 while ($arr = mysqli_fetch_assoc($data)) {
                     echo "<div class='card'>
                     <img src='images/o-blood-bag-vector-19887495.jpg'>
                     <div class='card-details'>
                         <h1 class='card-name'>$arr[name]</h1>
-                        <h2 class='card-address'> <i class='fa-solid fa-location-dot'></i>  WestBengal Nadia Badkulla - 741121</h2>
+                        <h2 class='card-address'> <i class='fa-solid fa-location-dot'></i>  $arr[state] $arr[dist] $arr[city] - $arr[pincode]</h2>
                        
                         <div class='distance-gr'>
                             <p class='card-type'>Blood Group: <span class='blood-gr'>$arr[group_name]</span></p>
-                            <h2 class='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i> 50Km</h2>
+                            <h2 class='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i> $arr[distance] Km</h2>
 
                         </div>
                         <div class='buy-price'>
