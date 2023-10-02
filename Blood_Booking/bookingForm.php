@@ -13,6 +13,7 @@
         window.location.href = '/minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/login.php'</script>";
     }
 
+
     include_once("Backend/config.php");
     date_default_timezone_set("Asia/calcutta");
 
@@ -39,9 +40,9 @@
     $book_lon = $_GET['booklon'];
     $tot_fare = $_GET['price'];
     $bloodBank_id=$_GET['B_b_id'];
-    // echo $pickup;
 
-   $query = "SELECT * FROM blood_bank WHERE id='$bloodBank_id'";
+
+   $query = "SELECT * FROM blood_bank WHERE blood_bank_id='$bloodBank_id'";
 
     $result = mysqli_query($con,$query);
     if($result)
@@ -82,9 +83,9 @@
     <title>Patient registration</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-    <link rel="stylesheet" href="a_navbar.css">
-    <link rel="stylesheet" href="css/form_book.css">
-    <link rel="stylesheet" href="css/a_navlink.css">
+    <link rel="stylesheet" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/css/navbar.css">
+    <link rel="stylesheet" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/css/amb_form_booking.css">
+    <link rel="stylesheet" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/css/navLink.css">
 
 </head>
 <body>
