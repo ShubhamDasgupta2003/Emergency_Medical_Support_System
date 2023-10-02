@@ -104,7 +104,7 @@
                 ?>
                 <div class="patient_info_cont">
     
-                    <form method="post">
+                    <form method="post" action="book_data_Insert.php">
                         <label for="">Patient's Full Name<sup class="mandatory">*</sup></label>
                         <input type="text" name="pat_name" id="" placeholder="Enter Patient's full name"  required>
 
@@ -123,7 +123,7 @@
                         <textarea type="text" name="" id="" readonly><?php echo $pickup;?></textarea>
                         <button class="btn" name="book_ride">Confirm Ride</button>
                     </form>
-                    <a href="ambulance_booking.php"><button class="btn-danger" name="cancel_ride">Cancel Ride</button></a>
+                    <a href="bloodB.php"><button class="btn-danger" name="cancel_ride">Cancel Ride</button></a>
                 </div>
             </div>     
         </div>
