@@ -42,6 +42,7 @@
     $bloodBank_id=$_GET['B_b_id'];
     $blood_gr=$_GET['bG'];
 
+    echo $blood_gr;
 
    $query = "SELECT * FROM blood_bank WHERE blood_bank_id='$bloodBank_id'";
 
