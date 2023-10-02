@@ -52,7 +52,7 @@
     }
         //Backend for location modification ends here
 
-    $query= "SELECT `Id`, `Name`, `ContactNo`, `email`, `Address`, `State`, `District`, `City`, `Pincode`, `Latitude`, `Longitude`, `Male_bed_available`, `Female_bed_available`, `Bed_charge`, ROUND((
+    $query= "SELECT `Id`, `Name`, `ContactNo`, `email`, `Address`, `State`, `District`, `City`, `Pincode`, `Latitude`, `Longitude`, `Male_bed_available`, `Female_bed_available`, ROUND((
     6371 *
     acos(cos(radians($lat_in_use)) * 
     cos(radians(Latitude)) * 
