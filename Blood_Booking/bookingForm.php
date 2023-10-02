@@ -1,232 +1,130 @@
 <?php
+    //TO DO : Update query to set status busy when amb book_ride
+
+    session_start();
+    $uid =  $_SESSION['user_id'];
+    $ufname =  $_SESSION['user_fname'];
+    $ulname = $_SESSION['user_lname'];
+    $islogin =  $_SESSION['is_logged_in'];
+
+    if($islogin!=1)
+    {
+        echo "<script>alert('It seems like you have not logged in\\nPlease login to book your ride');
+        window.location.href = '/minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/login.php'</script>";
+    }
+
 
     include_once("Backend/config.php");
-    // session_start();
+    date_default_timezone_set("Asia/calcutta");
 
-    date_default_timezone_set("Asia/Kolkata");
-    $query = "SELECT * FROM hospital_info";
-    $result = mysqli_query($conn,$query);
+    $slno_query = "SELECT COUNT(*) AS slno FROM blood_bank";
 
-?>
+    $slno_result = mysqli_query($con,$slno_query);
+    if($slno_result)
+    {
+        $rows = $slno_result->fetch_assoc();
+    }
 
-
-
-<?php
-
-if(isset($_POST['submit'])){
-    $name=$_POST["name"];
-    $gender=$_POST['gender'];
-    $age=$_POST['age'];
-    $contact=$_POST['contact'];
-    $dob=$_POST['dob'];
-    $p_email=$_POST['email'];
-    $address2=$_POST['address2'];
-    $city=$_POST['city'];
-    $pin=$_POST['pin'];
-    $bookdatetime= date('Y-m-d H:i:s');
-
-
-     //Unique user Id generation php code starts here
-     $adhr_num = $_POST['adhr_num'];
-     $last_4_dig_adhr = substr($adhr_num,-4);
-     $last_3_dig_cont = substr($contact,-3);
-     $random_dig = rand(1,999);
-     $digit = "";
-     if($random_dig>=1 && $random_dig<=9)
-     {
-       $digit = "00"."$random_dig";
-     }
-     else if($random_dig>=10 && $random_dig<=99)
-     {
-       $digit = "0"."$random_dig";
-     }
-     else
-     {
-       $digit = "$random_dig";
-     }
- 
-     $patient_id = "PNT"."$digit"."$last_3_dig_cont"."$last_4_dig_adhr";
-     //Unique user Id generation php code ends here
-
-     session_start();
-     $_SESSION['p_id'] = "$patient_id";
-
-     //'storing hospitaal name in patient table accordingly' php code starts here
-     $id=$_GET['hospitalid'];
-     $sql= "SELECT * FROM `hospital_info` where Id=$id";
-     $result= mysqli_query($conn,$sql);
-     $row=mysqli_fetch_assoc($result);
-
-    //  available bed updation code starts here 
-
-     $malebed = $row['Male_bed_available'];
-     $femalebed = $row['Female_bed_available'];
-     if($gender == 'male' ){
-        // $malebed = max(0, $malebed - 1);
-        $malebed-=1;
-        $sql3= "UPDATE `hospital_info` SET Male_bed_available=$malebed WHERE Id=$id";
-        $result=mysqli_query($conn,$sql3);
-        
-     }
-     else{
-        $femalebed-=1;
-        $sql3= "UPDATE `hospital_info` SET Female_bed_available=$femalebed WHERE Id=$id";
-        $result=mysqli_query($conn,$sql3);
-     }
+    $bill_id = $rows['slno']+1;
+    $random_no = rand(1000,9999);
     
-    $sql2="INSERT INTO `patient_booking_info` (Hospital_name,Patient_id,Patient_name,Gender,Age,ContactNo,Dob,email,address2,City,Pin,Booking_date) VALUES ('$row[Name]','$patient_id','$name','$gender','$age','$contact','$dob','$email','$address2','$city','$pin','$bookdatetime')";
-    $result=mysqli_query($conn,$sql2);
+    $invoice_no = "BLD-INV-"."$random_no"."$bill_id";    //unique invoice id generated
+
+    $user_id = $uid;
+    $user_name = "$ufname "."$ulname";
+    $cur_date = date("Y-m-d");
+    $cur_time = date("H:i:s");
+    $pickup = $_GET['book_adrs'];
+    $distance = $_GET['dist'];
+    $book_lat = $_GET['booklat'];
+    $book_lon = $_GET['booklon'];
+    $tot_fare = $_GET['price'];
+    $bloodBank_id=$_GET['B_b_id'];
 
 
-    //  echo "$row[Name],$name,$gender,$age,$contact,$dob,$address2,$city,$pin,$bookdatetime,$patient_id";
+   $query = "SELECT * FROM blood_bank WHERE blood_bank_id='$bloodBank_id'";
 
+    $result = mysqli_query($con,$query);
+    if($result)
+    {
+        $rows = $result->fetch_assoc();
+    }
+    $name = $rows['name'];
 
-    header("location:bed_booking_cnfm.php?hosid=$row[Id]");
+    if(isset($_POST['Buy']))
+    {
+        $patient_name = $_POST['pat_name'];
+        // $patient_age = $_POST['pat_age'];
+        $patient_gender = $_POST['gender'];
 
+        $book_ride_query = "INSERT INTO `blood_order`(`order_id`,`bloodbank_id`,`user_id`, `user_name`, `patient_name`,`user_book_lat`, `user_book_long`, `booking_date`, `booking_time`, `total_fare`) VALUES 
+                                                    ('$invoice_no','$bloodBank_id','$uid','$user_name ','$patient_name','$book_lat','$book_lon','$cur_date','$cur_time','$tot_fare')";
+                                                                                                                                
+        // $amb_stat_update_query = "UPDATE ambulance_info SET amb_status='busy' WHERE amb_no='$amb_no'";
 
-    // header("location:bed_booking_cnfm.php?hosid=$row[Id]&p_id=$patient_id");
-
-}
-
-
+        // $update_result = mysqli_query($con,$amb_stat_update_query);
+        // if($update_result)
+        // {
+        //     $insert_result = mysqli_query($con,$book_ride_query);
+        //     if($insert_result)
+        //     {
+        //         header("Location:amb_invoice_mail.php?ambno=$amb_no&ambname=$amb_name&driver=$amb_driver&fare=$tot_fare&dist=$distance&billno=$invoice_no");
+        //     }
+        // }
+    }
+    
 ?>
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patient Registration Form</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/form_book.css" />
+    <title>Patient registration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link rel="stylesheet" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/css/navbar.css">
+    <link rel="stylesheet" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/css/amb_form_booking.css">
+    <link rel="stylesheet" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/css/navLink.css">
+
 </head>
-
 <body>
-    <section class="container">
-        <header>
-            <div class="parent">
-                <div class="logo">
-                    <img src="image/logo.png" alt="logo" width="100px">
+    <div class="container">
+        <div class="card">
+            <img src="https://maishacare.com/wp-content/uploads/2022/06/ambulance-service-van-emergency-medical-vehicle-vector-illustration-white-background-ambulance-service-van-emergency-medical-127018462.jpg" alt="">
+            <div class="column">
+                <?php
+                    // $amb_fare = $distance * $rows['amb_rate'];
+                    echo "<div class='amb_info_cont'>
+                    <h1 class='descp' id='title'>$name</h1>
+                    
+                    </div>";
+                ?>
+                <div class="patient_info_cont">
+    
+                    <form method="post">
+                        <label for="">Patient's Full Name<sup class="mandatory">*</sup></label>
+                        <input type="text" name="pat_name" id="" placeholder="Enter Patient's full name"  required>
+
+                        <label for="">Age<sup class="mandatory">*</sup></label>
+                        <input type="number" name="pat_age" id="" placeholder="Patient's age" required>
+
+                        <label for="">Mobile No.<sup class="mandatory">*</sup></label>
+                        <input type="tel" name="cont_num" id="" placeholder="Contact number" required>
+
+                        <label for="">Gender<sup class="mandatory">*</sup></label>
+                        <div class="row">
+                            <input type="radio" name="gender" value="male"> Male
+                            <input type="radio" name="gender" value="female"> Female
+                        </div>
+                        <label for="">Pickup Address</label>
+                        <textarea type="text" name="" id="" readonly><?php echo $pickup;?></textarea>
+                        <button class="btn" name="book_ride">Confirm Order</button>
+                    </form>
+                    <a href="ambulance_booking.php"><button class="btn-danger" name="cancel_ride">Cancel Ride</button></a>
                 </div>
-                <div class="info" style="line-height: 18px; text-align: right; padding-top: 24px;">
-
-                    <?php
-
-                        // getting hospitalid(primary key) from url by using get method 
-                        $id=$_GET['hospitalid'];
-                        $sql= "SELECT * FROM `hospital_info` where Id=$id";
-                        $result= mysqli_query($conn,$sql);
-                        while($row=mysqli_fetch_assoc($result)){
-
-                        echo "<div style='font-size: 12pt;'><strong>$row[Name]</strong></div>
-                        <div style='font-size: 10pt;'>&nbsp;$row[Address]</div>
-                        <div style='line-height: 14px;'>
-                        <div style='font-size: 9pt;'>$row[District]</div>
-                        <div style='font-size: 9pt;'>$row[ContactNo]</div>
-                    </div>";}
-                    ?>
-                </div>
-            </div>
-        </header>
-        <div class="line">
-            <hr>
+            </div>     
         </div>
-        <div>
-            <form method="post" class="form">
-                <div class="input-box">
-                    <label>Patient's Full Name</label>
-                    <input type="text" name="name" placeholder="Enter full name" required />
-                </div>
-                <div class="gender-box">
-                    <lable>Gender</lable>
-                    <div class="gender-option">
-                        <div class="gender">
-                            <input type="radio" id="check-male" name="gender" value="male" checked />
-                            <label for="check-male">
-                                <pre>    male</pre>
-                            </label>
-                        </div>
-                        <div class="gender">
-                            <input type="radio" id="check-female" name="gender" value="Female" />
-                            <label for="check-female">
-                                <pre>    Female</pre>
-                            </label>
-                        </div>
-                        <!-- use strong password showing because of this -> starts here  -->
-                        <div class="input-box" id="age">
-                            <label>Age</label>
-                            <input type="number" name="age" placeholder="Enter age" required />
-                        </div>
-                        <!-- use strong password showing because of this -> ends here  -->
-                        <div class="column">
-                            <div class="input-box">
-                                <label>Phone Number</label>
-                                <input type="number" name="contact" placeholder="Enter phone number" required />
-                            </div>
-                            <div class="input-box">
-                                <label>Birth Date</label>
-                                <input type="date" name="dob" placeholder="Enter birth date" required />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-box" id="age">
-                            <label>Email address</label>
-                            <input type="email" name="email" placeholder="Enter email address" required />
-                        </div>
-                    <div class="input-box" id="age">
-                            <label>Aadhaar card</label>
-                            <input type="number" name="adhr_num" placeholder="Enter aadhaar card number" required />
-                        </div>
-                </div>
-                <div class="input-box address">
-                    <label>Address</label>
-                    <input type="text" name="address2" placeholder="Enter street address" required />
-                    <div class="column">
-                        <div class="select-box">
-                            <select>
-                                <option hidden>District</option>
-                                <option>Alipurduar</option>
-                                <option>Bankura</option>
-                                <option>Birbhum</option>
-                                <option>Cooch Behar</option>
-                                <option>Dakshin Dinajpur</option>
-                                <option>Darjeeling</option>
-                                <option>Hooghly</option>
-                                <option>Howrah</option>
-                                <option>Jalpaiguri</option>
-                                <option>Jhargram</option>
-                                <option>Kalimpong</option>
-                                <option>Kolkata</option>
-                                <option>Malda</option>
-                                <option>Murshidabad</option>
-                                <option>Nadia</option>
-                                <option>North 24 Parganas</option>
-                                <option>Paschim Bardhaman</option>
-                                <option>Paschim Medinipur</option>
-                                <option>Purba Bardhaman</option>
-                                <option>Purba Medinipur</option>
-                                <option>Purulia</option>
-                                <option>South 24 Parganas</option>
-                                <option>Uttar Dinajpur</option>
-                            </select>
-                        </div>
-                        <input type="text" name="city" placeholder="Enter your city" required />
-                    </div>
-                    <div class="column">
-                        <input type="number" name="pin" placeholder="Enter postal code" required />
-                    </div>
-                            <a href=""><button type="submit" name="submit">Submit</button></a>
-                        </div>
-            </form>
-        </div>
-    </section>
+    </div>
 </body>
-
 </html>

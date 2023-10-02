@@ -12,7 +12,7 @@ $lon_in_use = 0.0;
 $full_address = "";
 $loc_query = "SELECT lat_in_use,long_in_use,formatted_adrrs FROM user_info WHERE user_id='$uid'";
 
-$loc_result = mysqli_query($conn,$loc_query);
+$loc_result = mysqli_query($con,$loc_query);
 $loc_rows = $loc_result->fetch_assoc();
 
 if($loc_result)
@@ -42,7 +42,7 @@ if($_COOKIE['loc_modify'] == 'true')
     }
 }
 
-$b_gr=strtoupper($_POST["s_value"]);
+// $b_gr=strtoupper($_POST["s_value"]);
 
 //Backend for location modification ends here
 $query = "SELECT
