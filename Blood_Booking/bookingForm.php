@@ -40,7 +40,9 @@
     $book_lon = $_GET['booklon'];
     $tot_fare = $_GET['price'];
     $bloodBank_id=$_GET['B_b_id'];
+    $blood_gr=$_GET['bG'];
 
+    echo $blood_gr;
 
    $query = "SELECT * FROM blood_bank WHERE blood_bank_id='$bloodBank_id'";
 
@@ -51,26 +53,28 @@
     }
     $name = $rows['name'];
 
-    if(isset($_POST['Buy']))
+    if(isset($_POST['book_blood']))
     {
         $patient_name = $_POST['pat_name'];
         // $patient_age = $_POST['pat_age'];
         $patient_gender = $_POST['gender'];
+        $contact=$_POST['cont_num'];
 
-        $book_ride_query = "INSERT INTO `blood_order`(`order_id`,`bloodbank_id`,`user_id`, `user_name`, `patient_name`,`user_book_lat`, `user_book_long`, `booking_date`, `booking_time`, `total_fare`) VALUES 
-                                                    ('$invoice_no','$bloodBank_id','$uid','$user_name ','$patient_name','$book_lat','$book_lon','$cur_date','$cur_time','$tot_fare')";
+        $query = "INSERT INTO `blood_order` (`user_id`, `Patient_name`, `Blood_gr`, `Contact_No`, `Order_date`, `Order_id`, `Order_time`,`bloodbank_id`, `price`)
+                                                 VALUES('$uid','$patient_name','$blood_gr','$contact','$cur_date','$invoice_no','$cur_time','$bloodBank_id','$tot_fare')";
                                                                                                                                 
         // $amb_stat_update_query = "UPDATE ambulance_info SET amb_status='busy' WHERE amb_no='$amb_no'";
 
-        // $update_result = mysqli_query($con,$amb_stat_update_query);
-        // if($update_result)
-        // {
-        //     $insert_result = mysqli_query($con,$book_ride_query);
-        //     if($insert_result)
-        //     {
-        //         header("Location:amb_invoice_mail.php?ambno=$amb_no&ambname=$amb_name&driver=$amb_driver&fare=$tot_fare&dist=$distance&billno=$invoice_no");
-        //     }
-        // }
+        
+            $insert_result = mysqli_query($con,$query);
+            if($insert_result)
+            {
+                // header("Location:amb_invoice_mail.php?ambno=$amb_no&ambname=$amb_name&driver=$amb_driver&fare=$tot_fare&dist=$distance&billno=$invoice_no");
+                header("Location:http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/HomePage/index.php");
+                // echo("confirm order");
+            }else{
+                echo "error in sql query";
+            }
     }
     
 ?>
@@ -97,7 +101,10 @@
                     // $amb_fare = $distance * $rows['amb_rate'];
                     echo "<div class='amb_info_cont'>
                     <h1 class='descp' id='title'>$name</h1>
-                    
+                    <h3><p class='descp' id='card-address'><i class='fa-solid fa-location-dot'></i> $rows[state] $rows[dist] $rows[city]</p></h3>
+                    <h3><p class='descp' id='card-type'>$blood_gr</p></h3>
+                    <h2><p class='descp' id='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i>&nbsp&nbsp$distance km</p></h2>
+                    <h2 class='descp' id='card-fare'>&#8377 $tot_fare/-</h2>
                     </div>";
                 ?>
                 <div class="patient_info_cont">
@@ -117,11 +124,9 @@
                             <input type="radio" name="gender" value="male"> Male
                             <input type="radio" name="gender" value="female"> Female
                         </div>
-                        <label for="">Pickup Address</label>
-                        <textarea type="text" name="" id="" readonly><?php echo $pickup;?></textarea>
-                        <button class="btn" name="book_ride">Confirm Order</button>
+                        <button class="btn" name="book_blood">Confirm Order</button>
                     </form>
-                    <a href="ambulance_booking.php"><button class="btn-danger" name="cancel_ride">Cancel Ride</button></a>
+                    <a href="BloodB.php"><button class="btn-danger" name="cancel_ride">Cancel Ride</button></a>
                 </div>
             </div>     
         </div>
