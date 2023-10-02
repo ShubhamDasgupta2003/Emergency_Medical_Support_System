@@ -124,7 +124,8 @@ if(isset($_POST['submit'])){
         $recp_name = $name;
         $p_contact = $contact;
         $p_id= $patient_id;
-
+        $curr_time= $bookdatetime;
+        $FourHourAfter= date("Y-m-d H:i:s", strtotime('+4 hours', strtotime($curr_time)));
         $hosp_name= "$row[Name]";
         $hosp_contact= "$row[ContactNo]";
         $hosp_address= "$row[Address]";
@@ -134,7 +135,11 @@ if(isset($_POST['submit'])){
         $subject = "Confirmation and Information for Your Hospital Bed Reservation";
         $body = "Dear $recp_name,
 
-We are writing to confirm and provide important information regardinyoureservation for a hospital bed at $hosp_name . We appreciate your trust in our Swasth Sampark services and look forward to assisting you in future.
+We are writing to confirm and provide important information regardin your reservation for the hospital bed at $hosp_name . We appreciate your trust in our Swasth Sampark services and look forward to assisting you in future.
+
+---------------------------------------------------------------------------
+
+Note : Your appointment at the hospital is automatically canceled if you do not arrive within four hours of the scheduled time.
 
 ---------------------------------------------------------------------------
 
@@ -148,7 +153,9 @@ Hospital details:
 
 Name: $hosp_name
 Contact number: $hosp_contact
-Address: $hosp_address";
+Address: $hosp_address
+
+Your reserved bed will be canceled on $FourHourAfter . We kindly request your arrival at the hospital before the time. Thank you for your understanding and cooperation.";
 
         $headers = "From: emergencymedicalservices23@gmail.com";
 
@@ -157,7 +164,7 @@ Address: $hosp_address";
         } else {
             echo "Email failed";
         }
-} -->
+}  -->
 
 
 
