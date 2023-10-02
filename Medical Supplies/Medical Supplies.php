@@ -14,7 +14,7 @@ $lon_in_use = 0.0;
 $full_address = "";
 $loc_query = "SELECT lat_in_use,long_in_use,formatted_adrrs FROM user_info WHERE user_id='$uid'";
 
-$loc_result = mysqli_query($con,$loc_query);
+$loc_result = mysqli_query($conn,$loc_query);
 $loc_rows = $loc_result->fetch_assoc();
 
 if($loc_result)
@@ -36,7 +36,7 @@ if($_COOKIE['loc_modify'] == 'true')
 
     $loc_mod_query = "UPDATE user_info SET lat_in_use=$mod_lat,long_in_use=$mod_lon,formatted_adrrs='$mod_addrs' WHERE user_id='$uid'";
 
-    $mod_loc_result = mysqli_query($con,$loc_mod_query);
+    $mod_loc_result = mysqli_query($conn,$loc_mod_query);
 
     if($mod_loc_result)
     {
