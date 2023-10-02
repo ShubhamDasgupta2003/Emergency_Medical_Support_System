@@ -67,6 +67,10 @@ h2 {
     padding-right: 138px;
 }
 
+.notice{
+    color: #333;
+    font-weight: 600;
+}
 .btns {
     display: flex;
     justify-content: center;
