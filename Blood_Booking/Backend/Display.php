@@ -1,5 +1,6 @@
 <?php
 include ("config.php");
+
 //Backend for location modification starts here
 setcookie("loc_modify","false");
 
@@ -46,6 +47,8 @@ if($_COOKIE['loc_modify'] == 'true')
 $b_gr="O+";
 // $query1="";
 //Backend for location modification ends here
+
+
 $query = "SELECT
          blood_bank.blood_bank_id,
          blood_bank.name,

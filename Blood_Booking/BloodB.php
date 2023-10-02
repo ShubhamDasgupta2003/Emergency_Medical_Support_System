@@ -8,7 +8,7 @@
     }
     //Path for main config file 
     include("Backend/config.php");
-    include("Display.php");
+    include("Backend/Display.php");
 ?>
 
 <!DOCTYPE html>
