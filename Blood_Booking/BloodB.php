@@ -64,7 +64,7 @@
     <!-- header section end -->
     <div class="search-navbar" id="srchbar-below">
         <div class="search-bar">
-            <form action="Display.php" action="post">
+            <form action="Display.php" method="post">
             <button class="get-location btn" id="get-location-btn" style="width:50px;"><i
                     class="fas fa-map-marker-alt"></i></button>
             <input type="text" name="s_value" placeholder="Search...">
@@ -82,7 +82,7 @@
             <div class="cards">
                 <?php
                 include("Backend/Display.php");
-                $data = mysqli_query($conn,$query);
+                $data = mysqli_query($con,$query);
                 while ($arr = mysqli_fetch_assoc($data)) {
                     echo "<div class='card'>
                     <img src='images/o-blood-bag-vector-19887495.jpg'>
@@ -96,7 +96,7 @@
 
                         </div>
                         <div class='buy-price'>
-                        <a href='bookingForm.php'><button class='btn buy'>Buy</button></a>
+                        <a href='bookingForm.php?price=$arr[price]&B_b_id=$arr[blood_bank_id]&dist=$arr[distance]&bG=$arr[group_name]&booklat=$lat_in_use&booklon=$lon_in_use&book_adrs=$full_address'><button class='btn buy'>Buy</button></a>
                             <p class='card-fare'>&#8377 $arr[price]/-</p>
                         </div>
                     </div>

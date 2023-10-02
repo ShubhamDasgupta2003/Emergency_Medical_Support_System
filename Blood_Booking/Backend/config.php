@@ -6,10 +6,10 @@ $password = "";
 $dbname="emgmedicalsystem";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password,$dbname);
+$con = new mysqli($servername, $username, $password,$dbname);
 
 // Check connection
-if ($conn) {
+if ($con) {
   // echo "conection succesfull";
 }else{
 
