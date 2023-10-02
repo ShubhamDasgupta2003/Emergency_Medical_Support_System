@@ -40,12 +40,14 @@
     <!-- header section start -->
     <header class="header">
         <a href="#" class="logo"><i class="fa-solid fa-heart-pulse"></i>medcare</a>
+        <form action="/Minor Project 5th_Sem/Emergency_Medical_Support_System/Blood_Booking/Backend/Display.php" method="post">
         <div class="search-bar" id="srchbar-above">
             <button class="get-location btn" id="get-location-btn" style="width:50px;"><i
-                    class="fas fa-map-marker-alt"></i></button>
-            <input type="text" placeholder="Search">
-            <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </div>
+            class="fas fa-map-marker-alt"></i></button>
+            <input type="text" name="search"  placeholder="Search">
+                <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </form>
         <nav class="navbar">
             <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php">Home</a>
             <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php#services">Services</a>
