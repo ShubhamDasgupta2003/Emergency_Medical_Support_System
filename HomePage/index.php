@@ -335,7 +335,7 @@
                 <img src="images/oxygen.png" alt="">
                 <h3>Oxygen</h3>
                 <p> soluta a, pariatur dolore odit vadipisci fugiat.</p>
-                <a href="/Medical Supplies/Technical Supplies.html" class="btn">learn more <span class="fa fa-chevron-right"></span></a>
+                <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/Medical Supplies/Technical Supplies.php" class="btn">learn more <span class="fa fa-chevron-right"></span></a>
             </div>
             
             
