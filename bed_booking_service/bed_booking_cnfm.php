@@ -10,7 +10,7 @@
 
 if(isset($_POST['get_route'])){
     $id=$_GET['hosid'];
-$sql= "SELECT * FROM `hospital_info` where Id=$id";
+$sql= "SELECT * FROM `hospital_info` where Id='$id'";
 $result= mysqli_query($conn,$sql);
 $row=mysqli_fetch_assoc($result);
 
@@ -64,7 +64,7 @@ header("Location: $googleMapsURL");
         <div class="hspl-details">
         <?php
             $id=$_GET['hosid'];
-            $sql= "SELECT * FROM `hospital_info` where Id=$id";
+            $sql= "SELECT * FROM `hospital_info` where Id='$id'";
             $result= mysqli_query($conn,$sql);
             while($row=mysqli_fetch_assoc($result)){
                 echo"

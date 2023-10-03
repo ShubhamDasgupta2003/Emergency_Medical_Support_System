@@ -57,7 +57,7 @@ if(isset($_POST['submit'])){
 
      //'storing hospitaal name in patient table accordingly' php code starts here
      $id=$_GET['hospitalid'];
-     $sql= "SELECT * FROM `hospital_info` where Id=$id";
+     $sql= "SELECT * FROM `hospital_info` where Id='$id'";
      $result= mysqli_query($conn,$sql);
      $row=mysqli_fetch_assoc($result);
 
@@ -68,7 +68,7 @@ if(isset($_POST['submit'])){
      if($gender == 'male' ){
         // $malebed = max(0, $malebed - 1);
         $malebed-=1;
-        $sql3= "UPDATE `hospital_info` SET Male_bed_available=$malebed WHERE Id=$id";
+        $sql3= "UPDATE `hospital_info` SET Male_bed_available=$malebed WHERE Id='$id'";
         $result=mysqli_query($conn,$sql3);
         
      }
@@ -195,7 +195,7 @@ Your reserved bed will be canceled on $FourHourAfter . We kindly request your ar
 
                         // getting hospitalid(primary key) from url by using get method 
                         $id=$_GET['hospitalid'];
-                        $sql= "SELECT * FROM `hospital_info` where Id=$id";
+                        $sql= "SELECT * FROM `hospital_info` where Id='$id'";
                         $result= mysqli_query($conn,$sql);
                         while($row=mysqli_fetch_assoc($result)){
 
