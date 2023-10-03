@@ -160,10 +160,9 @@
                         </div>
     
                         <div class="card-content">
-                            <h2 class="name">1 Mohamed Yousef
+                            <h2 class="name">Your Health Our Priority
                             </h2>
-                            <p class="description">The lorem text the section that contains header with having open
-                                functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+                            <p class="description">We are Here For You</p>
     
                             <!-- <button class="button">View More</button> -->
                         </div>
@@ -178,10 +177,9 @@
                         </div>
     
                         <div class="card-content">
-                            <h2 class="name">2 Mohamed Yousef
+                            <h2 class="name">Searching For Blood 
                             </h2>
-                            <p class="description">The lorem text the section that contains header with having open
-                                functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+                            <p class="description">Search which bloodbank is suitable for you</p>
     
                             <!-- <button class="button">View More</button> -->
                         </div>
@@ -196,10 +194,9 @@
                         </div>
     
                         <div class="card-content">
-                            <h2 class="name">3 Mohamed Yousef
+                            <h2 class="name">Get Supplies
                             </h2>
-                            <p class="description">The lorem text the section that contains header with having open
-                                functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+                            <p class="description">Medical Supplies At Your Doorstep</p>
     
                             <!-- <button class="button">View More</button> -->
                         </div>
@@ -214,11 +211,9 @@
                         </div>
     
                         <div class="card-content">
-                            <h2 class="name">4 Mohamed Yousef 
-                                
+                            <h2 class="name">Ambulance Few Clicks Away
                             </h2>
-                            <p class="description">The lorem text the section that contains header with having open
-                                functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+                            <p class="description">At Your Service</p>
     
                             <!-- <button class="button">View More</button> -->
                         </div>
@@ -233,10 +228,26 @@
                         </div>
     
                         <div class="card-content">
-                            <h2 class="name">5 Mohamed Yousef
+                            <h2 class="name">Time Is Precious
                             </h2>
-                            <p class="description">The lorem text the section that contains header with having open
-                                functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+                            <p class="description">Book a Bed In Hospital Almost Instantly</p>
+    
+                            <!-- <button class="button">View More</button> -->
+                        </div>
+                    </div>
+                    <div class="Scard swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+    
+                            <div class="Scard-image">
+                                <img src="images/Blood_Bank.jpg" alt="" class="card-img">
+                            </div>
+                        </div>
+    
+                        <div class="card-content">
+                            <h2 class="name">Wary Of Strangers
+                            </h2>
+                            <p class="description">Our Review System will Take Care Of It</p>
     
                             <!-- <button class="button">View More</button> -->
                         </div>
