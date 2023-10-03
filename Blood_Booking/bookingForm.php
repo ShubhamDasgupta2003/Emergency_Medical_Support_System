@@ -40,9 +40,25 @@
     $book_lon = $_GET['booklon'];
     $tot_fare = $_GET['price'];
     $bloodBank_id=$_GET['B_b_id'];
-    $blood_gr=$_GET['bG'];
+    // $blood_gr=;
+    // $a=$_GET['bG'];
+    // switch($a) {
+    //     case 'O':
+    //             $blood_gr='O%2B';
+    //       break;
+    //     case 'A':
+    //         $blood_gr='A%2B';
+    //       break;
+    //     case 'B':
+    //         $blood_gr='B%2B';
+    //         break;
+    //     case 'AB':
+    //         $blood_gr='AB%2B';
+    //       break;
+    //     default:
+    //     $blood_gr=$a;
+    //   }
 
-    echo $blood_gr;
 
    $query = "SELECT * FROM blood_bank WHERE blood_bank_id='$bloodBank_id'";
 
@@ -59,9 +75,9 @@
         // $patient_age = $_POST['pat_age'];
         $patient_gender = $_POST['gender'];
         $contact=$_POST['cont_num'];
-
+        $blood_group=$_SESSION['bg'];
         $query = "INSERT INTO `blood_order` (`user_id`, `Patient_name`, `Blood_gr`, `Contact_No`, `Order_date`, `Order_id`, `Order_time`,`bloodbank_id`, `price`)
-                                                 VALUES('$uid','$patient_name','$blood_gr','$contact','$cur_date','$invoice_no','$cur_time','$bloodBank_id','$tot_fare')";
+                                                 VALUES('$uid','$patient_name','$blood_group','$contact','$cur_date','$invoice_no','$cur_time','$bloodBank_id','$tot_fare')";
                                                                                                                                 
         // $amb_stat_update_query = "UPDATE ambulance_info SET amb_status='busy' WHERE amb_no='$amb_no'";
 
@@ -98,11 +114,14 @@
             <img src="https://maishacare.com/wp-content/uploads/2022/06/ambulance-service-van-emergency-medical-vehicle-vector-illustration-white-background-ambulance-service-van-emergency-medical-127018462.jpg" alt="">
             <div class="column">
                 <?php
+                    // include("BloodB.php");
                     // $amb_fare = $distance * $rows['amb_rate'];
+                
+                    $blood_group=$_SESSION['bg'];
                     echo "<div class='amb_info_cont'>
                     <h1 class='descp' id='title'>$name</h1>
                     <h3><p class='descp' id='card-address'><i class='fa-solid fa-location-dot'></i> $rows[state] $rows[dist] $rows[city]</p></h3>
-                    <h3><p class='descp' id='card-type'>$blood_gr</p></h3>
+                    <h3><p class='descp' id='card-type'>$blood_group</p></h3>
                     <h2><p class='descp' id='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i>&nbsp&nbsp$distance km</p></h2>
                     <h2 class='descp' id='card-fare'>&#8377 $tot_fare/-</h2>
                     </div>";
