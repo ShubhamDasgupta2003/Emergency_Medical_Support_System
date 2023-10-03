@@ -53,7 +53,10 @@
     // include("Backend/Display.php");
     
 $b_gr=strtoupper($_POST["search"]);
-// $b_gr="O+";
+if($b_gr==null){
+
+    $b_gr="O+";
+}
 // $query1="";
 //Backend for location modification ends here
 
