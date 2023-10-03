@@ -50,7 +50,6 @@
             header("Refresh: 1");
         }
     }
-    include("Display.php");
 ?>
 
 <!DOCTYPE html>
