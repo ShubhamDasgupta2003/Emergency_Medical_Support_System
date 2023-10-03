@@ -50,7 +50,43 @@
             header("Refresh: 1");
         }
     }
-    include("Display.php");
+    // include("Backend/Display.php");
+    
+$b_gr=strtoupper($_POST["search"]);
+// $b_gr="O+";
+// $query1="";
+//Backend for location modification ends here
+
+
+$query = "SELECT
+         blood_bank.blood_bank_id,
+         blood_bank.name,
+         blood_bank.latitude,
+         blood_bank.longitude,
+         blood_bank.state,
+         blood_bank.city,
+         blood_bank.dist,
+         blood_bank.pincode,
+         ROUND((
+             6371 *
+             acos(cos(radians($lat_in_use)) * 
+             cos(radians(blood_bank.latitude)) * 
+             cos(radians($lon_in_use) - radians(blood_bank.longitude)) + 
+             sin(radians($lat_in_use)) * sin(radians(blood_bank.latitude)))
+             ), 1) AS distance,
+            blood_group.*
+            FROM blood_bank_blood_group
+            JOIN blood_group ON blood_bank_blood_group.blood_group_id = blood_group.blood_group_id
+            JOIN blood_bank ON blood_bank_blood_group.blood_bank_id = blood_bank.blood_bank_id
+            WHERE blood_bank_blood_group.blood_group_id = (
+            SELECT blood_group_id 
+            FROM blood_group 
+            WHERE group_name = '$b_gr'
+            )
+            ORDER BY distance;
+         ";
+        
+
 ?>
 
 <!DOCTYPE html>
@@ -85,9 +121,13 @@
         <div class="search-bar" id="srchbar-above">
             <button class="get-location btn" id="get-location-btn" style="width:50px;"><i
             class="fas fa-map-marker-alt"></i></button>
+
+            <form  method="post" class="search-bar">
             <input type="text" name="search"  placeholder="Search">
                 <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
+            </form>
+
+        </div>
         <nav class="navbar">
             <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php">Home</a>
             <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php#services">Services</a>
@@ -106,13 +146,12 @@
     <!-- header section end -->
     <div class="search-navbar" id="srchbar-below">
         <div class="search-bar">
-            <form action="Display.php" method="post">
             <button class="get-location btn" id="get-location-btn" style="width:50px;"><i
                     class="fas fa-map-marker-alt"></i></button>
             <input type="text" name="s_value" placeholder="Search...">
             <button class="srch-btn btn" type="submit" name="search"><i class="fa-solid fa-magnifying-glass"></i></button>
             <!-- <button ></button> -->
-            </form>
+
         </div>
     </div>
 
@@ -123,9 +162,10 @@
             <!-- Your content goes here | check body_cont.css file for css property-->
             <div class="cards">
                 <?php
-                include("Backend/Display.php");
                 $data = mysqli_query($con,$query);
                 while ($arr = mysqli_fetch_assoc($data)) {
+                    
+
                     echo "<div class='card'>
                     <img src='images/o-blood-bag-vector-19887495.jpg'>
                     <div class='card-details'>
@@ -138,13 +178,13 @@
 
                         </div>
                         <div class='buy-price'>
-                        <a href='bookingForm.php?price=$arr[price]&B_b_id=$arr[blood_bank_id]&dist=$arr[distance]&bG=$arr[group_name]%2B&booklat=$lat_in_use&booklon=$lon_in_use&book_adrs=$full_address'><button class='btn buy'>Buy</button></a>
+                        <a href='bookingForm.php?price=$arr[price]&B_b_id=$arr[blood_bank_id]&dist=$arr[distance]&bG=$arr[group_name]&booklat=$lat_in_use&booklon=$lon_in_use&book_adrs=$full_address'><button class='btn buy'>Buy</button></a>
                             <p class='card-fare'>&#8377 $arr[price]/-</p>
                         </div>
                     </div>
                 </div>";
+                $_SESSION['bg'] = $arr['group_name'];
                 }
-
                 ?>
             </div>
 
