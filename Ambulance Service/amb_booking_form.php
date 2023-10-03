@@ -104,7 +104,7 @@
                 ?>
                 <div class="patient_info_cont">
     
-                    <form method="post" action="book_data_Insert.php">
+                    <form method="post">
                         <label for="">Patient's Full Name<sup class="mandatory">*</sup></label>
                         <input type="text" name="pat_name" id="" placeholder="Enter Patient's full name"  required>
 

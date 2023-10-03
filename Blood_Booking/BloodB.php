@@ -3,11 +3,53 @@
     $islogin =  $_SESSION['is_logged_in'];
     if($islogin!=1)
     {
-        echo "<script>alert('It seems like you have not logged in\\nPlease login to book blood');
+        echo "<script>alert('It seems like you have not logged in\\nPlease login to book your ride');
         window.location.href = '/minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/login.php'</script>";
     }
     //Path for main config file 
-    include("Backend/config.php");
+    include_once("Backend/config.php");
+
+    //Backend for location modification starts here
+    setcookie("loc_modify","false");
+
+    $uid =  $_SESSION['user_id'];
+    $ufname =  $_SESSION['user_fname'];
+    $ulname = $_SESSION['user_lname'];
+
+    $lat_in_use = 0.0;
+    $lon_in_use = 0.0;
+    $full_address = "";
+    $loc_query = "SELECT lat_in_use,long_in_use,formatted_adrrs FROM user_info WHERE user_id='$uid'";
+
+    $loc_result = mysqli_query($con,$loc_query);
+    $loc_rows = $loc_result->fetch_assoc();
+
+    if($loc_result)
+    {
+        $lat_in_use = $loc_rows['lat_in_use'];
+        $lon_in_use = $loc_rows['long_in_use'];
+        $full_address = $loc_rows['formatted_adrrs'];
+    }
+    else
+    {
+        echo "error";
+    }
+
+    if($_COOKIE['loc_modify'] == 'true')
+    {
+        $mod_lat = $_COOKIE['lat_in_use'];
+        $mod_lon = $_COOKIE['lon_in_use'];
+        $mod_addrs = $_COOKIE['address_in_use'];
+
+        $loc_mod_query = "UPDATE user_info SET lat_in_use=$mod_lat,long_in_use=$mod_lon,formatted_adrrs='$mod_addrs' WHERE user_id='$uid'";
+
+        $mod_loc_result = mysqli_query($con,$loc_mod_query);
+
+        if($mod_loc_result)
+        {
+            header("Refresh: 1");
+        }
+    }
     include("Display.php");
 ?>
 
@@ -40,14 +82,12 @@
     <!-- header section start -->
     <header class="header">
         <a href="#" class="logo"><i class="fa-solid fa-heart-pulse"></i>medcare</a>
-        <form action="/Minor Project 5th_Sem/Emergency_Medical_Support_System/Blood_Booking/Backend/Display.php" method="post">
         <div class="search-bar" id="srchbar-above">
             <button class="get-location btn" id="get-location-btn" style="width:50px;"><i
             class="fas fa-map-marker-alt"></i></button>
             <input type="text" name="search"  placeholder="Search">
                 <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
-        </form>
         <nav class="navbar">
             <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php">Home</a>
             <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php#services">Services</a>
@@ -108,8 +148,9 @@
                 ?>
             </div>
 
-            <!-- Location window popup starts here -->
-            <div class="location-window" id="loc-win">
+           <!-- Location window popup starts here -->
+            
+           <div class="location-window" id="loc-win">
                 <div class="card popup">
                     <button class="dismiss-btn" id="dismiss">&times</button>
                     <div class="loc-head">
@@ -122,13 +163,16 @@
                     <div class="loc-head">
                         <span>Allow to access your location</span>
                         <div class="loc-option-tab">
-                            <button class="get-location btn" id="det-location"><i
-                                    class="fa-solid fa-location-crosshairs"></i>Detect my location</button>
+                            <button class="get-location btn" id="det-location"><i class="fa-solid fa-location-crosshairs"></i>Detect my location</button>
                         </div>
                     </div>
                     <div class="loc-head">
                         <div class="loc-option-tab">
-                            <label for="" id="location-txt"></label>
+                            <label for="" id="location-txt">
+                                <?php
+                                    echo "$full_address";
+                                ?>
+                            </label>
                         </div>
                     </div>
                 </div>
