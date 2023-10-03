@@ -40,26 +40,8 @@
     $book_lon = $_GET['booklon'];
     $tot_fare = $_GET['price'];
     $bloodBank_id=$_GET['B_b_id'];
-    // $blood_gr=;
-    // $a=$_GET['bG'];
-    // switch($a) {
-    //     case 'O':
-    //             $blood_gr='O%2B';
-    //       break;
-    //     case 'A':
-    //         $blood_gr='A%2B';
-    //       break;
-    //     case 'B':
-    //         $blood_gr='B%2B';
-    //         break;
-    //     case 'AB':
-    //         $blood_gr='AB%2B';
-    //       break;
-    //     default:
-    //     $blood_gr=$a;
-    //   }
 
-
+    // $order_id =  $_SESSION['$invoice_no'];
    $query = "SELECT * FROM blood_bank WHERE blood_bank_id='$bloodBank_id'";
 
     $result = mysqli_query($con,$query);
@@ -86,12 +68,14 @@
             if($insert_result)
             {
                 // header("Location:amb_invoice_mail.php?ambno=$amb_no&ambname=$amb_name&driver=$amb_driver&fare=$tot_fare&dist=$distance&billno=$invoice_no");
-                header("Location:http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/HomePage/index.php");
+                header("Location:http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/Blood_Booking/confirm.php?order_id=$invoice_no");
                 // echo("confirm order");
             }else{
                 echo "error in sql query";
             }
     }
+
+
     
 ?>
 
@@ -106,12 +90,13 @@
     <link rel="stylesheet" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/css/navbar.css">
     <link rel="stylesheet" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/css/amb_form_booking.css">
     <link rel="stylesheet" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/css/navLink.css">
+    <link rel="stylesheet" href="css/a_navbar.css">
 
 </head>
 <body>
     <div class="container">
         <div class="card">
-            <img src="https://maishacare.com/wp-content/uploads/2022/06/ambulance-service-van-emergency-medical-vehicle-vector-illustration-white-background-ambulance-service-van-emergency-medical-127018462.jpg" alt="">
+            <!-- <img src="https://maishacare.com/wp-content/uploads/2022/06/ambulance-service-van-emergency-medical-vehicle-vector-illustration-white-background-ambulance-service-van-emergency-medical-127018462.jpg" alt=""> -->
             <div class="column">
                 <?php
                     // include("BloodB.php");
@@ -128,7 +113,7 @@
                 ?>
                 <div class="patient_info_cont">
     
-                    <form method="post">
+                    <form method="post" action="">
                         <label for="">Patient's Full Name<sup class="mandatory">*</sup></label>
                         <input type="text" name="pat_name" id="" placeholder="Enter Patient's full name"  required>
 
