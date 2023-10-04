@@ -67,7 +67,7 @@
             $insert_result = mysqli_query($con,$query);
             if($insert_result)
             {
-                // header("Location:amb_invoice_mail.php?ambno=$amb_no&ambname=$amb_name&driver=$amb_driver&fare=$tot_fare&dist=$distance&billno=$invoice_no");
+                // header("Location:invoice_mail.php?ambno=$amb_no&ambname=$amb_name&driver=$amb_driver&fare=$tot_fare&dist=$distance&billno=$invoice_no");
                 header("Location:http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/Blood_Booking/confirm.php?order_id=$invoice_no");
                 // echo("confirm order");
             }else{
