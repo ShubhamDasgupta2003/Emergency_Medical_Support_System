@@ -138,7 +138,7 @@
                         }
                     }?>
      <!-- Location window popup starts here -->
-            <div class="location-window" id="loc-win">
+     <div class="location-window" id="loc-win">
                 <div class="card popup">
                     <button class="dismiss-btn" id="dismiss">&times</button>
                     <div class="loc-head">
@@ -147,14 +147,20 @@
                             <input type="number" name="pincode" placeholder="Pincode here" id="zipcode">
                             <button class="btn" id="pin-apply">Apply</button>
                         </div>
+                    </div>
+                    <div class="loc-head">
                         <span>Allow to access your location</span>
                         <div class="loc-option-tab">
-                            <button class="btn" id="det-location"><i class="fa-solid fa-location-crosshairs"></i>Detect my location</button>
+                            <button class="get-location btn" id="det-location"><i class="fa-solid fa-location-crosshairs"></i>Detect my location</button>
                         </div>
                     </div>
                     <div class="loc-head">
                         <div class="loc-option-tab">
-                            <label for="" id="location-txt"></label>
+                            <label for="" id="location-txt">
+                                <?php
+                                    echo "$full_address";
+                                ?>
+                            </label>
                         </div>
                     </div>
                 </div>
