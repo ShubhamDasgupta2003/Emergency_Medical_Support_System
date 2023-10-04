@@ -104,6 +104,7 @@ $query = "SELECT
 
     <!-- css for this page -->
     <link rel="stylesheet" href="Css/Bb.css">
+    <link rel="stylesheet" href="Css/useravatar.css">
     <!-- css -->
     <link rel="stylesheet" href="Css/navbar.css">
     <link rel="stylesheet" href="Css/navLink.css">
@@ -139,10 +140,14 @@ $query = "SELECT
         </nav>
 
 
-        <a href="#" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
-        <!-- <div class="user-avatar-container">
-            <h3>User Name</h3> 
-        </div> -->
+        <!-- <a href="#" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a> -->
+        <div class="user-avatar-container">
+        <a href="http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/HomePage/profile.php" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
+            <?php
+                echo"<h3>$_SESSION[user_fname]</h3>";
+            ?>
+
+        </div>
         <div id="menu-btn" class="fa fa-bars"> </div>
     </header>
 
@@ -170,7 +175,7 @@ $query = "SELECT
                     
 
                     echo "<div class='card'>
-                    <img src='images/o-blood-bag-vector-19887495.jpg'>
+                    <img src='images/blood.jpg'>
                     <div class='card-details'>
                         <h1 class='card-name'>$arr[name]</h1>
                         <h2 class='card-address'> <i class='fa-solid fa-location-dot'></i>  $arr[state] $arr[dist] $arr[city] - $arr[pincode]</h2>
@@ -187,6 +192,7 @@ $query = "SELECT
                     </div>
                 </div>";
                 $_SESSION['bg'] = $arr['group_name'];
+                $_SESSION['Bank_id'] = $arr['blood_bank_id'];
                 }
                 ?>
             </div>

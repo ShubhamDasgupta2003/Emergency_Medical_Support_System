@@ -53,6 +53,20 @@
     //Backend for location modification ends here
 
 
+    //Query for displaying results on screen
+
+    $amb_filter_query = "active";
+
+    if(@$_GET['q'])
+    {
+        $amb_filter_query = $_GET['q'];
+    }
+    else
+    {
+        $amb_filter_query = "active";
+    }
+    // $search_filter = ;
+
     $query = "SELECT `amb_no`, `amb_name`, `amb_type`, `amb_status`, `amb_loc_lat`, `amb_loc_long`, `amb_rate`, `amb_contact`, `amb_driver_name`, `amb_state`, `amb_district`, `amb_town`, `amb_loc_pincode`,ROUND((
         6371 *
         acos(cos(radians($lat_in_use)) * 
@@ -61,7 +75,7 @@
         radians(amb_loc_long)) + 
         sin(radians($lat_in_use)) * 
         sin(radians(amb_loc_lat)))
-     ),1) AS distance FROM `ambulance_info` WHERE amb_status='active' ORDER BY distance";
+     ),1) AS distance FROM `ambulance_info` WHERE amb_status='$amb_filter_query' OR amb_name='$amb_filter_query' OR amb_type = '$amb_filter_query' OR amb_district='$amb_filter_query' OR amb_town='$amb_filter_query' ORDER BY distance";
 
 
     //   HAVING distance<=100
@@ -96,8 +110,8 @@
         <a href="#" class="logo"><i class="fa-solid fa-heart-pulse"></i>medcare</a>
         <div class="search-bar" id="srchbar-above">
             <button class="get-location btn" id="get-location-btn"><i class="fas fa-map-marker-alt"></i></button>
-            <input type="text" placeholder="Search ambulance location name...">
-            <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <input type="text" id="search_val" placeholder="Search ambulance location name...">
+            <button class="btn" id="search_amb"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <nav class="navbar">
             <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php">Home</a>
@@ -116,8 +130,8 @@
     <div class="search-navbar" id="srchbar-below">
         <div class="search-bar">
             <button class="get-location btn" id="get-location-btn"><i class="fas fa-map-marker-alt"></i></button>
-            <input type="text" placeholder="Search ambulance location name...">
-            <button class="srch-btn btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <input type="text" id="search_val" placeholder="Search ambulance location name...">
+            <button class="srch-btn btn" id="search_amb"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
     </div>
 
@@ -244,5 +258,6 @@
     <script src="amb_booking.js"></script>
     <script src="location.js"></script>
     <script src="amb_status.js"></script>
+    <script src="search.js"></script>
 </body>
 </html>

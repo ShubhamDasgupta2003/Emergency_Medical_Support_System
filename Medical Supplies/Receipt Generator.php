@@ -75,7 +75,7 @@ else
 
 
     $filename = 'Receipt.pdf';
-    $path = 'C:\xampp\htdocs\pdf generate\pdf';
+    $path = 'C:\xampp\htdocs\Minor Project 5th_Sem\Emergency_Medical_Support_System\Medical Supplies\pdf';
     $file = $path . "/" . $filename;
 
     $mailto = 'royaatraya5@gmail.com';
