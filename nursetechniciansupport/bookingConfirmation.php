@@ -1,3 +1,22 @@
+<?php
+if(isset($_POST["submit"])){
+    include "connect.php";
+    $villortown=$_POST["user_vill_or_town"];
+    $postoff=$_POST["user_post_off"];
+    $pincode=$_POST["user_pincode"];
+    $dist=$_POST["user_dist"];
+    $state=$_POST["user_state"];
+    $lmark=$_POST["user_lmark"];
+    $sql="INSERT INTO order_medtech(user_vill_or_town,user_post_off,user_pincode,user_dist,user_state,user_lmark) VALUES('$villortown','$postoff','$pincode','$dist','$state','$lmark')";
+    if(mysqli_query($conn,$sql)){
+        echo "Data Insert Sucessfull!";
+    }
+    else{
+        echo "error";
+    }
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

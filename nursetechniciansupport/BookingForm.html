@@ -11,46 +11,34 @@
         <div class="text">
            Booking Form
         </div>
-        <form action="bookingConfirmation.html">
+        <form action="bookingConfirmation.php" method="post">
            <div class="form-row">
               <div class="input-data">
-                 <input type="text" required>
-                 <div class="underline"></div>
-                 <label for="">Full Name</label>
-              </div>
-              <div class="input-data">
-                 <input type="text" required>
-                 <div class="underline"></div>
-                 <label for="">Contact Number</label>
-              </div>
-           </div>
-           <div class="form-row">
-              <div class="input-data">
-                 <input type="text" required>
+                 <input  name="user_vill_or_town" type="text" required>
                  <div class="underline"></div>
                  <label for="">Village/Town Name</label>
               </div>
               <div class="input-data">
-                 <input type="text" required>
+                 <input  name="user_post_off" type="text" required>
                  <div class="underline"></div>
                  <label for="">Post Office</label>
               </div>
            </div>
            <div class="form-row">
             <div class="input-data">
-               <input type="text" required>
+               <input  name="user_pincode" type="text" required>
                <div class="underline"></div>
                <label for="">PIN code</label>
             </div>
             <div class="input-data">
-               <input type="text" required>
+               <input  name="user_dist" type="text" required>
                <div class="underline"></div>
                <label for="">District</label>
             </div>
         </div>
             <div class="form-row">
                 <div class="input-data">
-                   <input type="text" required>
+                   <input  name="user_state" type="text" required>
                    <div class="underline"></div>
                    <label for="">State</label>
                 </div>
@@ -62,7 +50,7 @@
          </div>
            <div class="form-row">
            <div class="input-data textarea">
-              <textarea rows="8" cols="80" required></textarea>
+              <textarea  name="user_lmark" rows="8" cols="80" required></textarea>
               <!-- <br /> -->
               <div class="underline"></div>
               <label for="">Land Mark</label>
@@ -70,7 +58,7 @@
               <div class="form-row submit-btn">
                  <div class="input-data">
                     <div class="inner"></div>
-                    <input type="submit" value="submit">
+                    <input  name="submit" type="submit" value="submit">
                  </div>
               </div>
         </form>
