@@ -323,19 +323,19 @@
                 <img src="images/babysitter.png" alt="">
                 <h3>Aya</h3>
                 <p> soluta a, pariatur vadipisci i hi jkl  ljl;a fugiat vadipisci.</p>
-                <a href="/nursetechniciansupport/aya.php" class="btn">learn more <span class="fa fa-chevron-right"></span></a>
+                <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/nursetechniciansupport/aya.php" class="btn">learn more <span class="fa fa-chevron-right"></span></a>
             </div>
             <div class="box">
                 <img src="images/nurse.png" alt="">
                 <h3>Nurse</h3>
                 <p> soluta a, pariatur dolore fsf fsaf afsaf fsaf fsaf fsaf fasf .</p>
-                <a href="/nursetechniciansupport/nurse.php" class="btn">learn more <span class="fa fa-chevron-right"></span></a>
+                <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/nursetechniciansupport/nurse.php" class="btn">learn more <span class="fa fa-chevron-right"></span></a>
             </div>
             <div class="box">
                 <img src="images/radiologist.png" alt="">
                 <h3>Medical Technician</h3>
                 <p> soluta a, pariatur dolore odit vadipisci fugiat.</p>
-                <a href="/nursetechniciansupport/technician.php" class="btn">learn more <span class="fa fa-chevron-right"></span></a>
+                <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/nursetechniciansupport/technician.php" class="btn">learn more <span class="fa fa-chevron-right"></span></a>
             </div>
             <div class="box">
                 <img src="images/medicine.png" alt="">
