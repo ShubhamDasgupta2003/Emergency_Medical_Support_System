@@ -77,7 +77,7 @@ else
 	$pdf->lastPage();
     
 
-    $pdf_name="Receipt";
+    $pdf_name="Receipt".$uid.' '.$ufname.' '.$ulname;
 	$pdf->Output(dirname(__FILE__).'/pdf/'.$pdf_name.'.pdf', 'F');
     $pdf->Output('example.pdf', 'I');
     
@@ -93,7 +93,7 @@ else
 
 
 
-    $filename = 'Receipt.pdf';
+    $filename = $pdf_name.'.pdf';
     $path = 'C:\xampp\htdocs\Minor Project 5th_Sem\Emergency_Medical_Support_System\Medical Supplies\pdf';
     $file = $path . "/" . $filename;
 
