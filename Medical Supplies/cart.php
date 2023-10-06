@@ -1,5 +1,8 @@
 <?php
 include_once ('connection.php');
+session_start();
+$uid =  $_SESSION['user_id'];
+
 if(isset($_POST['update_product_quantity']))
 {
     $update_value=$_POST['update_quantity'];
@@ -27,7 +30,7 @@ if(isset($_POST['update_product_quantity']))
 <body>
  <div class="main">
     <?php
-       $display_product=mysqli_query($conn,"SELECT * FROM cart");
+       $display_product=mysqli_query($conn,"SELECT * FROM cart WHERE user_id='$uid' ");
        $s=1;
        $grand_total=0;
        if(mysqli_num_rows($display_product)>0)

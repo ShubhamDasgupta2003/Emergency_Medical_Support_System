@@ -1,5 +1,8 @@
 <?php
 include_once ('connection.php');
+session_start();
+$uid =  $_SESSION['user_id'];
+$e= $_SESSION['user_email'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +25,7 @@ include_once ('connection.php');
             <div class="column">
                 <h1 id="cnfm-msg"><i class="fa-solid fa-circle-check fa-bounce fa-2xl" style="color: #27b300;"></i> &nbsp;Booking Confirmed!</h1>
                 <div class="amb_info_cont">
-                    <h3>Your Order #orderID is confirmed . Regarding any question about the order contact us with your registered #user-email</h3>
+                    <h3>Your Order  is confirmed . Regarding any question about the order contact us with your registered <?php echo $e ?></h3>
                     <p class="descp" id="card-type"></p>
                     <p class="descp" id="card-address"><i class="fa-solid fa-location-dot"></i> Shipping To</p>
                     <p class="descp" id="card-type">WestBengal North - 24pgs Halisahar - 743135</p>

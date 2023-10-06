@@ -1,6 +1,9 @@
 <?php
     include_once ('connection.php');
-    $r=mysqli_query($conn,"select * from cart");
+    session_start();
+    $uid =  $_SESSION['user_id'];
+    $e= $_SESSION['user_email'];
+    $r=mysqli_query($conn,"select * from cart WHERE user_id='$uid' ");
 
 
 /*-------------------------DO not change this section as it defines the structure of the pdf---------------------------*/
@@ -78,7 +81,7 @@ else
     $path = 'C:\xampp\htdocs\Minor Project 5th_Sem\Emergency_Medical_Support_System\Medical Supplies\pdf';
     $file = $path . "/" . $filename;
 
-    $mailto = 'royaatraya5@gmail.com';
+    $mailto = $e;
     $subject = 'Receipt Of Your Order';
     $message = 'Here is the receipt of your order, hope you enjoyed our services!';
 
