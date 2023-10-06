@@ -3,6 +3,8 @@
     session_start();
     $uid =  $_SESSION['user_id'];
     $e= $_SESSION['user_email'];
+    $ufname =  $_SESSION['user_fname'];
+    $ulname = $_SESSION['user_lname'];
     $r=mysqli_query($conn,"select * from cart WHERE user_id='$uid' ");
 
 
@@ -24,14 +26,24 @@
 
 
 $n=1;
+$current_date=date('Y-m-d');
 if(mysqli_num_rows($r)>0)
 {
-  $a  ='<table>';
+  $a= '<p><h2>Receipt</h2></p>';
+  $a.= '<p>Emergency Medical Support System</p>';
+  $a.= '<p>emergencymedicalservices23@gmail.com</p>';
+  $a.= '<p><u>Bill To</u></p>';
+  $a.= '<p>'.$ufname.' '. $ulname.'</p>';
+  $a.= '<p>'.$e.'</p>';
+  $a.= '<p>'.$current_date.'</p>';
+  $a.= '<p>Hello '.$ufname.' '. $ulname.', Thnak You for using Medical Supplies Service.Here is your receipt of your order</p>';
+
+  $a .='<table>';
   $grand_total=0;
-  $a .='<tr><td><u>No</u></td><td><u>Product Name</u></td><td><u>Price</u></td><td><u>Quantity</u></td><td><u>Total Price</u></td></tr>';
+  $a .='<tr><td><u>No</u></td><td><u>Product Name</u></td><td><u>Price</u></td><td><u>Quantity</u></td><td><u>|Total Price|</u></td></tr>';
    while($row=mysqli_fetch_assoc($r))
    {
-    $a .='<tr><td>'.$n.'</td><td>'.$row['name'].'</td><td>'. $row['price'].'/- </td><td>'.$row['quantity'].'</td>';
+    $a .='<tr><td>|'.$n.'|</td><td>|'.$row['name'].'|</td><td>|'. $row['price'].'/- |</td><td>|'.$row['quantity'].'|</td>';
     $subtotal=($row['price']*$row['quantity']);
     $a.='<td>'.$subtotal.'/- </td></tr>';
     $a .='<tr><td> </td><td></td><td> </td><td></td></tr>';
@@ -42,6 +54,10 @@ if(mysqli_num_rows($r)>0)
 
   $a .='</table>';
   $a .='<u>Grand Total</u>: '.$grand_total.'/-';
+  $a.= '<p>So the total bill is '.$grand_total.'/-  Any problem Contact us with your registered email which is '.$e.'</p>';
+  $a.= '<p><h4>Terms and Conditions</h4></p>';
+  $a.= '<p>*The items mentioned above payment has been paid by the customer </p>';
+  $a.= '<p>*The service has received the customers full payment</p>';
 }
 else
 {
@@ -119,4 +135,4 @@ else
         print_r( error_get_last() );
     }
 
-?>*?
+?>

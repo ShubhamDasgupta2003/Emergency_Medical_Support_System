@@ -21,7 +21,7 @@ if(isset($_POST['update_product_quantity']))
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking Confirmation</title>
+    <title>cart</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/cart.css">
@@ -77,7 +77,10 @@ if(isset($_POST['update_product_quantity']))
          } 
          else{
             ?>
-            <script>alert("no products present in cart")</script>
+            <script>alert("no products present in cart");
+             window.location.href = '/Minor Project 5th_Sem/Emergency_Medical_Support_System/Medical Supplies/Medical Supplies.php'
+             </script>
+          
             <?php
          }
             if($grand_total>0)
