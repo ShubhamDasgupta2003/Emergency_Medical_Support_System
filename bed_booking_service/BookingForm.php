@@ -95,7 +95,9 @@ if(isset($_POST['submit'])){
     //  echo "$row[Name],$name,$gender,$age,$contact,$dob,$address2,$city,$pin,$bookdatetime,$patient_id";
 
 
-    header("location:bed_booking_cnfm.php?hosid=$row[Id]");
+    // header("location:bed_booking_cnfm.php?hosid=$row[Id]");
+
+    // header("location:/Minor Project 5th_Sem/Emergency_Medical_Support_System/Payment/razor_pay.php");
 
 
     // header("location:bed_booking_cnfm.php?hosid=$row[Id]&p_id=$patient_id");
