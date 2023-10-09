@@ -224,3 +224,6 @@ html{
         font-size:50%; 
     }
 }
+.search-bar form{
+    text-decoration:none;
+}

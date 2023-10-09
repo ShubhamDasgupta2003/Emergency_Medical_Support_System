@@ -144,7 +144,8 @@ $query = "SELECT
         <div class="user-avatar-container">
         <a href="http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/HomePage/profile.php" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
             <?php
-                echo"<h3>$_SESSION[user_fname]</h3>";
+                
+                echo"<h3 style='padding-top:8px'>$_SESSION[user_fname]</h3>";
             ?>
 
         </div>
@@ -175,7 +176,7 @@ $query = "SELECT
                     
 
                     echo "<div class='card'>
-                    <img src='images/blood.jpg'>
+                    <img src='images/Blood_Bank.png'>
                     <div class='card-details'>
                         <h1 class='card-name'>$arr[name]</h1>
                         <h2 class='card-address'> <i class='fa-solid fa-location-dot'></i>  $arr[state] $arr[dist] $arr[city] - $arr[pincode]</h2>
