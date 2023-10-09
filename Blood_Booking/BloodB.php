@@ -138,7 +138,7 @@ $query = "SELECT
             <button class="get-location btn" id="get-location-btn" style="width:50px;"><i
             class="fas fa-map-marker-alt"></i></button>
             
-            <input type="text" id="searchInput" name="search"  placeholder="Search">
+            <input type="text" id="searchInput" name="search"  placeholder="Search blood group">
             <button class="btn" onclick="search()"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
 
@@ -167,8 +167,11 @@ $query = "SELECT
         <div class="search-bar">
             <button class="get-location btn" id="get-location-btn" style="width:50px;"><i
                     class="fas fa-map-marker-alt"></i></button>
-            <input type="text" name="s_value" placeholder="Search...">
-            <button class="srch-btn btn" type="submit" name="search"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <!-- <input type="text" name="s_value" placeholder="Search...">
+            <button class="srch-btn btn" type="submit" name="search"><i class="fa-solid fa-magnifying-glass"></i></button> -->
+
+            <input type="text" id="searchInput1" name="search"  placeholder="Search blood group">
+            <button class="srch-btn btn" onclick="search1()"><i class="fa-solid fa-magnifying-glass"></i></button>
             <!-- <button ></button> -->
 
         </div>
@@ -286,6 +289,7 @@ $query = "SELECT
     <script src="index.js"></script>
     <script src="location.js"></script>
     <script src="search.js"></script>
+    <script src="search1.js"></script>
 </body>
 
 </html>
