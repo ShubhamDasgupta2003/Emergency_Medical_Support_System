@@ -10,6 +10,13 @@
     {
         $rows = $result->fetch_assoc();
     }
+
+    $order_info_query = "SELECT * FROM user_ambulance WHERE amb_no='$amb_no'";
+    $order_result = mysqli_query($con,$order_info_query);
+    if($order_result)
+    {
+        $order_rows = $order_result->fetch_assoc();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -58,6 +65,8 @@
                         <a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php'><button class='btn'><i class='fa-solid fa-house'></i>&nbsp&nbspHome</button></a>
                     </div>
                 </div>";
+
+                    header("Refresh: 3,url=/Minor Project 5th_Sem/Emergency_Medical_Support_System/Payment/razor_pay.php?order_id=$order_rows[invoice_no]&amount=$fare");
                 ?>
             </div>
         </div>

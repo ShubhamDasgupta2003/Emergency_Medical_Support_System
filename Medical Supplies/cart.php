@@ -1,5 +1,8 @@
 <?php
 include_once ('connection.php');
+session_start();
+$uid =  $_SESSION['user_id'];
+
 if(isset($_POST['update_product_quantity']))
 {
     $update_value=$_POST['update_quantity'];
@@ -18,7 +21,7 @@ if(isset($_POST['update_product_quantity']))
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking Confirmation</title>
+    <title>cart</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/cart.css">
@@ -27,7 +30,7 @@ if(isset($_POST['update_product_quantity']))
 <body>
  <div class="main">
     <?php
-       $display_product=mysqli_query($conn,"SELECT * FROM cart");
+       $display_product=mysqli_query($conn,"SELECT * FROM cart WHERE user_id='$uid' ");
        $s=1;
        $grand_total=0;
        if(mysqli_num_rows($display_product)>0)
@@ -74,7 +77,10 @@ if(isset($_POST['update_product_quantity']))
          } 
          else{
             ?>
-            <script>alert("no products present in cart")</script>
+            <script>alert("no products present in cart");
+             window.location.href = '/Minor Project 5th_Sem/Emergency_Medical_Support_System/Medical Supplies/Medical Supplies.php'
+             </script>
+          
             <?php
          }
             if($grand_total>0)

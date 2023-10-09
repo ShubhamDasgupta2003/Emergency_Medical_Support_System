@@ -1,5 +1,8 @@
 <?php
 include_once ('connection.php');
+session_start();
+$uid =  $_SESSION['user_id'];
+
 if(isset($_POST['add_to_cart']))
 {
   $product_name=$_POST['p_name'];
@@ -9,7 +12,7 @@ if(isset($_POST['add_to_cart']))
 
   
     try {
-           $insert_query=mysqli_query($conn,"INSERT INTO cart (name,price,image,quantity) VALUES (' $product_name',' $product_price',' $product_image', $product_quantity)") or die();
+           $insert_query=mysqli_query($conn,"INSERT INTO cart (name,price,image,quantity,user_id) VALUES (' $product_name',' $product_price',' $product_image', $product_quantity,'$uid')") or die();
        }catch (Exception $e){
    
         

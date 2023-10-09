@@ -1,5 +1,15 @@
 <?php
 include_once ('connection.php');
+include_once ('connection.php');
+$i=0;
+date_default_timezone_set("Asia/calcutta");
+session_start();
+$uid =  $_SESSION['user_id'];
+$e= $_SESSION['user_email'];
+$ufname =  $_SESSION['user_fname'];
+$ulname = $_SESSION['user_lname'];
+$current_date=date('Y-m-d');
+$current_time=date('h:i:sa');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +32,7 @@ include_once ('connection.php');
             <div class="column">
                 <h1 id="cnfm-msg"><i class="fa-solid fa-circle-check fa-bounce fa-2xl" style="color: #27b300;"></i> &nbsp;Booking Confirmed!</h1>
                 <div class="amb_info_cont">
-                    <h3>Your Order #orderID is confirmed . Regarding any question about the order contact us with your registered #user-email</h3>
+                    <h3>Your Order  is confirmed . Regarding any question about the order contact us with your registered <?php echo $e ?></h3>
                     <p class="descp" id="card-type"></p>
                     <p class="descp" id="card-address"><i class="fa-solid fa-location-dot"></i> Shipping To</p>
                     <p class="descp" id="card-type">WestBengal North - 24pgs Halisahar - 743135</p>
@@ -30,7 +40,23 @@ include_once ('connection.php');
                     <p class="descp" id="card-type">23 March</p>
                     <h2 class="descp" id="card-fare">Total Price: &#8377  <?php echo $b; ?></h2>
                     <div class="bton">
-                    <?php echo "<a href='Receipt Generator.php?p= $b ' class='btn'>Receipt</a>"; ?>
+                    <?php 
+                    $display=mysqli_query($conn,"SELECT * FROM cart WHERE user_id='$uid' ");
+                    if(mysqli_num_rows($display)>0)
+                              {
+                                while($row=mysqli_fetch_assoc($display))
+                                {
+                                   $u=$row['user_id'];
+                                   $n=$row['name'];
+                                   $p=$row['price'];
+                                   $q= $row['quantity'];
+                                   $sql="INSERT INTO `medical_supplies_order_table`( `user_id`, `product_name`, `quantity`, `date`, `time`, `user_fname`, `user_lname`, `user_email`, `price`) VALUES ('$u','$n','$q','$current_date','$current_time','$ufname','$ulname','$e',$p)";
+                                   $result=mysqli_query($conn,$sql);
+                                }
+                              }
+                      echo "<a href='Receipt Generator.php?p= $b ' class='btn'>Receipt</a>"; 
+                    ?>
+                
                     </div>
                 </div>
             </div>

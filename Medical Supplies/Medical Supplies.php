@@ -1,6 +1,15 @@
 <?php
 include_once ('connection.php');
 
+session_start();
+$uid =  $_SESSION['user_id'];
+
+$islogin =  $_SESSION['is_logged_in'];
+if($islogin!=1)
+{
+    echo "<script>alert('It seems like you have not logged in\\nPlease login to browse this site');
+    window.location.href = '/minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/login.php'</script>";
+}
 
 //Backend for location modification starts here
 setcookie("loc_modify","false");
@@ -82,10 +91,10 @@ if($_COOKIE['loc_modify'] == 'true')
        <button class="btn" value="submit" name="search_data_product"><i class="fa-solid fa-magnifying-glass"></i></button>  
     </div>
     <nav class="navbar">
-        <a class="navlink" href="/HomePage/index.html">Home</a>
-            <a class="navlink" href="/HomePage/index.html#services">Services</a>
-            <a class="navlink" href="/HomePage/index.html#review">Review</a>
-            <a class="navlink" href="/HomePage/index.html#footer">contact Us</a>
+        <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php">Home</a>
+            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php#services">Services</a>
+            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php#review">Review</a>
+            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php#footer">contact Us</a>
     </nav>
     
     
@@ -93,7 +102,8 @@ if($_COOKIE['loc_modify'] == 'true')
 
 
     <?php
-     $select_pro=mysqli_query($conn,"select * from `cart` ") or die("query failed");
+  
+     $select_pro=mysqli_query($conn,"select * from `cart` WHERE user_id='$uid' ") or die("query failed");
      $row_count=mysqli_num_rows($select_pro);
      ?>
     <div id="cart"> <a href="cart.php" id="user-cart"><i class="fa-solid fa-cart-shopping fa-2xl"></i><span><sup><?php echo $row_count ?></sup></span></a>
