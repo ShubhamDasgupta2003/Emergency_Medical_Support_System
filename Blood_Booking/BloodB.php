@@ -137,8 +137,9 @@ $query = "SELECT
         <div class="search-bar" id="srchbar-above">
             <button class="get-location btn" id="get-location-btn" style="width:50px;"><i
             class="fas fa-map-marker-alt"></i></button>
-            <input type="text" id="search_val" name="search"  placeholder="Search">
-            <button class="btn" id="search_bld"><i class="fa-solid fa-magnifying-glass"></i></button>
+            
+            <input type="text" id="searchInput" name="search"  placeholder="Search">
+            <button class="btn" onclick="search()"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
 
         <nav class="navbar">

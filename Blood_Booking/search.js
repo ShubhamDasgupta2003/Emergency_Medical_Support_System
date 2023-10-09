@@ -1,8 +1,6 @@
-const search_btn = document.getElementById('search_bld');
-const search_value = document.getElementById('search_val');
 
-search_btn.addEventListener('click',()=>{
-
-    let searchbar_text = search_value.value;
-    window.location.href = "BloodB.php?q="+searchbar_text;
-})
+var searchTerm = encodeURIComponent(document.getElementById('searchInput').value);
+function search() {
+    var searchTerm = encodeURIComponent(document.getElementById('searchInput').value);
+    window.location.href = 'BloodB.php?q=' + searchTerm;
+}
