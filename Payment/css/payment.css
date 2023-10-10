@@ -1,25 +1,23 @@
-.container
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
-form
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+.title
 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 10rem;
-    padding: 5rem;
-    background-color: rgb(58, 234, 228);
-    border-radius: 10px;
-    width: 60rem;
+    font-size: 2.5rem;
+    background-color: rgb(157, 255, 234);
+}
+.column h3
+{
+    font-size: 1.9rem;
+}
+.column p
+{
+    font-size: 1.5rem;
+    font-weight: 400;
+    border-bottom: 1px solid rgb(189, 189, 189);
 }
 .btn{
-    background-color: dodgerblue;
+    background-color: rgb(238, 75, 46);
     color: white;
     padding: 1rem;
     font-weight: 500;
@@ -29,41 +27,6 @@ form
 .btn:hover
 {
     background-color: white;
-    color: dodgerblue;
-}
-.row
-{
-    display: flex;
-    justify-content: space-evenly;
-    text-align: left;
-    width: 60rem;
-    margin: 1.2rem;
-}
-#title
-{
-    font-size: 2.3rem;
-    background-color: white;
-    width: 100%;
-    text-align: center;
-    /* margin-top: 1rem; */
-}
-#label
-{
-    margin:auto 5rem;
-    font-size: 1.7rem;
-    width: 60rem;
-    display: flex;
-    justify-content: left;
-}
-#value
-{
-    margin:auto 5rem;
-    width: 60rem;
-    /* font-size: 1.7rem; */
-    display: flex;
-    justify-content: right;
-}
-#order_total
-{
-    border-top: 1px solid green;
+    color: rgb(238, 75, 46);
+    border: 1px solid rgb(238, 75, 46);
 }

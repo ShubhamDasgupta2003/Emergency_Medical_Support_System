@@ -19,41 +19,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/payment.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/amb_form_booking.css">
+    <link rel="stylesheet" href="css/navlink.css">
+    <link rel="stylesheet" href="css/payment.css">
     <title>Payment</title>
 </head>
 <body>
+
     <?php
+
         echo "<div class='container'>
-        <form>
-            <h1 id='title'>Payment Details</h1>
-            <div class='row'>
-                <h2 id='label'>Delivering to</h2>
-                <h2 id='value'>$rows[user_first_name] $rows[user_last_name]</h2>
-            </div>
-            <div class='row'>
-                <h2 id='label'>Email id</h2>
-                <h2 id='value'>$rows[user_email]</h2>
-            </div>
-            <div class='row'>
-                <h2 id='label'>Delivery Address</h2>
-                <h2 id='value'>$rows[formatted_adrrs]</h2>
-            </div>
-            <div class='row'>
-                <h2 id='label'>Order id</h2>
-                <h2 id='value'>$ord_id</h2>
-            </div>
-            <div class='row' id='order_total'>
-                <h2 id='label'>Order Summary</h2>
-                <h1 id='value'>&#8377 $amount/-</h1>
+        <div class='card'>
+            <div class='column'>
+                <h1 id='cnfm-msg' class='title'>Payment Details</h1>
+                    <div class='amb_info_cont'>
+                    <h1 class='descp' id='title'>$rows[user_first_name] $rows[user_last_name]</h1>
+                    <h3>Delivery address</h3>
+                    <p class='descp' id='card-address'>$rows[formatted_adrrs]</p>
+                    <h3>Email</h3>
+                    <p class='descp' id='card-type'>$rows[user_email]</p>
+                    <h3>Contact no.</h3>
+                    <p class='descp' id='card-distance'>$rows[user_contactno]</p>
+                    <h3>Order Id</h3>
+                    <p class='descp' id='card-type'>$ord_id</p>
+                    <h3>Total</h3>
+                    <h2 class='descp' id='card-fare'>&#8377 $amount/-</h2>
             </div>
             <input type='button' class='btn' name='btn' id='btn' value='Confirm & Pay' onclick='pay_now()'/>
-        </form>
+        </div>
     </div>";
+    
     ?>
-
 
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
