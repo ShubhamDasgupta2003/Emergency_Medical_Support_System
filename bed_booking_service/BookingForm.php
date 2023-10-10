@@ -52,15 +52,20 @@ if(isset($_POST['submit'])){
      $patient_id = "PNT"."$digit"."$last_3_dig_cont"."$last_4_dig_adhr";
      //Unique user Id generation php code ends here
 
-     session_start();
+    //  session_start();
      $_SESSION['p_id'] = "$patient_id";
 
      //'storing hospitaal name in patient table accordingly' php code starts here
      $id=$_GET['hospitalid'];
-     $sql= "SELECT * FROM `hospital_info` where Id='$id'";
+    if(isset($_GET['hospitalid'])){
+        $_SESSION['id'] = $_GET['hospitalid'];
+    }
+    //  $sql= "SELECT * FROM `hospital_info` where Id='$id'";
+    $sql= "SELECT * FROM `hospital_info` where Id='$id'";
      $result= mysqli_query($conn,$sql);
      $row=mysqli_fetch_assoc($result);
 
+     $bed_charge= $row['bed_charge']; //storing bed charge 
     //  available bed updation code starts here 
 
      $malebed = $row['Male_bed_available'];
@@ -95,7 +100,9 @@ if(isset($_POST['submit'])){
     //  echo "$row[Name],$name,$gender,$age,$contact,$dob,$address2,$city,$pin,$bookdatetime,$patient_id";
 
 
-    header("location:bed_booking_cnfm.php?hosid=$row[Id]");
+    // header("location:bed_booking_cnfm.php?hosid=$row[Id]");
+
+    header("location:/Minor Project 5th_Sem/Emergency_Medical_Support_System/bed_booking_service/bbs_payment/razor_pay.php?hosid=$row[Id]&pnt_id=$patient_id&amount=$bed_charge");
 
 
     // header("location:bed_booking_cnfm.php?hosid=$row[Id]&p_id=$patient_id");
