@@ -65,8 +65,7 @@
             $sql1="SELECT * FROM districts";
             $res1=mysqli_query($con,$sql1) or die("query unsuccesfull");
             if(mysqli_num_rows($res1)){
-                echo " <select selected name='districts'> ";
-            
+                echo '<select name="districts">';
                 while($row1=mysqli_fetch_assoc($res1)){
                     if($data['district']==$row1['value']){
                         $select="selected";

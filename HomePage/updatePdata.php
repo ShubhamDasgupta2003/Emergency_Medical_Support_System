@@ -11,7 +11,7 @@
     $email = $_POST['email_id'];
     $cont_num = $_POST['contact_num'];
     $dob = $_POST['dob'];
-    $district = $_POST['district'];
+    $district = $_POST['districts'];
     $town_vill = $_POST['city-vill'];
     $state = $_POST['state'];
     $postcode = $_POST['post_code'];
@@ -27,7 +27,7 @@
     $res=mysqli_query($con,$update_sql);
 
     if($res){
-        // echo "data inserted succesfully";
+    // echo "data inserted succesfully";
     }else{
         echo "data not inserted";
     }
