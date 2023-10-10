@@ -9,8 +9,10 @@
 
 
 if(isset($_POST['get_route'])){
-    $id=$_GET['hosid'];
-$sql= "SELECT * FROM `hospital_info` where Id='$id'";
+    // $id=$_GET['hosid'];
+    session_start();
+    $hosp_id = $_SESSION['id'];
+$sql= "SELECT * FROM `hospital_info` where Id='$hosp_id'";
 $result= mysqli_query($conn,$sql);
 $row=mysqli_fetch_assoc($result);
 
@@ -63,8 +65,9 @@ header("Location: $googleMapsURL");
         <p id="p1"><u>Hospital information</u></p>
         <div class="hspl-details">
         <?php
-            $id=$_GET['hosid'];
-            $sql= "SELECT * FROM `hospital_info` where Id='$id'";
+            // $id=$_GET['hosid'];
+            $hosp_id= $_SESSION['id'];
+            $sql= "SELECT * FROM `hospital_info` where Id='$hosp_id'";
             $result= mysqli_query($conn,$sql);
             while($row=mysqli_fetch_assoc($result)){
                 echo"
@@ -93,7 +96,7 @@ header("Location: $googleMapsURL");
                  <div class='c2'><strong class='attribute6'>Booking Date & Time:</strong>$row[Booking_date]</div>"
                     ;}
                 ?>
-                <p class = 'notice'>Note: Your bed reservation will automatically canceled if you do not arrive at hospital within four hours of Booking time.</p>
+                <!-- <p class = 'notice'>Note: Your bed reservation will automatically canceled if you do not arrive at hospital within four hours of Booking time.</p> -->
         </div>
         <!-- <p>Go back to <a href="/">Homepage</a></p> -->
         <div class="btns">
