@@ -52,7 +52,7 @@
     }
         //Backend for location modification ends here
 
-    $query= "SELECT `Id`, `Name`, `ContactNo`, `email`, `Address`, `State`, `District`, `City`, `Pincode`, `Latitude`, `Longitude`, `Male_bed_available`, `Female_bed_available`, ROUND((
+    $query= "SELECT `Id`, `Name`, `ContactNo`, `email`, `Address`, `State`, `District`, `City`, `Pincode`, `Latitude`, `Longitude`, `Male_bed_available`, `Female_bed_available`,`bed_charge`, ROUND((
     6371 *
     acos(cos(radians($lat_in_use)) * 
     cos(radians(Latitude)) * 
@@ -102,7 +102,16 @@
             <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/#footer">Contact Us</a>
         </nav>
         
-        <a href="#" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
+        <!-- <a href="#" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a> -->
+        <div class="user-avatar-container">
+        <a href="http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/HomePage/profile.php" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
+            <?php
+                
+                echo"<h3>$_SESSION[user_fname]</h3>";
+            ?>
+
+        </div>
+        <div id="menu-btn" class="fa fa-bars"> </div>
 
         <div id="menu-btn" class="fa fa-bars"> </div>
     </header>
@@ -147,6 +156,7 @@
                             </p>
                         <div class='card-row' >
                             <p class='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i>$row[distance] Km</p>
+                                 <p class='card-fare'>&#8377 $row[bed_charge]/-</p>
                             <a href='BookingForm.php?hospitalid=$row[Id]' target='_blank'>
                                 <button id='c1' class='btn btn-secondary-orange'>Book Bed</button>
                             </a>

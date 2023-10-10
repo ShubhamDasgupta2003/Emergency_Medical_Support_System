@@ -52,11 +52,23 @@
     }
     // include("Backend/Display.php");
     
-$b_gr=strtoupper($_POST["search"]);
-if($b_gr==null){
+    $b_gr = "O+";
+    
+    if(@$_GET['q'])
+    {
+        $b_gr = $_GET['q'];
+    }else{
+        $b_gr = "O+";
 
-    $b_gr="O+";
-}
+    }
+    
+    // echo $b_gr;
+
+// $b_gr=strtoupper($_POST["search"]);
+// if($b_gr==null){
+
+//     $b_gr="O+";
+// }
 // $query1="";
 //Backend for location modification ends here
 
@@ -125,13 +137,11 @@ $query = "SELECT
         <div class="search-bar" id="srchbar-above">
             <button class="get-location btn" id="get-location-btn" style="width:50px;"><i
             class="fas fa-map-marker-alt"></i></button>
-
-            <form  method="post" class="search-bar">
-            <input type="text" name="search"  placeholder="Search">
-                <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </form>
-
+            
+            <input type="text" id="searchInput" name="search"  placeholder="Search blood group">
+            <button class="btn" onclick="search()"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
+
         <nav class="navbar">
             <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php">Home</a>
             <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php#services">Services</a>
@@ -144,6 +154,7 @@ $query = "SELECT
         <div class="user-avatar-container">
         <a href="http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/HomePage/profile.php" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
             <?php
+                
                 echo"<h3>$_SESSION[user_fname]</h3>";
             ?>
 
@@ -156,8 +167,11 @@ $query = "SELECT
         <div class="search-bar">
             <button class="get-location btn" id="get-location-btn" style="width:50px;"><i
                     class="fas fa-map-marker-alt"></i></button>
-            <input type="text" name="s_value" placeholder="Search...">
-            <button class="srch-btn btn" type="submit" name="search"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <!-- <input type="text" name="s_value" placeholder="Search...">
+            <button class="srch-btn btn" type="submit" name="search"><i class="fa-solid fa-magnifying-glass"></i></button> -->
+
+            <input type="text" id="searchInput1" name="search"  placeholder="Search blood group">
+            <button class="srch-btn btn" onclick="search1()"><i class="fa-solid fa-magnifying-glass"></i></button>
             <!-- <button ></button> -->
 
         </div>
@@ -172,10 +186,8 @@ $query = "SELECT
                 <?php
                 $data = mysqli_query($con,$query);
                 while ($arr = mysqli_fetch_assoc($data)) {
-                    
-
                     echo "<div class='card'>
-                    <img src='images/blood.jpg'>
+                    <img src='images/Blood_Bank.png'>
                     <div class='card-details'>
                         <h1 class='card-name'>$arr[name]</h1>
                         <h2 class='card-address'> <i class='fa-solid fa-location-dot'></i>  $arr[state] $arr[dist] $arr[city] - $arr[pincode]</h2>
@@ -276,6 +288,8 @@ $query = "SELECT
 
     <script src="index.js"></script>
     <script src="location.js"></script>
+    <script src="search.js"></script>
+    <script src="search1.js"></script>
 </body>
 
 </html>

@@ -6,3 +6,4 @@ search_btn.addEventListener('click',()=>{
     let searchbar_text = search_value.value;
     window.location.href = "ambulance_booking.php?q="+searchbar_text;
 })
+
