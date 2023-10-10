@@ -1,0 +1,69 @@
+.container
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10rem;
+    padding: 5rem;
+    background-color: rgb(58, 234, 228);
+    border-radius: 10px;
+    width: 60rem;
+}
+.btn{
+    background-color: dodgerblue;
+    color: white;
+    padding: 1rem;
+    font-weight: 500;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.btn:hover
+{
+    background-color: white;
+    color: dodgerblue;
+}
+.row
+{
+    display: flex;
+    justify-content: space-evenly;
+    text-align: left;
+    width: 60rem;
+    margin: 1.2rem;
+}
+#title
+{
+    font-size: 2.3rem;
+    background-color: white;
+    width: 100%;
+    text-align: center;
+    /* margin-top: 1rem; */
+}
+#label
+{
+    margin:auto 5rem;
+    font-size: 1.7rem;
+    width: 60rem;
+    display: flex;
+    justify-content: left;
+}
+#value
+{
+    margin:auto 5rem;
+    width: 60rem;
+    /* font-size: 1.7rem; */
+    display: flex;
+    justify-content: right;
+}
+#order_total
+{
+    border-top: 1px solid green;
+}

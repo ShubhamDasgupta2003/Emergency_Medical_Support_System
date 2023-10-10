@@ -1,5 +1,17 @@
 <?php
+    session_start();
+    $userid = $_SESSION['user_id'];
+    include "db_config/main_config.php";
 
+    $query = "SELECT `user_first_name`,`user_last_name`,`user_email`, `user_contactno`,`formatted_adrrs` FROM `user_info` WHERE user_id='$userid'";
+
+    $result = mysqli_query($con,$query);
+    if($result)
+    {
+        $rows = mysqli_fetch_assoc($result);
+    }
+    $amount = $_GET['amount'];
+    $ord_id = $_GET['order_id'];
 ?>
 
 <!DOCTYPE html>
@@ -7,12 +19,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/payment.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/amb_form_booking.css">
+    <title>Payment</title>
 </head>
 <body>
-  <form>
-    <input type="button" name="btn" id="btn" value="Pay" onclick="pay_now()"/>
-  </form>
+    <?php
+        echo "<div class='container'>
+        <form>
+            <h1 id='title'>Payment Details</h1>
+            <div class='row'>
+                <h2 id='label'>Delivering to</h2>
+                <h2 id='value'>$rows[user_first_name] $rows[user_last_name]</h2>
+            </div>
+            <div class='row'>
+                <h2 id='label'>Email id</h2>
+                <h2 id='value'>$rows[user_email]</h2>
+            </div>
+            <div class='row'>
+                <h2 id='label'>Delivery Address</h2>
+                <h2 id='value'>$rows[formatted_adrrs]</h2>
+            </div>
+            <div class='row'>
+                <h2 id='label'>Order id</h2>
+                <h2 id='value'>$ord_id</h2>
+            </div>
+            <div class='row' id='order_total'>
+                <h2 id='label'>Order Summary</h2>
+                <h1 id='value'>&#8377 $amount/-</h1>
+            </div>
+            <input type='button' class='btn' name='btn' id='btn' value='Confirm & Pay' onclick='pay_now()'/>
+        </form>
+    </div>";
+    ?>
+
 
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -59,15 +100,13 @@
                         },
                         {
                             method: 'netbanking',
+                        },
+                        {
+                            method: "upi"
                         }
                         ]
                     }
                     },
-                    hide: [
-                    {
-                    method: "upi"
-                    }
-                    ],
                     sequence: ["block.utib", "block.other"],
                     preferences: {
                     show_default_blocks: false // Should Checkout show its default blocks?
