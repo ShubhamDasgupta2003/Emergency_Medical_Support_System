@@ -1,7 +1,10 @@
 <?php
     session_start();
     $userid = $_SESSION['user_id'];
-    include "db_config/main_config.php";
+    include_once("db_config/main_config.php");
+
+    $db = new Database();
+    $con = $db->connect();
 
     $query = "SELECT `user_first_name`,`user_last_name`,`user_email`, `user_contactno`,`formatted_adrrs` FROM `user_info` WHERE user_id='$userid'";
 
@@ -69,8 +72,8 @@
                 "image": "https://s3.amazonaws.com/rzp-mobile/images/rzp.jpg",
                 "prefill":
                 {
-                "email": "gaurav.kumar@example.com",
-                "contact": +919900000000,
+                "email": "<?php echo "$rows[user_email]"; ?>",
+                "contact": "<?php echo "+91$rows[user_contactno]"; ?>",
                 },
                 config: {
                 display: {
@@ -119,7 +122,7 @@
                     data:"&amount="+amount+"&payment_id="+pid+"&order_id="+order_id,
                     success:function(result){
 
-                        window.location.href = "payment_ackn.php";
+                        window.location.href = "payment_ackn.php?&payment_id="+pid+"&order_id="+order_id;
                     }
                 })
                 },

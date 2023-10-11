@@ -8,7 +8,10 @@
     $cur_date = date("Y-m-d");
     $cur_time = date("H:i:s");
 
-    include "db_config/main_config.php";
+    include_once("db_config/main_config.php");
+
+    $db = new Database();
+    $con = $db->connect();
 
     if(isset($_POST['amount']) && isset($_POST['payment_id']))
     {

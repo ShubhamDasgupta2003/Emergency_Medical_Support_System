@@ -1,5 +1,8 @@
 <?php
-    //TO DO : Update query to set status busy when amb book_ride
+    include_once("db_config/main_config.php");
+
+    $db = new Database();
+    $con = $db->connect();
 
     session_start();
     $uid =  $_SESSION['user_id'];

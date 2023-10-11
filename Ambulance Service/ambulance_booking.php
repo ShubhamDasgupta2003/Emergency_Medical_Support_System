@@ -1,4 +1,9 @@
 <?php
+    include_once("db_config/main_config.php");
+
+    $db = new Database();
+    $con = $db->connect();
+
     session_start();
     $islogin =  $_SESSION['is_logged_in'];
     if($islogin!=1)
@@ -6,8 +11,6 @@
         echo "<script>alert('It seems like you have not logged in\\nPlease login to book your ride');
         window.location.href = '/minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/login.php'</script>";
     }
-    //Path for main config file 
-    include_once("db_config/main_config.php");
 
     //Backend for location modification starts here
     setcookie("loc_modify","false");
@@ -21,7 +24,7 @@
     $full_address = "";
     $loc_query = "SELECT lat_in_use,long_in_use,formatted_adrrs FROM user_info WHERE user_id='$uid'";
 
-    $loc_result = mysqli_query($con,$loc_query);
+    $loc_result = $con->query($loc_query);
     $loc_rows = $loc_result->fetch_assoc();
 
     if($loc_result)
@@ -100,6 +103,7 @@
     <link rel="stylesheet" href="Css/body_cont.css">
     <link rel="stylesheet" href="Css/location_win.css">
     <link rel="stylesheet" href="Css/cont-card.css">
+    <link rel="stylesheet" href="Css/useravatar.css">
 
 
 
@@ -119,10 +123,14 @@
             <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php#review">Review</a>
             <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php#footer">Contact Us</a>
         </nav>
-        <div class="user-column">
-            <a href="#" id="user-avatar" title="<?php echo "$ufname";?>"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
+        <div class="user-avatar-container">
+        <a href="http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/HomePage/profile.php" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
+            <?php
+                
+                echo"<h3>$_SESSION[user_fname]</h3>";
+            ?>
+
         </div>
-        
         <div id="menu-btn" class="fa fa-bars"> </div>
     </header>
 

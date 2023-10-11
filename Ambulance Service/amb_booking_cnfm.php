@@ -1,5 +1,9 @@
 <?php
     include_once("db_config/main_config.php");
+
+    $db = new Database();
+    $con = $db->connect();
+
     $amb_no = $_GET['ambno'];
     $distance = $_GET['dist'];
     $otp_code = $_GET['otp'];
