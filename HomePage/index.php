@@ -42,8 +42,9 @@
         <a href="#" class="logo"><i class="fa-solid fa-heart-pulse"></i>medcare</a>
         <div class="search-bar" id="srchbar-above">
             <button class="get-location btn" id="get-location-btn" style="width:50px;"><i class="fas fa-map-marker-alt"></i></button>
-            <input type="text" placeholder="Search">
-            <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+
+            <input type="text" id="searchInput" name="search"  placeholder="Search blood group">
+            <button class="btn" onclick="search()"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         
    <script> 
@@ -120,8 +121,8 @@
     <div class="search-navbar" id="srchbar-below">
         <div class="search-bar">
             <button class="get-location btn" id="get-location-btn" style="width:50px;"><i class="fas fa-map-marker-alt"></i></button>
-            <input type="text" placeholder="Search...">
-            <button class="srch-btn btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <input type="text" id="searchInput1" name="search"  placeholder="Search blood group">
+            <button class="btn" onclick="search1()"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
     </div>
 
@@ -173,7 +174,7 @@
                             <span class="overlay"></span>
     
                             <div class="Scard-image">
-                                <img src="images/Blood_Bank.jpg" alt="" class="card-img">
+                                <img src="images/Blood_Bank.avif" alt="" class="card-img">
                             </div>
                         </div>
     
@@ -190,7 +191,7 @@
                             <span class="overlay"></span>
     
                             <div class="Scard-image">
-                                <img src="images/4136706.jpg" alt="" class="card-img">
+                                <img src="images/pharmaci.avif" alt="" class="card-img">
                             </div>
                         </div>
     
@@ -207,7 +208,7 @@
                             <span class="overlay"></span>
     
                             <div class="Scard-image">
-                                <img src="images/4136706.jpg" alt="" class="card-img">
+                                <img src="images/ambulance_book.png" alt="" class="card-img">
                             </div>
                         </div>
     
@@ -224,7 +225,7 @@
                             <span class="overlay"></span>
     
                             <div class="Scard-image">
-                                <img src="images/4136706.jpg" alt="" class="card-img">
+                                <img src="images/few_click.jpg" alt="" class="card-img">
                             </div>
                         </div>
     
@@ -241,7 +242,7 @@
                             <span class="overlay"></span>
     
                             <div class="Scard-image">
-                                <img src="images/Blood_Bank.jpg" alt="" class="card-img">
+                                <img src="images/trust.jpg" alt="" class="card-img">
                             </div>
                         </div>
     
@@ -266,7 +267,7 @@
 
     <!-- Location window popup starts here -->
             
-    <!-- <div class="location-window" id="loc-win">
+    <div class="location-window" id="loc-win">
         <div class="card popup">
             <button class="dismiss-btn" id="dismiss">&times</button>
             <div class="loc-head">
@@ -288,24 +289,36 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div> 
 
     <!-- Location window popup ends here -->
     
      <!-- service section start -->
      <section class="services" id="services" >
         <h1 class="heading">Our <span>services</span></h1>
-
         <div class="box-container">
+        <?php
+            $sql="SELECT * FROM services";
+            $data=mysqli_query($con,$sql);
+            while($res=mysqli_fetch_assoc($data)){
+                echo "
+                
+                <div class='box'>
+                <img src='".$res['img_src']."'>
+                <h3>$res[heading]</h3>
+                <p>  $res[des]</p>
+                <a href='".$res['link']."' class='btn'>learn more <span class='fa fa-chevron-right'></span></a>
+                </div>
+                ";
+            }
+        ?>     
+        </div>
 
-            <div class="box">
-                <img src="images/ambulance.png" alt="">
-                <h3>24x7 Ambulance</h3>
-                <p>  soluta a, pariatur dolore odit vadipisci fugiat..</p>
-                <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/ambulance_booking.php" class="btn">learn more <span class="fa fa-chevron-right"></span></a>
-            </div>
+    </section>
 
-            <div class="box">
+                
+    <!-- 
+           <div class="box">
                 <img src="images/blood-bag.png" alt="">
                 <h3>Book Blood </h3>
                 <p> soluta a, pariatur dolore odit vadipisci fugiat.</p>
@@ -349,13 +362,7 @@
                 <p> soluta a, pariatur dolore odit vadipisci fugiat.</p>
                 <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/Medical Supplies/Technical Supplies.php" class="btn">learn more <span class="fa fa-chevron-right"></span></a>
             </div>
-            
-            
-        </div>
-
-    </section>
-
-
+    -->
 
     <!-- service section end -->
      <!-- review section start  -->
@@ -365,7 +372,7 @@
 
             
             <div class="box">
-                <img src="/Blood_Booking/images/profile.avif" alt="">
+                <img src="images/profile.avif" alt="">
                 <h3>Jagannath Sarkar</h3>
                 <div class="stars">
                     <i class="fa fa-star"></i>
@@ -377,7 +384,7 @@
                 </div>
             </div>
             <div class="box">
-                <img src="/Blood_Booking/images/profile.avif" alt="">
+                <img src="images/profile.avif" alt="">
                 <h3>Jagannath Sarkar</h3>
                 <div class="stars">
                     <i class="fa fa-star"></i>
@@ -389,7 +396,7 @@
                 </div>
             </div>
             <div class="box">
-                <img src="/Blood_Booking/images/profile.avif" alt="">
+                <img src="images/profile.avif" alt="">
                 <h3>Jagannath Sarkar</h3>
                 <div class="stars">
                     <i class="fa fa-star"></i>
@@ -401,7 +408,7 @@
                 </div>
             </div>
             <div class="box">
-                <img src="/Blood_Booking/images/profile.avif" alt="">
+                <img src="images/profile.avif" alt="">
                 <h3>Jagannath Sarkar</h3>
                 <div class="stars">
                     <i class="fa fa-star"></i>
@@ -464,6 +471,7 @@
     <script src="js/sorav.js"></script>
     <script src="js/location.js"></script>
     <script src="js/slider.js"></script>
+    <script src="search.js"></script>
     <script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.js"></script>
 
 <!-- JavaScript -->
