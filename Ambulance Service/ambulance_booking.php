@@ -1,16 +1,10 @@
 <?php
     include_once("db_config/main_config.php");
 
-    $db = new Database();
-    $con = $db->connect();
+    $db = new Database();       //Creating object of Databse class
+    $con = $db->connect();      //Calling connect() method
 
-    session_start();
-    $islogin =  $_SESSION['is_logged_in'];
-    if($islogin!=1)
-    {
-        echo "<script>alert('It seems like you have not logged in\\nPlease login to book your ride');
-        window.location.href = '/minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/login.php'</script>";
-    }
+    $db->isLoggedIn();          //Checking login status
 
     //Backend for location modification starts here
     setcookie("loc_modify","false");
