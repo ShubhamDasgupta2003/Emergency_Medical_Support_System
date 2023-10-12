@@ -63,8 +63,8 @@
         $amb_filter_query = "active";
     }
     // $search_filter = ;
-
-    $query = "SELECT `amb_no`, `amb_name`, `amb_type`, `amb_status`, `amb_loc_lat`, `amb_loc_long`, `amb_rate`, `amb_contact`, `amb_driver_name`, `amb_state`, `amb_district`, `amb_town`, `amb_loc_pincode`,ROUND((
+    $sqli_table = 'ambulance_info';
+    $sqli_rows = "`amb_no`, `amb_name`, `amb_type`, `amb_status`, `amb_loc_lat`, `amb_loc_long`, `amb_rate`, `amb_contact`, `amb_driver_name`, `amb_state`, `amb_district`, `amb_town`, `amb_loc_pincode`,ROUND((
         6371 *
         acos(cos(radians($lat_in_use)) * 
         cos(radians(amb_loc_lat)) * 
@@ -72,7 +72,22 @@
         radians(amb_loc_long)) + 
         sin(radians($lat_in_use)) * 
         sin(radians(amb_loc_lat)))
-     ),1) AS distance FROM `ambulance_info` WHERE amb_status='$amb_filter_query' OR amb_name='$amb_filter_query' OR amb_type = '$amb_filter_query' OR amb_district='$amb_filter_query' OR amb_town='$amb_filter_query' ORDER BY distance";
+     ),1) AS distance";
+
+    $sqli_condition = "amb_town='$amb_filter_query' OR amb_status='$amb_filter_query' OR amb_name='$amb_filter_query' OR amb_type = '$amb_filter_query' OR amb_district='$amb_filter_query'";
+
+    $sqli_order = 'distance';
+
+
+    // $query = "SELECT `amb_no`, `amb_name`, `amb_type`, `amb_status`, `amb_loc_lat`, `amb_loc_long`, `amb_rate`, `amb_contact`, `amb_driver_name`, `amb_state`, `amb_district`, `amb_town`, `amb_loc_pincode`,ROUND((
+    //     6371 *
+    //     acos(cos(radians($lat_in_use)) * 
+    //     cos(radians(amb_loc_lat)) * 
+    //     cos(radians($lon_in_use) - 
+    //     radians(amb_loc_long)) + 
+    //     sin(radians($lat_in_use)) * 
+    //     sin(radians(amb_loc_lat)))
+    //  ),1) AS distance FROM `ambulance_info` WHERE amb_status='$amb_filter_query' OR amb_name='$amb_filter_query' OR amb_type = '$amb_filter_query' OR amb_district='$amb_filter_query' OR amb_town='$amb_filter_query' ORDER BY distance";
 
 
     //   HAVING distance<=100
@@ -143,8 +158,8 @@
             <!-- Your content goes here | check body_cont.css file for css property-->
             <div class="cards">
                 <?php
-                    $result = mysqli_query($con,$query);
-                    while($rows = $result->fetch_assoc())
+                    $result = $db->select($sqli_table,$sqli_rows,$sqli_condition,$sqli_order);
+                    while($rows=$result->fetch_assoc())
                     {
                         $total_dist = $rows['distance'];
                         if($total_dist<5)

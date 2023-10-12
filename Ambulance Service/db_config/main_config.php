@@ -62,8 +62,7 @@
             // return $q;
             $result = $this->con->query($q);
             if($result) {
-                $arrResult = $result->fetch_assoc();
-                return $arrResult;
+                return $result;
             } else {
                 return false;
             }

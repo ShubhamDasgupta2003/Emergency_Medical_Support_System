@@ -26,5 +26,5 @@
     //Storing result as assoc array
     $result = $db->select($sqli_table,$sqli_rows,$sqli_condition,$sqli_order);
 
-    print_r($result);
+    print_r($result->fetch_assoc());
 ?>
