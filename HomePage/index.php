@@ -18,11 +18,11 @@
     $loc_result = mysqli_query($con,$loc_query);
     $loc_rows = $loc_result->fetch_assoc();
 
-    if($loc_result)
+    if(@$loc_result)
     {
-        $lat_in_use = $loc_rows['lat_in_use'];
-        $lon_in_use = $loc_rows['long_in_use'];
-        $full_address = $loc_rows['formatted_adrrs'];
+        $lat_in_use = @$loc_rows['lat_in_use'];
+        $lon_in_use = @$loc_rows['long_in_use'];
+        $full_address = @$loc_rows['formatted_adrrs'];
     }
     else
     {
