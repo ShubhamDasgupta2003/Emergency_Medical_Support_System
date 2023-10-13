@@ -116,6 +116,7 @@
         }
         // Method for UPDATE query in mysql ends here
 //---------------------------------------------------------------------------
+        // Method for getting current date and time
         public function currentDateTime()
         {
             date_default_timezone_set("Asia/calcutta");

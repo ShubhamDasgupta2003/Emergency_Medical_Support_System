@@ -47,49 +47,6 @@
             <button class="btn" onclick="search()"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         
-   <script> 
-        function handleLocationButtonClick() {
-        <?php
-        if ($_SESSION['is_logged_in'] == 1) {
-            echo "showLocationPopup();";
-        } else {
-            echo "alert('Please login first.');";
-        }
-        ?>
-        }
-
-        function showLocationPopup() {
-            var locationWindowHTML = `
-        <div class="location-window" id="loc-win">
-            <div class="card popup">
-                <button class="dismiss-btn" id="dismiss">&times;</button>
-                <div class="loc-head">
-                    <span>Enter an Indian pincode here</span>
-                    <div class="loc-option-tab">
-                        <input type="number" name="pincode" placeholder="Pincode here" id="zipcode">
-                        <button class="btn" id="pin-apply">Apply</button>
-                    </div>
-                </div>
-                <div class="loc-head">
-                    <span>Allow to access your location</span>
-                    <div class="loc-option-tab">
-                        <button class="get-location btn" id="det-location"><i class="fa-solid fa-location-crosshairs"></i>Detect my location</button>
-                    </div>
-                </div>
-                <div class="loc-head">
-                    <div class="loc-option-tab">
-                        <label for="" id="location-txt"></label>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-
-    // Inject the HTML content into the locationWindowContainer
-    document.getElementById('locationWindowContainer').innerHTML = locationWindowHTML;
-        }
-   </script>
-
         <nav class="navbar">
             <a class="navlink" href="#home">Home</a>
             <a class="navlink" href="#services">Services</a>
@@ -100,15 +57,16 @@
         
         <div class="user-avatar-container">
             <a href="profile.php" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
-
             <?php
                 if(@$_SESSION['is_logged_in'] == 1)
                 {
                     echo"<h3>$_SESSION[user_fname]</h3>";
+                    echo "<input type='hidden' id='session_val' value=1>";
                 }
                 else
                 {
                     echo"<h3>Guest</h3>";
+                    echo "<input type='hidden' id='session_val' value=0>";
                 }
             ?>
 

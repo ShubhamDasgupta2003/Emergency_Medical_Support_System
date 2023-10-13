@@ -2,8 +2,9 @@ const locationBtn = document.getElementsByClassName('get-location');
 const locationWin = document.getElementById('loc-win');
 const dismissBtn = document.getElementById('dismiss');
 const root = document.documentElement;
+const loginStats = document.getElementById('session_val').value;
+console.log(loginStats);
 
-console.log(root);
 // console.log(locationWin);
 
 for(let i=0; i<locationBtn.length; i++)
@@ -15,12 +16,19 @@ dismissBtn.addEventListener('click',closePopup);
 
 function openPopup()
 {
-    locationWin.style.display = 'flex';
-    // document.body.scrollTop = 0;
-    window.location.href = "#";
-    // document.documentElement.scrollTop = 0;
-    document.body.classList.add("disable-scroll");
-    root.classList.add("disable-scroll");
+    if(loginStats==1)
+    {
+        locationWin.style.display = 'flex';
+        // document.body.scrollTop = 0;
+        window.location.href = "#";
+        // document.documentElement.scrollTop = 0;
+        document.body.classList.add("disable-scroll");
+        root.classList.add("disable-scroll");
+    }
+    else
+    {
+        alert("Please Login!");
+    }
 }
 
 function closePopup()

@@ -75,7 +75,7 @@
         sin(radians(amb_loc_lat)))
      ),1) AS distance";
 
-    $sqli_condition = "amb_town='$amb_filter_query' OR amb_status='$amb_filter_query' OR amb_name='$amb_filter_query' OR amb_type = '$amb_filter_query' OR amb_district='$amb_filter_query'";
+    $sqli_condition = "amb_town LIKE '$amb_filter_query%' OR amb_status='$amb_filter_query' OR amb_name='$amb_filter_query' OR amb_type = '$amb_filter_query' OR amb_district='$amb_filter_query'";
     $sqli_order = 'distance';
 ?>
 
