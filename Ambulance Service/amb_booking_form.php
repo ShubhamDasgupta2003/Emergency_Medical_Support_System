@@ -8,23 +8,13 @@
     $uid =  $_SESSION['user_id'];
     $ufname =  $_SESSION['user_fname'];
     $ulname = $_SESSION['user_lname'];
-    $islogin =  $_SESSION['is_logged_in'];
 
-    if($islogin!=1)
-    {
-        echo "<script>alert('It seems like you have not logged in\\nPlease login to book your ride');
-        window.location.href = '/minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/login.php'</script>";
-    }
+    $db->isLoggedIn($_SESSION['is_logged_in']);
 
-    include_once("db_config/main_config.php");
     date_default_timezone_set("Asia/calcutta");
 
-    $slno_query = "SELECT COUNT(*) AS slno FROM user_ambulance";
-    $slno_result = mysqli_query($con,$slno_query);
-    if($slno_result)
-    {
-        $sl_row = $slno_result->fetch_assoc();
-    }
+    // SELECT method from database class
+    $sl_row = $db->select("user_ambulance","COUNT(*) AS slno")->fetch_assoc();
 
     $bill_id = $sl_row['slno']+1;
     $random_no = rand(1000,9999);
@@ -33,23 +23,18 @@
 
     $user_id = $uid;
     $user_name = "$ufname "."$ulname";
-    $cur_date = date("Y-m-d");
-    $cur_time = date("H:i:s");
+    $cur_date = $db->currentDateTime()['date'];
+    $cur_time = $db->currentDateTime()['time'];
     $amb_no = $_GET['ambno'];
     $pickup = $_GET['book_adrs'];
     $distance = $_GET['dist'];
     $book_lat = $_GET['booklat'];
     $book_lon = $_GET['booklon'];
     $tot_fare = $_GET['amb_fare'];
-    // echo $pickup;
 
-    $query = "SELECT * FROM ambulance_info WHERE amb_no='$amb_no'";
+    //SELECT query from databse class
+    $rows = $db->select("ambulance_info","*","amb_no='$amb_no'")->fetch_assoc();
 
-    $result = mysqli_query($con,$query);
-    if($result)
-    {
-        $rows = $result->fetch_assoc();
-    }
     $amb_rate = $rows['amb_rate'];
     $amb_type = $rows['amb_type'];
     $amb_driver = $rows['amb_driver_name'];
@@ -60,14 +45,12 @@
         $patient_age = $_POST['pat_age'];
         $patient_gender = $_POST['gender'];
 
-        $book_ride_query = "INSERT INTO `user_ambulance`(`invoice_no`, `amb_no`, `amb_type`, `user_id`, `user_name`, `patient_name`, `patient_age`, `patient_gender`, `user_book_lat`, `user_book_long`, `booking_date`, `booking_time`, `total_fare`) VALUES ('$invoice_no','$amb_no','$amb_type','$user_id','$user_name','$patient_name','$patient_age','$patient_gender','$book_lat','$book_lon','$cur_date','$cur_time','$tot_fare')";
-
-        $amb_stat_update_query = "UPDATE ambulance_info SET amb_status='busy' WHERE amb_no='$amb_no'";
-
-        $update_result = mysqli_query($con,$amb_stat_update_query);
+        //UPDATE method called from Database class
+        $update_result = $db->update('ambulance_info',array('amb_status'=>'busy'),"amb_no='$amb_no'");
         if($update_result)
         {
-            $insert_result = mysqli_query($con,$book_ride_query);
+             //INSERT method called from Database class
+            $insert_result = $db->insert('user_ambulance',array("$invoice_no","$amb_no","$amb_type","$user_id","$user_name","$patient_name","$patient_age","$patient_gender","$book_lat","$book_lon","$cur_date","$cur_time","$tot_fare"));
             if($insert_result)
             {
                 header("Location:amb_invoice_mail.php?ambno=$amb_no&ambname=$amb_name&driver=$amb_driver&fare=$tot_fare&dist=$distance&billno=$invoice_no");

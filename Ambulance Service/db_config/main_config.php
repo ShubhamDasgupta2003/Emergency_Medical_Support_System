@@ -5,10 +5,9 @@
         private $server;
         private $pswd;
         private $db;
-        private $con;
-
-        public $islogin;
-
+        protected $con;
+        public $curDateTime;
+//---------------------------------------------------------------------------
         // Method to connect to  mysql databse
 
         public function connect()  
@@ -29,13 +28,11 @@
             }
         }
         // Method to connect to  mysql databse ends here
-        
+//---------------------------------------------------------------------------       
         // Method to check login status of users
         
-        public function isLoggedIn()
+        public function isLoggedIn($islogin)
         {
-            session_start();
-            $islogin= $_SESSION['is_logged_in'];
             if($islogin!=1)
             {
                 echo "<script>alert('It seems like you have not logged in\\nPlease login to book your ride');
@@ -49,8 +46,9 @@
         }
 
         // Method to check login status of users ends here
+//---------------------------------------------------------------------------
+        // Method for SELECT query in mysql
 
-        
         public function select($table, $rows = '*', $where = null, $order = null) 
         {
             $q = 'SELECT '.$rows.' FROM '.$table;
@@ -67,6 +65,72 @@
                 return false;
             }
         }
+        // Method for SELECT query in mysql ends here
+//---------------------------------------------------------------------------
+        // Method for INSERT query in mysql
+
+        public function insert($table, $values, $rows = null)
+        {
+            $insert = 'INSERT INTO '.$table;
+            if ($rows != null) {
+                $insert .= ' ('.$rows.')';
+            }
+            for ($i = 0; $i < count($values); $i++) {
+                $values[$i] = mysqli_real_escape_string($this->con, $values[$i]);
+                if (is_string($values[$i])) {
+                    $values[$i] = '"'.$values[$i].'"';
+                }
+            }
+            $values = implode(',', $values);
+            $insert .= ' VALUES ('.$values.')';
+            $ins = $this->con->query($insert);
+            if ($ins) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        // Method for INSERT query in mysql ends here
+//---------------------------------------------------------------------------
+        // Method for UPDATE query in mysql 
+        public function update($table, $rows, $where)
+        {
+            $update = 'UPDATE ' . $table . ' SET ';
+            $keys = array_keys($rows);
+            
+            $setValues = [];
+            foreach ($keys as $key) {
+                $value = $rows[$key];
+                $setValues[] = "`$key` = '" . mysqli_real_escape_string($this->con, $value)."'";
+            }
+            
+            $update .= implode(',', $setValues);
+            $update .= ' WHERE ' . $where;
+            $query = $this->con->query($update);
+            if ($query) {
+                return true;
+            } 
+            else {
+                return false;
+            }
+        }
+        // Method for UPDATE query in mysql ends here
+//---------------------------------------------------------------------------
+        public function currentDateTime()
+        {
+            date_default_timezone_set("Asia/calcutta");
+            $cur_date = date("Y-m-d");
+            $cur_time = date("H:i:s");
+            $this->curDateTime = array("date"=>$cur_date,"time"=>$cur_time);
+
+            return $this->curDateTime;
+        }
+
+    }
+
+    class locationChange
+    {
+
     }
 ?>
 

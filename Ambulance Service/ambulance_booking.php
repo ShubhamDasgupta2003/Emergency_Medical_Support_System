@@ -4,7 +4,8 @@
     $db = new Database();       //Creating object of Databse class
     $con = $db->connect();      //Calling connect() method
 
-    $db->isLoggedIn();          //Checking login status
+    session_start();
+    $db->isLoggedIn($_SESSION['is_logged_in']);          //Checking login status
 
     //Backend for location modification starts here
     setcookie("loc_modify","false");
@@ -32,7 +33,7 @@
         echo "error";
     }
 
-    if($_COOKIE['loc_modify'] == 'true')
+    if(@$_COOKIE['loc_modify'] == 'true')
     {
         $mod_lat = $_COOKIE['lat_in_use'];
         $mod_lon = $_COOKIE['lon_in_use'];
@@ -75,23 +76,7 @@
      ),1) AS distance";
 
     $sqli_condition = "amb_town='$amb_filter_query' OR amb_status='$amb_filter_query' OR amb_name='$amb_filter_query' OR amb_type = '$amb_filter_query' OR amb_district='$amb_filter_query'";
-
     $sqli_order = 'distance';
-
-
-    // $query = "SELECT `amb_no`, `amb_name`, `amb_type`, `amb_status`, `amb_loc_lat`, `amb_loc_long`, `amb_rate`, `amb_contact`, `amb_driver_name`, `amb_state`, `amb_district`, `amb_town`, `amb_loc_pincode`,ROUND((
-    //     6371 *
-    //     acos(cos(radians($lat_in_use)) * 
-    //     cos(radians(amb_loc_lat)) * 
-    //     cos(radians($lon_in_use) - 
-    //     radians(amb_loc_long)) + 
-    //     sin(radians($lat_in_use)) * 
-    //     sin(radians(amb_loc_lat)))
-    //  ),1) AS distance FROM `ambulance_info` WHERE amb_status='$amb_filter_query' OR amb_name='$amb_filter_query' OR amb_type = '$amb_filter_query' OR amb_district='$amb_filter_query' OR amb_town='$amb_filter_query' ORDER BY distance";
-
-
-    //   HAVING distance<=100
-
 ?>
 
 <!DOCTYPE html>

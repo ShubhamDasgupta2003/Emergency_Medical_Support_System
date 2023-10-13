@@ -24,7 +24,13 @@
     $sqli_order = 'distance';
 
     //Storing result as assoc array
-    $result = $db->select($sqli_table,$sqli_rows,$sqli_condition,$sqli_order);
+    // $result = $db->select($sqli_table,$sqli_rows,$sqli_condition,$sqli_order);
 
-    print_r($result->fetch_assoc());
+    // $result = $db->select($sqli_table,"COUNT(*) AS slno")->fetch_assoc();
+    // print_r($result['slno']);
+    
+    // $ins = $db->insert('ambulance_info',array("WB24B6533","Test Ambulance Service","Normal","active","21.3145","87.9524","430","9748329717","Rajib","West Bengal","Hooghly","Chinsura","743123"))
+
+    // $upd = $db->update('ambulance_info',array('amb_status'=>'busy'),"amb_no='WB24B4475'");
+    echo $upd;
 ?>
