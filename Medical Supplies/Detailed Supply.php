@@ -1,7 +1,9 @@
 <?php
-include_once ('connection.php');
+include_once ('oop_connection.php');
+$obj=new Database;
 session_start();
-$uid =  $_SESSION['user_id'];
+$uid = "USR8882889123";
+#$uid =  $_SESSION['user_id'];
 
 if(isset($_POST['add_to_cart']))
 {
@@ -12,10 +14,11 @@ if(isset($_POST['add_to_cart']))
 
   
     try {
-           $insert_query=mysqli_query($conn,"INSERT INTO cart (name,price,image,quantity,user_id) VALUES (' $product_name',' $product_price',' $product_image', $product_quantity,'$uid')") or die();
-       }catch (Exception $e){
+          $s=$obj->insertcart($product_name,$product_price,$product_image, $product_quantity,$uid);
+          echo $s;
+        }catch (Exception $e){
    
-        
+         
        }
 }
 
@@ -43,10 +46,8 @@ if(isset($_POST['add_to_cart']))
        $n=$_GET['name'];
        //echo $u;
        if($n=='medical')
-       {
-       $query="SELECT * FROM medical_supplies_medical WHERE product_id=$s";
-       $result=mysqli_query($conn,$query);
-       $row=mysqli_fetch_array($result);
+       {$row=array();
+        $row=$obj->viewprecord("medical_supplies_medical",['product_id'=>$s]);
        ?>
         <img src="image/pain relief/<?php echo $row['product_image'] ?>" alt="">
         <div class="column">
@@ -92,9 +93,8 @@ if(isset($_POST['add_to_cart']))
 
     else
     {
-      $query="SELECT * FROM medical_supplies_technical WHERE product_id=$s";
-       $result=mysqli_query($conn,$query);
-       $row=mysqli_fetch_array($result);
+        $row=array();
+        $row=$obj->viewprecord("medical_supplies_technical",['product_id'=>$s]);
        ?>
         <img src="image/pain relief/<?php echo $row['product_image'] ?>" alt="">
         <div class="column">

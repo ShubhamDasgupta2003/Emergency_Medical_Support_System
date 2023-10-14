@@ -1,14 +1,16 @@
 <?php
-include_once ('connection.php');
+include_once ('oop_connection.php');
 session_start();
-$uid =  $_SESSION['user_id'];
+$obj=new Database;
+$uid = "USR8882889123";
+#$uid =  $_SESSION['user_id'];
 
 if(isset($_POST['update_product_quantity']))
 {
     $update_value=$_POST['update_quantity'];
     $update_id=$_POST['update_quantity_id'];
-    $update_quantity_query=mysqli_query($conn,"update `cart` set quantity=$update_value where id=$update_id");
-    if($update_quantity_query)
+    $s=$obj->updatecart($update_value,$update_id);
+    if($s)
     {
         header('location:cart.php');
     }
@@ -30,10 +32,10 @@ if(isset($_POST['update_product_quantity']))
 <body>
  <div class="main">
     <?php
-       $display_product=mysqli_query($conn,"SELECT * FROM cart WHERE user_id='$uid' ");
+       $records=$obj->viewrecord("cart","$uid");
        $s=1;
        $grand_total=0;
-       if(mysqli_num_rows($display_product)>0)
+       if($records)
           { echo"<table class='styled-table'>
                 <thead>
         <tr>
@@ -47,7 +49,7 @@ if(isset($_POST['update_product_quantity']))
         </tr>
     </thead>
     <tbody>";
-            while($row=mysqli_fetch_assoc($display_product))
+            foreach($records as $row)    
             {
         ?>
         <tr>

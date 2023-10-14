@@ -1,8 +1,10 @@
 <?php
-include_once ('connection.php');
-
+include_once ('oop_connection.php');
+$obj=new Database;
 session_start();
-$uid =  $_SESSION['user_id'];
+$uid = "USR8882889123";
+
+/*$uid =  $_SESSION['user_id'];
 
 $islogin =  $_SESSION['is_logged_in'];
 if($islogin!=1)
@@ -52,7 +54,7 @@ if($_COOKIE['loc_modify'] == 'true')
         header("Refresh: 1");
     }
 }
-//Backend for location modification ends here
+//Backend for location modification ends here  */
 ?>
 
 <!DOCTYPE html>
@@ -102,11 +104,9 @@ if($_COOKIE['loc_modify'] == 'true')
 
 
     <?php
-  
-     $select_pro=mysqli_query($conn,"select * from `cart` WHERE user_id='$uid' ") or die("query failed");
-     $row_count=mysqli_num_rows($select_pro);
+     $n=$obj->numrecord("cart",['user_id'=>$uid]);
      ?>
-    <div id="cart"> <a href="cart.php" id="user-cart"><i class="fa-solid fa-cart-shopping fa-2xl"></i><span><sup><?php echo $row_count ?></sup></span></a>
+    <div id="cart"> <a href="cart.php" id="user-cart"><i class="fa-solid fa-cart-shopping fa-2xl"></i><span><sup><?php echo $n ?></sup></span></a>
     <div id="menu-btn" class="fa fa-bars"> </div>
 </header>
 
@@ -137,14 +137,10 @@ if($_COOKIE['loc_modify'] == 'true')
 
             <!-- Your content goes here | check body_cont.css file for css property-->
 
-     <div class="cards">
+         <div class="cards">
           <?php
-            $query="SELECT * FROM medical_supplies_technical";
-            $result=mysqli_query($conn,$query);
-            $row=mysqli_fetch_array($result);
-            if(mysqli_num_rows($result)>0)
-         {
-            while($row=mysqli_fetch_assoc($result))
+            $records=$obj->viewrecord("medical_supplies_technical","null");
+            foreach($records as $row)
             {
          
             
@@ -160,7 +156,7 @@ if($_COOKIE['loc_modify'] == 'true')
             </div>";
             
             }
-         }
+         
 
         ?>
             </div>
