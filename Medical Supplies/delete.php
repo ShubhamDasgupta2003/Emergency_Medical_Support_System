@@ -1,10 +1,12 @@
 <?php
-include_once ('connection.php');
+include_once ('oop_connection.php');
+session_start();
+$obj=new Database;
 if(isset($_GET['delete']))
 {
     $delete_id=$_GET['delete'];
-    $delete_query=mysqli_query($conn,"DELETE FROM cart WHERE ID=$delete_id")  or die("error");
-    if($delete_query)
+    $d=$obj->deletecart($delete_id);
+    if($d)
     {
         echo "product deleted";
         header('location:cart.php');

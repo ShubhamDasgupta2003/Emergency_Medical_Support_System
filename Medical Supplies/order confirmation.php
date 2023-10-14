@@ -1,6 +1,6 @@
 <?php
 include_once ('connection.php');
-include_once ('connection.php');
+
 $i=0;
 date_default_timezone_set("Asia/calcutta");
 session_start();
@@ -42,18 +42,18 @@ $current_time=date('h:i:sa');
                     <div class="bton">
                     <?php 
                     $display=mysqli_query($conn,"SELECT * FROM cart WHERE user_id='$uid' ");
-                    if(mysqli_num_rows($display)>0)
-                              {
-                                while($row=mysqli_fetch_assoc($display))
-                                {
-                                   $u=$row['user_id'];
-                                   $n=$row['name'];
-                                   $p=$row['price'];
-                                   $q= $row['quantity'];
-                                   $sql="INSERT INTO `medical_supplies_order_table`( `user_id`, `product_name`, `quantity`, `date`, `time`, `user_fname`, `user_lname`, `user_email`, `price`) VALUES ('$u','$n','$q','$current_date','$current_time','$ufname','$ulname','$e',$p)";
-                                   $result=mysqli_query($conn,$sql);
-                                }
-                              }
+                    $records=$obj->viewrecord("cart","$uid");
+                     foreach($records as $row)
+                     {
+                        {
+                           $u=$row['user_id'];
+                           $n=$row['name'];
+                           $p=$row['price'];
+                           $q= $row['quantity'];
+                           $obj->insertrecord("medical_supplies_order_table",['user_id'=>$u,'product_name'=>$n,'quantity'=>$q,'date'=>$current_date,'time'=>$current_time,'user_fname'=>$ufname,'user_lname'=>$ulname,'user_email'=>$e,'price'=>$p]);
+                          
+                        }
+                      }
                       echo "<a href='Receipt Generator.php?p= $b ' class='btn'>Receipt</a>"; 
                     ?>
                 
