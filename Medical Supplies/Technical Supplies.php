@@ -78,6 +78,7 @@ if($_COOKIE['loc_modify'] == 'true')
     <link rel="stylesheet" href="Css/Home.css">
     <link rel="stylesheet" href="Css/location_win.css">
     <link rel="stylesheet" href="Css/seondnav.css">
+    <link rel="stylesheet" href="Css/see_cart.css">
     <!--css-end -->
 
 
@@ -106,7 +107,7 @@ if($_COOKIE['loc_modify'] == 'true')
     <?php
      $n=$obj->numrecord("cart",['user_id'=>$uid]);
      ?>
-    <div id="cart"> <a href="cart.php" id="user-cart"><i class="fa-solid fa-cart-shopping fa-2xl"></i><span><sup><?php echo $n ?></sup></span></a>
+     <div id="cart"> <a href="cart.php" id="user-cart"><i class="fa badge fa-cart-shopping fa-2xl" value=<?php echo $n ?> style="color:black"></i></a> 
     <div id="menu-btn" class="fa fa-bars"> </div>
 </header>
 

@@ -1,0 +1,15 @@
+
+.badge:after{
+    
+    content:attr(value);
+    font-size:12px;
+    color: #ffffff00 ;
+    background: #009879;
+    border-radius:90%;
+    padding: 0 5px;
+    position:relative;
+    left:-8px;
+    top:-10px;
+    opacity:0.9;
+   
+}

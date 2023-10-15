@@ -1,3 +1,4 @@
+
 .styled-table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -23,6 +24,7 @@
     padding: 12px 15px;
     text-align:center;
     overflow: auto;
+    style:"width:20%";
 }
 .styled-table tbody tr {
     border-bottom: 1px solid #dddddd;
@@ -100,3 +102,27 @@
     align-items: center;
     text-align: center;
 }
+.sub
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+@media screen and (min-width: 1024px) {
+    div.sub {
+      display:none;
+    }
+    
+  }
+  /* If screen size is 600px wide, or less, set the font-size of <div> to 30px */
+ 
+  @media screen and (max-width: 1023px) {
+    div.main {
+       display:none;
+    }
+ 
+}   
+  
