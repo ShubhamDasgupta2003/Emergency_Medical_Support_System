@@ -1,0 +1,128 @@
+
+.styled-table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    width:70%;
+    aspect-ratio: 7/2;
+    text-align:center;
+   
+  
+}
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+    text-align:center;
+    overflow: auto;
+    style:"width:20%";
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+    
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+.card
+{
+    height:50%;
+    width:50%;
+}
+.delete
+{
+    width:25rem;
+    height:25rem;
+}
+.height
+{
+    width:25px;
+    height:25px;
+}
+.main
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.styled-table td img
+{
+    width:10rem;
+    object-fit:contain;
+    border-radius:10px;
+    overflow: auto;
+}
+.empty_text {
+    background-color: var(--color2);
+    padding: 2.5rem 2rem;
+    font-size: 2rem;
+    text-align: center;
+  }
+.update_quantity
+{
+    background-color: #009879;
+    border-radius: 25px;
+    color:white;
+    font-family: 'Poppins',sans-serif;
+    text-transform:capitalize;
+    transition:all .2s ease-out;
+    text-decoration: none;
+}
+.bton
+{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    text-align: center;
+}
+.centera
+{
+    display:flex;
+    background-color:#009879 ;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.sub
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+@media screen and (min-width: 1024px) {
+    div.sub {
+      display:none;
+    }
+    
+  }
+  /* If screen size is 600px wide, or less, set the font-size of <div> to 30px */
+ 
+  @media screen and (max-width: 1023px) {
+    div.main {
+       display:none;
+    }
+ 
+}   
+  

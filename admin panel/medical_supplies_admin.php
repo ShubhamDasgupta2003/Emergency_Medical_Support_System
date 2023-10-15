@@ -16,6 +16,7 @@ $p=0;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="adminb.css">
+    <link rel="stylesheet" href="cart.css">
     <title>Document</title>
 </head>
 <body>
@@ -27,11 +28,11 @@ $p=0;
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <a href="" class="active"><span class="las la-igloo"></span>
+                    <a href="adminb.php"><span class="las la-igloo"></span>
                     <span>Dashboard</span></a>
                 </li>
                 <li>
-                    <a href="medical_supplies_admin.php"><span class="las la-shopping-bag"></span>
+                    <a href="" class="active"><span class="las la-shopping-bag"></span>
                     <span>Medical Supplies</span></a>
                 </li>
               <!--  <li>
@@ -102,11 +103,12 @@ $p=0;
                 <div>
                     <?php
                         $ord_count=0;
-                        $sql=$obj->vieworder("all_order");
+                        $sql=$obj->vieworder("medical_supplies_order_table");
                         while($rowl=mysqli_fetch_array($sql))
                         {
                             $ord_count=$ord_count+1; 
                         }
+                          
                      ?>
                     <h1 style="color: #fff;"><?php echo $ord_count ?></h1>
                     <span>orders</span>
@@ -119,7 +121,6 @@ $p=0;
                 <div><?php
                           $t=0;
                           $j=0;
-                          
                           $sql=$obj->vieworder("medical_supplies_order_table");
                           while($rowl=mysqli_fetch_array($sql))
                                  {
@@ -137,74 +138,132 @@ $p=0;
                    <span class="lab la-google-wallet" ></span>  
                 </div>
             </div>
+            <a href="" style="color:#fff"><div class="card-single">
+                <div>
+                    <h1 style="color: #fff;">Insert Data</h1>
+                    <span>in the table</span>
+                </div>
+                <div>
+                </div>
+            </div></a>
+            
         </div>
 
+       
+        <div class="main">
+            
+    <?php
+       $sql=$obj->vieworder("medical_supplies_medical");
+       
+       $s=1;
+       $grand_total=0;
+      
+           echo"<table class='styled-table'>
+                <thead>
+        <tr>
+            <th>Serial No</th>
+            <th>Product Image</th>
+            <th>product Name</th>
+            <th>Product price</th>
+          
+        </tr>
+    </thead>
+    <tbody>";
+    while($row=mysqli_fetch_array($sql))
+    {
+        ?>
+        <tr>
+            <td><?php echo $s;?></td>
+            <td ><?php echo $row['product_image']; ?> </td>
+            <td><?php echo $row['product_name']; ?></td>
+            <td>&#8377 <?php echo $row['product_rate']; ?></td>
+          
 
-        <div class="recent-grid">
-            <div class="projects">
-                  <div class="card">
-                     <div class="card-header">
-                          <h2> Orders</h2>
-                          
-                     </div>
-                     <div class="card-body">
-                           <table width="100%">
-                            <thead>
-                                <tr>
-                                    <td>User ID</td>
-                                    <td>Username</td>
-                                    <td>Service</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                                      $sqla=$obj->vieworder("all_order");
-                                      while($rowa=mysqli_fetch_array($sqla))
-                                        {
-                                          
-                                                 echo" <tr>
-                                                      <td>$rowa[user_id]</td>
-                                                      <td>$rowa[user_fname]</td>
-                                                      <td>$rowa[service]</td>
-                                                  </tr>";
-                                            }
-                                        
-                             ?>   
-                            </tbody>
-                           </table>
-                     </div>
-                  </div>
-            </div>
-            <div class="customers">
-                <div class="card">
-                    <div class="card-header">
-                         <h2> Customers</h2>
-                         <!--<button> See All <span class="las la-arrow-right"></span></button> -->
-                    </div>
-                    <div class="card-body">
-                    <?php
-                                     $q=$obj->vieworder("user_info");
-                                     if($q)
-                                        {
-                                            while($r=mysqli_fetch_array($q))
-                                            {
-                                                echo" <div class='customer'>
-                                                            <div class='info'>
-                                                            <div>
-                                                                <h4>$r[user_first_name]</h4>
-                                                                <h4>$r[user_last_name]</h4>
-                                                            </div>
-                                                        </div>
-                                                        <div class='contact'><span class='las la-user-circle'></span>
-                                                            <span class='las la-user-comment'></span>
-                                                            <span class='las la-user-phone'></span>
-                                                        </div>                      
-                                                                                </div>";                                     
-                                            }
-                                        }
-                        ?>
+        </tr>
+        <?php
+          $s++;
+          $a=1;
+    }   
+         ?>            
+  
+</div>
+  
+<div class="main">
+            
+            <?php
+               $sql=$obj->vieworder("medical_supplies_technical");
+               
+               $s=1;
+               $grand_total=0;
+              
+                   echo"<table class='styled-table'>
+                        <thead>
+                <tr>
+                    <th>Serial No</th>
+                    <th>Product Image</th>
+                    <th>product Name</th>
+                    <th>Product price</th>
                     
-            </div>
+                </tr>
+            </thead>
+            <tbody>";
+            while($row=mysqli_fetch_array($sql))
+            {
+                ?>
+                <tr>
+                    <td><?php echo $s;?></td>
+                    <td ><?php echo $row['product_image']; ?> </td>
+                    <td><?php echo $row['product_name']; ?></td>
+                    <td>&#8377 <?php echo $row['product_rate']; ?></td>
+                  
+                   
+                </tr>
+                <?php
+                  $s++;
+                  $a=1;
+            }   
+                 ?>            
+          
+        </div>
+        <div class="main">
+            
+            <?php
+               $sql=$obj->vieworder("medical_supplies_order_table");
+               
+               $s=1;
+               $grand_total=0;
+              
+                   echo"<table class='styled-table'>
+                        <thead>
+                <tr>  
+                    <th>order ID</th>
+                    <th>User ID</th>
+                   
+                    <th>Username</th>
+                    <th>Price</th>
+                    <th>quantity</th>
+                   
+                </tr>
+            </thead>
+            <tbody>";
+            while($row=mysqli_fetch_array($sql))
+            {
+                ?>
+                <tr>        
+                    <td ><?php echo $row['order_id']; ?> </td>
+                    <td><?php echo $row['user_id']; ?></td>
+                   
+                    <td><?php echo $row['user_fname']; ?></td>
+                    <td>&#8377 <?php echo $row['price']; ?></td>
+                    <td><?php echo $row['quantity']; ?></td>
+                    
+                </tr>
+                <?php
+                  $s++;
+                  $a=1;
+            }   
+                 ?>            
+          
         </div>
     </main>
    </div>
