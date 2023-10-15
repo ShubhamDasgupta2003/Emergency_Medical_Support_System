@@ -2,8 +2,9 @@
 include_once ('oop_connection.php');
 session_start();
 $obj=new Database;
-$uid = "USR8882889123";
-#$uid =  $_SESSION['user_id'];
+
+$uid =  $_SESSION['user_id'];
+
 
 if(isset($_POST['update_product_quantity']))
 {

@@ -1,11 +1,13 @@
 <?php
-    include_once ('connection.php');
-    session_start();
+  include_once ('oop_connection.php');
+  $obj=new Database;
+  session_start();
+  
     $uid =  $_SESSION['user_id'];
     $e= $_SESSION['user_email'];
     $ufname =  $_SESSION['user_fname'];
     $ulname = $_SESSION['user_lname'];
-    $r=mysqli_query($conn,"select * from cart WHERE user_id='$uid' ");
+    $records=$obj->viewrecord("cart","$uid");
 
 
 /*-------------------------DO not change this section as it defines the structure of the pdf---------------------------*/
@@ -27,7 +29,7 @@
 
 $n=1;
 $current_date=date('Y-m-d');
-if(mysqli_num_rows($r)>0)
+if($records)
 {
   $a= '<p><h2>Receipt</h2></p>';
   $a.= '<p>Emergency Medical Support System</p>';
@@ -41,7 +43,7 @@ if(mysqli_num_rows($r)>0)
   $a .='<table>';
   $grand_total=0;
   $a .='<tr><td><u>No</u></td><td><u>Product Name</u></td><td><u>Price</u></td><td><u>Quantity</u></td><td><u>|Total Price|</u></td></tr>';
-   while($row=mysqli_fetch_assoc($r))
+  foreach($records as $row)  
    {
     $a .='<tr><td>|'.$n.'|</td><td>|'.$row['name'].'|</td><td>|'. $row['price'].'/- |</td><td>|'.$row['quantity'].'|</td>';
     $subtotal=($row['price']*$row['quantity']);
