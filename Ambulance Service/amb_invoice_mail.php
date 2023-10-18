@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-$otp_code = rand(1111,9999);    //generating otp for verification email
 
 $mailid = $_SESSION['user_email'];
 $recp_name = $_SESSION['user_fname'];
@@ -13,6 +12,7 @@ $ambdriver = $_GET['driver'];
 $amb_fare = $_GET['fare'];
 $ambdist = $_GET['dist'];
 $billno = $_GET['billno'];
+$otp_code = $_GET['otp'];
 
 $to_email = "$mailid";      //the receiver email will be used here
 $subject = "Ambulance Booking Confirmation";

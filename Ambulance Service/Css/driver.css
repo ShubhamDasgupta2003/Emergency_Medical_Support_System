@@ -1,0 +1,93 @@
+.alg-x-top
+{
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    margin-top: 25rem;
+}
+.alg-cen-x
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.alg-row
+{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+}
+.alg-col
+{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.alg-col button
+{
+    margin: 1.3rem;
+}
+.alg-col form
+{
+    display: flex;
+}
+.title
+{
+    font-size: 3rem;
+    color: var(--green);
+}
+.sub-h
+{
+    font-size: 2.7rem;
+    color: rgb(255, 99, 99);
+}
+.cnfm-sub-h
+{
+    font-size: 2.7rem;
+    color: rgb(0, 139, 42);
+}
+.inactive
+{
+    display: none;
+}
+.active
+{
+    display: flex;
+}
+
+table
+{
+    width: 100%;
+}
+table th,td
+{
+    border: 1px solid black;
+    border-collapse: collapse;
+    /* padding: 2rem; */
+}
+
+.otp-box
+{
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    border-top: 2px solid var(--green);
+    border-radius: 10px;
+    padding: 1.5rem;
+    /* background-color: var(--green); */
+    color: rgb(0, 0, 0);
+}
+.otp-box input
+{
+    margin-left: 2rem;
+    background-color: transparent;
+    border-bottom: 1px solid rgb(71, 71, 71);
+    font-size: 1.4rem;
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+}
