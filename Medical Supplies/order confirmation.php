@@ -1,5 +1,8 @@
 <?php
-include_once ('connection.php');
+include_once ('oop_connection.php');
+$obj=new Database;
+
+
 
 $i=0;
 date_default_timezone_set("Asia/calcutta");
@@ -41,7 +44,7 @@ $current_time=date('h:i:sa');
                     <h2 class="descp" id="card-fare">Total Price: &#8377  <?php echo $b; ?></h2>
                     <div class="bton">
                     <?php 
-                    $display=mysqli_query($conn,"SELECT * FROM cart WHERE user_id='$uid' ");
+                 
                     $records=$obj->viewrecord("cart","$uid");
                      foreach($records as $row)
                      {

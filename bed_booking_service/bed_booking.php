@@ -1,13 +1,17 @@
 <?php
 
     include_once("config.php");
+
+    $dbname = new Database();       //Creating object of Databse class
+    $conn = $dbname->connect();      //Calling connect() method
+
     session_start();
-    if($_SESSION['is_logged_in'] == 0){
-        header("refresh:0 ; url=/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/login.php");
-        echo "<script>alert('Please login before proceeding to the next page.')</script>";
-    }
-    // $query = "SELECT * FROM hospital_info";
-    // $result = mysqli_query($conn,$query);
+    // if($_SESSION['is_logged_in'] == 0){
+    //     header("refresh:0 ; url=/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/login.php");
+    //     echo "<script>alert('Please login before proceeding to the next page.')</script>";
+    // }
+    $dbname->isLoggedIn($_SESSION['is_logged_in']);
+
 
     //Backend for location modification starts here
     setcookie("loc_modify","false");
@@ -21,7 +25,9 @@
     $full_address = "";
     $loc_query = "SELECT lat_in_use,long_in_use,formatted_adrrs FROM user_info WHERE user_id='$uid'";
 
-    $loc_result = mysqli_query($conn,$loc_query);
+    // $loc_result = mysqli_query($conn,$loc_query);
+    // $loc_rows = $loc_result->fetch_assoc();
+    $loc_result = $conn->query($loc_query);
     $loc_rows = $loc_result->fetch_assoc();
 
     if($loc_result)
@@ -35,7 +41,7 @@
         echo "error";
     }
 
-    if($_COOKIE['loc_modify'] == 'true')
+    if(@$_COOKIE['loc_modify'] == 'true')
     {
         $mod_lat = $_COOKIE['lat_in_use'];
         $mod_lon = $_COOKIE['lon_in_use'];
@@ -52,15 +58,29 @@
     }
         //Backend for location modification ends here
 
-    $query= "SELECT `Id`, `Name`, `ContactNo`, `email`, `Address`, `State`, `District`, `City`, `Pincode`, `Latitude`, `Longitude`, `Male_bed_available`, `Female_bed_available`,`bed_charge`, ROUND((
-    6371 *
-    acos(cos(radians($lat_in_use)) * 
-    cos(radians(Latitude)) * 
-    cos(radians($lon_in_use) - 
-    radians(Longitude)) + 
-    sin(radians($lat_in_use)) * 
-    sin(radians(Latitude)))
-    ),1) AS distance FROM `hospital_info` ORDER BY distance";
+        $sqli_table = 'hospital_info';
+        $sqli_rows= "`Id`, `Name`, `ContactNo`, `email`, `Address`, `State`, `District`, `City`, `Pincode`, `Latitude`, `Longitude`, `Male_bed_available`, `Female_bed_available`,`bed_charge`, ROUND((
+            6371 *
+            acos(cos(radians($lat_in_use)) * 
+            cos(radians(Latitude)) * 
+            cos(radians($lon_in_use) - 
+            radians(Longitude)) + 
+            sin(radians($lat_in_use)) * 
+            sin(radians(Latitude)))
+            ),1) AS distance";
+            // needs to fix this 
+            // $sqli_condition = "amb_town LIKE '$amb_filter_query%' OR amb_status='$amb_filter_query' OR amb_name='$amb_filter_query' OR amb_type = '$amb_filter_query' OR amb_district='$amb_filter_query'";
+            $sqli_order = 'distance';
+
+    // $query= "SELECT `Id`, `Name`, `ContactNo`, `email`, `Address`, `State`, `District`, `City`, `Pincode`, `Latitude`, `Longitude`, `Male_bed_available`, `Female_bed_available`,`bed_charge`, ROUND((
+    // 6371 *
+    // acos(cos(radians($lat_in_use)) * 
+    // cos(radians(Latitude)) * 
+    // cos(radians($lon_in_use) - 
+    // radians(Longitude)) + 
+    // sin(radians($lat_in_use)) * 
+    // sin(radians(Latitude)))
+    // ),1) AS distance FROM `hospital_info` ORDER BY distance";
 ?>
 
 
@@ -133,31 +153,34 @@
             <div class="cards">
                 <?php
                 
-                $result = mysqli_query($conn,$query);
-                if($result){
-                    while($row=mysqli_fetch_assoc($result)){
+                // $result = mysqli_query($conn,$query);
+                $result = $dbname->select($sqli_table,$sqli_rows,$sqli_order);
+                // if($result){
+                //     while($row=mysqli_fetch_assoc($result))
+                while($rows=$result->fetch_assoc())
+                {
 
                         echo " <div class='card'>
                         <img src='image/hospital.jpg' >
                         <div class='card-details'>
-                            <p class='card-name'>$row[Name]</p>
-                            <p class='card-address'>$row[Address]</p>
+                            <p class='card-name'>$rows[Name]</p>
+                            <p class='card-address'>$rows[Address]</p>
                             <p class='card-type-male'>
                                 <span class='material-symbols-outlined'>
                                     man
                                     </span>
-                                <strong>$row[Male_bed_available]</strong>
+                                <strong>$rows[Male_bed_available]</strong>
                             </p>
                             <p class='card-type-female'>
                                 <span class='material-symbols-outlined'>
                                     woman
                                     </span>
-                                <strong>$row[Female_bed_available]</strong>
+                                <strong>$rows[Female_bed_available]</strong>
                             </p>
                         <div class='card-row' >
-                            <p class='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i>$row[distance] Km</p>
-                                 <p class='card-fare'>&#8377 $row[bed_charge]/-</p>
-                            <a href='BookingForm.php?hospitalid=$row[Id]' target='_blank'>
+                            <p class='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i>$rows[distance] Km</p>
+                                 <p class='card-fare'>&#8377 $rows[bed_charge]/-</p>
+                            <a href='BookingForm.php?hospitalid=$rows[Id]' target='_blank'>
                                 <button id='c1' class='btn btn-secondary-orange'>Book Bed</button>
                             </a>
                         </div>
@@ -165,7 +188,7 @@
                     </div> ";
 
                     }
-                }
+                // } if bracket
 
                     ?>
 

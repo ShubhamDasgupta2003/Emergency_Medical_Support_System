@@ -2,8 +2,8 @@
 include_once ('oop_connection.php');
 $obj=new Database;
 session_start();
-$uid = "USR8882889123";
-#$uid =  $_SESSION['user_id'];
+
+$uid =  $_SESSION['user_id'];
 
 if(isset($_POST['add_to_cart']))
 {
