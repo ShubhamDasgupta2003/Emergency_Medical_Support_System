@@ -154,7 +154,7 @@
                 <?php
                 
                 // $result = mysqli_query($conn,$query);
-                $result = $dbname->select($sqli_table,$sqli_rows,$sqli_order);
+                $result = $dbname->select($sqli_table,$sqli_rows,'',$sqli_order);
                 // if($result){
                 //     while($row=mysqli_fetch_assoc($result))
                 while($rows=$result->fetch_assoc())
