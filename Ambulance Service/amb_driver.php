@@ -18,6 +18,15 @@
         $result = 1;
     }
     //SET amb status in user_ambulance table(booked,completed)
+
+    if(isset($_POST['reject']))
+    {
+        $ride_stat_updt = $db->update('user_ambulance',array('ride_status'=>'Rejected'),"ride_status='booked' AND amb_no='$amb_no'");
+
+        $update_result = $db->update('ambulance_info',array('amb_status'=>'active'),"amb_no='$amb_no'");
+
+        header("Refresh: 0");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +43,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 </head>
 <body>
-<div class='container'>
+<div class='driver-container'>
     <?php
         echo "<div class='header'>
         <img src='images/logo.png' alt='' width='50'>
@@ -42,6 +51,24 @@
     </div>";
 
     ?>
+    <div class="report-bar">
+        <div class="card report-card">
+            <h1>5</h1>
+            <h3>Rides Completed</h3>
+        </div>
+        <div class="card report-card">
+            <h1>0</h1>
+            <h3>Rides Rejected</h3>
+        </div>
+        <div class="card report-card">
+            <h1>0 Km</h1>
+            <h3>Distance Travelled</h3>
+        </div>
+        <div class="card report-card">
+            <h1>3</h1>
+            <h3>Impressions</h3>
+        </div>
+    </div>
     <?php
         if($result==0)
         {
@@ -51,11 +78,15 @@
                 <h2>$amb_driver_rows[amb_no]</h2>
                 <h2>$amb_driver_rows[amb_status]</h2>
                 <h2>$amb_driver_rows[amb_type]</h2>
+                <div class='card no-rides'>
+                    <h1><img src='images/sleep.png' class='slide-bck-top' width='50'>No rides currently available !!</h1>
+                </div>
             </div>
         </div>";
         }
         else
         {
+            
             echo "<div class='alg-x-top'>
             <div class='alg-cen-x active'>
                 <h1 class='title'>$amb_driver_rows[amb_name]</h1>
@@ -84,27 +115,5 @@
         }
     ?>
 </div>
-<footer>
-    <div class="alg-cen-x">
-        <h1 class="title">All Ride Records</h1>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Patient Name</th>
-                    <th>Patient Age</th>
-                    <th>Pickup</th>
-                    <th>Amount</td>
-                </tr>
-            </thead>
-        </table>
-    </div>
-</footer>
-
-    <script>
-        console.log("<?php echo "$result"; ?>")
-    </script>
 </body>
 </html>

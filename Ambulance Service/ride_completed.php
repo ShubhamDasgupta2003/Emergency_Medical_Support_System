@@ -5,30 +5,21 @@
     $con = $db->connect();
     $amb_no = 'WB24B2100'; //get after login
 
-    if(isset($_POST['accept']))     //Update the ride status to Accepted
-    {
-        $ride_stat_updt = $db->update('user_ambulance',array('ride_status'=>'Accepted'),"ride_status='booked' AND amb_no='$amb_no'");
 
-    }
     $amb_driver_rows = $db->select('ambulance_info',"amb_name,amb_no,amb_status,amb_driver_name,amb_type","amb_no='$amb_no'")->fetch_assoc();
 
-    $amb_patient_rows = $db->select('user_ambulance',"OTP,user_book_lat,user_book_long,patient_cont,patient_name,patient_age,patient_gender,total_fare,user_book_adrss,amb_no","amb_no='$amb_no' AND ride_status='accepted'")->fetch_assoc();
+    $amb_patient_rows = $db->select('user_ambulance',"total_fare,invoice_no,user_book_lat,user_book_long,patient_cont,patient_name,patient_age,patient_gender,total_fare,user_book_adrss,amb_no","amb_no='$amb_no' AND ride_status='started'")->fetch_assoc();
     print_r($amb_patient_rows);
 
-    if(isset($_POST['start_ride']))
+    if(isset($_POST['end_ride']))
     {
-        $otp_customer = $_POST['otp'];
-        if($otp_customer==$amb_patient_rows['OTP'])
-        {
+        $ride_stat_updt = $db->update('user_ambulance',array('ride_status'=>'Completed'),"ride_status='started' AND amb_no='$amb_no'");
+        
+        $update_result = $db->update('ambulance_info',array('amb_status'=>'active'),"amb_no='$amb_no'");
 
-            $ride_stat_updt = $db->update('user_ambulance',array('ride_status'=>'Started'),"ride_status='Accepted' AND amb_no='$amb_no'");
-            header("Location: ride_completed.php");
-        }
-        else
-        {
-            echo "<script>alert('Invalid OTP!')</script>";
-        }
+        header("Location: /Minor Project 5th_Sem/Emergency_Medical_Support_System/Payment/razor_pay.php?order_id=$amb_patient_rows[invoice_no]&amount=$amb_patient_rows[total_fare]");
     }
+
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +49,7 @@
             <h2>$amb_driver_rows[amb_status]</h2>
             <h2>$amb_driver_rows[amb_type]</h2>
             <div class='card'>
-                <h1 class='cnfm-sub-h'><i class='fa-regular fa-circle-check fa-beat'></i>&nbsp&nbspRide Accepted</h1>
+                <h1 class='cnfm-sub-h'><i class='fa-solid fa-truck-fast fa-lg'></i>&nbsp&nbspRide Started</h1>
                 <div class='card'>
                     <div class='alg-row'>
                         <h1>Patient name: $amb_patient_rows[patient_name]</h1>
@@ -70,29 +61,18 @@
                         <button class='btn call-btn'><a href='tel:$amb_patient_rows[patient_cont]'><i class='fa-solid fa-phone fa-xl'></i>&nbsp&nbsp+91$amb_patient_rows[patient_cont]</a></button>
 
                         <button class='btn wp-btn'><a href='//wa.me/$amb_patient_rows[patient_cont]'><i class='fa-brands fa-whatsapp fa-xl'></i>&nbsp&nbsp+91$amb_patient_rows[patient_cont]</a></button>
-                    </div>"
-            ?>
-            <?php
-                echo "<div class='card' id='otp-card'>
-                <h1 class='title'>Enter OTP to start ride</h1>
-                <div class='alg-row otp-box'>
+                    </div>
                     <form method='post'>
-                        <div class='alg-col otp-input'>
-                            <h1><i class='fa-solid fa-key'></i>&nbsp&nbspOTP</h1>
-                            <input type='number' name='otp' id=''>
-                        </div>
-                        <button class='btn-danger' name='start_ride' id='startride'><i class='fa-solid fa-truck-fast fa-lg'></i>&nbsp&nbspStart Ride</button>
+                        <button class='btn-danger' name='end_ride' id='startride'><i class='fa-solid fa-truck-fast fa-lg'></i>&nbsp&nbspFinish Ride</button>
                     </form>
-                </div>
-            </div>
+                    "
+            ?>
         </div>
     </div>
 </div>
 </div>
-</div>";
-                    
+</div>
 
-?>
     <!-- <script src="driver.js"></script> -->
 </body>
 </html>
