@@ -1,20 +1,45 @@
 <?php
-//   $is_refreshed = $_GET['refresh'];
-//   if($is_refreshed==1)
-//   {
-//     $lat = number_format(@$_COOKIE["cur_lat"],7,".","");
-//     $lon = number_format(@$_COOKIE["cur_lon"],7,".","");
-//     $address = $_COOKIE['cur_addrss'];
-//   }
-//   else
-//   {
-//     header("Refresh: 2; url=amb_admin_reg.php?refresh=1");
-//   }
 
-//   if(isset($_POST['submit']))
-//   {
+  $is_refreshed = $_GET['refresh'];
+  if($is_refreshed==1)
+  {
+    $lat = number_format(@$_COOKIE["cur_lat"],7,".","");
+    $lon = number_format(@$_COOKIE["cur_lon"],7,".","");
+    $address = $_COOKIE['cur_addrss'];
+  }
+  else
+  {
+    header("Refresh: 2; url=amb_admin_reg.php?refresh=1");
+  }
 
-//   }
+  include "db_config/main_config.php";
+  $db = new Database();
+  $con = $db->connect();
+
+  if(isset($_POST['submit']))
+  {
+    $amb_name = $_POST['ambname'];
+    $amb_email = $_POST['ambmail'];
+    $amb_num = $_POST['ambno'];
+    $amb_type = $_POST['ambtype'];
+    $driver_name = $_POST['drvname'];
+    $driver_cont = $_POST['drvcont'];
+    $amb_rate = $_POST['ambrate'];
+    $distr = $_POST['district'];
+    $town = $_POST['city-vill'];
+    $state = $_POST['state'];
+    $pincode = $_POST['post_code'];
+    $password = password_hash($_POST['pswd'],PASSWORD_DEFAULT);
+
+    $amb_info_inst = $db->insert('ambulance_info',array("$amb_num","$amb_name","$amb_type","active",$lat,$lon,$amb_rate,$driver_cont,"$driver_name","$state","$distr","$town",$pincode));
+
+    $amb_adm_inst = $db->insert('ambulance_admin',array('',"$amb_num","$amb_email",$driver_cont,"$password"));
+
+    if($amb_adm_inst)
+    {
+      echo "<script>alert('Ambulance registered successfully!')</script>";
+    }
+  }
 
 ?>
 
@@ -36,21 +61,25 @@
         <div class="column">
           <div class="input-box">
             <label>Ambulance Service name <sub>(max 50 characters)</sub></label>
-            <input name="fname" type="text" placeholder="Enter ambulance service name" maxlength="50" required/>
+            <input name="ambname" type="text" placeholder="Enter ambulance service name" maxlength="50" required/>
           </div>
-
+        </div>
+        <div class="column">
+          <div class="input-box">
+            <label>Email id</label>
+            <input name="ambmail" type="text" placeholder="Enter email id" maxlength="50" required/>
+          </div>
         </div>
         <div class="column">
             <div class="input-box">
                 <label>Ambulance Van No <sub>(Govt. Reg number)</sub></label>
-                <input name="amb_no" id="amb_no" type="text" placeholder="Enter ambulance van no" required />
-                <p for="" class="validation-inactive" id="amb_no_validation">Invalid Ambulance Number<br>eg. WB 24 DB 2547 <br>Please maintain the above format</p>
+                <input name="ambno" id="amb_no" type="text" placeholder="Enter ambulance van no" required />
             </div>
 
             <div class="input-box">
                 <label>Ambulance Type</label>
                 <div class="select-box">
-                    <select name="amb_type" id="">
+                    <select name="ambtype" id="">
                         <option value="Normal">Normal</option>
                         <option value="Life-Support">Life-Support</option>
                     </select>
@@ -60,17 +89,17 @@
         <div class="column">
           <div class="input-box">
             <label>Name of Driver</label>
-            <input name="name" type="text" placeholder="Enter full name of driver" required/>
+            <input name="drvname" type="text" placeholder="Enter full name of driver" required/>
           </div>
           <div class="input-box">
             <label>Phone Number<sub>(without including +91)</sub</label>
-            <input name="contact_num" type="number" placeholder="Enter phone number" required maxlength="10"/>
+            <input name="drvcont" type="number" placeholder="Enter phone number" required maxlength="10"/>
           </div>
         </div>
         <div class="column">
             <div class="input-box">
                 <label>Ambulance Rate(in Rs)</label>
-                <input name="rate" type="number" placeholder="Enter ambulance rate per 5Km" required maxlength="10"/>
+                <input name="ambrate" type="number" placeholder="Enter ambulance rate per 5Km" required maxlength="10"/>
             </div>
         </div>
         <div class="input-box address">
@@ -85,12 +114,7 @@
                 <select name="district">
                 <option value="" selected disabled>Select District</option >
                 <?php
-                include("db_config/main_config.php");
-                    // include("connection.php");
-                    $db = new database;
-                    $con = $db->connect();
-                     $sql="SELECT * FROM districts";
-                     $res=mysqli_query($con,$sql) or die("query unsuccesfull");
+                     $res= $db->select('districts',"*",'','');
                      while($row=mysqli_fetch_assoc($res)){
                      echo"
                      <option value=$row[value]>$row[name]</option>";
@@ -117,7 +141,7 @@
         <button id="sbmt-form" name="submit">Register</button>
       </form>
     </section>
-    <!-- <script src="amb_admin_loc.js"></script> -->
-    <script src="amb_adminReg_form.js"></script>
+    <script src="amb_admin_loc.js"></script>
+    <!-- <script src="amb_adminReg_form.js"></script> -->
 </body>
 </html>

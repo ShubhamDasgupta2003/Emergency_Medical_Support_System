@@ -45,7 +45,7 @@
     <div class='alg-x-top'>
         <div class='alg-cen-x'>
             <h1 class='title'>$amb_driver_rows[amb_name]</h1>
-            <h2>$amb_driver_rows[amb_no]</h2>
+            <h2 id='amb-no'>$amb_driver_rows[amb_no]</h2>
             <h2>$amb_driver_rows[amb_status]</h2>
             <h2>$amb_driver_rows[amb_type]</h2>
             <div class='card'>

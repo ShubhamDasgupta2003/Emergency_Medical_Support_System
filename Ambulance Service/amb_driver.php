@@ -9,6 +9,10 @@
 
     $amb_patient_rows = $db->select('user_ambulance',"patient_cont,patient_name,patient_age,patient_gender,total_fare,user_book_adrss,amb_no","amb_no='$amb_no' AND ride_status='Booked'")->fetch_assoc();
 
+    $driver_report1 = $db->select('user_ambulance',"COUNT(*) AS completed_rides,SUM(total_fare) AS earnings","amb_no='$amb_no' AND ride_status='completed'")->fetch_assoc();
+
+    $driver_report2 = $db->select('user_ambulance',"COUNT(*) AS rejected_rides","amb_no='$amb_no' AND ride_status='rejected'")->fetch_assoc();
+    // print_r($driver_report);
     if($amb_patient_rows=="")
     {
         $result = 0;
@@ -19,14 +23,6 @@
     }
     //SET amb status in user_ambulance table(booked,completed)
 
-    if(isset($_POST['reject']))
-    {
-        $ride_stat_updt = $db->update('user_ambulance',array('ride_status'=>'Rejected'),"ride_status='booked' AND amb_no='$amb_no'");
-
-        $update_result = $db->update('ambulance_info',array('amb_status'=>'active'),"amb_no='$amb_no'");
-
-        header("Refresh: 0");
-    }
 ?>
 
 <!DOCTYPE html>
@@ -52,22 +48,24 @@
 
     ?>
     <div class="report-bar">
-        <div class="card report-card">
-            <h1>5</h1>
+        <?php
+            echo "<div class='card report-card'>
+            <h1><i class='fa-solid fa-road-circle-check'></i>  $driver_report1[completed_rides]</h1>
             <h3>Rides Completed</h3>
         </div>
-        <div class="card report-card">
-            <h1>0</h1>
+        <div class='card report-card'>
+            <h1><i class='fa-solid fa-road-circle-xmark'></i>  $driver_report2[rejected_rides]</h1>
             <h3>Rides Rejected</h3>
         </div>
-        <div class="card report-card">
+        <div class='card report-card'>
             <h1>0 Km</h1>
             <h3>Distance Travelled</h3>
         </div>
-        <div class="card report-card">
-            <h1>3</h1>
-            <h3>Impressions</h3>
-        </div>
+        <div class='card report-card'>
+            <h1>&#8377 $driver_report1[earnings]</h1>
+            <h3>Total Earnings</h3>
+        </div>";
+        ?>
     </div>
     <?php
         if($result==0)
@@ -75,7 +73,7 @@
             echo "<div class='alg-x-top'>
             <div class='alg-cen-x active'>
                 <h1 class='title'>$amb_driver_rows[amb_name]</h1>
-                <h2>$amb_driver_rows[amb_no]</h2>
+                <h2 id='amb-no'>$amb_driver_rows[amb_no]</h2>
                 <h2>$amb_driver_rows[amb_status]</h2>
                 <h2>$amb_driver_rows[amb_type]</h2>
                 <div class='card no-rides'>

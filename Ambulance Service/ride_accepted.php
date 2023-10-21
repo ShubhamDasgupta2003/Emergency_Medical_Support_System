@@ -5,6 +5,15 @@
     $con = $db->connect();
     $amb_no = 'WB24B2100'; //get after login
 
+    if(isset($_POST['reject']))
+    {
+        $ride_stat_updt = $db->update('user_ambulance',array('ride_status'=>'Rejected'),"ride_status='booked' AND amb_no='$amb_no'");
+
+        $update_result = $db->update('ambulance_info',array('amb_status'=>'active'),"amb_no='$amb_no'");
+
+        header("Location: amb_driver.php");
+    }
+    
     if(isset($_POST['accept']))     //Update the ride status to Accepted
     {
         $ride_stat_updt = $db->update('user_ambulance',array('ride_status'=>'Accepted'),"ride_status='booked' AND amb_no='$amb_no'");
@@ -54,7 +63,7 @@
     <div class='alg-x-top'>
         <div class='alg-cen-x'>
             <h1 class='title'>$amb_driver_rows[amb_name]</h1>
-            <h2>$amb_driver_rows[amb_no]</h2>
+            <h2 id='amb-no'>$amb_driver_rows[amb_no]</h2>
             <h2>$amb_driver_rows[amb_status]</h2>
             <h2>$amb_driver_rows[amb_type]</h2>
             <div class='card'>

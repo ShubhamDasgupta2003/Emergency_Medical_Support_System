@@ -2,7 +2,6 @@ const amb_no = document.getElementById('amb_no');
 const amb_no_notice = document.querySelector('#amb_no_validation');
 console.log(amb_no_notice.value);
 
-const reg = "^[A-Z]{2}[ -]?[0-9]{2}[ -]?[A-Z]{1,2}[ -]?[0-9]{4}$";
 
 amb_no.addEventListener('change',()=>{
     let num = amb_no.value;
