@@ -146,18 +146,9 @@
                     $result = $db->select($sqli_table,$sqli_rows,$sqli_condition,$sqli_order);
                     while($rows=$result->fetch_assoc())
                     {
-                        $total_dist = $rows['distance'];
-                        if($total_dist<5)
-                        {
-                            $per5km_price = $rows['amb_rate']/5;
-                        }
-                        else
-                        {
-                            $per5km_price = floor($total_dist/5)*$rows['amb_rate'];
-                        }
                     
                         // echo $per5km_price."<br>";
-                        $amb_fare = $rows['amb_rate']*$rows['distance'];
+                        $amb_fare = $rows['amb_rate'];
                         echo "<div class='card'>
                         <img src='https://images.jdmagicbox.com/comp/varanasi/e9/0542px542.x542.200517114047.g7e9/catalogue/narayan-ambulance-service-varanasi-cantt-varanasi-0jqwifqqzh.jpg?clr=' >
                         <div class='card-details'>
@@ -170,10 +161,10 @@
                             </div>
                             <div class='card-row'>
                                 <p class='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i> $rows[distance] Km</p>
-                                <p class='card-fare'>&#8377 $per5km_price/-</p>
+                                <p class='card-fare'>&#8377 $amb_fare/-</p>
                             </div>
                             <div class='card-row'>
-                                <a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/amb_booking_form.php?ambno=$rows[amb_no]&dist=$rows[distance]&booklat=$lat_in_use&booklon=$lon_in_use&amb_fare=$per5km_price&book_adrs=$full_address'><button class='btn btn-secondary-orange'>Book ride</button></a>
+                                <a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/amb_booking_form.php?ambno=$rows[amb_no]&dist=$rows[distance]&booklat=$lat_in_use&booklon=$lon_in_use&amb_fare=$amb_fare&book_adrs=$full_address'><button class='btn btn-secondary-orange'>Book ride</button></a>
                                 <p id='card-status'>$rows[amb_status]</p>
                             </div>
                         </div>

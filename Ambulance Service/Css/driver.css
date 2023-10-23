@@ -18,7 +18,7 @@
     flex-direction: row;
     margin-top: 12rem;
     width: 100%;
-    justify-content: space-around;
+    justify-content: space-evenly;
     height: min-content;
 }
 .report-card
@@ -31,7 +31,7 @@
     align-items: center;
     border-radius: 15px;
     margin: 7px;
-    background-color: var(--green);
+    background-color:rgb(7, 124, 83);
     color: white;
     font-size: 1.3rem;
 }
@@ -82,8 +82,8 @@
 }
 .title
 {
-    font-size: 3rem;
-    color: var(--green);
+    font-size: 3.5rem;
+    color: rgb(0, 73, 47);
 }
 .sub-h
 {
@@ -155,6 +155,40 @@ table th,td
    background-color: rgb(255, 183, 0);
    padding: 0.5rem;
    border-radius: 10px;
+}
+.status-active
+{
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: rgb(52, 199, 52);
+    border: 2px solid rgb(253, 253, 253);
+    border-radius: 30px;
+    padding: 1.0rem;
+    color: rgb(0, 0, 0);
+    margin-top: 7px;
+    box-shadow: inset rgb(0, 45, 2) -2px -2px 7px;
+}
+.status-inactive
+{
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: rgb(255, 107, 107);
+    border: 2px solid rgb(253, 253, 253);
+    border-radius: 30px;
+    padding: 1.0rem;
+    color: rgb(0, 0, 0);
+    margin-top: 7px;
+    box-shadow: inset rgb(45, 0, 0) -2px -2px 7px;
+}
+.time_disp
+{
+    font-size: 3rem;
+    font-weight: bold;
+    /* border: 1px solid red; */
+    background-color: rgb(255, 113, 113);
+    border-radius: 10px;
+    padding: 7px;
+    margin: 7px;
 }
 .slide-bck-top {
 	-webkit-animation: slide-bck-top 1.5s ease-in-out infinite both;

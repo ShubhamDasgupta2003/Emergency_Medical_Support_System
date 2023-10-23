@@ -21,7 +21,7 @@
     }
     $amb_driver_rows = $db->select('ambulance_info',"amb_name,amb_no,amb_status,amb_driver_name,amb_type","amb_no='$amb_no'")->fetch_assoc();
 
-    $amb_patient_rows = $db->select('user_ambulance',"OTP,user_book_lat,user_book_long,patient_cont,patient_name,patient_age,patient_gender,total_fare,user_book_adrss,amb_no","amb_no='$amb_no' AND ride_status='accepted'")->fetch_assoc();
+    $amb_patient_rows = $db->select('user_ambulance',"invoice_no,OTP,user_book_lat,user_book_long,patient_cont,patient_name,patient_age,patient_gender,total_fare,user_book_adrss,amb_no","amb_no='$amb_no' AND ride_status='accepted'")->fetch_assoc();
     print_r($amb_patient_rows);
 
     if(isset($_POST['start_ride']))
@@ -31,7 +31,8 @@
         {
 
             $ride_stat_updt = $db->update('user_ambulance',array('ride_status'=>'Started'),"ride_status='Accepted' AND amb_no='$amb_no'");
-            header("Location: ride_completed.php");
+            
+            header("Location: ride_completed.php?inv=$amb_patient_rows[invoice_no]");
         }
         else
         {

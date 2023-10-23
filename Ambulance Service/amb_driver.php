@@ -74,7 +74,7 @@
             <div class='alg-cen-x active'>
                 <h1 class='title'>$amb_driver_rows[amb_name]</h1>
                 <h2 id='amb-no'>$amb_driver_rows[amb_no]</h2>
-                <h2>$amb_driver_rows[amb_status]</h2>
+                <h2 class='status status-active'>$amb_driver_rows[amb_status]</h2>
                 <h2>$amb_driver_rows[amb_type]</h2>
                 <div class='card no-rides'>
                     <h1><img src='images/sleep.png' class='slide-bck-top' width='50'>No rides currently available !!</h1>
@@ -113,5 +113,6 @@
         }
     ?>
 </div>
+<script src="amb_status.js"></script>
 </body>
 </html>
