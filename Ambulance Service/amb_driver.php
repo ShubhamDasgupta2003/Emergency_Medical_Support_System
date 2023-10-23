@@ -9,7 +9,7 @@
 
     $amb_patient_rows = $db->select('user_ambulance',"patient_cont,patient_name,patient_age,patient_gender,total_fare,user_book_adrss,amb_no","amb_no='$amb_no' AND ride_status='Booked'")->fetch_assoc();
 
-    $driver_report1 = $db->select('user_ambulance',"COUNT(*) AS completed_rides,SUM(total_fare) AS earnings","amb_no='$amb_no' AND ride_status='completed'")->fetch_assoc();
+    $driver_report1 = $db->select('user_ambulance',"COUNT(*) AS completed_rides,SUM(total_fare) AS earnings,SUM(ride_hrs) AS rideHrs","amb_no='$amb_no' AND ride_status='completed'")->fetch_assoc();
 
     $driver_report2 = $db->select('user_ambulance',"COUNT(*) AS rejected_rides","amb_no='$amb_no' AND ride_status='rejected'")->fetch_assoc();
     // print_r($driver_report);
@@ -58,8 +58,8 @@
             <h3>Rides Rejected</h3>
         </div>
         <div class='card report-card'>
-            <h1>0 Km</h1>
-            <h3>Distance Travelled</h3>
+            <h1>$driver_report1[rideHrs] Hrs</h1>
+            <h3>Hours Travelled</h3>
         </div>
         <div class='card report-card'>
             <h1>&#8377 $driver_report1[earnings]</h1>

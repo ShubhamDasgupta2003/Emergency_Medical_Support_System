@@ -52,7 +52,7 @@
         if($update_result)
         {
              //INSERT method called from Database class
-            $insert_result = $db->insert('user_ambulance',array("$invoice_no","$amb_no","$amb_type","$user_id","$user_name","$patient_name","$patient_age","$patient_gender","$patient_cont","$book_lat","$book_lon","$pickup","$cur_date","$cur_time","$tot_fare","$ride_status",$otp_code));
+            $insert_result = $db->insert('user_ambulance',array("$invoice_no","$amb_no","$amb_type","$user_id","$user_name","$patient_name","$patient_age","$patient_gender","$patient_cont","$book_lat","$book_lon","$pickup","$cur_date","$cur_time","$tot_fare","$ride_status",$otp_code,$distance));
             if($insert_result)
             {
                 header("Location:amb_invoice_mail.php?ambno=$amb_no&ambname=$amb_name&driver=$amb_driver&fare=$tot_fare&dist=$distance&billno=$invoice_no&otp=$otp_code");

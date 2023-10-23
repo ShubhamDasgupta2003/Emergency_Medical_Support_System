@@ -54,11 +54,9 @@
 
                         <button class='btn wp-btn'><a href='//wa.me/$amb_patient_rows[patient_cont]'><i class='fa-brands fa-whatsapp fa-xl'></i>&nbsp&nbsp+91$amb_patient_rows[patient_cont]</a></button>
                     </div>
-                    
-                    <button class='btn-danger' name='end_ride' id='endride'><i class='fa-solid fa-truck-fast fa-lg'></i>&nbsp&nbspFinish Ride</button>
-                    
                     "
             ?>
+            <button class='btn-danger' name='end_ride' id='endride'><i class='fa-solid fa-truck-fast fa-lg'></i>&nbsp&nbspFinish Ride</button>
         </div>
     </div>
 </div>

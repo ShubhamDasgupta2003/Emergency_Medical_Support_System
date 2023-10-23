@@ -15,7 +15,7 @@
    $totalHrsRide = $hrs+($mins/60);
    $servCharge = $totalHrsRide*$amb_driver_rows['amb_rate'];
 
-   $ride_stat_updt = $db->update('user_ambulance',array('ride_status'=>'Completed','total_fare'=>$servCharge),"invoice_no='$invNo' AND amb_no='$amb_no'");
+   $ride_stat_updt = $db->update('user_ambulance',array('ride_status'=>'Completed','total_fare'=>$servCharge,'ride_hrs'=>$totalHrsRide),"invoice_no='$invNo' AND amb_no='$amb_no'");
         
    $update_result = $db->update('ambulance_info',array('amb_status'=>'active'),"amb_no='$amb_no'");
 
