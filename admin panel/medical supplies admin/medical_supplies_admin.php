@@ -22,7 +22,7 @@ $p=0;
     <input type="checkbox" id="nav-toggle">
     <div class="sidebar">
         <div class="sidebar-brand">
-            <h2><span class="lab la-accusoft"></span><span>Emergency Medical Support System</span></h2>
+            <h2><span class="lab la-accusoft"></span><span>Index</span></h2>
         </div>
         <div class="sidebar-menu">
             <ul>
