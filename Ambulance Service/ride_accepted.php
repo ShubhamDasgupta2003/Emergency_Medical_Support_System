@@ -1,9 +1,10 @@
 <?php
     include "db_config/main_config.php";
+    session_start();
 
     $db = new database();
     $con = $db->connect();
-    $amb_no = 'WB24B2100'; //get after login
+    $amb_no = $_SESSION['amb_no']; //get after login
 
     if(isset($_POST['reject']))
     {

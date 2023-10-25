@@ -1,10 +1,11 @@
 <?php
     include "db_config/main_config.php";
+    session_start();
 
     $db = new database();
     $con = $db->connect();
     $result = 0;
-    $amb_no = 'WB24B2100'; //get after login
+    $amb_no = $_SESSION['amb_no']; //get after login
     $amb_driver_rows = $db->select('ambulance_info',"amb_name,amb_no,amb_status,amb_driver_name,amb_type","amb_no='$amb_no'")->fetch_assoc();
 
     $amb_patient_rows = $db->select('user_ambulance',"patient_cont,patient_name,patient_age,patient_gender,total_fare,user_book_adrss,amb_no","amb_no='$amb_no' AND ride_status='Booked'")->fetch_assoc();

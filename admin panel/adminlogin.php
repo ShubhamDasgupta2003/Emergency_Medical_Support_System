@@ -17,7 +17,32 @@ if(isset($_POST['login'])){
 
 
   if($service == 'Ambulance Service'){
-    echo "Ambulance Service";
+    // echo "Ambulance Service";
+    $sql="SELECT * FROM `ambulance_admin` WHERE admin_email = '$email_num' OR admin_phone = '$email_num'";
+    $result= mysqli_query($conn,$sql);
+
+    if($result && $result-> num_rows==1){
+
+        if($result){
+          $row=mysqli_fetch_assoc($result);
+          $storedpassword= $row['admin_pswd'];
+
+          if(password_verify($password,$storedpassword)){
+ 
+            $_SESSION['amb_no'] = $row['amb_no'];
+            // $_SESSION['user_fname'] = $row['user_first_name'];
+            // $_SESSION['user_lname'] = $row['user_last_name'];
+            // $_SESSION['user_email'] = $row['user_email'];
+            $_SESSION['is_logged_in'] = 1;
+            header("location: /Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/amb_driver.php");
+          }else{
+            $_SESSION['is_logged_in'] = 0;
+            echo "<script>alert('Password incorrect! Enter a valid password')</script>";
+          }
+        }
+      }else{
+        echo "<script>alert('Invalid username or password!')</script>";
+      }
   }
   else if($service == 'Blood Bank Service'){
     echo "Blood Bank Service";
