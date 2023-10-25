@@ -198,5 +198,32 @@ public function vieworder($t)
  $result=mysqli_query($this->conn,"select * FROM ".$t);
  return $result;
  }
+
+
+
+public function insertadminmedical($table_name,$product_id,$source_id,$product_name,$product_rate,$file_name,$product_info,$product_desc,$product_makers)
+{
+
+  $sql="INSERT INTO "."`$table_name`"."(`product_id`, `source_id`, `product_name`, `product_rate`, `product_image`, `product_para`, `product_desc`, `product_makers`) VALUES ($product_id,$source_id,'$product_name',$product_rate,'$file_name','$product_info','$product_desc','$product_makers')";
+   $query=$this->conn->query($sql);
+   return true;
+
+ }
+ public function updateadminmedical($table_name,$product_id,$source_id,$product_name,$product_rate,$file_name,$product_info,$product_desc,$product_makers)
+{
+
+  $sql="UPDATE "."`$table_name`"." SET `source_id`='$source_id',`product_name`='$product_name',`product_rate`='$product_rate',`product_image`='$file_name',`product_para`='$product_info',`product_desc`='$product_desc',`product_makers`='$product_makers' WHERE `product_id`=$product_id";
+   $query=$this->conn->query($sql);
+   return true;
+
+ }
+ public function deleteadminmedical($table_name,$product_id)
+{
+
+  $sql="DELETE FROM "."`$table_name`"." WHERE `product_id`='$product_id'";
+   $query=$this->conn->query($sql);
+   return true;
+
+ }
 }
 ?>

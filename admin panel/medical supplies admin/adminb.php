@@ -27,7 +27,7 @@ $p=0;
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <a href="adminb.php" class="active"><span class="las la-igloo"></span>
+                    <a href="" class="active"><span class="las la-igloo"></span>
                     <span>Dashboard</span></a>
                 </li>
                 <li>
@@ -210,23 +210,6 @@ $p=0;
    </div>
 
 
-    
-    <!--   <a href="" style="color:#fff"><div class="card-single">
-                <div>
-                    <h1 style="color: #fff;">Insert Data</h1>
-                    <span>in the table</span>
-                </div>
-                <div>
-                </div>
-            </div></a>  
-        
-    
-           echo"<tr>
-            <td >$row[product_image] </td>
-            <td>$row[product_name]</td>
-            <td>&#8377 $row[product_rate]</td>
-          
 
-        </tr>"; -->
 </body>
 </html>

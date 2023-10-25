@@ -137,14 +137,30 @@ $p=0;
                    <span class="lab la-google-wallet" ></span>  
                 </div>
             </div>
-            <a href="" style="color:#fff"><div class="card-single">
+            <a href="input.php" style="color:#fff"><div class="card-single">
                 <div>
-                    <h1 style="color: #fff;">Config</h1>
+                    <h1 style="color: #fff;">Input</h1>
                     <span>Table</span>
                 </div>
                 <div>
                 </div>
-            </div></a>  
+            </div></a> 
+            <a href="update_admin_medical_supplies.php" style="color:#fff"><div class="card-single">
+                <div>
+                    <h1 style="color: #fff;">Update</h1>
+                    <span>Table</span>
+                </div>
+                <div>
+                </div>
+            </div></a>
+            <a href="delete_admin_medical_supplies.php" style="color:#fff"><div class="card-single">
+                <div>
+                    <h1 style="color: #fff;">Delete</h1>
+                    <span>Table</span>
+                </div>
+                <div>
+                </div>
+            </div></a> 
         </div>
 
 
