@@ -69,8 +69,6 @@
                         <a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php'><button class='btn'><i class='fa-solid fa-house'></i>&nbsp&nbspHome</button></a>
                     </div>
                 </div>";
-
-                    header("Refresh: 3,url=/Minor Project 5th_Sem/Emergency_Medical_Support_System/Payment/razor_pay.php?order_id=$order_rows[invoice_no]&amount=$fare");
                 ?>
             </div>
         </div>

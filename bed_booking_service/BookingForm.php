@@ -1,16 +1,24 @@
 <?php
 
     include_once("config.php");
+
+    $dbname = new Database();
+    $conn = $dbname->connect();
+
+
     session_start();
+    $uid =  $_SESSION['user_id'];
+    $ufname =  $_SESSION['user_fname'];
+    $ulname = $_SESSION['user_lname'];
+
+    $dbname->isLoggedIn($_SESSION['is_logged_in']);
 
     date_default_timezone_set("Asia/Kolkata");
-    $query = "SELECT * FROM hospital_info";
-    $result = mysqli_query($conn,$query);
 
-    // getting hospitalid(primary key) from url by using get method 
-    // $id=$_GET['hospitalid'];
-    // $sql= "SELECT * FROM `hospital_info` where Id=$id";
-    // $result= mysqli_query($conn,$sql);
+    // maybe needs to uncomment
+    // $query = "SELECT * FROM hospital_info";
+    // $result = mysqli_query($conn,$query);
+
 ?>
 
 
@@ -60,10 +68,12 @@ if(isset($_POST['submit'])){
     if(isset($_GET['hospitalid'])){
         $_SESSION['id'] = $_GET['hospitalid'];
     }
-    //  $sql= "SELECT * FROM `hospital_info` where Id='$id'";
-    $sql= "SELECT * FROM `hospital_info` where Id='$id'";
-     $result= mysqli_query($conn,$sql);
-     $row=mysqli_fetch_assoc($result);
+    
+    // $sql= "SELECT * FROM `hospital_info` where Id='$id'";
+    //  $result= mysqli_query($conn,$sql);
+    //  $row=mysqli_fetch_assoc($result);
+
+    $row = $dbname->select("hospital_info","*","Id='$id'")->fetch_assoc();
 
      $bed_charge= $row['bed_charge']; //storing bed charge 
     //  available bed updation code starts here 
@@ -73,39 +83,29 @@ if(isset($_POST['submit'])){
      if($gender == 'male' ){
         // $malebed = max(0, $malebed - 1);
         $malebed-=1;
-        $sql3= "UPDATE `hospital_info` SET Male_bed_available=$malebed WHERE Id='$id'";
-        $result=mysqli_query($conn,$sql3);
-        
+        // $sql3= "UPDATE `hospital_info` SET Male_bed_available=$malebed WHERE Id='$id'";
+        // $result=mysqli_query($conn,$sql3);
+
+        $update_result = $dbname->update('hospital_info',array('Male_bed_available'=>$malebed),"Id='$id'");
      }
      else{
         $femalebed-=1;
-        $sql3= "UPDATE `hospital_info` SET Female_bed_available=$femalebed WHERE Id=$id";
-        $result=mysqli_query($conn,$sql3);
+        // $sql3= "UPDATE `hospital_info` SET Female_bed_available=$femalebed WHERE Id=$id";
+        // $result=mysqli_query($conn,$sql3);
+
+        $update_result = $dbname->update('hospital_info',array('female_bed_available'=>$femalebed),"Id='$id'");
      }
-    //  else($gender == 'female' ){
-    //     // $gender = max(0, $gender - 1);
-    //     $sql3= "UPDATE `hospital_info` SET Female_bed_available= $row[Female_bed_available] - 1";
-    //  }
-     
-    
-      //  available bed updation code ends here 
 
-    //'storing hospitaal name in patient table accordingly' php code ends here
+    if($update_result){
+    // $sql2="INSERT INTO `patient_booking_info` (Hospital_name,Patient_id,Patient_name,Gender,Age,ContactNo,Dob,email,address2,City,Pin,Booking_date) VALUES ('$row[Name]','$patient_id','$name','$gender','$age','$contact','$dob','$email','$address2','$city','$pin','$bookdatetime')";
+    // $result=mysqli_query($conn,$sql2);
+    $insert_result = $dbname->insert('patient_booking_info',array("$row[Name]","$patient_id","$name","$gender","$age","$contact","$dob","$p_email","$address2","$city","$pin","$bookdatetime"));
 
-
-    $sql2="INSERT INTO `patient_booking_info` (Hospital_name,Patient_id,Patient_name,Gender,Age,ContactNo,Dob,email,address2,City,Pin,Booking_date) VALUES ('$row[Name]','$patient_id','$name','$gender','$age','$contact','$dob','$email','$address2','$city','$pin','$bookdatetime')";
-    $result=mysqli_query($conn,$sql2);
-
-
-    //  echo "$row[Name],$name,$gender,$age,$contact,$dob,$address2,$city,$pin,$bookdatetime,$patient_id";
-
-
-    // header("location:bed_booking_cnfm.php?hosid=$row[Id]");
-
+    if($insert_result){
     header("location:/Minor Project 5th_Sem/Emergency_Medical_Support_System/bed_booking_service/bbs_payment/razor_pay.php?hosid=$row[Id]&pnt_id=$patient_id&amount=$bed_charge");
+        }
 
-
-    // header("location:bed_booking_cnfm.php?hosid=$row[Id]&p_id=$patient_id");
+    }
 
 }
 
@@ -202,16 +202,19 @@ Your reserved bed will be canceled on $FourHourAfter . We kindly request your ar
 
                         // getting hospitalid(primary key) from url by using get method 
                         $id=$_GET['hospitalid'];
-                        $sql= "SELECT * FROM `hospital_info` where Id='$id'";
-                        $result= mysqli_query($conn,$sql);
-                        while($row=mysqli_fetch_assoc($result)){
+                        // $sql= "SELECT * FROM `hospital_info` where Id='$id'";
+                        // $result= mysqli_query($conn,$sql);
+
+                        $row = $dbname->select("hospital_info","*","Id='$id'")->fetch_assoc();
+                        // while($row=mysqli_fetch_assoc($result)){
 
                         echo "<div style='font-size: 12pt;'><strong>$row[Name]</strong></div>
                         <div style='font-size: 10pt;'>&nbsp;$row[Address]</div>
                         <div style='line-height: 14px;'>
                         <div style='font-size: 9pt;'>$row[District]</div>
                         <div style='font-size: 9pt;'>$row[ContactNo]</div>
-                    </div>";}
+                    </div>";
+                // }  while bracket
                     ?>
                 </div>
             </div>
@@ -303,33 +306,6 @@ Your reserved bed will be canceled on $FourHourAfter . We kindly request your ar
                     <div class="column">
                         <input type="number" name="pin" placeholder="Enter postal code" required />
                     </div>
-                    <!-- only change in input id "check-male to pay-yes"&"gender to pay" for payment section -->
-
-
-                    <!-- the below option is temporarily not in use  -->
-
-
-                    <!-- <div class="gender-box">
-                        <lable>Types of Bed</lable>
-                        <div class="gender-option">
-                            <div class="gender">
-                                <input type="radio" id="pay-yes" name="pay" checked />
-                                <label for="pay-yes">
-                                    <pre>    General ward</pre>
-                                </label>
-                            </div>
-                            <div class="gender">
-                                <input type="radio" id="pay-no" name="pay" />
-                                <label for="pay-no">
-                                    <pre>    Private room</pre>
-                                </label>
-                            </div>
-                            <div class="gender">
-                                <input type="radio" id="pay-no2" name="pay" />
-                                <label for="pay-no2">
-                                    <pre>    ICU</pre>
-                                </label>
-                            </div> -->
                             <a href=""><button type="submit" name="submit">Submit</button></a>
                         </div>
             </form>

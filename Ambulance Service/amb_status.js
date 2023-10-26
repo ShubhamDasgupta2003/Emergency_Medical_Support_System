@@ -1,4 +1,5 @@
 var amb_status = document.querySelectorAll('#card-status');
+var drv_stat = document.querySelector('.status');
 
 for(let i=0;i<amb_status.length;i++)
 {
@@ -12,3 +13,11 @@ for(let i=0;i<amb_status.length;i++)
     }
 }
 
+if(drv_stat.textContent == "active")
+{
+    drv_stat.classList.add('status-active');
+}
+else
+{
+    drv_stat.classList.add('status-inactive');
+}

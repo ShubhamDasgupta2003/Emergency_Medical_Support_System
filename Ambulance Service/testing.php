@@ -32,5 +32,4 @@
     // $ins = $db->insert('ambulance_info',array("WB24B6533","Test Ambulance Service","Normal","active","21.3145","87.9524","430","9748329717","Rajib","West Bengal","Hooghly","Chinsura","743123"))
 
     // $upd = $db->update('ambulance_info',array('amb_status'=>'busy'),"amb_no='WB24B4475'");
-    echo $upd;
 ?>

@@ -13,6 +13,8 @@
 
     date_default_timezone_set("Asia/calcutta");
 
+    $otp_code = rand(1111,9999);  //Generating random otp code
+
     // SELECT method from database class
     $sl_row = $db->select("user_ambulance","COUNT(*) AS slno")->fetch_assoc();
 
@@ -31,7 +33,7 @@
     $book_lat = $_GET['booklat'];
     $book_lon = $_GET['booklon'];
     $tot_fare = $_GET['amb_fare'];
-
+    $ride_status = "Booked";
     //SELECT query from databse class
     $rows = $db->select("ambulance_info","*","amb_no='$amb_no'")->fetch_assoc();
 
@@ -44,16 +46,16 @@
         $patient_name = $_POST['pat_name'];
         $patient_age = $_POST['pat_age'];
         $patient_gender = $_POST['gender'];
-
+        $patient_cont = $_POST['cont_num'];
         //UPDATE method called from Database class
         $update_result = $db->update('ambulance_info',array('amb_status'=>'busy'),"amb_no='$amb_no'");
         if($update_result)
         {
              //INSERT method called from Database class
-            $insert_result = $db->insert('user_ambulance',array("$invoice_no","$amb_no","$amb_type","$user_id","$user_name","$patient_name","$patient_age","$patient_gender","$book_lat","$book_lon","$cur_date","$cur_time","$tot_fare"));
+            $insert_result = $db->insert('user_ambulance',array("$invoice_no","$amb_no","$amb_type","$user_id","$user_name","$patient_name","$patient_age","$patient_gender","$patient_cont","$book_lat","$book_lon","$pickup","$cur_date","$cur_time","$tot_fare","$ride_status",$otp_code,$distance));
             if($insert_result)
             {
-                header("Location:amb_invoice_mail.php?ambno=$amb_no&ambname=$amb_name&driver=$amb_driver&fare=$tot_fare&dist=$distance&billno=$invoice_no");
+                header("Location:amb_invoice_mail.php?ambno=$amb_no&ambname=$amb_name&driver=$amb_driver&fare=$tot_fare&dist=$distance&billno=$invoice_no&otp=$otp_code");
             }
         }
     }

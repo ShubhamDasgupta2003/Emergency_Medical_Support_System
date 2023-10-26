@@ -1,5 +1,9 @@
 <?php
     include_once("config.php");
+
+    $dbname = new Database();
+    $conn = $dbname->connect();
+
     session_start();
 ?>
 

@@ -2,9 +2,9 @@
 include_once ('oop_connection.php');
 $obj=new Database;
 session_start();
-$uid = "USR8882889123";
 
-/*$uid =  $_SESSION['user_id'];
+
+$uid =  $_SESSION['user_id'];
 
 $islogin =  $_SESSION['is_logged_in'];
 if($islogin!=1)
@@ -19,7 +19,7 @@ setcookie("loc_modify","false");
 $uid =  $_SESSION['user_id'];
 $ufname =  $_SESSION['user_fname'];
 $ulname = $_SESSION['user_lname'];
-
+/*
 $lat_in_use = 0.0;
 $lon_in_use = 0.0;
 $full_address = "";
@@ -78,6 +78,7 @@ if($_COOKIE['loc_modify'] == 'true')
     <link rel="stylesheet" href="Css/Home.css">
     <link rel="stylesheet" href="Css/location_win.css">
     <link rel="stylesheet" href="Css/seondnav.css">
+    <link rel="stylesheet" href="Css/see_cart.css">
     <!--css-end -->
 
 
@@ -104,9 +105,9 @@ if($_COOKIE['loc_modify'] == 'true')
 
 
     <?php
-     $n=$obj->numrecord("cart",['user_id'=>$uid]);
+     $n=$obj->numrecord("cart",$uid);
      ?>
-    <div id="cart"> <a href="cart.php" id="user-cart"><i class="fa-solid fa-cart-shopping fa-2xl"></i><span><sup><?php echo $n ?></sup></span></a>
+     <div id="cart"> <a href="cart.php" id="user-cart"><i class="fa badge fa-cart-shopping fa-2xl" value=<?php echo $n ?> style="color:black"></i></a> 
     <div id="menu-btn" class="fa fa-bars"> </div>
 </header>
 
