@@ -1,9 +1,9 @@
 <?php
     include "db_config/main_config.php";
-
+    session_start();
     $db = new database();
     $con = $db->connect();
-    $amb_no = 'WB24B2100'; //get after login
+    $amb_no = $_SESSION['amb_no']; //get after login
 
 
     $amb_driver_rows = $db->select('ambulance_info',"amb_name,amb_no,amb_status,amb_driver_name,amb_type","amb_no='$amb_no'")->fetch_assoc();
@@ -38,7 +38,7 @@
         <div class='alg-cen-x'>
             <h1 class='title'>$amb_driver_rows[amb_name]</h1>
             <h2 id='amb-no'>$amb_driver_rows[amb_no]</h2>
-            <h2>$amb_driver_rows[amb_status]</h2>
+            <h2 class='status status-active'>$amb_driver_rows[amb_status]</h2>
             <h2>$amb_driver_rows[amb_type]</h2>
             <div class='card'>
                 <h1 class='cnfm-sub-h'><i class='fa-solid fa-truck-fast fa-lg'></i>&nbsp&nbspRide Started</h1>
@@ -63,6 +63,7 @@
 </div>
 </div>
     <script src="timer.js"></script>
+    <script src="amb_status.js"></script>
     <!-- <script src="driver.js"></script> -->
 </body>
 </html>

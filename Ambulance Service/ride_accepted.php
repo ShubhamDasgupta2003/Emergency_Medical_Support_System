@@ -66,7 +66,7 @@
         <div class='alg-cen-x'>
             <h1 class='title'>$amb_driver_rows[amb_name]</h1>
             <h2 id='amb-no'>$amb_driver_rows[amb_no]</h2>
-            <h2>$amb_driver_rows[amb_status]</h2>
+            <h2 class='status status-active'>$amb_driver_rows[amb_status]</h2>
             <h2>$amb_driver_rows[amb_type]</h2>
             <div class='card'>
                 <h1 class='cnfm-sub-h'><i class='fa-regular fa-circle-check fa-beat'></i>&nbsp&nbspRide Accepted</h1>
@@ -104,6 +104,7 @@
                     
 
 ?>
+    <script src="amb_status.js"></script>
     <!-- <script src="driver.js"></script> -->
 </body>
 </html>

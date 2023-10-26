@@ -2,6 +2,12 @@
     include "db_config/main_config.php";
     session_start();
 
+    if($_SESSION['is_adm_login']!=1)
+    {
+        echo "<script>alert('Please Login to continue!');
+        window.location.href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/adminlogin.php';</script>";
+
+    }
     $db = new database();
     $con = $db->connect();
     $result = 0;

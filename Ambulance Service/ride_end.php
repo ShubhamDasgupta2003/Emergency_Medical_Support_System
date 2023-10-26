@@ -1,10 +1,10 @@
 <?php
    include "db_config/main_config.php";
-
+    session_start();
    $db = new database();
    $con = $db->connect();
    $invNo = $_GET['inv'];
-   $amb_no = 'WB24B2100'; //get after login
+   $amb_no = $_SESSION['amb_no']; //get after login
 
    $amb_driver_rows = $db->select('ambulance_info',"amb_name,amb_no,amb_status,amb_driver_name,amb_type,amb_rate","amb_no='$amb_no'")->fetch_assoc();
 

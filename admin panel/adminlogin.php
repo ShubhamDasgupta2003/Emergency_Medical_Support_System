@@ -7,7 +7,7 @@ include_once('procedural_connect.php');
 
 <?php
 session_start();
-$_SESSION['is_logged_in'] = 0;
+$_SESSION['is_adm_login'] = 0;
 
 if(isset($_POST['login'])){
   $email_num=$_POST['email_number'];
@@ -33,10 +33,10 @@ if(isset($_POST['login'])){
             // $_SESSION['user_fname'] = $row['user_first_name'];
             // $_SESSION['user_lname'] = $row['user_last_name'];
             // $_SESSION['user_email'] = $row['user_email'];
-            $_SESSION['is_logged_in'] = 1;
+            $_SESSION['is_adm_login'] = 1;
             header("location: /Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/amb_driver.php");
           }else{
-            $_SESSION['is_logged_in'] = 0;
+            $_SESSION['is_adm_login'] = 0;
             echo "<script>alert('Password incorrect! Enter a valid password')</script>";
           }
         }
@@ -64,10 +64,10 @@ if(isset($_POST['login'])){
             // $_SESSION['user_fname'] = $row['user_first_name'];
             // $_SESSION['user_lname'] = $row['user_last_name'];
             // $_SESSION['user_email'] = $row['user_email'];
-            $_SESSION['is_logged_in'] = 1;
+            $_SESSION['is_adm_login'] = 1;
             header("location:adminb.php");
           }else{
-            $_SESSION['is_logged_in'] = 0;
+            $_SESSION['is_adm_login'] = 0;
             echo "<script>alert('Password incorrect! Enter a valid password')</script>";
           }
         }
@@ -97,10 +97,10 @@ if(isset($_POST['login'])){
 //         $_SESSION['user_fname'] = $row['user_first_name'];
 //         $_SESSION['user_lname'] = $row['user_last_name'];
 //         $_SESSION['user_email'] = $row['user_email'];
-//         $_SESSION['is_logged_in'] = 1;
+//         $_SESSION['is_adm_login'] = 1;
 //         header("location:index.php");
 //       }else{
-//         $_SESSION['is_logged_in'] = 0;
+//         $_SESSION['is_adm_login'] = 0;
 //         echo "<script>alert('Password incorrect! Enter a valid password')</script>";
 //       }
 //     }
