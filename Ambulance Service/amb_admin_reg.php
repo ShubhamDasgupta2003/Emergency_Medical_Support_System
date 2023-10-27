@@ -1,6 +1,6 @@
 <?php
 
-  $is_refreshed = $_GET['refresh'];
+  $is_refreshed = @$_GET['refresh'];
   if($is_refreshed==1)
   {
     $lat = number_format(@$_COOKIE["cur_lat"],7,".","");
