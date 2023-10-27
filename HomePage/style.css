@@ -1,0 +1,35 @@
+.container{
+    margin-top: 60px;
+}
+label{
+    font-size: large;
+    font-weight: bold;
+    color: green;
+}
+.card-header{
+    background-color: rgb(226, 243, 234);
+}
+
+.card-header{
+    color: green;
+    /* background-color: red; */
+}
+
+.submit-btn{
+    margin-top:10px;
+    border-radius: 5px;
+    height: 50px;
+    font-size: 1.5rem;
+}
+.btn-info{
+    color:white;
+}
+.btn-info:hover{
+    color:white;
+    font-weight: bold;
+}
+.submit-btn:hover{
+    /* background-color: rgb(108, 174, 139); */
+    /* color: green; */
+    font-weight: bold;
+}
