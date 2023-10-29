@@ -1,49 +1,49 @@
 <?php
-    include_once("db_config/main_config.php");
+    // include_once("db_config/main_config.php");
 
     session_start();
 
-    //Backend for location modification starts here
-    setcookie("loc_modify","false");
+    // //Backend for location modification starts here
+    // setcookie("loc_modify","false");
 
-    $uid =  @$_SESSION['user_id'];
-    $ufname =  @$_SESSION['user_fname'];
-    $ulname = @$_SESSION['user_lname'];
+    // $uid =  @$_SESSION['user_id'];
+    // $ufname =  @$_SESSION['user_fname'];
+    // $ulname = @$_SESSION['user_lname'];
 
-    $lat_in_use = 0.0;
-    $lon_in_use = 0.0;
-    $full_address = "";
-    $loc_query = "SELECT lat_in_use,long_in_use,formatted_adrrs FROM user_info WHERE user_id='$uid'";
+    // $lat_in_use = 0.0;
+    // $lon_in_use = 0.0;
+    // $full_address = "";
+    // $loc_query = "SELECT lat_in_use,long_in_use,formatted_adrrs FROM user_info WHERE user_id='$uid'";
 
-    $loc_result = mysqli_query($con,$loc_query);
-    $loc_rows = $loc_result->fetch_assoc();
+    // $loc_result = mysqli_query($con,$loc_query);
+    // $loc_rows = $loc_result->fetch_assoc();
 
-    if(@$loc_result)
-    {
-        $lat_in_use = @$loc_rows['lat_in_use'];
-        $lon_in_use = @$loc_rows['long_in_use'];
-        $full_address = @$loc_rows['formatted_adrrs'];
-    }
-    else
-    {
-        echo "error";
-    }
+    // if(@$loc_result)
+    // {
+    //     $lat_in_use = @$loc_rows['lat_in_use'];
+    //     $lon_in_use = @$loc_rows['long_in_use'];
+    //     $full_address = @$loc_rows['formatted_adrrs'];
+    // }
+    // else
+    // {
+    //     echo "error";
+    // }
 
-    if(@$_COOKIE['loc_modify'] == 'true')
-    {
-        $mod_lat = $_COOKIE['lat_in_use'];
-        $mod_lon = $_COOKIE['lon_in_use'];
-        $mod_addrs = $_COOKIE['address_in_use'];
+    // if(@$_COOKIE['loc_modify'] == 'true')
+    // {
+    //     $mod_lat = $_COOKIE['lat_in_use'];
+    //     $mod_lon = $_COOKIE['lon_in_use'];
+    //     $mod_addrs = $_COOKIE['address_in_use'];
 
-        $loc_mod_query = "UPDATE user_info SET lat_in_use=$mod_lat,long_in_use=$mod_lon,formatted_adrrs='$mod_addrs' WHERE user_id='$uid'";
+    //     $loc_mod_query = "UPDATE user_info SET lat_in_use=$mod_lat,long_in_use=$mod_lon,formatted_adrrs='$mod_addrs' WHERE user_id='$uid'";
 
-        $mod_loc_result = mysqli_query($con,$loc_mod_query);
+    //     $mod_loc_result = mysqli_query($con,$loc_mod_query);
 
-        if($mod_loc_result)
-        {
-            header("Refresh: 1");
-        }
-    }
+    //     if($mod_loc_result)
+    //     {
+    //         header("Refresh: 1");
+    //     }
+    // }
     //Backend for location modification ends here
     
 ?>
@@ -303,20 +303,22 @@
         <h1 class="heading">Our <span>services</span></h1>
         <div class="box-container">
         <?php
-            $sql="SELECT * FROM services";
-            $data=mysqli_query($con,$sql);
-            while($res=mysqli_fetch_assoc($data)){
-                echo "
-                
+            include("db_config/main_config.php");
+            $obj=new Database();
+            $obj->sql_select('services','*',null,null,null,null);
+
+            $result=$obj->getResult();
+            foreach($result as list("heading"=>$name,"des"=>$description,"link"=>$link,"img_src"=>$img)){
+            ?>
                 <div class='box'>
-                <img src='".$res['img_src']."'>
-                <h3>$res[heading]</h3>
-                <p>  $res[des]</p>
-                <a href='".$res['link']."' class='btn'>learn more <span class='fa fa-chevron-right'></span></a>
+                <img src='<?=$img?>'>
+                <h3><?=$name?></h3>
+                <p><?=$description?></p>
+                <a href="<?=$link?>" class='btn'>learn more <span class='fa fa-chevron-right'></span></a>
                 </div>
-                ";
+            <?php
             }
-        ?>     
+            ?>     
         </div>
 
     </section>
