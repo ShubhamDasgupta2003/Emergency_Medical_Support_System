@@ -51,7 +51,18 @@
             <h2>$amb_driver_rows[amb_status]</h2>
             <h2>$amb_driver_rows[amb_type]</h2>
             <div class='card'>
-                <h1 class='cnfm-sub-h'><i class='fa-solid fa-truck-fast fa-lg'></i>&nbsp&nbspRide Completed</h1>
+                <div class='alg-cen-x'>
+                <h1 class='cnfm-sub-h'><i class='fa-solid fa-circle-check fa-bounce'></i>&nbsp&nbspRide Completed</h1>
+                    <h1 class='title'>Total Ride Time</h1>
+                    <div class='alg-col'>
+                        <h1 class='time_disp'>$hrs Hrs&nbsp</h1>
+                        <h1 class='time_disp'>$mins mins&nbsp</h1>
+                        <h1 class='time_disp'>$secs secs</h1>
+                    </div>
+                    <a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/Payment/razor_pay.php?order_id=$amb_patient_rows[invoice_no]&amount=$amb_patient_rows[total_fare]'><button class='btn pay-btn'>Pay &#8377 $amb_patient_rows[total_fare]</button></a>
+                </div>
+            </div>
+            <div class='card'>
                 <div class='card'>
                     <div class='alg-row'>
                         <h1>Patient name: $amb_patient_rows[patient_name]</h1>
@@ -68,17 +79,7 @@
                 </div>
             </div>
 
-            <div class='card'>
-                <div class='alg-cen-x'>
-                    <h1 class='title'>Ride Time</h1>
-                    <div class='alg-col'>
-                        <h1 class='time_disp'>$hrs Hrs&nbsp</h1>
-                        <h1 class='time_disp'>$mins mins&nbsp</h1>
-                        <h1 class='time_disp'>$secs secs</h1>
-                    </div>
-                    <a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/Payment/razor_pay.php?order_id=$amb_patient_rows[invoice_no]&amount=$amb_patient_rows[total_fare]'><button class='btn'>Pay &#8377 $amb_patient_rows[total_fare]</button></a>
-                </div>
-            </div>
+    
         </div>
     </div>"
 ?>

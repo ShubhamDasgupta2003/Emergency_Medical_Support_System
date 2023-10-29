@@ -78,9 +78,9 @@
                         <h2>Address: $amb_patient_rows[user_book_adrss]</h2>
                     </div>
                     <div class='alg-col contact_btns active'>
-                        <button class='btn call-btn'><a href='tel:$amb_patient_rows[patient_cont]'><i class='fa-solid fa-phone fa-xl'></i>&nbsp&nbsp+91$amb_patient_rows[patient_cont]</a></button>
+                        <button class='btn call-btn'><a href='tel:$amb_patient_rows[patient_cont]' target='_blank'><i class='fa-solid fa-phone fa-xl'></i>&nbsp&nbsp+91$amb_patient_rows[patient_cont]</a></button>
 
-                        <button class='btn wp-btn'><a href='//wa.me/$amb_patient_rows[patient_cont]'><i class='fa-brands fa-whatsapp fa-xl'></i>&nbsp&nbsp+91$amb_patient_rows[patient_cont]</a></button>
+                        <button class='btn wp-btn'><a href='//wa.me/$amb_patient_rows[patient_cont]' target='_blank'><i class='fa-brands fa-whatsapp fa-xl'></i>&nbsp&nbsp+91$amb_patient_rows[patient_cont]</a></button>
                     </div>"
             ?>
             <?php
