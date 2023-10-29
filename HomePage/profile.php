@@ -1,5 +1,5 @@
 <?php
-    include'db_config/main_config.php';
+    include'db_config_p/main_config.php';
     session_start();
     if($_SESSION['is_logged_in']==0){
         header("location:login.php");
