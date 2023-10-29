@@ -23,7 +23,7 @@ function countUp()
         hrs+=1;
         mins=0;
     }
-    timerDisplay.textContent = hrs+" Hrs: "+mins+" mins: "+secs+" secs ";
+    timerDisplay.textContent = hrs+" Hrs  "+mins+" mins  "+secs+"  secs ";
 }
 
 function pause()

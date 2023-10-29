@@ -26,7 +26,7 @@ Ambulance no: $ambno
 Distance travelling: $ambdist Km
 
 You can pay via any of your preferred payment method
-Your subtotal amount is: Rs $amb_fare /-
+The ambulance rate is: Rs $amb_fare /- per Hr
 
 Your driver will contact you when he reaches your destination.
 He will help you to handle the patient properly.

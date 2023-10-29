@@ -36,6 +36,7 @@
     .cards .card
     {
         width: 28rem;
+        height: auto;
     }
 }
 @media (max-width:984px)
@@ -43,6 +44,7 @@
     .cards .card
     {
         width: 30rem;
+        height: auto;
     }
 }
 @media (max-width:434px)
@@ -62,5 +64,6 @@
     .cards .card
     {
         width: 35rem;
+        height: auto;
     }
 }

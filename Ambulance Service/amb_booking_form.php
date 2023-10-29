@@ -87,7 +87,7 @@
                     <h3><p class='descp' id='card-address'><i class='fa-solid fa-location-dot'></i> $rows[amb_state] $rows[amb_district] $rows[amb_town]</p></h3>
                     <h3><p class='descp' id='card-type'>$rows[amb_type]</p></h3>
                     <h2><p class='descp' id='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i>&nbsp&nbsp$distance km</p></h2>
-                    <h2 class='descp' id='card-fare'>&#8377 $tot_fare/-</h2>
+                    <h2 class='descp' id='card-fare'>&#8377 $tot_fare/- per Hr</h2>
                     </div>";
                 ?>
                 <div class="patient_info_cont">
