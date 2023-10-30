@@ -121,14 +121,15 @@ if (isset($_GET['delstd'])) {
                                             </td>
                                             <td>
                                                 <!-- <input type="number" name="ucount" value=""  class="form-control num"> -->
-                                                <input type="number" name="ucount" class="form-control" value="<?php echo $count; ?>">
+                                                <input type="number" name="ucount" class="form-control" value="<?php echo $count;
+                                                ?>">
 
                                             </td>
                                             <td>
-                                           
-                                            <a href="?delstd=<?= base64_encode($id) ?>&bg_id=<?= base64_encode($bg_id) ?>?>"  class='btn btn-sm btn-success check'>Update Details <i class="fa-solid fa-check"></i></a>
-
-
+                                           <?php
+                                            echo "<a href='?delstd=$id&bg_id=$bg_id&cnt=$count' class='btn btn-sm btn-success check'>Update Details <i class='fa-solid fa-check'></i></a>";
+                                            
+                                            ?>
                                                 <!-- <div class="wrapper">
                                                 <span class="minus">-</span>
                                                     <span class="num">01</span>
