@@ -130,7 +130,7 @@ if (isset($_GET['delstd'])) {
 
 
                                                 <!-- <div class="wrapper">
-                                                    <span class="minus">-</span>
+                                                <span class="minus">-</span>
                                                     <span class="num">01</span>
                                                     <span class="plus">+</span>
                                                 </div> -->
