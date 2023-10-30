@@ -126,7 +126,7 @@ header{
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
     position:fixed;
     left:345px;
-    width:calc(100% - 345px);
+    width:100%;
     top:0;
     z-index: 100;
     transition: left 300ms;
@@ -218,13 +218,10 @@ header h1{
 }
 .recent-grid
 {
-    /* margin-top:3.5rem;
+    margin-top:3.5rem;
     display:grid;
     grid-gap: 2rem;
-    grid-template-columns: 65% auto; */
-    display: flex;
-    flex-direction: column;
-    /* margin: 1.3rem; */
+    grid-template-columns: 65% auto;
 }
 table{
     border-collapse:collapse;
@@ -233,7 +230,6 @@ table{
 {
    background:#fff;
    border-radius: 5px;
-   margin-top: 15px;
 }
 .card-header,
 .card-body

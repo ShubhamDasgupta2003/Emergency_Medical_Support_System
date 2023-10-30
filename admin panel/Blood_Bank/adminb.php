@@ -30,34 +30,31 @@ $p=0;
                     <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/medical supplies admin/adminb.php"><span class="las la-igloo"></span>
                     <span>Dashboard</span></a>
                 </li>
+                
                 <li>
-                    <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/medical supplies admin/medical_supplies_admin.php" ><span class="las la-shopping-bag"></span>
-                    <span>Medical Supplies</span></a>
+                    <a href=""  class="active"><span class="las la-landmark"></span>
+                    <span>Blood Bank Service</span></a>
+                </li>
+               <li>
+                    <a href="http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/db_insertions/db_config/BloodBanks.php"><span class="las la-clipboard-list"></span>
+                    <span>Blood Banks</span></a>
                 </li>
                 <li>
-                    <a href="amb_srvc_admin.php"  class="active"><span class="las la-ambulance"></span>
-                    <span>Ambulance Service</span></a>
+                    <a href="http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/db_insertions/db_config/BloodDetails.php"><span class="las la-shopping-bag"></span>
+                    <span>Blood</span></a>
                 </li>
-              <!--  <li>
-                    <a href=""><span class="las la-clipboard-list"></span>
-                    <span>Projects</span></a>
-                </li>
-                <li>
-                    <a href=""><span class="las la-shopping-bag"></span>
-                    <span>Orders</span></a>
-                </li>
-                <li>
+                <!-- <li>
                     <a href=""><span class="las la-circle"></span>
                     <span>Inventory</span></a>
                 </li>
                 <li>
                     <a href=""><span class="las la-circle"></span>
-                    <span>Accounts</span></a>
+                <span>Accounts</span></a>
                 </li>
                 <li>
                     <a href=""><span class="las la-clipboard-list"></span>
                     <span>Inventory</span></a>
-                </li>  -->
+                </li>   -->
             </ul>
         </div>
     </div>
@@ -88,7 +85,7 @@ $p=0;
                 <div>
                     <?php
                         $row_count=0;
-                        $select_pro=$obj->viewrecord("ambulance_info","null") ;
+                        $select_pro=$obj->viewrecord("blood_bank","null") ;
                         foreach($select_pro as $row)
                         {
                             $row_count+=1;
@@ -96,7 +93,7 @@ $p=0;
 
                      ?>
                     <h1 style="color: #fff;"><?php echo $row_count ?></h1>
-                    <span>Registered Drivers</span>
+                    <span>Registered Blood Banks</span>
                 </div>
                 <div>
                     <span class="las la-user-shield" style="color: #fff;"></span>
@@ -106,33 +103,21 @@ $p=0;
                 <div>
                     <?php
                         $ord_count=0;
-                        $sqlr=$obj->select('user_ambulance','COUNT(ride_status) AS comp_rides',"ride_status='completed'")->fetch_assoc();    
+                        $sqlr=$obj->select('blood_order','COUNT(order_id) AS comp_rides')->fetch_assoc();    
                      ?>
                     <h1 style="color: #fff;"><?php echo $sqlr['comp_rides'] ?></h1>
-                    <span>Successfull Rides</span>
+                    <span>Successfull Orders</span>
                 </div>
                 <div>
                     <span class="las la-check-circle" style="color: #fff;"></span>
                 </div>
             </div>
-            <div class="card-single">
-                <div>
-                    <?php
-                        $ord_count=0;
-                        $sqlr=$obj->select('user_ambulance','COUNT(ride_status) AS comp_rides',"ride_status='rejected'")->fetch_assoc();    
-                     ?>
-                    <h1 style="color: #fff;"><?php echo $sqlr['comp_rides'] ?></h1>
-                    <span>Rejected Rides</span>
-                </div>
-                <div>
-                    <span class="las la-ban" style="color: #fff;"></span>
-                </div>
-            </div>
+           
             <div class="card-single">
                 <div><?php
                           $t=0;
                           $j=0;
-                          $sql=$obj->select('user_ambulance','SUM(total_fare) AS earnings',"ride_status='completed'")->fetch_assoc();
+                          $sql=$obj->select('blood_order','SUM(price) AS earnings')->fetch_assoc();
                       ?>
                     <h1 style="color: #fff;"> &#8377 <?php echo $sql['earnings'] ?></h1>
                     <span>Income</span>
@@ -145,32 +130,36 @@ $p=0;
 
 
         <div class="recent-grid">
-            <div class="projects">
+        <div class="projects">
                   <div class="card">
                      <div class="card-header">
-                          <h2> Registered Ambulances</h2>
+                          <h2> Ride Requests</h2>
                           
                      </div>
                      <div class="card-body">
                            <table width="100%">
                             <thead>
                                 <tr>
-                                    <td>Amb No.</td>
-                                    <td>Ambulance Name</td>
-                                    <td>Ambulance Rate</td>
+                                    <td>Blood Bank Name</td>
+                                    <td>Dist</td>
+                                    <td>City</td>
+                                    <td>Pincode</td>
+                                    <!-- <td>Price</td> -->
                                 </tr>
                             </thead>
                             <tbody>
                             <?php
-                                      $sqla=$obj->vieworder("ambulance_info");
-                                      while($rowa=mysqli_fetch_array($sqla))
-                                        {
+                                       $sqla=$obj->vieworder("blood_bank");
+                                       while($rowa=mysqli_fetch_array($sqla))
+                                         {
+                                          
+                                                echo"<tr>
+                                                <td >$rowa[name] </td>
+                                                <td>$rowa[dist]</td>
+                                                <td>$rowa[city]</td>
+                                                <td>$rowa[pincode]</td>";
+                                         }
                                          
-                                               echo"<tr>
-                                               <td >$rowa[amb_no] </td>
-                                               <td>$rowa[amb_name]</td>
-                                               <td>&#8377 $rowa[amb_rate]</td>";
-                                        }
                                         
                              ?>   
                             </tbody>
@@ -191,24 +180,23 @@ $p=0;
                                 <tr>
                                     <td>Date</td>
                                     <td>Time</td>
-                                    <td>Ride Id</td>
-                                    <td>Amb No.</td>
-                                    <td>Ride Fare</td>
+                                    <td>Order Id</td>
+                                    <td>Blood Group</td>
+                                    <td>Price</td>
                                 </tr>
                             </thead>
                             <tbody>
                             <?php
-                                      $sqla=$obj->select('user_ambulance','*','','booking_date DESC LIMIT 5');
+                                      $sqla=$obj->select('blood_order','*','','Order_date DESC LIMIT 5');
                                       while($rowa=$sqla->fetch_assoc())
                                         {
                                          
                                             echo"<tr>
-                                            <td >$rowa[booking_date] </td>
-                                            <td >$rowa[booking_time] </td>
-                                            <td >$rowa[invoice_no] </td>
-                                            <td>$rowa[amb_no]</td>
-                                            <td>&#8377 $rowa[total_fare]</td>
-                                            <td>$rowa[ride_status]</td>";
+                                            <td >$rowa[Order_date] </td>
+                                            <td >$rowa[Order_time] </td>
+                                            <td >$rowa[Order_id]</td>
+                                            <td >$rowa[Blood_gr] </td>
+                                            <td>&#8377 $rowa[price]</td>";
                                         }
                                         
                              ?>   
@@ -219,25 +207,6 @@ $p=0;
             </div>
          </div>
 
-      
-
     
-    <!--   <a href="" style="color:#fff"><div class="card-single">
-                <div>
-                    <h1 style="color: #fff;">Insert Data</h1>
-                    <span>in the table</span>
-                </div>
-                <div>
-                </div>
-            </div></a>  
-        
-    
-           echo"<tr>
-            <td >$row[product_image] </td>
-            <td>$row[product_name]</td>
-            <td>&#8377 $row[product_rate]</td>
-          
-
-        </tr>"; -->
 </body>
 </html>
