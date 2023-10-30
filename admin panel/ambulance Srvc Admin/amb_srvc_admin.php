@@ -27,7 +27,7 @@ $p=0;
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <a href="adminb.php"><span class="las la-igloo"></span>
+                    <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/medical supplies admin/adminb.php"><span class="las la-igloo"></span>
                     <span>Dashboard</span></a>
                 </li>
                 <li>
@@ -106,37 +106,39 @@ $p=0;
                 <div>
                     <?php
                         $ord_count=0;
-                        $sql=$obj->vieworder("user_ambulance","Rejected");
-                        while($rowl=mysqli_fetch_array($sql))
-                        {
-                            $ord_count=$ord_count+1; 
-                        }
-                          
+                        $sqlr=$obj->select('user_ambulance','COUNT(ride_status) AS comp_rides',"ride_status='completed'")->fetch_assoc();    
                      ?>
-                    <h1 style="color: #fff;"><?php echo $ord_count ?></h1>
-                    <span>Rides</span>
+                    <h1 style="color: #fff;"><?php echo $sqlr['comp_rides'] ?></h1>
+                    <span>Successfull Rides</span>
                 </div>
                 <div>
-                    <span class="las la-ambulance" style="color: #fff;"></span>
+                    <span class="las la-check-circle" style="color: #fff;"></span>
+                </div>
+            </div>
+            <div class="card-single">
+                <div>
+                    <?php
+                        $ord_count=0;
+                        $sqlr=$obj->select('user_ambulance','COUNT(ride_status) AS comp_rides',"ride_status='rejected'")->fetch_assoc();    
+                     ?>
+                    <h1 style="color: #fff;"><?php echo $sqlr['comp_rides'] ?></h1>
+                    <span>Rejected Rides</span>
+                </div>
+                <div>
+                    <span class="las la-ban" style="color: #fff;"></span>
                 </div>
             </div>
             <div class="card-single">
                 <div><?php
                           $t=0;
                           $j=0;
-                          $sql=$obj->vieworder("user_ambulance",'Rejected');
-
-                          while($rowl=mysqli_fetch_array($sql))
-                                 {
-                                    $t=$rowl['total_fare'];
-                                    $j+=$t;
-                                 }
+                          $sql=$obj->select('user_ambulance','SUM(total_fare) AS earnings',"ride_status='completed'")->fetch_assoc();
                       ?>
-                    <h1 style="color: #fff;"> &#8377 <?php echo $j ?></h1>
+                    <h1 style="color: #fff;"> &#8377 <?php echo $sql['earnings'] ?></h1>
                     <span>Income</span>
                 </div>
                 <div>
-                   <span class="lab la-google-wallet" ></span>  
+                   <span class="las la-wallet" ></span>  
                 </div>
             </div>
         </div>
@@ -196,8 +198,8 @@ $p=0;
                             </thead>
                             <tbody>
                             <?php
-                                      $sqla=$obj->vieworder("user_ambulance");
-                                      while($rowa=mysqli_fetch_array($sqla))
+                                      $sqla=$obj->select('user_ambulance','*','','booking_date DESC LIMIT 5');
+                                      while($rowa=$sqla->fetch_assoc())
                                         {
                                          
                                             echo"<tr>
@@ -205,7 +207,8 @@ $p=0;
                                             <td >$rowa[booking_time] </td>
                                             <td >$rowa[invoice_no] </td>
                                             <td>$rowa[amb_no]</td>
-                                            <td>&#8377 $rowa[total_fare]</td>";
+                                            <td>&#8377 $rowa[total_fare]</td>
+                                            <td>$rowa[ride_status]</td>";
                                         }
                                         
                              ?>   

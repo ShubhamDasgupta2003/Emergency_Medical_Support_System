@@ -34,6 +34,10 @@ $p=0;
                     <a href="medical_supplies_admin.php"><span class="las la-shopping-bag"></span>
                     <span>Medical Supplies</span></a>
                 </li>
+                <li>
+                    <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/ambulance Srvc admin/amb_srvc_admin.php" ><span class="las la-ambulance"></span>
+                    <span>Ambulance Service</span></a>
+                </li>
               <!--  <li>
                     <a href=""><span class="las la-clipboard-list"></span>
                     <span>Projects</span></a>
@@ -66,17 +70,7 @@ $p=0;
            </label>
            Dashboard
         </h3>
-        <div class="search-wrapper">
-            
-        </div>
-
-        <div class="user-wrapper">
-            <i class="fa-solid fa-user fa-lg account-avatar"></i>
-            <div>
-                <h4>user</h4>
-                <small>Super Admin</small>
-            </div>
-        </div>
+       
     </header>
     <main>
         <div class="cards">

@@ -61,6 +61,23 @@ class Database
   }
   }
 
+  public function select($table, $rows = '*', $where = null, $order = null) 
+  {
+      $q = 'SELECT '.$rows.' FROM '.$table;
+      if($where != null)
+          $q .= ' WHERE '.$where;
+      if($order != null)
+          $q .= ' ORDER BY '.$order;
+
+      // return $q;
+      $result = $this->conn->query($q);
+      if($result) {
+          return $result;
+      } else {
+          return false;
+      }
+  }
+        
   public function viewrecord($t,$w)
   { 
     if($w=='null')
