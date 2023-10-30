@@ -292,8 +292,9 @@ $query = "SELECT
     <script src="search1.js"></script>
 </body>
 
-</html>and this one also <?php
-include ("config.php");
+</html>
+<?php
+include ("Backend/config.php");
 
 // $b_gr=strtoupper($_POST["search"]);
 $b_gr="O+";

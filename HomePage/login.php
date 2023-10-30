@@ -83,6 +83,9 @@ if(isset($_POST['login'])){
         <div class="signuplink">
         <a href="signup.php?refresh=0">Forgot password</a>
         </div>
+        <div class="signuplink">
+        <a href="/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/admin panel/adminlogin.php">Admin Login</a>
+        </div>
       </form>
     </section>
   </body>

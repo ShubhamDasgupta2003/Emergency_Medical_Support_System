@@ -5,21 +5,24 @@ $obj = new Database();
 if (isset($_GET['delstd'])) {
     $id = base64_decode($_GET['delstd']);
     $bg_id = base64_decode($_GET['bg_id']);
-    $count=$_GET['count']; 
-    // $obj->delete('blood_bank', 'blood_bank_id=' . $id);
-    $values=['count'=>$count];
-            // $result=$obj->update('blood_bank_blood_group',$values,'blood_bank_id='.$id." AND ".'blood_group_id='.$bg_id);
+    // session_start();
+    // $count=$_GET["ucount"]; 
+    echo $id." ".$bg_id;
+    
 
-            $result=$obj->update('blood_bank_blood_group', $values, 'blood_bank_id=' . $id . ' AND ' . 'blood_group_id=' . $bg_id);
+    // $values=['count'=>$count];
+    //         // $result=$obj->update('blood_bank_blood_group',$values,'blood_bank_id='.$id." AND ".'blood_group_id='.$bg_id);
 
-        if($result){
-            $msg="Updated succesfully";
-            return $msg;
-        }
-        else{
-        $msg="Registration faild";
-        return $msg;
-        }
+    //         $result=$obj->update('blood_bank_blood_group', $values, 'blood_bank_id=' . $id . ' AND ' . 'blood_group_id=' . $bg_id);
+
+    //     if($result){
+    //         $msg="Updated succesfully";
+    //         return $msg;
+    //     }
+    //     else{
+    //     $msg="Registration faild";
+    //     return $msg;
+    //     }
 }
 
 ?>
@@ -88,7 +91,7 @@ if (isset($_GET['delstd'])) {
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <a href="Register.php" class="btn btn-info">Add Blood details</a>
+                                <a href="Blood_insert.php" class="btn btn-info">Add Blood details</a>
                             </div>
                         </div>
                     </div>
@@ -113,23 +116,26 @@ if (isset($_GET['delstd'])) {
                                     ?>
                                     <tr>
                                         <form action="" method="post">
-                                        <td>
-                                            <?= $g_name ?>
-                                        </td>
-                                        <td>
-                                            <input type="number" value="<?= $count?>" name="ucount" class="form-control num">
-                                        </td>
-                                        <td>
-                                        <a href="?delstd=<?= base64_encode($id) ?>&bg_id=<?= base64_encode($bg_id) ?>&count=<?= $ucount; ?>"  class='btn btn-sm btn-success check'>Update Details <i class="fa-solid fa-check"></i></a>
+                                            <td>
+                                                <?= $g_name ?>
+                                            </td>
+                                            <td>
+                                                <!-- <input type="number" name="ucount" value=""  class="form-control num"> -->
+                                                <input type="number" name="ucount" class="form-control" value="<?php echo $count; ?>">
 
-                                          
-                                            <!-- <div class="wrapper">
-                                                <span class="minus">-</span>
-                                                <span class="num">01</span>
-                                                <span class="plus">+</span>
-                                            </div> -->
-                                        </td>
-                                        <!-- <input type="submit" > -->
+                                            </td>
+                                            <td>
+                                           
+                                            <a href="?delstd=<?= base64_encode($id) ?>&bg_id=<?= base64_encode($bg_id) ?>?>"  class='btn btn-sm btn-success check'>Update Details <i class="fa-solid fa-check"></i></a>
+
+
+                                                <!-- <div class="wrapper">
+                                                    <span class="minus">-</span>
+                                                    <span class="num">01</span>
+                                                    <span class="plus">+</span>
+                                                </div> -->
+                                            </td>
+                                            <!-- <input type="submit" > -->
                                         </form>
                                     </tr>
                                     <?php
@@ -145,7 +151,7 @@ if (isset($_GET['delstd'])) {
    
 </body>
 </html>
-<script>
+<!-- <script>
    const plus = document.querySelector(".plus");
 const minus = document.querySelector(".minus");
 const num = document.querySelector(".num");
@@ -164,4 +170,4 @@ minus.addEventListener("click", () => {
         num.innerText = a;
     }
 });
-  </script>
+  </script> -->

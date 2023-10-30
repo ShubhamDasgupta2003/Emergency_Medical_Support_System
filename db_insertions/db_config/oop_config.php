@@ -58,10 +58,11 @@ class Database{
 
           echo $sql;
         //   if($this->link->query($sql)){
-        //     array_push($this->result,$this->link->affected_rows);
+        //     // array_push($this->result,$this->link->affected_rows);
         //     return true;
         //   }else{
-        //     array_push($this->result,$this->link->error);
+        //     $r=($this->link->error);
+        //     echo $r;
         //     return false;
         //   }
         }
