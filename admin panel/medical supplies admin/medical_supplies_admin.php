@@ -66,17 +66,9 @@ $p=0;
            </label>
            Dashboard
         </h3>
-        <div class="search-wrapper">
-            
-        </div>
+      
 
-        <div class="user-wrapper">
-            <i class="fa-solid fa-user fa-lg account-avatar"></i>
-            <div>
-                <h4>user</h4>
-                <small>Super Admin</small>
-            </div>
-        </div>
+        
     </header>
     <main>
         <div class="cards">
