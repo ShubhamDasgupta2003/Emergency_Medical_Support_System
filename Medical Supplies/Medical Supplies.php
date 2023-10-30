@@ -100,7 +100,15 @@ if($_COOKIE['loc_modify'] == 'true')
     </nav>
     
     
-    <a href="#" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
+    <div class="user-avatar-container">
+        <a href="http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/HomePage/profile.php" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
+            <?php
+                
+                echo"<h3>$_SESSION[user_fname]</h3>";
+            ?>
+
+        </div>
+        <div id="menu-btn" class="fa fa-bars"> </div>
 
 
     <?php
@@ -108,7 +116,7 @@ if($_COOKIE['loc_modify'] == 'true')
     
      ?>
    <div id="cart"> <a href="cart.php" id="user-cart"><i class="fa badge fa-cart-shopping fa-2xl" value="<?php echo $n ?>" style="color:black"></i></a> 
-   <div id="menu-btn" class="fa fa-bars"> </div>
+   
 </header>
 
 <!-- header section end -->

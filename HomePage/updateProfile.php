@@ -1,9 +1,9 @@
 <?php
-  include_once("db_config/main_config.php");
+  include_once("db_config_p/main_config.php");
   session_start();
   $user_id=$_SESSION['user_id'];
 
-  include_once("db_config/main_config.php");
+  // include_once("db_config/main_config.php");
   $sql="SELECT * FROM `user_info` WHERE user_id='$user_id'";
   $result=mysqli_query($con,$sql) or die ("error found in sql query");
   $data=mysqli_fetch_assoc($result);

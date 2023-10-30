@@ -13,3 +13,22 @@
     opacity:0.9;
    
 }
+.user-avatar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* padding-left: 30px; */
+  }
+  
+  .user-avatar-container a {
+    margin-right: 10px; /* Adjust as needed for spacing between icon and text */
+  }
+  .user-avatar-container a :hover {
+    color: #00a896;
+  }
+  
+  .user-avatar-container h3 {
+    color: #00a896;
+    font-size: 13px;
+    /* padding-top:20px; */
+  }
