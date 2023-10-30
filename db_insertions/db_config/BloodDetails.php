@@ -2,7 +2,7 @@
 include("oop_config.php");
 $obj = new Database();
 
-if (isset($_GET['delstd'])) {
+if (isset($_GET['submit'])) {
     $id = base64_decode($_GET['delstd']);
     $bg_id = base64_decode($_GET['bg_id']);
     // session_start();
@@ -115,7 +115,7 @@ if (isset($_GET['delstd'])) {
                                 foreach ($result_bg as list("blood_group_id" => $bg_id, "group_name" => $g_name)) {
                                     ?>
                                     <tr>
-                                        <form action="" method="post">
+                                        <form action="BloodDetails.php?delstd=<?= base64_encode($id) ?>&bg_id=<?= base64_encode($bg_id) ?>?>" method="get">
                                             <td>
                                                 <?= $g_name ?>
                                             </td>
@@ -125,8 +125,8 @@ if (isset($_GET['delstd'])) {
 
                                             </td>
                                             <td>
-                                           
-                                            <a href="?delstd=<?= base64_encode($id) ?>&bg_id=<?= base64_encode($bg_id) ?>?>"  class='btn btn-sm btn-success check'>Update Details <i class="fa-solid fa-check"></i></a>
+                                            <input type="submit" name="submit" value="Submit">
+                                            <!-- <a href=""  class='btn btn-sm btn-success check'>Update Details <i class="fa-solid fa-check"></i></a> -->
 
 
                                                 <!-- <div class="wrapper">
