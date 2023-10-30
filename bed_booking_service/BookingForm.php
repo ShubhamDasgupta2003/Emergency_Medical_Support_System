@@ -99,7 +99,7 @@ if(isset($_POST['submit'])){
     if($update_result){
     // $sql2="INSERT INTO `patient_booking_info` (Hospital_name,Patient_id,Patient_name,Gender,Age,ContactNo,Dob,email,address2,City,Pin,Booking_date) VALUES ('$row[Name]','$patient_id','$name','$gender','$age','$contact','$dob','$email','$address2','$city','$pin','$bookdatetime')";
     // $result=mysqli_query($conn,$sql2);
-    $insert_result = $dbname->insert('patient_booking_info',array("$row[Name]","$patient_id","$name","$gender","$age","$contact","$dob","$p_email","$address2","$city","$pin","$bookdatetime"));
+    $insert_result = $dbname->insert('patient_booking_info',array("$row[Name]","$patient_id","$name","$gender","$age","$contact","$dob","$p_email","$address2","$city","$pin","$bookdatetime","$bed_charge"));
 
     if($insert_result){
     header("location:/Minor Project 5th_Sem/Emergency_Medical_Support_System/bed_booking_service/bbs_payment/razor_pay.php?hosid=$row[Id]&pnt_id=$patient_id&amount=$bed_charge");
