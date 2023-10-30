@@ -42,6 +42,10 @@ $p=0;
                     <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/Blood_Bank/adminb.php" ><i class="fa-solid fa-building-columns"></i></span>
                     <span>Blood Bank Service</span></a>
                 </li>
+                <li>
+                    <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/bed booking admin/bed_booking_admin.php" ><span class="las la-ambulance"></span>
+                    <span>Bed Booking Service</span></a>
+                </li>
               <!--  <li>
                     <a href=""><span class="las la-clipboard-list"></span>
                     <span>Projects</span></a>
