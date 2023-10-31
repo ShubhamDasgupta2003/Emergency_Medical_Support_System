@@ -86,12 +86,22 @@ if(isset($_POST['update_product_quantity']))
           
             <?php
          }
+         
+         $order_ida=$obj->viewordera();
+         foreach($order_ida as $row)
+        {
+            {
+               $x=$row["order_id"];
+            }
+        }
+        $z=$x+1;
             if($grand_total>0)
             {
                echo "<td></td><td></td><td></td><td>
                <div class='table_bottom'>
                <h3 class='bottom_btn'>Grand Total :&#8377  $grand_total<h3>
                <a href='order confirmation.php?pgt=$grand_total' class='bottom_btn'>Proceed To Checkout</a>
+               <a href='Payment/razor_pay.php?amount=$grand_total&order_id=$z' class='bottom_btn'>Payment</a>
                </div></td>  <td></td><td></td><td></td></tbody>
                </table>";
             }

@@ -198,5 +198,12 @@ public function vieworder($t)
  $result=mysqli_query($this->conn,"select * FROM ".$t);
  return $result;
  }
+
+public function viewordera()
+{
+  
+ $result=mysqli_query($this->conn,"SELECT * FROM `medical_supplies_order_table` WHERE 1" );
+ return $result;
+ }
 }
 ?>
