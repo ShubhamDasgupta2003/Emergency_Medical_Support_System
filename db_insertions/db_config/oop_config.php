@@ -56,15 +56,15 @@ class Database{
             $sql.=" WHERE $where";
           }
 
-          echo $sql;
-        //   if($this->link->query($sql)){
-        //     // array_push($this->result,$this->link->affected_rows);
-        //     return true;
-        //   }else{
-        //     $r=($this->link->error);
-        //     echo $r;
-        //     return false;
-        //   }
+        //   echo $sql;
+          if($this->link->query($sql)){
+            // array_push($this->result,$this->link->affected_rows);
+            return true;
+          }else{
+            $r=($this->link->error);
+       
+            return false;
+          }
         }
     }
     
