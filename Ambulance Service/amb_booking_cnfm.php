@@ -9,17 +9,17 @@
     $otp_code = $_GET['otp'];
     $fare = $_GET['fare'];
     $query = "SELECT * FROM ambulance_info WHERE amb_no='$amb_no'";
-    $result = mysqli_query($con,$query);
+    $result = $con->query($query);
     if($result)
     {
-        $rows = $result->fetch_assoc();
+        $rows = $result->fetch();
     }
 
     $order_info_query = "SELECT * FROM user_ambulance WHERE amb_no='$amb_no'";
-    $order_result = mysqli_query($con,$order_info_query);
+    $order_result = $con->query($order_info_query);
     if($order_result)
     {
-        $order_rows = $order_result->fetch_assoc();
+        $order_rows = $order_result->fetch();
     }
 ?>
 

@@ -65,7 +65,7 @@ if(isset($_POST['login'])){
             // $_SESSION['user_lname'] = $row['user_last_name'];
             // $_SESSION['user_email'] = $row['user_email'];
             $_SESSION['is_adm_login'] = 1;
-            header("location:adminb.php");
+            header("location:/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/bed booking admin/hospital_interface.php");
           }else{
             $_SESSION['is_adm_login'] = 0;
             echo "<script>alert('Password incorrect! Enter a valid password')</script>";

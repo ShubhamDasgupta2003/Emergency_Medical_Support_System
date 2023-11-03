@@ -6,7 +6,7 @@
    $invNo = $_GET['inv'];
    $amb_no = $_SESSION['amb_no']; //get after login
 
-   $amb_driver_rows = $db->select('ambulance_info',"amb_name,amb_no,amb_status,amb_driver_name,amb_type,amb_rate","amb_no='$amb_no'")->fetch_assoc();
+   $amb_driver_rows = $db->select('ambulance_info',"amb_name,amb_no,amb_status,amb_driver_name,amb_type,amb_rate","amb_no='$amb_no'")->fetch();
 
    $hrs = $_GET['hs'];
    $mins = $_GET['ms'];
@@ -15,11 +15,11 @@
    $totalHrsRide = $hrs+($mins/60);
    $servCharge = $totalHrsRide*$amb_driver_rows['amb_rate'];
 
-   $ride_stat_updt = $db->update('user_ambulance',array('ride_status'=>'Completed','total_fare'=>$servCharge,'ride_hrs'=>$totalHrsRide),"invoice_no='$invNo' AND amb_no='$amb_no'");
+   $ride_stat_updt = $db->update('user_ambulance'," SET ride_status='Completed',total_fare=$servCharge,ride_hrs=$totalHrsRide WHERE invoice_no='$invNo' AND amb_no='$amb_no'");
         
-   $update_result = $db->update('ambulance_info',array('amb_status'=>'active'),"amb_no='$amb_no'");
+   $update_result = $db->update('ambulance_info'," SET amb_status='active' WHERE amb_no='$amb_no'");
 
-   $amb_patient_rows = $db->select('user_ambulance',"total_fare,invoice_no,user_book_lat,user_book_long,patient_cont,patient_name,patient_age,patient_gender,total_fare,user_book_adrss,amb_no","amb_no='$amb_no' AND ride_status='completed' AND invoice_no='$invNo'")->fetch_assoc();
+   $amb_patient_rows = $db->select('user_ambulance',"total_fare,invoice_no,user_book_lat,user_book_long,patient_cont,patient_name,patient_age,patient_gender,total_fare,user_book_adrss,amb_no","amb_no='$amb_no' AND ride_status='completed' AND invoice_no='$invNo'")->fetch();
 
 ?>
 

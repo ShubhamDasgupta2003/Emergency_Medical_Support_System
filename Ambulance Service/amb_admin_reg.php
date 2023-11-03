@@ -1,20 +1,20 @@
 <?php
+  include "db_config/main_config.php";
+  $db = new Database();
+  $con = $db->connect();
 
   $is_refreshed = @$_GET['refresh'];
   if($is_refreshed==1)
   {
     $lat = number_format(@$_COOKIE["cur_lat"],7,".","");
     $lon = number_format(@$_COOKIE["cur_lon"],7,".","");
-    $address = $_COOKIE['cur_addrss'];
+    $address = $_COOKIE["cur_addrss"];
   }
   else
   {
     header("Refresh: 2; url=amb_admin_reg.php?refresh=1");
   }
 
-  include "db_config/main_config.php";
-  $db = new Database();
-  $con = $db->connect();
 
   if(isset($_POST['submit']))
   {
@@ -115,7 +115,7 @@
                 <option value="" selected disabled>Select District</option >
                 <?php
                      $res= $db->select('districts',"*",'','');
-                     while($row=mysqli_fetch_assoc($res)){
+                     while($row=$res->fetch()){
                      echo"
                      <option value=$row[value]>$row[name]</option>";
                     }?>

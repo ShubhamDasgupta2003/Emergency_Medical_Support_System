@@ -1,3 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Email</title>
+    <style>
+        body
+        {
+            overflow-y:hidden;
+            background-color:rgb(255,255,255);
+        }
+        #load-container
+        {
+            height:100vh;
+            width:100vw;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+        }
+    </style>
+</head>
+<body onload=loadFunc()>
+    <div id="load-container">
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <h3>Please wait Loading</h3>
+    </div>
+    <script>
+        const loader = document.getElementById('load-container');
+        function loadFunc()
+        {
+            loader.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
+
 <?php
 
 session_start();
@@ -57,3 +101,4 @@ if (mail($to_email, $subject, $body, $headers)) {
 /* user is user */
 /* Email Password is Password23!@$  */
 /* on app password  is kzlufembtfmlsyfr */
+?>

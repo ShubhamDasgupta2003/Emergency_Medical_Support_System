@@ -24,8 +24,8 @@
     $sqli_order = 'distance';
 
     //Storing result as assoc array
-    // $result = $db->select($sqli_table,$sqli_rows,$sqli_condition,$sqli_order);
-
+    $result = $db->select($sqli_table,$sqli_rows,$sqli_condition,$sqli_order)->fetchAll();
+    print_r($result);
     // $result = $db->select($sqli_table,"COUNT(*) AS slno")->fetch_assoc();
     // print_r($result['slno']);
     

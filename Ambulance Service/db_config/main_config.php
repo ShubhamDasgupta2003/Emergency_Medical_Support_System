@@ -17,15 +17,24 @@
             $this->pswd = "";
             $this->db = "emgmedicalsystem";
 
-            $con = new mysqli($this->server,$this->username,$this->pswd,$this->db);
-            if($con->connect_error)
-            {
-                die("Connection error".$con->connect_error);
-            }
-            else
-            {
-                return $this->con = $con;
-            }
+            // $con = new mysqli($this->server,$this->username,$this->pswd,$this->db);
+            // if($con->connect_error)
+            // {
+            //     die("Connection error".$con->connect_error);
+            // }
+            // else
+            // {
+            //     return $this->con = $con;
+            // }
+            try {
+                $con = new PDO("mysql:host=$this->server;dbname=$this->db", $this->username, $this->pswd);
+                // set the PDO error mode to exception
+                $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                // echo "Connected successfully";
+                return $this->con=$con;
+              } catch(PDOException $e) {
+                echo "Connection failed: " . $e->getMessage();
+              }
         }
         // Method to connect to  mysql databse ends here
 //---------------------------------------------------------------------------       
@@ -76,7 +85,7 @@ public function select($table, $rows = '*', $where = null, $order = null)
                 $insert .= ' ('.$rows.')';
             }
             for ($i = 0; $i < count($values); $i++) {
-                $values[$i] = mysqli_real_escape_string($this->con, $values[$i]);
+                // $values[$i] = mysqli_real_escape_string($this->con, $values[$i]);
                 if (is_string($values[$i])) {
                     $values[$i] = '"'.$values[$i].'"';
                 }
@@ -93,19 +102,9 @@ public function select($table, $rows = '*', $where = null, $order = null)
         // Method for INSERT query in mysql ends here
 //---------------------------------------------------------------------------
         // Method for UPDATE query in mysql 
-        public function update($table, $rows, $where)
+        public function update($table, $cond)
         {
-            $update = 'UPDATE ' . $table . ' SET ';
-            $keys = array_keys($rows);
-            
-            $setValues = [];
-            foreach ($keys as $key) {
-                $value = $rows[$key];
-                $setValues[] = "`$key` = '" . mysqli_real_escape_string($this->con, $value)."'";
-            }
-            
-            $update .= implode(',', $setValues);
-            $update .= ' WHERE ' . $where;
+            $update = "UPDATE "  . $table." ".$cond;
             $query = $this->con->query($update);
             if ($query) {
                 return true;

@@ -12,13 +12,13 @@
     $con = $db->connect();
     $result = 0;
     $amb_no = $_SESSION['amb_no']; //get after login
-    $amb_driver_rows = $db->select('ambulance_info',"amb_name,amb_no,amb_status,amb_driver_name,amb_type","amb_no='$amb_no'")->fetch_assoc();
+    $amb_driver_rows = $db->select('ambulance_info',"amb_name,amb_no,amb_status,amb_driver_name,amb_type","amb_no='$amb_no'")->fetch();
 
-    $amb_patient_rows = $db->select('user_ambulance',"patient_cont,patient_name,patient_age,patient_gender,total_fare,user_book_adrss,amb_no","amb_no='$amb_no' AND ride_status='Booked'")->fetch_assoc();
+    $amb_patient_rows = $db->select('user_ambulance',"patient_cont,patient_name,patient_age,patient_gender,total_fare,user_book_adrss,amb_no","amb_no='$amb_no' AND ride_status='Booked'")->fetch();
 
-    $driver_report1 = $db->select('user_ambulance',"COUNT(*) AS completed_rides,SUM(total_fare) AS earnings,SUM(ride_hrs) AS rideHrs","amb_no='$amb_no' AND ride_status='completed'")->fetch_assoc();
+    $driver_report1 = $db->select('user_ambulance',"COUNT(*) AS completed_rides,SUM(total_fare) AS earnings,SUM(ride_hrs) AS rideHrs","amb_no='$amb_no' AND ride_status='completed'")->fetch();
 
-    $driver_report2 = $db->select('user_ambulance',"COUNT(*) AS rejected_rides","amb_no='$amb_no' AND ride_status='rejected'")->fetch_assoc();
+    $driver_report2 = $db->select('user_ambulance',"COUNT(*) AS rejected_rides","amb_no='$amb_no' AND ride_status='rejected'")->fetch();
     // print_r($driver_report);
     if($amb_patient_rows=="")
     {
@@ -47,13 +47,18 @@
 </head>
 <body>
 <div class='driver-container'>
-    <?php
-        echo "<div class='header'>
-        <img src='images/logo.png' alt='' width='50'>
-        <h1 class='user-name'>Hello, $amb_driver_rows[amb_driver_name]</h1>
-    </div>";
 
-    ?>
+    <div class='header'>
+        <img src='images/logo.png' alt='' width='50'>
+        <div class="user-greets">
+            <h1 class='user-name'>Hello, <?php echo"$amb_driver_rows[amb_driver_name]"; ?></h1>
+            <div class="user-btn">
+                <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/logout.php"><button class="btn-danger">Logout</button></a>
+                <a href="amb_admin_update.php?refresh=0"><button class="btn">Update</button></a>
+            </div>
+        </div>
+    </div>
+
     <div class="report-bar">
         <?php
             echo "<div class='card report-card'>
