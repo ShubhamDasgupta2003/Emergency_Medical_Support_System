@@ -47,13 +47,18 @@
 </head>
 <body>
 <div class='driver-container'>
-    <?php
-        echo "<div class='header'>
-        <img src='images/logo.png' alt='' width='50'>
-        <h1 class='user-name'>Hello, $amb_driver_rows[amb_driver_name]</h1>
-    </div>";
 
-    ?>
+    <div class='header'>
+        <img src='images/logo.png' alt='' width='50'>
+        <div class="user-greets">
+            <h1 class='user-name'>Hello, <?php echo"$amb_driver_rows[amb_driver_name]"; ?></h1>
+            <div class="user-btn">
+                <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/logout.php"><button class="btn-danger">Logout</button></a>
+                <a href="amb_admin_update.php?refresh=0"><button class="btn">Update</button></a>
+            </div>
+        </div>
+    </div>
+
     <div class="report-bar">
         <?php
             echo "<div class='card report-card'>

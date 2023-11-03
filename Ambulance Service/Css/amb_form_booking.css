@@ -11,6 +11,8 @@ input::-webkit-inner-spin-button {
     border-radius: 10px;
     font-size: 1.4rem;
     cursor: pointer;
+    margin-top: 1rem;
+    width: 100%;
 }
 .btn-danger
 {

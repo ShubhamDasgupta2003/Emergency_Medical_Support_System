@@ -4,6 +4,24 @@
 {
     text-align: center;
 }
+.user-greets
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.user-btn
+{
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+}
+.user-btn a
+{
+    margin-left: 7px;
+}
 .driver-container
 {
     display: flex;
