@@ -1,5 +1,5 @@
 <?php
-include_once ('oop_connection.php');
+include_once ('oop_connectionp.php');
 $obj=new Database;
 session_start();
 
@@ -107,16 +107,17 @@ if($_COOKIE['loc_modify'] == 'true')
                 echo"<h3>$_SESSION[user_fname]</h3>";
             ?>
 
-        </div>
-        <div id="menu-btn" class="fa fa-bars"> </div>
+    </div>
+    <div id="menu-btn" class="fa fa-bars"> </div>
 
 
+   <div id="cart">
     <?php
-     $n=$obj->numrecord("cart",$uid);
+     $n=$obj->numrecord($uid);
     
-     ?>
-   <div id="cart"> <a href="cart.php" id="user-cart"><i class="fa badge fa-cart-shopping fa-2xl" value="<?php echo $n ?>" style="color:black"></i></a> 
-   
+     ?> 
+     <a href="cart.php" id="user-cart"><i class="fa badge fa-cart-shopping fa-2xl" value="<?php echo $n ?>" style="color:black"></i></a> 
+   </div>
 </header>
 
 <!-- header section end -->
@@ -148,7 +149,7 @@ if($_COOKIE['loc_modify'] == 'true')
 
      <div class="cards">
           <?php
-            $records=$obj->viewrecord("medical_supplies_medical","null");
+            $records=$obj->viewrecordm();
             foreach($records as $row)
             {
          

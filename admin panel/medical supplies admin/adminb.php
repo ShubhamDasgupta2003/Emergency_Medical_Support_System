@@ -44,7 +44,7 @@ $p=0;
                     <span>Blood Bannk Service</span></a>
                 </li>
                 <li>
-                    <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/bed booking admin/bed_booking_admin.php" ><span class="las la-ambulance"></span>
+                    <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/bed booking admin/bed_booking_admin.php" ><span class="las la-hospital"></span>
                     <span>Bed Booking Service</span></a>
                 </li>
               <!--  <li>
