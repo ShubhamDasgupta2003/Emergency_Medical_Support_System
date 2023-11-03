@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&family=Poppins&display=swap');
+        *{
+            padding: 0%;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .center {
+            box-shadow: 0px 0px 10px #888888;
+            border-radius: 5px;
+            width: 500px;
+            padding: 46px;
+            background-color: white;
+            margin: 0 auto;
+            margin-top: 150px;
+            border: 1px solid black;
+        }
+        button{
+            float:left; 
+            background-color: #00A896;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 3px;
+            border-radius: 2px;
+            width: 70px;
+            border: none;
+            }
+    
+        button:hover{
+            background-color: #FFFFFF;
+            color: #00A896;
+            border: .5px solid #00A896;
+        }
