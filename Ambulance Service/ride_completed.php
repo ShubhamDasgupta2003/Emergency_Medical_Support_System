@@ -6,9 +6,9 @@
     $amb_no = $_SESSION['amb_no']; //get after login
 
 
-    $amb_driver_rows = $db->select('ambulance_info',"amb_name,amb_no,amb_status,amb_driver_name,amb_type","amb_no='$amb_no'")->fetch_assoc();
+    $amb_driver_rows = $db->select('ambulance_info',"amb_name,amb_no,amb_status,amb_driver_name,amb_type","amb_no='$amb_no'")->fetch();
 
-    $amb_patient_rows = $db->select('user_ambulance',"total_fare,invoice_no,user_book_lat,user_book_long,patient_cont,patient_name,patient_age,patient_gender,total_fare,user_book_adrss,amb_no","amb_no='$amb_no' AND ride_status='started'")->fetch_assoc();
+    $amb_patient_rows = $db->select('user_ambulance',"total_fare,invoice_no,user_book_lat,user_book_long,patient_cont,patient_name,patient_age,patient_gender,total_fare,user_book_adrss,amb_no","amb_no='$amb_no' AND ride_status='started'")->fetch();
     // print_r($amb_patient_rows);
 
 ?>

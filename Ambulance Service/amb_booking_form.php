@@ -16,7 +16,7 @@
     $otp_code = rand(1111,9999);  //Generating random otp code
 
     // SELECT method from database class
-    $sl_row = $db->select("user_ambulance","COUNT(*) AS slno")->fetch_assoc();
+    $sl_row = $db->select("user_ambulance","COUNT(*) AS slno")->fetch();
 
     $bill_id = $sl_row['slno']+1;
     $random_no = rand(1000,9999);
@@ -35,7 +35,7 @@
     $tot_fare = $_GET['amb_fare'];
     $ride_status = "Booked";
     //SELECT query from databse class
-    $rows = $db->select("ambulance_info","*","amb_no='$amb_no'")->fetch_assoc();
+    $rows = $db->select("ambulance_info","*","amb_no='$amb_no'")->fetch();
 
     $amb_rate = $rows['amb_rate'];
     $amb_type = $rows['amb_type'];
@@ -48,7 +48,7 @@
         $patient_gender = $_POST['gender'];
         $patient_cont = $_POST['cont_num'];
         //UPDATE method called from Database class
-        $update_result = $db->update('ambulance_info',array('amb_status'=>'busy'),"amb_no='$amb_no'");
+        $update_result = $db->update('ambulance_info'," SET amb_status='busy' WHERE amb_no='$amb_no'");
         if($update_result)
         {
              //INSERT method called from Database class
@@ -69,14 +69,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patient registration</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/amb_form_booking.css">
     <link rel="stylesheet" href="css/navlink.css">
 
+    <style>
+        #loader
+        {
+            display:flex;
+            flex-direction:column;
+            height:100%;
+            width:100%;
+            justify-content:center;
+            align-items:center;
+            /* background-image:url("images/logo.png"); */
+            background-color:white;
+            background-repeat:no-repeat;
+            position:absolute;
+            z-index: 1000;
+            overflow-y:hidden;
+        }
+        #loader h1
+        {
+            font-size: 5rem;
+        }
+        #loader h1,h2
+        {
+            margin:3rem;
+        }
+    </style>
 </head>
-<body>
+<body onload=loadFunc()>
     <div class="container">
+        <div id="loader">
+            <?php
+                echo "<h1><i class='fa-solid fa-heart-pulse fa-beat fa-2xl' style='color: #00c2ab;'></i></h1>
+                <h2>Please wait..</h2>";
+            ?>
+        </div>
         <div class="card">
             <img src="https://maishacare.com/wp-content/uploads/2022/06/ambulance-service-van-emergency-medical-vehicle-vector-illustration-white-background-ambulance-service-van-emergency-medical-127018462.jpg" alt="">
             <div class="column">
@@ -116,5 +146,12 @@
             </div>     
         </div>
     </div>
+    <script>
+        const loader = document.getElementById('loader');
+        function loadFunc()
+        {
+            loader.style.display = 'none';
+        }
+    </script>
 </body>
 </html>

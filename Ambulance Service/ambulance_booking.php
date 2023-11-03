@@ -20,7 +20,7 @@
     $loc_query = "SELECT lat_in_use,long_in_use,formatted_adrrs FROM user_info WHERE user_id='$uid'";
 
     $loc_result = $con->query($loc_query);
-    $loc_rows = $loc_result->fetch_assoc();
+    $loc_rows = $loc_result->fetch();
 
     if($loc_result)
     {
@@ -41,7 +41,7 @@
 
         $loc_mod_query = "UPDATE user_info SET lat_in_use=$mod_lat,long_in_use=$mod_lon,formatted_adrrs='$mod_addrs' WHERE user_id='$uid'";
 
-        $mod_loc_result = mysqli_query($con,$loc_mod_query);
+        $mod_loc_result = $con->query($loc_mod_query);
 
         if($mod_loc_result)
         {
@@ -144,7 +144,7 @@
             <div class="cards">
                 <?php
                     $result = $db->select($sqli_table,$sqli_rows,$sqli_condition,$sqli_order);
-                    while($rows=$result->fetch_assoc())
+                    while($rows=$result->fetch())
                     {
                     
                         // echo $per5km_price."<br>";

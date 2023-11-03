@@ -1,10 +1,12 @@
 <?php
 
   include_once("config.php");
+  $db = new Database();
+  $conn = $db->connect();
 //   date_default_timezone_set("Asia/calcutta");
 
 
-  $is_refreshed = $_GET['refresh'];
+  $is_refreshed = @$_GET['refresh'];
   if($is_refreshed==1)
   {
     $lat = number_format($_COOKIE["cur_lat"],7,".","");
@@ -170,12 +172,10 @@
                 <select name="district">
                 <option value="" selected disabled>Select District</option >
                 <?php
-                include("config.php");
-                     $sql="SELECT * FROM districts";
-                     $res=mysqli_query($conn,$sql) or die("query unsuccesfull");
-                     while($row=mysqli_fetch_assoc($res)){
-                     echo"
-                     <option value=$row[value]>$row[name]</option>";
+                    $res= $db->select('districts',"*",'','');
+                    while($row=$res->fetch_assoc()){
+                    echo"
+                    <option value=$row[value]>$row[name]</option>";
                     }?>
                 </select>
             </div>

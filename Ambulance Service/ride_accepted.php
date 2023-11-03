@@ -8,21 +8,21 @@
 
     if(isset($_POST['reject']))
     {
-        $ride_stat_updt = $db->update('user_ambulance',array('ride_status'=>'Rejected'),"ride_status='booked' AND amb_no='$amb_no'");
+        $ride_stat_updt = $db->update('user_ambulance'," SET ride_status='Rejected' WHERE ride_status='booked' AND amb_no='$amb_no'");
 
-        $update_result = $db->update('ambulance_info',array('amb_status'=>'active'),"amb_no='$amb_no'");
+        $update_result = $db->update('ambulance_info'," SET amb_status='active' WHERE amb_no='$amb_no'");
 
         header("Location: amb_driver.php");
     }
     
     if(isset($_POST['accept']))     //Update the ride status to Accepted
     {
-        $ride_stat_updt = $db->update('user_ambulance',array('ride_status'=>'Accepted'),"ride_status='booked' AND amb_no='$amb_no'");
+        $ride_stat_updt = $db->update('user_ambulance'," SET ride_status='Accepted' WHERE ride_status='booked' AND amb_no='$amb_no'");
 
     }
-    $amb_driver_rows = $db->select('ambulance_info',"amb_name,amb_no,amb_status,amb_driver_name,amb_type","amb_no='$amb_no'")->fetch_assoc();
+    $amb_driver_rows = $db->select('ambulance_info',"amb_name,amb_no,amb_status,amb_driver_name,amb_type","amb_no='$amb_no'")->fetch();
 
-    $amb_patient_rows = $db->select('user_ambulance',"invoice_no,OTP,user_book_lat,user_book_long,patient_cont,patient_name,patient_age,patient_gender,total_fare,user_book_adrss,amb_no","amb_no='$amb_no' AND ride_status='accepted'")->fetch_assoc();
+    $amb_patient_rows = $db->select('user_ambulance',"invoice_no,OTP,user_book_lat,user_book_long,patient_cont,patient_name,patient_age,patient_gender,total_fare,user_book_adrss,amb_no","amb_no='$amb_no' AND ride_status='accepted'")->fetch();
     print_r($amb_patient_rows);
 
     if(isset($_POST['start_ride']))
@@ -31,7 +31,7 @@
         if($otp_customer==$amb_patient_rows['OTP'])
         {
 
-            $ride_stat_updt = $db->update('user_ambulance',array('ride_status'=>'Started'),"ride_status='Accepted' AND amb_no='$amb_no'");
+            $ride_stat_updt = $db->update('user_ambulance'," SET ride_status='Started' WHERE ride_status='Accepted' AND amb_no='$amb_no'");
             
             header("Location: ride_completed.php?inv=$amb_patient_rows[invoice_no]");
         }

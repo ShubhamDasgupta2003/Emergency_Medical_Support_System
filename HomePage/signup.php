@@ -1,6 +1,6 @@
 <?php
 
-  include_once("db_config/main_config.php");
+  include_once("db_config_p/main_config.php");
   date_default_timezone_set("Asia/calcutta");
 
 
