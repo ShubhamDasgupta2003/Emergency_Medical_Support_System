@@ -73,4 +73,18 @@ class Operation{
             }
         }
     }
+    public function update_Blood_Details($data,$Bank_id,$Blood_id){
+        $values=['count'=>$data];
+        $result=$this->db->update('blood_bank_blood_group', $values, 'blood_bank_id=' . $Bank_id . ' AND ' . 'blood_group_id=' . $Blood_id);
+        // $result=$this->db->update($sql);
+        
+        if($result){
+            $msg="Blood details updated succesfully";
+            return $msg;
+        }
+        else{
+        $msg="Updation faild";
+        return $msg;
+        }
+    }
 }

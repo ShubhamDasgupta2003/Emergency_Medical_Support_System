@@ -24,6 +24,8 @@
   {
     $name = $_POST['name'];
     $email = $_POST['email_id'];
+    $lat = $_POST['lat'];
+    $long = $_POST['long'];
     $cont_num = $_POST['contact_num'];
     $address = $_POST['address'];
     $district = $_POST['district'];
@@ -61,7 +63,7 @@
 
     $check_dup_reg = "SELECT * FROM hospital_info WHERE email='$email' OR ContactNo='$cont_num'";
 
-    $insert_records ="INSERT INTO `hospital_info` (`Id`, `Name`,`ContactNo`,`email`,`password`,`Address`, `State`, `District`, `City`, `Pincode`, `Latitude`, `Longitude`,`Male_bed_available`,`Female_bed_available`)VALUES('$hosp_id','$name',$cont_num,'$email','$password','$address','$state','$district','$city_town',$postcode,$lat,$lon,$m_bed_avail,$f_bed_avail)";
+    $insert_records ="INSERT INTO `hospital_info` (`Id`, `Name`,`ContactNo`,`email`,`password`,`Address`, `State`, `District`, `City`, `Pincode`, `Latitude`, `Longitude`,`Male_bed_available`,`Female_bed_available`)VALUES('$hosp_id','$name',$cont_num,'$email','$password','$address','$state','$district','$city_town',$postcode,$lat,$long,$m_bed_avail,$f_bed_avail)";
 
     $result = mysqli_query($conn,$check_dup_reg);
     $rows = mysqli_num_rows($result);
@@ -122,6 +124,14 @@
         <div class="input-box">
           <label>Email Address</label>
           <input name="email_id" type="text" placeholder="Enter email address" required />
+        </div>
+        <div class="input-box">
+          <label>Latitude</label>
+          <input name="lat" type="number" placeholder="Enter hospital latitude" required/>
+        </div>
+        <div class="input-box">
+          <label>Longitude</label>
+          <input name="long" type="number" placeholder="Enter hospital longitude" required/>
         </div>
 
         <div class="column">
