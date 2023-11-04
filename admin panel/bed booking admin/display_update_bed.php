@@ -29,20 +29,11 @@ if($_SESSION['is_adm_login']!=1)
 
 if(isset($_POST['submit1'])){
     $m_bedcount=$_POST['m_count'];
-    $f_bedcount=$sqlr['Female_bed_available'];
+    $f_bedcount=$_POST['f_count'];
     $result=$obj->update("hospital_info",array("Male_bed_available"=>$m_bedcount,"Female_bed_available"=>$f_bedcount),"Id='$hos_id'");
     header("location:/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/bed booking admin/display_update_bed.php");
        
 }
-
-if(isset($_POST['submit2'])){
-    $f_bedcount=$_POST['f_count'];
-    $m_bedcount= $sqlr['Male_bed_available'];
-    $result=$obj->update("hospital_info",array("Female_bed_available"=>$f_bedcount,"female_bed_available"=>$f_bedcount),"Id='$hos_id'");
-    header("location:/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/bed booking admin/display_update_bed.php");
-       
-}
-
 
 ?>
 
@@ -89,22 +80,21 @@ if(isset($_POST['submit2'])){
                      ?>
 
                     <tr>
-                    <form action="" method="post">
+                    <form action="" method="post" id="update_from">
                         <td><?php echo $male; ?></td>
                         <td><input type="number" name="m_count" class="form-control" value="<?php echo $sqlr['Male_bed_available'];?>"></td>
                         <td>
                             <!-- <a href="#" class="edit" title="Edit" data-toggle="tooltip"><span class="material-symbols-outlined">edit_square</span></a> -->
                             <button name="submit1">update</button>
                         </td>
-                        </form>
+                        
                     </tr>
                     <tr>
-                    <form action="" method="post">
                         <td><?php echo $female; ?></td>
                         <td><input type="number" name="f_count" class="form-control" value="<?php echo $sqlr['Female_bed_available'];?>"></td>
                         <td>
                             <!-- <a href="#" class="edit" title="Edit" data-toggle="tooltip"><span class="material-symbols-outlined">edit_square</span></a> -->
-                            <button name="submit2">update</button>
+                            <!-- <button name="submit2">update</button> -->
                         </td>
                         </form>
                     </tr>
