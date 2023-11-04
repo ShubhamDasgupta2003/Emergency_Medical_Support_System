@@ -19,7 +19,7 @@ $p=0;
 
 <?php
 
-$hos_id= $_SESSION['user_id'];
+$hos_id= $_SESSION['adm_hos_id'];
 // echo "$hos_id";
 
 $sql2=$obj->select('hospital_info','*',"Id='$hos_id'")->fetch_assoc();
@@ -153,7 +153,7 @@ $name= $sql2['Name'];
                 <div><?php
                           $t=0;
                           $j=0;
-                          $sql=$obj->select('hospital_info','Male_bed_available')->fetch_assoc();
+                          $sql=$obj->select('hospital_info','Male_bed_available',"Id='$hos_id'")->fetch_assoc();
                       ?>
                     <h1 style="color: #fff;"> <?php echo $sql['Male_bed_available'] ?></h1>
                     <span>Male Beds Available</span>
@@ -166,7 +166,7 @@ $name= $sql2['Name'];
                 <div><?php
                           $t=0;
                           $j=0;
-                          $sql=$obj->select('hospital_info','Female_bed_available')->fetch_assoc();
+                          $sql=$obj->select('hospital_info','Female_bed_available',"Id='$hos_id'")->fetch_assoc();
                       ?>
                     <h1 style="color: #fff;"> <?php echo $sql['Female_bed_available'] ?></h1>
                     <span>Female Beds Available</span>

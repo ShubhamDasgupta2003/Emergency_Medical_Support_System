@@ -90,7 +90,29 @@ table.table td .add {
     display: none;
 }
 
-.col-sm-4 button a{
+body .butt a{
     text-decoration: none;
     color: white;
+}
+body .butt a:hover{
+    text-decoration: none;
+    color: var(--main-color);
+    transition:all .2s ease;
+}
+body .butt {
+    /* text-decoration: none; */
+    color: white; 
+    background-color: var(--main-color);
+}
+body .butt:hover {
+    /* text-decoration: none; */
+    color: var(--main-color); 
+    background-color: white;
+    transition:all .2s ease;
+}
+body .update{
+    border: 1px solid var(--main-color);
+    border-radius: 14px;
+    position: relative;
+    top: 32px;
 }

@@ -13,7 +13,7 @@ if($_SESSION['is_adm_login']!=1)
 
 
 
-    $hos_id= $_SESSION['user_id'];
+    $hos_id= $_SESSION['adm_hos_id'];
     // echo "$hos_id";
     
     $sql2=$obj->select('hospital_info','*',"Id='$hos_id'")->fetch_assoc();
@@ -59,7 +59,7 @@ if(isset($_POST['submit1'])){
                 <div class="row">
                     <div class="col-sm-8"><h2>Bed <b>Details</b></h2></div>
                     <div class="col-sm-4">
-                        <button type="button" class="btn btn-info add-new"><a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/bed booking admin/hospital_interface.php">Go to Dashboard</a></button>
+                        <button type="button" class="btn btn-info add-new butt"><a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/bed booking admin/hospital_interface.php">Go to Dashboard</a></button>
                     </div>
                 </div>
             </div>
@@ -83,19 +83,19 @@ if(isset($_POST['submit1'])){
                     <form action="" method="post" id="update_from">
                         <td><?php echo $male; ?></td>
                         <td><input type="number" name="m_count" class="form-control" value="<?php echo $sqlr['Male_bed_available'];?>"></td>
-                        <td>
+                        <td rowspan ="2">
                             <!-- <a href="#" class="edit" title="Edit" data-toggle="tooltip"><span class="material-symbols-outlined">edit_square</span></a> -->
-                            <button name="submit1">update</button>
+                            <button class="butt update" name="submit1">update</button>
                         </td>
                         
                     </tr>
                     <tr>
                         <td><?php echo $female; ?></td>
                         <td><input type="number" name="f_count" class="form-control" value="<?php echo $sqlr['Female_bed_available'];?>"></td>
-                        <td>
-                            <!-- <a href="#" class="edit" title="Edit" data-toggle="tooltip"><span class="material-symbols-outlined">edit_square</span></a> -->
-                            <!-- <button name="submit2">update</button> -->
-                        </td>
+                        <!-- <td>
+                            <a href="#" class="edit" title="Edit" data-toggle="tooltip"><span class="material-symbols-outlined">edit_square</span></a>
+                            <button name="submit2">update</button>
+                        </td> -->
                         </form>
                     </tr>
                     <!-- <tr>
