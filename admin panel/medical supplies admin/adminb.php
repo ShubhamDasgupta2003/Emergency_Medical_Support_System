@@ -1,5 +1,5 @@
 <?php
-include_once ('oop_connection.php');
+include_once ('oop_connectionp.php');
 $obj=new Database;
 session_start();
 
@@ -87,7 +87,7 @@ $p=0;
                 <div>
                     <?php
                         $row_count=0;
-                        $select_pro=$obj->viewrecord("user_info","null") ;
+                        $select_pro=$obj->viewuser() ;
                         foreach($select_pro as $row)
                         {
                             $row_count+=1;
@@ -105,8 +105,8 @@ $p=0;
                 <div>
                     <?php
                         $ord_count=0;
-                        $sql=$obj->vieworder("all_order");
-                        while($rowl=mysqli_fetch_array($sql))
+                        $sql=$obj->viewall_order();
+                        foreach($sql as $row)    
                         {
                             $ord_count=$ord_count+1; 
                         }
@@ -123,8 +123,8 @@ $p=0;
                           $t=0;
                           $j=0;
                           
-                          $sql=$obj->vieworder("medical_supplies_order_table");
-                          while($rowl=mysqli_fetch_array($sql))
+                          $sql=$obj->viewmedical_order();
+                              foreach($sql as $rowl) 
                                  {
                                     $t=$rowl['price'];
                                     $j=$rowl['quantity'];
@@ -161,8 +161,8 @@ $p=0;
                             </thead>
                             <tbody>
                             <?php
-                                      $sqla=$obj->vieworder("all_order");
-                                      while($rowa=mysqli_fetch_array($sqla))
+                                      $sqla=$obj->viewall_order();
+                                      foreach($sqla as $rowa) 
                                         {
                                           
                                                  echo" <tr>
@@ -186,10 +186,10 @@ $p=0;
                     </div>
                     <div class="card-body">
                     <?php
-                                     $q=$obj->vieworder("user_info");
+                                     $q=$obj->viewuser();
                                      if($q)
                                         {
-                                            while($r=mysqli_fetch_array($q))
+                                            foreach($q as $r) 
                                             {
                                                 echo" <div class='customer'>
                                                             <div class='info'>

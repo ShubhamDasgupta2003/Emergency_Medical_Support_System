@@ -35,7 +35,7 @@ session_start();
         <div class="column">
             <div class="input-box">
                 <label>Product ID</label>
-                <input name="product_id" type="number" placeholder="Enter Source Id" required maxlength="10"/>
+                <input name="product_id" type="number" placeholder="Enter Product Id" required maxlength="10"/>
             </div>
         </div>
         <button id="sbmt-form" name="submit">Delete</button>

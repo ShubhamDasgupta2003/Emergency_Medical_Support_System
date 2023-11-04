@@ -1,5 +1,5 @@
 <?php
-  include_once ('oop_connection.php');
+  include_once ('oop_connectionp.php');
   $obj=new Database;
   session_start();
   
@@ -7,7 +7,7 @@
     $e= $_SESSION['user_email'];
     $ufname =  $_SESSION['user_fname'];
     $ulname = $_SESSION['user_lname'];
-    $records=$obj->viewrecord("cart","$uid");
+    $records=$obj->viewrecordc($uid);
 
 
 /*-------------------------DO not change this section as it defines the structure of the pdf---------------------------*/

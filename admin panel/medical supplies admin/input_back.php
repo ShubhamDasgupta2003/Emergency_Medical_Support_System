@@ -1,5 +1,5 @@
 <?php
-include_once ('oop_connection.php');
+include_once ('oop_connectionp.php');
 session_start();
 $obj=new Database;
 $product_id=$_REQUEST['product_id'];
@@ -16,8 +16,11 @@ $table_name=$_REQUEST['tabletype'];
 $product_info=$_REQUEST['product_info'];
 $product_desc=$_REQUEST['product_desc'];
 $product_makers=$_REQUEST['product_makers'];
+$product_email=$_REQUEST['email'];
+$product_phone=$_REQUEST['drvcont'];
+$product_password=$_REQUEST['pswd'];
 
-$insert=$obj->insertadminmedical($table_name,$product_id,$source_id,$product_name,$product_rate,$file_name,$product_info,$product_desc,$product_makers) ;
+$insert=$obj->insertadminmedical($table_name,$product_id,$source_id,$product_name,$product_rate,$file_name,$product_info,$product_desc,$product_makers,$product_password,$product_email,$product_phone) ;
 ?>
 <script>
     window.location.href = 'medical_supplies_admin.php'</script>

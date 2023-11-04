@@ -5,9 +5,11 @@ session_start();
 $uid='USR8882889123';
 $n=$obj->numrecord($uid);
 echo $n;
-$records=$obj->viewrecordt();
-foreach($records as $row)
-{
+$current_date=date('Y-m-d');
+$current_time=date('h:i:sa');
+/*
+$row=$obj->viewrecorddt("1");
+
 
 
 echo" <div class='card'>
@@ -20,7 +22,13 @@ echo" <div class='card'>
         <a href='Detailed Supply.php?pid=$row[product_id]&name=medical'><button class='btn btn-secondary-orange'>Details</button></a>
     </div>
 </div>";
+*/
 
-}
-
+$product_name="test";
+$product_price=5;
+$product_image="testimg";
+$product_quantity=7;
+$s=$obj->insertcart($product_name,$product_price,$product_image, $product_quantity,$uid);
+$ufname="test";
+$l=$obj->insertallorder($uid,$ufname,$current_date,$current_time);
 ?>
