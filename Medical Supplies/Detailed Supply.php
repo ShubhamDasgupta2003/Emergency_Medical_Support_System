@@ -1,5 +1,5 @@
 <?php
-include_once ('oop_connection.php');
+include_once ('oop_connectionp.php');
 $obj=new Database;
 session_start();
 
@@ -15,10 +15,10 @@ if(isset($_POST['add_to_cart']))
   
     try {
           $s=$obj->insertcart($product_name,$product_price,$product_image, $product_quantity,$uid);
-          echo $s;
+        
         }catch (Exception $e){
    
-         
+         $e->getMessage();
        }
 }
 
@@ -47,7 +47,7 @@ if(isset($_POST['add_to_cart']))
        //echo $u;
        if($n=='medical')
        {$row=array();
-        $row=$obj->viewprecord("medical_supplies_medical",['product_id'=>$s]);
+        $row=$obj->viewrecorddm($s);
        ?>
         <img src="image/pain relief/<?php echo $row['product_image'] ?>" alt="">
         <div class="column">
@@ -94,7 +94,7 @@ if(isset($_POST['add_to_cart']))
     else
     {
         $row=array();
-        $row=$obj->viewprecord("medical_supplies_technical",['product_id'=>$s]);
+        $row=$obj->viewrecorddt($s);
        ?>
         <img src="image/pain relief/<?php echo $row['product_image'] ?>" alt="">
         <div class="column">

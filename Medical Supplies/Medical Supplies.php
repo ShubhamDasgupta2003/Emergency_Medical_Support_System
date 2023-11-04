@@ -107,8 +107,9 @@ if($_COOKIE['loc_modify'] == 'true')
                 echo"<h3>$_SESSION[user_fname]</h3>";
             ?>
 
-    </div>
-    <div id="menu-btn" class="fa fa-bars"> </div>
+        </div>
+        <div id="menu-btn" class="fa fa-bars"> </div>
+
 
 
    <div id="cart">

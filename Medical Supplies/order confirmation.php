@@ -1,5 +1,5 @@
 <?php
-include_once ('oop_connection.php');
+include_once ('oop_connectionp.php');
 $obj=new Database;
 
 
@@ -37,7 +37,7 @@ $p=0;
             <?php
     
             
-             $records=$obj->viewrecord("cart","$uid");
+             $records=$obj->viewrecordc($uid);
                      foreach($records as $row)
                     {
                         {
@@ -63,18 +63,17 @@ $p=0;
                 <div class="amb_info_cont">
                     <h3>Your Order  is confirmed . Regarding any question about the order contact us with your registered <?php echo $e ?></h3>
                     <p class="descp" id="card-type"></p>
-                    <p class="descp" id="card-address"><i class="fa-solid fa-location-dot"></i> Shipping To</p>
-                    <p class="descp" id="card-type">WestBengal North - 24pgs Halisahar - 743135</p>
                     <p class="descp" id="card-address"><i class="fa-solid fa-calendar-days"></i>></i> Estimated Arrival</p>
-                    <p class="descp" id="card-type">23 March</p>
+                    <p class="descp" id="card-type"><?php echo date('Y-m-d', strtotime("+10 days")); ?></p>
                     <h2 class="descp" id="card-fare">Total Price: &#8377  <?php echo $t; ?></h2>
                     <div class="bton">
                     <?php 
                  
                    
              
-                      $obj->insertrecord("medical_supplies_order_table",['user_id'=>$p,'product_name'=>$s,'quantity'=>$j,'date'=>$current_date,'time'=>$current_time,'user_fname'=>$ufname,'user_lname'=>$ulname,'user_email'=>$e,'price'=>$t]);
-
+                     // $obj->insertrecord("medical_supplies_order_table",['user_id'=>$p,'product_name'=>$s,'quantity'=>$j,'date'=>$current_date,'time'=>$current_time,'user_fname'=>$ufname,'user_lname'=>$ulname,'user_email'=>$e,'price'=>$t]);
+                        $obj->insertrecordorder($p,$s,$j,$current_date,$current_time,$ufname,$ulname,$e,$t);
+                        $obj->insertallorder($uid,$ufname,$current_date,$current_time);
                       echo "<a href='Receipt Generator.php?p= $t ' class='btn'>Receipt</a>"; 
                     ?>
                 

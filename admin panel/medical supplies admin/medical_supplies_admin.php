@@ -1,5 +1,5 @@
 <?php
-include_once ('oop_connection.php');
+include_once ('oop_connectionp.php');
 $obj=new Database;
 session_start();
 
@@ -89,12 +89,11 @@ $p=0;
                 <div>
                     <?php
                         $row_count=0;
-                        $select_pro=$obj->viewrecord("user_info","null") ;
+                        $select_pro=$obj->viewuser() ;
                         foreach($select_pro as $row)
                         {
                             $row_count+=1;
                         }
-
                      ?>
                     <h1 style="color: #fff;"><?php echo $row_count ?></h1>
                     <span>Customers</span>
@@ -107,8 +106,8 @@ $p=0;
                 <div>
                     <?php
                         $ord_count=0;
-                        $sql=$obj->vieworder("medical_supplies_order_table");
-                        while($rowl=mysqli_fetch_array($sql))
+                        $sql=$obj->viewmedical_order();
+                        foreach($sql as $row)    
                         {
                             $ord_count=$ord_count+1; 
                         }
@@ -125,14 +124,14 @@ $p=0;
                 <div><?php
                           $t=0;
                           $j=0;
-                          $sql=$obj->vieworder("medical_supplies_order_table");
-                          while($rowl=mysqli_fetch_array($sql))
-                                 {
-                                    $t=$rowl['price'];
-                                    $j=$rowl['quantity'];
-                                       $s=$t*$j;
-                                       $p=$p+$s;
-                                 }
+                          $sql=$obj->viewmedical_order();
+                          foreach($sql as $rowl) 
+                             {
+                                $t=$rowl['price'];
+                                $j=$rowl['quantity'];
+                                   $s=$t*$j;
+                                   $p=$p+$s;
+                             }
                     
                       ?>
                     <h1 style="color: #fff;"> &#8377 <?php echo $p ?></h1>
@@ -187,8 +186,8 @@ $p=0;
                             </thead>
                             <tbody>
                             <?php
-                                      $sqla=$obj->vieworder("medical_supplies_medical");
-                                      while($rowa=mysqli_fetch_array($sqla))
+                                      $sqla=$obj->viewrecordm();
+                                      foreach($sqla as $rowa) 
                                         {
                                          
                                                echo"<tr>
@@ -221,8 +220,8 @@ $p=0;
                             </thead>
                             <tbody>
                             <?php
-                                      $sqla=$obj->vieworder("medical_supplies_order_table");
-                                      while($rowa=mysqli_fetch_array($sqla))
+                                     $sql=$obj->viewmedical_order();
+                                     foreach($sql as $rowa) 
                                         {
                                           $s=$rowa['price']*$rowa['quantity'];
                                                  echo" <tr>
@@ -255,8 +254,8 @@ $p=0;
                             </thead>
                             <tbody>
                             <?php
-                                      $sqla=$obj->vieworder("medical_supplies_technical");
-                                      while($rowa=mysqli_fetch_array($sqla))
+                                     $sqla=$obj->viewrecordt();
+                                     foreach($sqla as $rowa) 
                                         {
                                          
                                             echo"<tr>
