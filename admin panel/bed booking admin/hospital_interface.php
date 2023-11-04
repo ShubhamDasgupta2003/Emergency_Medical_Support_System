@@ -59,7 +59,7 @@ $name= $sql2['Name'];
                     <span>Dashboard</span></a>
                 </li>
                <li>
-                    <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/bed booking admin/update_bed.php"><span class="las la-clipboard-list"></span>
+                    <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/bed booking admin/display_update_bed.php"><span class="las la-clipboard-list"></span>
                     <span>Update Beds</span></a>
                 </li>
                <!--  <li>
@@ -140,7 +140,7 @@ $name= $sql2['Name'];
                 <div>
                      <?php
                         $ord_count=0;
-                        $sqlr=$obj->select('patient_booking_info','COUNT(Patient_id) AS latest_booking',"Booking_date >= DATE_SUB(CURDATE(), INTERVAL 1 DAY) AND Hospital_name='$name'")->fetch_assoc();    
+                        $sqlr=$obj->select('patient_booking_info','COUNT(Patient_id) AS latest_booking',"Booking_date >= DATE_SUB(NOW(), INTERVAL 1 DAY) AND Hospital_name='$name'")->fetch_assoc();    
                      ?>
                     <h1 style="color: #fff;"> <?php  echo $sqlr['latest_booking'] ?> </h1>
                     <span>Last 24 Hour Successfull Bookings</span>

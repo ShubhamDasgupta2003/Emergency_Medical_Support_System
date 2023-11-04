@@ -115,7 +115,28 @@ class Database
 //     }
 //   }
   }
-  
+  public function update($table, $rows, $where)
+{
+    $update = 'UPDATE ' . $table . ' SET ';
+    $keys = array_keys($rows);
+    
+    $setValues = [];
+    foreach ($keys as $key) {
+        $value = $rows[$key];
+        $setValues[] = "`$key` = '" . mysqli_real_escape_string($this->conn, $value)."'";
+    }
+    
+    $update .= implode(',', $setValues);
+    $update .= ' WHERE ' . $where;
+    $query = $this->conn->query($update);
+    if ($query) {
+        return true;
+    } 
+    else {
+        return false;
+    }
+}
+
   public function numrecord($t,$id)
   { 
     $sql="SELECT * FROM $t WHERE  user_id='$id'";
@@ -169,10 +190,12 @@ class Database
   
 }
 
+// own use 
+
 public function updatecart ($update_value,$update_id)
 {
   try{
-   $sql="update `cart` set quantity=$update_value where id=$update_id";
+   $sql="update `hospital_info` set Male_bed_available=$update_value where Id=$update_id";
    $query=$this->conn->query($sql);
   }catch (Exception $e)
   {

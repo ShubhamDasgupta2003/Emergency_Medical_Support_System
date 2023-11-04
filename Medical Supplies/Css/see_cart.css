@@ -22,13 +22,15 @@
   
   .user-avatar-container a {
     margin-right: 10px; /* Adjust as needed for spacing between icon and text */
+    
   }
   .user-avatar-container a :hover {
     color: #00a896;
   }
   
   .user-avatar-container h3 {
+    margin-top: 20px;
     color: #00a896;
-    font-size: 13px;
-    /* padding-top:20px; */
+    font-size: 9px;
+    padding-top:20px;
   }
