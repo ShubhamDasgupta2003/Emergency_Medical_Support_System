@@ -31,11 +31,22 @@ $name= $sql2['Name'];
 ?>
 
 <?php
-// this part is for admit button system 
-// if(isset($_POST['admit'])){
-//     $booking_status="admitted";
-//     $sql3=$obj->update("patient_booking_info",array("booking_status"=>$booking_status),"Patient_id ='$patient_id'");
-// }
+$sql3=$obj->select("patient_booking_info","*","Hospital_name='$name'");
+while($rowa=mysqli_fetch_assoc($sql3)){
+    // header("Refresh:300");
+    $curr_timestamp = time();
+    $stored_timestamp = $rowa['booking_timestamp'];
+
+    $diff = ($curr_timestamp - $stored_timestamp);
+
+    if($diff >= 14400){
+        $booking_status = "expired";
+        $sql4=$obj->update("patient_booking_info",array("booking_status"=>$booking_status),"Patient_id ='$patient_id'");
+        
+    }
+    // $result=$obj->update("hospital_info",array("Male_bed_available"=>$m_bedcount,"Female_bed_available"=>$f_bedcount),"Id='$hos_id'");
+    // echo "$rowa[Patient_name]";
+}
 
 ?>
 
