@@ -18,8 +18,9 @@ $p=0;
 
 
 <?php
+   $patient_id= $_SESSION['p_id']; //patient session variable
 
-$hos_id= $_SESSION['adm_hos_id'];
+$hos_id= $_SESSION['adm_hos_id']; // hospital session variable 
 // echo "$hos_id";
 
 $sql2=$obj->select('hospital_info','*',"Id='$hos_id'")->fetch_assoc();
@@ -28,6 +29,17 @@ $sql2=$obj->select('hospital_info','*',"Id='$hos_id'")->fetch_assoc();
 
 $name= $sql2['Name'];
 ?>
+
+<?php
+// this part is for admit button system 
+// if(isset($_POST['admit'])){
+//     $booking_status="admitted";
+//     $sql3=$obj->update("patient_booking_info",array("booking_status"=>$booking_status),"Patient_id ='$patient_id'");
+// }
+
+?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -199,10 +211,11 @@ $name= $sql2['Name'];
                             if(isset($_POST['submit'])){
                                 $given_id= $_POST['patient_id'];
                                 $sqlb=$obj->select('patient_booking_info','*',"Patient_id='$given_id' AND Hospital_name='$name'")->fetch_assoc();
-                                // $num_rows = $sqlb->num_rows;
+                                // $status= $sqlb['booking_status'];
+                                // echo "$status";
                                 if(empty($sqlb)){
                                     echo "No record found for id : $given_id";
-                                }else{
+                                }elseif($sqlb['booking_status']=="booked"){
                                     // echo "record found";
                                    echo"
                                    <table>
@@ -214,10 +227,10 @@ $name= $sql2['Name'];
                                         <td>Contact Number</td>
                                         <td>Age</td>
                                         <td>Gender</td>
-                                        <td>DOB</td>
                                         <td>Email</td>
                                         <td>Address</td>
                                         <td>Postal Code</td>
+                                        <td>Action</td>
                                     </tr>
                                 </thead> 
                                 <tbody>";
@@ -229,10 +242,45 @@ $name= $sql2['Name'];
                                                <td>$sqlb[ContactNo]</td>
                                                <td>$sqlb[Age]</td>
                                                <td>$sqlb[Gender]</td>
-                                               <td>$sqlb[Dob]</td>
                                                <td>$sqlb[email]</td>
                                                <td>$sqlb[Address2]</td>
                                                <td>$sqlb[Pin]</td>
+                                               <td><form action='admit.php' method='post'><button class='box' name='admit'>Admit</button></form></td> 
+                                               ";
+                                   echo"     </tbody>
+                                    </table>";
+                                }
+                                else{
+                                    // echo "record found";
+                                   echo"
+                                   <table>
+                                   <thead>
+                                    <tr>
+                                        <td>Patient Id.</td>
+                                        <td>Date & Time</td>
+                                        <td>Patient Name</td>
+                                        <td>Contact Number</td>
+                                        <td>Age</td>
+                                        <td>Gender</td>
+                                        <td>Email</td>
+                                        <td>Address</td>
+                                        <td>Postal Code</td>
+                                        <td>Status</td>
+                                    </tr>
+                                </thead> 
+                                <tbody>";
+
+                                echo"<tr>
+                                               <td >$sqlb[Patient_id] </td>
+                                               <td >$sqlb[Booking_date] </td>
+                                               <td>$sqlb[Patient_name]</td>
+                                               <td>$sqlb[ContactNo]</td>
+                                               <td>$sqlb[Age]</td>
+                                               <td>$sqlb[Gender]</td>
+                                               <td>$sqlb[email]</td>
+                                               <td>$sqlb[Address2]</td>
+                                               <td>$sqlb[Pin]</td>
+                                               <td>$sqlb[booking_status]</td>
                                                ";
                                    echo"     </tbody>
                                     </table>";
