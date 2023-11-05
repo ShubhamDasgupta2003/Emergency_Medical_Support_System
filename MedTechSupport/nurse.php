@@ -1,9 +1,88 @@
+<?php
+    include_once("db_config/main_config.php");
+
+    $db = new Database();       //Creating object of Databse class
+    $con = $db->connect();      //Calling connect() method
+
+    session_start();
+    $db->isLoggedIn($_SESSION['is_logged_in']);          //Checking login status
+
+    //Backend for location modification starts here
+    setcookie("loc_modify","false");
+
+    $uid =  $_SESSION['user_id'];
+    $ufname =  $_SESSION['user_fname'];
+    $ulname = $_SESSION['user_lname'];
+
+    $lat_in_use = 0.0;
+    $lon_in_use = 0.0;
+    $full_address = "";
+    $loc_query = "SELECT lat_in_use,long_in_use,formatted_adrrs FROM user_info WHERE user_id='$uid'";
+
+    $loc_result = $con->query($loc_query);
+    $loc_rows = $loc_result->fetch_assoc();
+
+    if($loc_result)
+    {
+        $lat_in_use = $loc_rows['lat_in_use'];
+        $lon_in_use = $loc_rows['long_in_use'];
+        $full_address = $loc_rows['formatted_adrrs'];
+    }
+    else
+    {
+        echo "error";
+    }
+
+    if(@$_COOKIE['loc_modify'] == 'true')
+    {
+        $mod_lat = $_COOKIE['lat_in_use'];
+        $mod_lon = $_COOKIE['lon_in_use'];
+        $mod_addrs = $_COOKIE['address_in_use'];
+
+        $loc_mod_query = "UPDATE user_info SET lat_in_use=$mod_lat,long_in_use=$mod_lon,formatted_adrrs='$mod_addrs' WHERE user_id='$uid'";
+
+        $mod_loc_result = mysqli_query($con,$loc_mod_query);
+
+        if($mod_loc_result)
+        {
+            header("Refresh: 1");
+        }
+    }
+    //Backend for location modification ends here
+      //Query for displaying results on screen
+
+    $amb_filter_query = "n";
+
+    if(@$_GET['q'])
+    {
+        $amb_filter_query = $_GET['q'];
+    }
+    else
+    {
+        $amb_filter_query = "active";
+    }
+    // $search_filter = ;
+    $sqli_table = 'medtech_emp em INNER JOIN medtech_org om
+    ON em.org_id = om.org_id';
+    $sqli_rows = "`ename`, `salary`,`eid`,ROUND((
+        6371 *
+        acos(cos(radians($lat_in_use)) * 
+        cos(radians(org_location_lat)) * 
+        cos(radians($lon_in_use) - 
+        radians(org_location_long)) + 
+        sin(radians($lat_in_use)) * 
+        sin(radians(org_location_lat)))
+    ),1) AS distance";
+
+    $sqli_condition = "org_type='n'";
+    $sqli_order = 'distance';
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nurse</title>
+    <title>Aya</title>
     <!-- cdn link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
@@ -31,14 +110,20 @@
             <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <nav class="navbar">
-            <a class="navlink" href="/HomePage/index.php">Home</a>
-            <a class="navlink" href="/HomePage/index.php#services">Services</a>
-            <a class="navlink" href="/HomePage/index.php#review">Review</a>
-            <a class="navlink" href="/HomePage/index.php#footer">contact Us</a>
+            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php">Home</a>
+            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php#services">Services</a>
+            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php#review">Review</a>
+            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php#footer">contact Us</a>
         </nav>
 
-        <a href="#" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
-        
+        <div class="user-avatar-container">
+        <a href="http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/HomePage/profile.php" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
+            <?php
+                
+                echo"<h3>$_SESSION[user_fname]</h3>";
+            ?>
+
+        </div>
         <div id="menu-btn" class="fa fa-bars"> </div>
     </header>
 
@@ -62,81 +147,31 @@
         <div class="contents">
 
             <!-- Your content goes here | check body_cont.css file for css property-->
+            <div class="cards">
             <?php
-                    include "connect.php";
-                    session_start();
-                    if($_SESSION['is_logged_in'] == 0){
-                        header("refresh:0 ; url=/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/login.php");
-                        echo "<script>alert('Please login before proceeding to the next page.')</script>";
-                    }
-                    //Backend for location modification starts here
-                    setcookie("loc_modify","false");
-
-                    $uid =  $_SESSION['user_id'];
-                    $ufname =  $_SESSION['user_fname'];
-                    $ulname = $_SESSION['user_lname'];
-
-                    $lat_in_use = 0.0;
-                    $lon_in_use = 0.0;
-                    $full_address = "";
-                    $loc_query = "SELECT lat_in_use,long_in_use,formatted_adrrs FROM user_info WHERE user_id='$uid'";
-
-                    $loc_result = mysqli_query($conn,$loc_query);
-                    $loc_rows = $loc_result->fetch_assoc();
-
-                    if($loc_result)
-                    {
-                        $lat_in_use = $loc_rows['lat_in_use'];
-                        $lon_in_use = $loc_rows['long_in_use'];
-                        $full_address = $loc_rows['formatted_adrrs'];
-                    }
-                    else
-                    {
-                        echo "error";
-                    }
-
-                    if($_COOKIE['loc_modify'] == 'true')
-                    {
-                        $mod_lat = $_COOKIE['lat_in_use'];
-                        $mod_lon = $_COOKIE['lon_in_use'];
-                        $mod_addrs = $_COOKIE['address_in_use'];
-
-                        $loc_mod_query = "UPDATE user_info SET lat_in_use=$mod_lat,long_in_use=$mod_lon,formatted_adrrs='$mod_addrs' WHERE user_id='$uid'";
-
-                        $mod_loc_result = mysqli_query($conn,$loc_mod_query);
-
-                        if($mod_loc_result)
-                        {
-                            header("Refresh: 1");
-                        }
-                    }
-                    $query = "SELECT * FROM emp_medtech em INNER JOIN org_medtech om
-                    ON em.org_id = om.org_id;";
-                    $query_run=mysqli_query($conn,$query);
-                    $check_data= mysqli_num_rows($query_run)>0;
-                    if($check_data){
-                        while($row= mysqli_fetch_assoc($query_run)){
-                            if( $row['org_type']=='n'){
-                            ?>
-                            <div class="cards">
-                        <div class="card">
-                        <div class="card-part1"> <img
-                            src="images/employee.png"
-                          /></div>
-                          <div class="card-part2">
-                            <strong><?php echo $row['ename']?></strong>
-                            <p><strong>Organization:</strong> <?php echo $row['org_name']?></p>
-                            <p> A Medical Technician is a medical professional who plays a vital part in the health care industry by providing support for physicians and hospitals.</p>
-                            <strong><span style="color: red;">INR <?php echo $row['salary']?> Per day</span></strong><br>
-                            <br>
-                            <a href="bookingForm.html"><button class="btn btn-secondary-orange">Book</button></a></div>
-                            </div>
-                            </div>
-                            <?php
-                            }
-
-                        }
-                    }?>
+            $result = $db->select($sqli_table,$sqli_rows,$sqli_condition,$sqli_order);
+            while($rows=$result->fetch_assoc())
+            {
+            
+                // echo $per5km_price."<br>";
+                //$amb_fare = $rows['amb_rate'];
+                echo "<div class='card'> 
+                <div class='card-part1'> <img
+                src='images/employee.png'
+                /></div>
+                <div class='card-part2'>
+                <strong>$rows[ename]</strong>
+                <p><strong>Organization:</strong> XYZ Service</p>
+                <p> A Medical Technician is a medical professional who plays a vital part in the health care industry by providing support for physicians and hospitals.</p>
+                <strong><span style='color: red;'>INR $rows[salary] per day</span></strong>
+                <p class='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i> $rows[distance] Km</p>
+                <br>
+                <br>
+                <a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/MedTechSupport/bookingForm.php?eid=$rows[eid]&dist=$rows[distance]&booklat=$lat_in_use&booklon=$lon_in_use&book_adrs=$full_address'><button class='btn btn-secondary-orange'>Book</button></a>
+                </div> 
+                </div>";}
+    ?>
+            
      <!-- Location window popup starts here -->
      <div class="location-window" id="loc-win">
                 <div class="card popup">

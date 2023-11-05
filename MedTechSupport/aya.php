@@ -62,7 +62,7 @@
         $amb_filter_query = "active";
     }
     // $search_filter = ;
-    $sqli_table = 'emp_medtech em INNER JOIN org_medtech om
+    $sqli_table = 'medtech_emp em INNER JOIN medtech_org om
     ON em.org_id = om.org_id';
     $sqli_rows = "`ename`, `salary`,`eid`,ROUND((
         6371 *
@@ -110,10 +110,10 @@
             <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <nav class="navbar">
-            <a class="navlink" href="/HomePage/index.php">Home</a>
-            <a class="navlink" href="/HomePage/index.php#services">Services</a>
-            <a class="navlink" href="/HomePage/index.php#review">Review</a>
-            <a class="navlink" href="/HomePage/index.php#footer">contact Us</a>
+            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php">Home</a>
+            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php#services">Services</a>
+            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php#review">Review</a>
+            <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php#footer">contact Us</a>
         </nav>
 
         <div class="user-avatar-container">
@@ -167,7 +167,7 @@
                 <p class='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i> $rows[distance] Km</p>
                 <br>
                 <br>
-                <a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/nursetechniciansupport/bookingForm.php?eid=$rows[eid]&dist=$rows[distance]&booklat=$lat_in_use&booklon=$lon_in_use&book_adrs=$full_address'><button class='btn btn-secondary-orange'>Book</button></a>
+                <a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/MedTechSupport/bookingForm.php?eid=$rows[eid]&dist=$rows[distance]&booklat=$lat_in_use&booklon=$lon_in_use&book_adrs=$full_address'><button class='btn btn-secondary-orange'>Book</button></a>
                 </div> 
                 </div>";}
     ?>

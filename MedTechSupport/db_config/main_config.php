@@ -35,7 +35,7 @@
         {
             if($islogin!=1)
             {
-                echo "<script>alert('It seems like you have not logged in\\nPlease login to book your ride');
+                echo "<script>alert('It seems like you have not logged in\\nPlease login to continue');
                 window.location.href = '/minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/login.php'</script>";
                 return FALSE;
             }
