@@ -62,6 +62,10 @@ $name= $sql2['Name'];
                     <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/bed booking admin/display_update_bed.php"><span class="las la-clipboard-list"></span>
                     <span>Update Beds</span></a>
                 </li>
+                <li>
+                    <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/bed booking admin/update_hos_info.php"><span class="las la-hospital"></span>
+                    <span>Update Hospital Details</span></a>
+                </li>
                <!--  <li>
                     <a href=""><span class="las la-shopping-bag"></span>
                     <span>Orders</span></a>
@@ -180,6 +184,102 @@ $name= $sql2['Name'];
 
         <div class="recent-grid">
             <div class="projects">
+            <div class="card">
+                     <div class="card-header">
+                          <h2> Patient Verification</h2>   
+                     </div>
+                     <div class="card-body">
+                        <section class="search">
+	                        <form action="" method="post">		    
+		                        <input class="box" name="patient_id" placeholder="Enter patient id..." required>		    	
+		                        <button name="submit" class="search-butt box">Search</button>
+	                        </form>
+                        </section>
+                        <?php
+                            if(isset($_POST['submit'])){
+                                $given_id= $_POST['patient_id'];
+                                $sqlb=$obj->select('patient_booking_info','*',"Patient_id='$given_id' AND Hospital_name='$name'")->fetch_assoc();
+                                // $num_rows = $sqlb->num_rows;
+                                if(empty($sqlb)){
+                                    echo "No record found for id : $given_id";
+                                }else{
+                                    // echo "record found";
+                                   echo"
+                                   <table>
+                                   <thead>
+                                    <tr>
+                                        <td>Patient Id.</td>
+                                        <td>Date & Time</td>
+                                        <td>Patient Name</td>
+                                        <td>Contact Number</td>
+                                        <td>Age</td>
+                                        <td>Gender</td>
+                                        <td>DOB</td>
+                                        <td>Email</td>
+                                        <td>Address</td>
+                                        <td>Postal Code</td>
+                                    </tr>
+                                </thead> 
+                                <tbody>";
+
+                                echo"<tr>
+                                               <td >$sqlb[Patient_id] </td>
+                                               <td >$sqlb[Booking_date] </td>
+                                               <td>$sqlb[Patient_name]</td>
+                                               <td>$sqlb[ContactNo]</td>
+                                               <td>$sqlb[Age]</td>
+                                               <td>$sqlb[Gender]</td>
+                                               <td>$sqlb[Dob]</td>
+                                               <td>$sqlb[email]</td>
+                                               <td>$sqlb[Address2]</td>
+                                               <td>$sqlb[Pin]</td>
+                                               ";
+                                   echo"     </tbody>
+                                    </table>";
+                                }
+                            }
+                        ?>
+                           <!-- <table width="100%">
+                            <thead>
+                                <tr>
+                                    <td>Patient Id.</td>
+                                    <td>Date & Time</td>
+                                    <td>Patient Name</td>
+                                    <td>Contact Number</td>
+                                    <td>Age</td>
+                                    <td>Gender</td>
+                                    <td>DOB</td>
+                                    <td>Email</td>
+                                    <td>Address</td>
+                                    <td>Postal Code</td>
+                                </tr>
+                            </thead>
+                            <tbody> -->
+                            <!-- php open  -->
+                                    <!-- //   $sqla=$obj->vieworder("patient_booking_info");
+                                    $sqla=$obj->select('patient_booking_info','*',"Hospital_name='$name'");
+                                      while($rowa=mysqli_fetch_assoc($sqla))
+                                        {
+                                         
+                                               echo"<tr>
+                                               <td >$rowa[Patient_id] </td>
+                                               <td >$rowa[Booking_date] </td>
+                                               <td>$rowa[Patient_name]</td>
+                                               <td>$rowa[ContactNo]</td>
+                                               <td>$rowa[Age]</td>
+                                               <td>$rowa[Gender]</td>
+                                               <td>$rowa[Dob]</td>
+                                               <td>$rowa[email]</td>
+                                               <td>$rowa[Address2]</td>
+                                               <td>$rowa[Pin]</td>
+                                               ";
+                                        }
+                                        
+                             ?>   
+                            </tbody>
+                           </table> -->
+                     </div>
+                  </div>
                   <div class="card">
                      <div class="card-header">
                           <h2> Patient Details</h2>
@@ -228,72 +328,5 @@ $name= $sql2['Name'];
                      </div>
                   </div>
             </div>
-
-            <!-- <div class="projects">
-                  <div class="card">
-                     <div class="card-header">
-                          <h2> Recent Successfull Bookings</h2>
-                          
-                     </div>
-                     <div class="card-body">
-                           <table width="100%">
-                            <thead>
-                                <tr>
-                                    <td>Date & Time</td>
-                                    
-                                    <td>Hospital Name</td>
-                                    <td>Patient Id.</td>
-                                    <td>Patient Name</td>
-                                    <td>Contact Number</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            php open
-                                      $sqla=$obj->select('patient_booking_info','*','','Booking_date DESC LIMIT 5');
-                                    //   $sqla=$obj->select('patient_booking_info','*','','Booking_date >= DATE_SUB(CURDATE(), INTERVAL 1 DAY)');
-                                      while($rowa=$sqla->fetch_assoc())
-                                        {
-                                        //  $booking_dt = $rowa[Booking_date(yy-mm-dd)];
-                                        // $DateTime=$rowa[Booking_date];
-                                        // $date = date('Y-m-d', strtotime($DateTime));
-                                        // $time = date('h:i:s', strtotime($DateTime));
-                                            echo"<tr>
-                                            <td >$rowa[Booking_date] </td>
-                                            
-                                            <td >$rowa[Hospital_name] </td>
-                                            <td>$rowa[Patient_id]</td>
-                                            <td>$rowa[Patient_name]</td>
-                                            <td>$rowa[ContactNo]</td>";
-                                        }
-                                        // <td> &#8377 $rowa[total_fare]</td> 
-                                        
-                             ?>   
-                            </tbody>
-                           </table>
-                     </div>
-                  </div>
-            </div>
-         </div> -->
-
-      
-
-    
-    <!--   <a href="" style="color:#fff"><div class="card-single">
-                <div>
-                    <h1 style="color: #fff;">Insert Data</h1>
-                    <span>in the table</span>
-                </div>
-                <div>
-                </div>
-            </div></a>  
-        
-    
-           echo"<tr>
-            <td >$row[product_image] </td>
-            <td>$row[product_name]</td>
-            <td>&#8377 $row[product_rate]</td>
-          
-
-        </tr>"; -->
 </body>
 </html>
