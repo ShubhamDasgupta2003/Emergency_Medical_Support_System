@@ -60,7 +60,7 @@ if(isset($_POST['login'])){
 
           if(password_verify($password,$storedpassword)){
  
-            $_SESSION['user_id'] = $row['Id'];
+            $_SESSION['adm_hos_id'] = $row['Id'];
             // $_SESSION['user_fname'] = $row['user_first_name'];
             // $_SESSION['user_lname'] = $row['user_last_name'];
             // $_SESSION['user_email'] = $row['user_email'];

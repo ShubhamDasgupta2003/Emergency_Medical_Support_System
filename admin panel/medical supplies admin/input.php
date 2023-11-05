@@ -35,7 +35,7 @@ session_start();
         <div class="column">
           <div class="input-box">
             <label>E-mail</label>
-            <input name="email" type="text" placeholder="Enter email id" maxlength="50" required/>
+            <input name="email"  id="email" type="text" placeholder="Enter email id" maxlength="50" required/>
           </div>
         </div>
         <div class="column">
@@ -61,7 +61,7 @@ session_start();
           </div>
           <div class="input-box">
             <label>Phone Number<sub>(without including +91)</sub</label>
-            <input name="drvcont" type="number" placeholder="Enter phone number" required maxlength="10"/>
+            <input name="drvcont" id="drvcont" type="number" placeholder="Enter phone number" required maxlength="10"/>
           </div>
         </div>
         <div class="column">

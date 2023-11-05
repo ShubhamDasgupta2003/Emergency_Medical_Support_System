@@ -6,17 +6,17 @@
 //   date_default_timezone_set("Asia/calcutta");
 
 
-  $is_refreshed = @$_GET['refresh'];
-  if($is_refreshed==1)
-  {
-    $lat = number_format($_COOKIE["cur_lat"],7,".","");
-    $lon = number_format($_COOKIE["cur_lon"],7,".","");
-    $address = $_COOKIE['cur_addrss'];
-  }
-  else
-  {
-    header("Refresh: 2; url=hospital_register.php?refresh=1");
-  }
+  // $is_refreshed = @$_GET['refresh'];
+  // if($is_refreshed==1)
+  // {
+  //   $lat = number_format($_COOKIE["cur_lat"],7,".","");
+  //   $lon = number_format($_COOKIE["cur_lon"],7,".","");
+  //   $address = $_COOKIE['cur_addrss'];
+  // }
+  // else
+  // {
+  //   header("Refresh: 2; url=hospital_register.php?refresh=1");
+  // }
 
   // echo"$lat<br>$lon<br>$address";
 
@@ -35,6 +35,7 @@
     $m_bed_avail = $_POST['malebed'];
     $f_bed_avail = $_POST['femalebed'];
     $password = password_hash($_POST['pswd'],PASSWORD_DEFAULT);
+    $bed_charge = $_POST['bed_charge'];
     // $cur_timestamp = date("l jS \of F Y h:i:s A");
 
     //Unique hpspital Id generation php code starts here
@@ -63,7 +64,7 @@
 
     $check_dup_reg = "SELECT * FROM hospital_info WHERE email='$email' OR ContactNo='$cont_num'";
 
-    $insert_records ="INSERT INTO `hospital_info` (`Id`, `Name`,`ContactNo`,`email`,`password`,`Address`, `State`, `District`, `City`, `Pincode`, `Latitude`, `Longitude`,`Male_bed_available`,`Female_bed_available`)VALUES('$hosp_id','$name',$cont_num,'$email','$password','$address','$state','$district','$city_town',$postcode,$lat,$long,$m_bed_avail,$f_bed_avail)";
+    $insert_records ="INSERT INTO `hospital_info` (`Id`, `Name`,`ContactNo`,`email`,`password`,`Address`, `State`, `District`, `City`, `Pincode`, `Latitude`, `Longitude`,`Male_bed_available`,`Female_bed_available`,`bed_charge`)VALUES('$hosp_id','$name',$cont_num,'$email','$password','$address','$state','$district','$city_town',$postcode,$lat,$long,$m_bed_avail,$f_bed_avail,$bed_charge)";
 
     $result = mysqli_query($conn,$check_dup_reg);
     $rows = mysqli_num_rows($result);
@@ -127,11 +128,11 @@
         </div>
         <div class="input-box">
           <label>Latitude</label>
-          <input name="lat" type="number" placeholder="Enter hospital latitude" required/>
+          <input name="lat" type="number" step="any" placeholder="Enter hospital latitude" required/>
         </div>
         <div class="input-box">
           <label>Longitude</label>
-          <input name="long" type="number" placeholder="Enter hospital longitude" required/>
+          <input name="long" type="number" step="any" placeholder="Enter hospital longitude" required/>
         </div>
 
         <div class="column">
@@ -210,6 +211,10 @@
                 <input id="cnf-pswd"type="text" placeholder="Confirm your password" name ="pswd" required />
             </div>
         </div>
+        <div class="input-box">
+            <label>Bed Charge</label>
+            <input name="bed_charge" type="number" placeholder="Enter bed charge" />
+          </div>
         <button id="sbmt-form" name="register_hosp">Register</button>
       </form>
     </section>

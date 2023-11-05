@@ -17,12 +17,13 @@
     $lat_in_use = 0.0;
     $lon_in_use = 0.0;
     $full_address = "";
-    $loc_query = "SELECT lat_in_use,long_in_use,formatted_adrrs FROM user_info WHERE user_id='$uid'";
+    $loc_query = $db->select('user_info',"*","user_id='$uid'");
+    //$loc_query = "SELECT lat_in_use,long_in_use,formatted_adrrs FROM user_info WHERE user_id='$uid'";
 
-    $loc_result = $con->query($loc_query);
-    $loc_rows = $loc_result->fetch();
+    //$loc_result = $con->query($loc_query);
+    $loc_rows = $loc_query->fetch();
 
-    if($loc_result)
+    if($loc_rows)
     {
         $lat_in_use = $loc_rows['lat_in_use'];
         $lon_in_use = $loc_rows['long_in_use'];
@@ -39,11 +40,13 @@
         $mod_lon = $_COOKIE['lon_in_use'];
         $mod_addrs = $_COOKIE['address_in_use'];
 
-        $loc_mod_query = "UPDATE user_info SET lat_in_use=$mod_lat,long_in_use=$mod_lon,formatted_adrrs='$mod_addrs' WHERE user_id='$uid'";
+        $loc_mod_query = $db->update('user_info'," SET lat_in_use=$mod_lat,long_in_use=$mod_lon,formatted_adrrs='$mod_addrs' WHERE user_id='$uid'");
 
-        $mod_loc_result = $con->query($loc_mod_query);
+        //$loc_mod_query = "UPDATE user_info SET lat_in_use=$mod_lat,long_in_use=$mod_lon,formatted_adrrs='$mod_addrs' WHERE user_id='$uid'";
 
-        if($mod_loc_result)
+        //$mod_loc_result = $con->query($loc_mod_query);
+
+        if($mod_loc_query)
         {
             header("Refresh: 1");
         }

@@ -1,5 +1,5 @@
 <?php
-include_once ('oop_connection.php');
+include_once ('oop_connectionp.php');
 session_start();
 $obj=new Database;
 
@@ -33,7 +33,7 @@ if(isset($_POST['update_product_quantity']))
 <body>
  <div class="main">
     <?php
-       $records=$obj->viewrecord("cart","$uid");
+       $records=$obj->viewrecordc("$uid");
        $s=1;
        $grand_total=0;
        if($records)

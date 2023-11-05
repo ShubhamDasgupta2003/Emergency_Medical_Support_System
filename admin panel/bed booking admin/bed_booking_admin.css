@@ -440,3 +440,23 @@ tr td:last-child{
         grid-template-columns: 100%;
     }
 }
+
+.recent-grid .projects .card .card-body input{
+    padding: 10px;
+    text-transform: uppercase;
+    margin: 0px 0px 0px 25vw;
+}
+.recent-grid .projects .card .card-body button{
+    padding: 10px;
+    background-color: var(--main-color);
+    color: white;
+}
+.recent-grid .projects .card .card-body button:hover{
+    background-color: white;
+    color: var(--main-color);
+    transition: all .2s ease;
+}
+.recent-grid .projects .card .card-body .box{
+    border: 2px solid var(--main-color);
+    border-radius: 5px;
+}

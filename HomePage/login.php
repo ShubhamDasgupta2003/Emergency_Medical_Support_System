@@ -58,6 +58,8 @@ if(isset($_POST['login'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  
   </head>
   <body>
     <section class="container">
@@ -75,16 +77,16 @@ if(isset($_POST['login'])){
                 <input id="pswd"type="password" name="password" placeholder="Enter your password" required />
             </div>
         </div>
-        <button name="login" id="sbmt-form">login</button>
+        <button name="login" id="sbmt-form"><i class="fa-solid fa-user"></i>&nbsp&nbspUser login</button>
         <div class="signuplink">
           <div class="text">New user?</div>
           <a href="signup.php?refresh=0">click here</a>
         </div>
-        <div class="signuplink">
+        <!-- <div class="signuplink">
         <a href="signup.php?refresh=0">Forgot password</a>
-        </div>
+        </div> -->
         <div class="signuplink">
-        <a href="/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/admin panel/adminlogin.php">Admin Login</a>
+        <a href="/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/admin panel/adminlogin.php" class="btn-danger"><i class="fa-solid fa-user-gear"></i>&nbsp&nbspAdmin Login</a>
         </div>
       </form>
     </section>
