@@ -1,21 +1,27 @@
 <?php
-if(isset($_POST["submit"])){
-    include "connect.php";
-    $villortown=$_POST["user_vill_or_town"];
-    $postoff=$_POST["user_post_off"];
-    $pincode=$_POST["user_pincode"];
-    $dist=$_POST["user_dist"];
-    $state=$_POST["user_state"];
-    $lmark=$_POST["user_lmark"];
-    $sql="INSERT INTO order_medtech(user_vill_or_town,user_post_off,user_pincode,user_dist,user_state,user_lmark) VALUES('$villortown','$postoff','$pincode','$dist','$state','$lmark')";
-    if(mysqli_query($conn,$sql)){
-        echo "Data Insert Sucessfull!";
-    }
-    else{
-        echo "error";
+    include_once("db_config/main_config.php");
+
+    $db = new Database();
+    $con = $db->connect();
+
+    $eid = $_GET['eid'];
+    // $address = $_GET['address'];
+    // $distance = $_GET['dist'];
+    // $otp_code = $_GET['otp'];
+    // $fare = $_GET['fare'];
+    $query = "SELECT * FROM medtech_emp WHERE eid='$eid'";
+    $result = $con->query($query);
+    if($result)
+    {
+        $rows = $result->fetch_assoc();;
     }
 
-}
+    $order_info_query = "SELECT * FROM medtech_order WHERE eid='$eid'";
+    $order_result = $con->query($order_info_query);
+    if($order_result)
+    {
+        $order_rows = $order_result->fetch_assoc();;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,24 +42,23 @@ if(isset($_POST["submit"])){
         <hr>
         <p id="p1"><u>Mediacl Technicians information.</u></p>
         <div class="hspl-details">
-            <div class="c1"><strong class="attribute1">Name:</strong>Ramesh Roy</div>
-            <div class="c1"><strong class="attribute1">Organization Name:</strong>Ramesh Roy</div>
-            <div class="c1"><strong class="attribute2">Address:</strong>Khadinamore, Chinsurah, Hooghly.
+            <div class="c1"><strong class="attribute1">Name:</strong><?php echo $rows['ename']?></div>
+            <div class="c1"><strong class="attribute1">Organization Name:</strong>XYZ</div>
+            <div class="c1"><strong class="attribute2">Address:</strong>Name:<?php echo $order_rows['user_book_address']?>
             </div>
             <div class="c1"><strong class="attribute2">Number:</strong>+91-8697921086</div>
             <div class="c1"><strong class="attribute1">E-mail:</strong>rameshroyprl2019@gmail.com</div>
         </div>
         <p id="p1"><u>Other information</u></p>
         <div class="other-details">
-            <div class="c2"><strong class="attribute3">User name:</strong>Suresh Roy</div>
-            <div class="c2"><strong class="attribute4">Contact Number:</strong>9593672361</div>
-            <div class="c2"><strong class="attribute6">Booking Date and Time</strong>10.09.2023 | 12:12 pm
+            <div class="c2"><strong class="attribute3">Your name:</strong><?php echo $order_rows['name']?></div>
+            <div class="c2"><strong class="attribute4">Contact Number:</strong><?php echo $order_rows['contact_number']?></div>
+            <div class="c2"><strong class="attribute6">Booking Date and Time</strong><?php echo $order_rows['booking_date']?>| <?php echo $order_rows['booking_time']?>
             </div>
         </div>
         <!-- <p>Go back to <a href="/">Homepage</a></p> -->
         <div class="btns">
-            <button class="btn">Get route</button>
-            <a href="/HomePage/index.php">
+            <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php">
                 <button class="btn">Go to homepage</button>
             </a>
         </div>
