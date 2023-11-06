@@ -47,6 +47,10 @@ $p=0;
                     <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/bed booking admin/bed_booking_admin.php" ><span class="las la-hospital"></span>
                     <span>Bed Booking Service</span></a>
                 </li>
+                <li>
+                    <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/MedTechSupport/admin.php" ><span class="las la-hospital"></span>
+                    <span>Aya/Nurse/Medical Technician</span></a>
+                </li>
               <!--  <li>
                     <a href=""><span class="las la-clipboard-list"></span>
                     <span>Projects</span></a>
