@@ -1,5 +1,5 @@
 <?php
-    include_once("db_config/main_config.php");
+    include_once("db_config_p/main_config.php");
 
     $hashed_otp = $_GET['pswd_hash'];
     $email_otp = $_GET['emailid'];

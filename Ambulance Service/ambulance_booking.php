@@ -46,7 +46,7 @@
 
         //$mod_loc_result = $con->query($loc_mod_query);
 
-        if($mod_loc_query)
+        if($loc_mod_query)
         {
             header("Refresh: 1");
         }
