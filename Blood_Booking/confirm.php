@@ -79,7 +79,7 @@ header("Location: $googleMapsURL");
                    while($row=mysqli_fetch_assoc($result)){
                         
                        echo "<div class='c2'><strong class='attribute3'>Patient name:</strong>$row[Patient_name]</div>
-                          <div class='c2'><strong class='attribute8'>Blood group:</strong>$row[Blood_gr]</div>
+                          <div class='c2'><strong class='attributebg'>Blood group:</strong>$row[Blood_gr]</div>
                           <div class='c2'><strong class='attribute4'>Number:</strong>$row[Contact_No]</div>
                           <div class='c2'><strong class='attribute6'>Booking Date & Time:</strong>$row[Order_date]</div>"
                            ;

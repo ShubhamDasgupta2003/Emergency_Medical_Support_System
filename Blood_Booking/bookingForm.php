@@ -113,7 +113,7 @@
                 ?>
                 <div class="patient_info_cont">
     
-                    <form method="post" action="">
+                    <form method="post" action="razor_pay.php">
                         <label for="">Patient's Full Name<sup class="mandatory">*</sup></label>
                         <input type="text" name="pat_name" id="" placeholder="Enter Patient's full name"  required>
 
@@ -130,7 +130,7 @@
                         </div>
                         <button class="btn" name="book_blood">Confirm Order</button>
                     </form>
-                    <a href="BloodB.php"><button class="btn-danger" name="cancel_ride">Cancel Ride</button></a>
+                    <a href="BloodB.php"><button class="btn-danger" name="cancel_ride">Cancel Order</button></a>
                 </div>
             </div>     
         </div>

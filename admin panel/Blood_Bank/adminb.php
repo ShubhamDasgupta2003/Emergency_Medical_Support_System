@@ -31,7 +31,7 @@ $p=0;
                     <span>Dashboard</span></a>
                 </li>
                 
-                <li>
+                <!-- <li>
                     <a href=""  class="active"><span class="las la-landmark"></span>
                     <span>Blood Bank Service</span></a>
                 </li>
@@ -42,7 +42,7 @@ $p=0;
                 <li>
                     <a href="http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/db_insertions/db_config/BloodDetails.php"><span class="las la-shopping-bag"></span>
                     <span>Blood</span></a>
-                </li>
+                </li> -->
                 <!-- <li>
                     <a href=""><span class="las la-circle"></span>
                     <span>Inventory</span></a>
@@ -133,7 +133,7 @@ $p=0;
         <div class="projects">
                   <div class="card">
                      <div class="card-header">
-                          <h2> Ride Requests</h2>
+                          <h2>Blood Banks Details</h2>
                           
                      </div>
                      <div class="card-body">
@@ -171,7 +171,7 @@ $p=0;
             <div class="projects">
                   <div class="card">
                      <div class="card-header">
-                          <h2> Ride Requests</h2>
+                          <h2> Blood Orders</h2>
                           
                      </div>
                      <div class="card-body">
