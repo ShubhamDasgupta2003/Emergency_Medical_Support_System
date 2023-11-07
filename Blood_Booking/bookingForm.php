@@ -113,7 +113,7 @@
                 ?>
                 <div class="patient_info_cont">
     
-                    <form method="post" action="razor_pay.php">
+                    <form method="post" action="">
                         <label for="">Patient's Full Name<sup class="mandatory">*</sup></label>
                         <input type="text" name="pat_name" id="" placeholder="Enter Patient's full name"  required>
 

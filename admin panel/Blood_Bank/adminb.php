@@ -16,7 +16,7 @@ $p=0;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="adminb.css">
-    <title>Document</title>
+    <title>BloodBank's company Dashboard</title>
 </head>
 <body>
     <input type="checkbox" id="nav-toggle">
@@ -182,12 +182,13 @@ $p=0;
                                     <td>Time</td>
                                     <td>Order Id</td>
                                     <td>Blood Group</td>
+                                    <td>Blood Bank</td>
                                     <td>Price</td>
                                 </tr>
                             </thead>
                             <tbody>
                             <?php
-                                      $sqla=$obj->select('blood_order','*','','Order_date DESC LIMIT 5');
+                                      $sqla=$obj->select('blood_order','*','','Order_date DESC');
                                       while($rowa=$sqla->fetch_assoc())
                                         {
                                          
@@ -195,8 +196,21 @@ $p=0;
                                             <td >$rowa[Order_date] </td>
                                             <td >$rowa[Order_time] </td>
                                             <td >$rowa[Order_id]</td>
-                                            <td >$rowa[Blood_gr] </td>
-                                            <td>&#8377 $rowa[price]</td>";
+                                            <td >$rowa[Blood_gr] </td>"
+                                            ?>
+
+                                            <?php
+                                                $bank_id=$rowa['bloodbank_id'];
+                                                $sqlb=$obj->select('blood_bank','*',"blood_bank_id='$bank_id'");
+                                                while($rowb=mysqli_fetch_assoc($sqlb))
+                                                {
+                                                    echo " <td >$rowb[name]</td>";
+                                                }
+                                            ?>   
+                                           
+
+                                            <?php
+                                            echo "<td>&#8377 $rowa[price]</td>";
                                         }
                                         
                              ?>   
@@ -205,6 +219,8 @@ $p=0;
                      </div>
                   </div>
             </div>
+
+            
          </div>
 
     
