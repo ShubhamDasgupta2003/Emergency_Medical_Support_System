@@ -257,6 +257,16 @@ public function deleteadminmedical($table_name,$product_id)
   $statement->execute();  
    return true;
 }
-}
 
+public function viewtable($t)
+{
+  $sql="SELECT * FROM ";
+  $sql.=$t;
+  $statement = $this->conn->prepare($sql);
+  $statement->execute();
+  $publisher = $statement->fetchAll();
+    
+    return $publisher;
+}
+}
 ?>

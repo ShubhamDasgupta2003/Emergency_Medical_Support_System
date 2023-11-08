@@ -2,7 +2,7 @@
     session_start();
     $userid = $_SESSION['user_id'];
     include_once("db_config/main_config.php");
-
+   
     $db = new Database();
     $con = $db->connect();
 
