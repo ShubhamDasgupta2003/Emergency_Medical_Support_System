@@ -9,26 +9,27 @@ function search() {
     // }
 
     switch(searchTerm) {
-        case "Blood":
+        case "blood":
             window.location.href = 'http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/Blood_Booking/BloodB.php';
           break;
-        case "Ambulance":
+        case "ambulance":
             window.location.href = 'http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/Ambulance%20Service/ambulance_booking.php';
           break;
-        case "Hospital":
+        case "hospital":
             window.location.href = 'http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/bed_booking_service/bed_booking.php';
           break;
-        case "Aya":
+        case "aya":
             window.location.href='http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/nursetechniciansupport/aya.php';
             break;
-        case "Nurse":
+        case "nurse":
             window.location.href='http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/nursetechniciansupport/nurse.php';
             break;
-        case "Technician":
+        case "technician":
             window.location.href='http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/nursetechniciansupport/technician.php';
 
-        default:
+      case "medical suplies":
             window.location.href = 'http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/Medical%20Supplies/Medical%20Supplies.php';
+        default:
       }
 }
 
