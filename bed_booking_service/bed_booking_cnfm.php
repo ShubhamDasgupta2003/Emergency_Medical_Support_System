@@ -16,22 +16,24 @@ if(isset($_POST['get_route'])){
     // $id=$_GET['hosid'];
     session_start();
     $hosp_id = $_SESSION['id'];
-$sql= "SELECT * FROM `hospital_info` where Id='$hosp_id'";
-$result= mysqli_query($conn,$sql);
-$row=mysqli_fetch_assoc($result);
+// $sql= "SELECT * FROM `hospital_info` where Id='$hosp_id'";
+// $result= mysqli_query($conn,$sql);
+// $row=mysqli_fetch_assoc($result);
+$sql_hos = $dbname->select("hospital_info","*","Id='$hosp_id'")->fetch_assoc();
 
 
 
 $u_id= $_SESSION['user_id'];
-$u_sql="SELECT `lat_in_use`,`long_in_use` FROM `user_info` WHERE user_id='$u_id'";
-$result= mysqli_query($conn,$u_sql);
-$u_row=mysqli_fetch_assoc($result);
+// $u_sql="SELECT `lat_in_use`,`long_in_use` FROM `user_info` WHERE user_id='$u_id'";
+// $result= mysqli_query($conn,$u_sql);
+// $u_row=mysqli_fetch_assoc($result);
+$sql_usr = $dbname->select("user_info","lat_in_use,long_in_use","user_id='$u_id'")->fetch_assoc();
 
 
-$currentlatitude = $u_row['lat_in_use'];
-$currentlongitude = $u_row['long_in_use'];
-$destinationlatitude = $row['Latitude'];
-$destinationlongitude = $row['Longitude'];
+$currentlatitude = $sql_usr['lat_in_use'];
+$currentlongitude = $sql_usr['long_in_use'];
+$destinationlatitude = $sql_hos['Latitude'];
+$destinationlongitude = $sql_hos['Longitude'];
 
 
 $googleMapsURL = "https://www.google.com/maps/dir/?api=1&origin={$currentlatitude},{$currentlongitude}&destination={$destinationlatitude},{$destinationlongitude}&travelmode=driving";
@@ -71,14 +73,16 @@ header("Location: $googleMapsURL");
         <?php
             // $id=$_GET['hosid'];
             $hosp_id= $_SESSION['id'];
-            $sql= "SELECT * FROM `hospital_info` where Id='$hosp_id'";
-            $result= mysqli_query($conn,$sql);
-            while($row=mysqli_fetch_assoc($result)){
+            // $sql= "SELECT * FROM `hospital_info` where Id='$hosp_id'";
+            // $result= mysqli_query($conn,$sql);
+            $sql_hos2 = $dbname->select("hospital_info","*","Id='$hosp_id'");
+            while($rows=$sql_hos2->fetch_assoc())
+            {
                 echo"
-                <div class='c1'><strong class='attribute1'>Name:</strong>$row[Name]</div>
-            <div class='c1'><strong class='attribute2'>Address:</strong>$row[Address]</div>
-            <div class='c1'><strong class='attribute7'>District:</strong>$row[District]</div>
-            <div class='c1'><strong class='attribute2'>Number:</strong>$row[ContactNo]</div>
+                <div class='c1'><strong class='attribute1'>Name:</strong>$rows[Name]</div>
+            <div class='c1'><strong class='attribute2'>Address:</strong>$rows[Address]</div>
+            <div class='c1'><strong class='attribute7'>District:</strong>$rows[District]</div>
+            <div class='c1'><strong class='attribute2'>Number:</strong>$rows[ContactNo]</div>
                 ";
             }
         ?>
@@ -90,17 +94,26 @@ header("Location: $googleMapsURL");
 
                    $p_id=$_SESSION['p_id'];
 
-                    $sql="SELECT * FROM `patient_booking_info` where Patient_id = '$p_id'";
-                    $result= mysqli_query($conn,$sql);
-                    while($row=mysqli_fetch_assoc($result)){
+                    // $sql="SELECT * FROM `patient_booking_info` where Patient_id = '$p_id'";
+                    // $result= mysqli_query($conn,$sql);
+                    // while($row=mysqli_fetch_assoc($result))
+                    $sql_pnt = $dbname->select("patient_booking_info","*","Patient_id ='$p_id'");
+                    while($row=$sql_pnt->fetch_assoc())
+                    {
+                        // $p= $row[booking_timestamp];
+                        // $fourhourafter = $p + 14400;
+                        // $deadline_date = date('Y-m-d H:i:s', $fourhourafter);
+                        $deadline_date = $_SESSION["deadline_date"];
                         echo "
                         <div class='c2'><strong class='attribute3'>Patient name:</strong>$row[Patient_name]</div>
+                        <div class='c2'><strong class='attribute9'>Patient id:</strong>$row[Patient_id]</div>
                 <div class='c2'><strong class='attribute8'>Gender:</strong>$row[Gender]</div>
                  <div class='c2'><strong class='attribute4'>Number:</strong>$row[ContactNo]</div>
-                 <div class='c2'><strong class='attribute6'>Booking Date & Time:</strong>$row[Booking_date]</div>"
-                    ;}
+                 <div class='c2'><strong class='attribute6'>Booking Date & Time:</strong>$row[Booking_date]</div>
+                 <div class='c2'><strong class='attribute6'>Deadline Date & Time:</strong>$deadline_date</div>"
+                 ;}
                 ?>
-                <!-- <p class = 'notice'>Note: Your bed reservation will automatically canceled if you do not arrive at hospital within four hours of Booking time.</p> -->
+                <p class = 'notice'>Note: Your bed reservation will automatically canceled if you do not arrive at hospital within four hours of Booking time.</p>
         </div>
         <!-- <p>Go back to <a href="/">Homepage</a></p> -->
         <div class="btns">

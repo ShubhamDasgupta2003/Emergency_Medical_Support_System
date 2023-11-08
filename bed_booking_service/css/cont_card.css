@@ -52,7 +52,7 @@
 .card-type-male
 {
     float: left;
-    color: #6fa8dc;
+    color: #4189cd;
     font-size: 1.5rem;
     font-weight: 600;
     /* margin: 5px 9px; */
@@ -61,7 +61,7 @@
 .card-type-female
 {
     float: left;
-    color: #fba3c4;
+    color: #ef5e93;
     font-size: 1.5rem;
     font-weight: 600;
     /* margin: 5px 9px; */

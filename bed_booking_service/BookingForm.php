@@ -38,6 +38,7 @@ if(isset($_POST['submit'])){
     $bookdatetime= date('Y-m-d H:i:s');
     $booking_status= "booked";
     $timestamp= time();
+    $particular_hos_id = $_GET['hospitalid'];                                          // $_SESSION['adm_hos_id']
 
 
      //Unique user Id generation php code starts here
@@ -101,11 +102,21 @@ if(isset($_POST['submit'])){
     if($update_result){
     // $sql2="INSERT INTO `patient_booking_info` (Hospital_name,Patient_id,Patient_name,Gender,Age,ContactNo,Dob,email,address2,City,Pin,Booking_date) VALUES ('$row[Name]','$patient_id','$name','$gender','$age','$contact','$dob','$email','$address2','$city','$pin','$bookdatetime')";
     // $result=mysqli_query($conn,$sql2);
-    $insert_result = $dbname->insert('patient_booking_info',array("$row[Name]","$patient_id","$name","$contact","$age","$gender","$dob","$p_email","$address2","$city","$pin","$bookdatetime","$bed_charge","$booking_status",$timestamp));
+    if(strlen($contact) != 10) //validating mobile number
+    {
+      echo "<script>alert('Please enter a valid mobile number')</script>";
+    }elseif(strlen($adhr_num) != 12){
+        echo "<script>alert('Please enter a valid aadhaar number')</script>";
+    }elseif(strlen($pin) != 6){
+        echo "<script>alert('Please enter a valid pincode')</script>";
+    }else{
 
-    if($insert_result){
-    header("location:/Minor Project 5th_Sem/Emergency_Medical_Support_System/bed_booking_service/bbs_payment/razor_pay.php?hosid=$row[Id]&pnt_id=$patient_id&amount=$bed_charge");
-        }
+        $insert_result = $dbname->insert('patient_booking_info',array("$row[Name]","$patient_id","$particular_hos_id","$uid","$name","$contact","$age","$gender","$dob","$p_email","$address2","$city","$pin","$bookdatetime","$bed_charge","$booking_status",$timestamp));
+    
+        if($insert_result){
+        header("location:/Minor Project 5th_Sem/Emergency_Medical_Support_System/bed_booking_service/bbs_payment/razor_pay.php?hosid=$row[Id]&pnt_id=$patient_id&amount=$bed_charge");
+            }
+    }
 
     }
 
@@ -117,38 +128,44 @@ if(isset($_POST['submit'])){
 
 
 
-<!-- 
+<?php
         $id=$_GET['hospitalid'];
-        $sql= "SELECT * FROM `hospital_info` where Id=$id";
-        $result= mysqli_query($conn,$sql);
-        $row=mysqli_fetch_assoc($result);
+        $sql_mail = $dbname->select("hospital_info","*","Id='$id'")->fetch_assoc();
+        // $sql= "SELECT * FROM `hospital_info` where Id=$id";
+        // $result= mysqli_query($conn,$sql);
+        // $row=mysqli_fetch_assoc($result);
 
-
-
-
-if(isset($_POST['submit'])){
-
-
+        
+        
+        
+        
+        if(isset($_POST['submit'])){
+            
+            
+        // $booking_timestamp = $timestamp;
+        $fourhourafter = $timestamp+ 14400;
+        $deadline_date = date('Y-m-d H:i:s', $fourhourafter);
+        $_SESSION["deadline_date"] = $deadline_date;
         $email = $p_email;
         $recp_name = $name;
         $p_contact = $contact;
         $p_id= $patient_id;
         $curr_time= $bookdatetime;
-        $FourHourAfter= date("Y-m-d H:i:s", strtotime('+4 hours', strtotime($curr_time)));
-        $hosp_name= "$row[Name]";
-        $hosp_contact= "$row[ContactNo]";
-        $hosp_address= "$row[Address]";
+        // $deadline= "$fourhourafter"; 
+        $hosp_name= "$sql_mail[Name]";
+        $hosp_contact= "$sql_mail[ContactNo]";
+        $hosp_address= "$sql_mail[Address]";
 
 
         $to_email = "$email";
         $subject = "Confirmation and Information for Your Hospital Bed Reservation";
         $body = "Dear $recp_name,
 
-We are writing to confirm and provide important information regardin your reservation for the hospital bed at $hosp_name . We appreciate your trust in our Swasth Sampark services and look forward to assisting you in future.
+We are writing to confirm and provide important information regarding your reservation for the hospital bed at $hosp_name . We appreciate your trust in our services and look forward to assisting you in future.
 
 ---------------------------------------------------------------------------
 
-Note : Your appointment at the hospital is automatically canceled if you do not arrive within four hours of the scheduled time.
+Note : Your appointment at the hospital is automatically canceled if you do not arrive within four hours of the booking time.
 
 ---------------------------------------------------------------------------
 
@@ -164,7 +181,7 @@ Name: $hosp_name
 Contact number: $hosp_contact
 Address: $hosp_address
 
-Your reserved bed will be canceled on $FourHourAfter . We kindly request your arrival at the hospital before the time. Thank you for your understanding and cooperation.";
+Your reserved bed will be canceled on $deadline_date . We kindly request your arrival at the hospital before the time. Thank you for your understanding and cooperation.";
 
         $headers = "From: emergencymedicalservices23@gmail.com";
 
@@ -173,9 +190,9 @@ Your reserved bed will be canceled on $FourHourAfter . We kindly request your ar
         } else {
             echo "Email failed";
         }
-}  -->
+} 
 
-
+?>
 
 
 <!DOCTYPE html>
