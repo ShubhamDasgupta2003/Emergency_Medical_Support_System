@@ -1,5 +1,5 @@
 <?php
-header("Refresh: 10 ;url=/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/bed booking admin/hospital_interface.php");
+header("Refresh: 20 ;url=/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/bed booking admin/hospital_interface.php");
 include_once ('oop_config.php');
 date_default_timezone_set("Asia/calcutta");
 $obj=new Database;
@@ -19,7 +19,7 @@ $p=0;
 
 
 <?php
-   $patient_id= $_SESSION['p_id']; //patient session variable
+//    $patient_id= $_SESSION['p_id']; //patient session variable
 
     $hos_id= $_SESSION['adm_hos_id']; // hospital session variable 
 // echo "$hos_id";
@@ -32,16 +32,16 @@ $name= $sql2['Name'];
 ?>
 
 <?php
-$sql3=$obj->select("patient_booking_info","*","Hospital_name='$name'");
+$sql3=$obj->select("patient_booking_info","*","Hospital_name='$name' AND booking_status='booked'");
 while($rowa=$sql3->fetch_assoc()){
     $curr_timestamp = time();
     // echo $curr_timestamp."<br>";
     $stored_timestamp = $rowa['booking_timestamp'];
 
     $diff = ($curr_timestamp - $stored_timestamp);
-    echo $diff."<br>";
     // echo $diff."<br>";
-    if($diff >= 60){
+    // echo $diff."<br>";
+    if($diff >= 120){
         $booking_status = "expired";
         $exp_ptn =  $rowa['Patient_id'];
         $sql4=$obj->update("patient_booking_info",array("booking_status"=>$booking_status),"Patient_id ='$exp_ptn'");

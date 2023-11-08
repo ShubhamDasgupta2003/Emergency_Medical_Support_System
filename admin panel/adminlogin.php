@@ -45,8 +45,31 @@ if(isset($_POST['login'])){
       }
   }
   else if($service == 'Blood Bank Service'){
-    echo "Blood Bank Service";
-  }
+      // echo "Blood Bank Service";
+      $sql="SELECT * FROM `blood_bank` WHERE email = '$email_num' OR phone = '$email_num'";
+      $result= mysqli_query($conn,$sql);
+  
+      if($result && $result-> num_rows==1){
+  
+          if($result){
+            $row=mysqli_fetch_assoc($result);
+            $storedpassword= $row['password'];
+            
+            if($password==$storedpassword){
+   
+              $_SESSION['blood_bank_id'] = $row['blood_bank_id'];
+              // $_SESSION['user_fname'] = $row['user_first_name'];
+              // $_SESSION['user_lname'] = $row['user_last_name'];
+              // $_SESSION['user_email'] = $row['user_email'];
+              $_SESSION['is_blood_login'] = 1;
+              header("location:http://localhost/minor%20Project%205th_Sem/Emergency_Medical_Support_System/admin%20panel/Blood_Bank/bloodBooking_interface.php");
+            }else{
+              $_SESSION['is_blood_login'] = 0;
+              echo "<script>alert('Password incorrect! Enter a valid password')</script>";
+            }
+          }
+       }
+      }
   else if($service == 'Hospital Bed Booking Service'){
     // echo "Hospital Bed Booking Service";
     $sql="SELECT * FROM `hospital_info` WHERE email = '$email_num' OR ContactNo = '$email_num'";
