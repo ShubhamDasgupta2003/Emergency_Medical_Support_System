@@ -109,7 +109,7 @@ public function viewordera()
    return true;
   }catch (Exception $e)
   {
-    echo $sql;
+    
     $e->getMessage();
   }
 }
@@ -124,7 +124,7 @@ public function deletecart($delete_id)
    return true;
   }catch (Exception $e)
   {
-    echo $sql;
+    
     $e->getMessage();
   }
 }
@@ -146,7 +146,7 @@ public function insertrecordorder($p,$s,$j,$current_date,$current_time,$ufname,$
    return true;
   }catch (Exception $e)
   {
-    echo $sql;
+    
     $e->getMessage();
   }
 }
@@ -163,9 +163,19 @@ public function insertallorder($i,$f,$d,$t)
    return true;
   }catch (Exception $e)
   {
-    echo $sql;
+    
     $e->getMessage();
   }
+}
+public function viewtable($t)
+{
+  $sql="SELECT * FROM ";
+  $sql.=$t;
+  $statement = $this->conn->prepare($sql);
+  $statement->execute();
+  $publisher = $statement->fetchAll();
+    
+    return $publisher;
 }
 }
 

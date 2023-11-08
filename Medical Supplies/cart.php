@@ -28,6 +28,7 @@ if(isset($_POST['update_product_quantity']))
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/cart.css">
+   
 
 </head>
 <body>
@@ -97,11 +98,14 @@ if(isset($_POST['update_product_quantity']))
         $z=$x+1;
             if($grand_total>0)
             {
-               echo "<td></td><td></td><td></td><td>
+               echo "<td></td><td></td><td>
+               </td>
+               <td>
                <div class='table_bottom'>
+               <a href='medical supplies.php' class='bottom_btn'><i class='fa-solid fa-hand-point-left fa-2xl'></i><h3>To the Previous Page</h3></a>
                <h3 class='bottom_btn'>Grand Total :&#8377  $grand_total<h3>
               
-               <a href='Payment/razor_pay.php?amount=$grand_total&order_id=$z' class='bottom_btn'>Payment</a>
+              <a href='Payment/razor_pay.php?amount=$grand_total&order_id=$z' class='bottom_btn'> <i class='fa-solid fa-hand-point-right fa-2xl'></i>Proceed To Checkout</a>
                </div></td>  <td></td><td></td><td></td></tbody>
                </table>";
             }
