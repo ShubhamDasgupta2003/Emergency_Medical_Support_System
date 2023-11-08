@@ -18,7 +18,9 @@ if(isset($_POST['add_to_cart']))
         
         }catch (Exception $e){
    
-         $e->getMessage();
+         ?> <script>alert("Product already present in the cart");
+         window.location.href = '/Minor Project 5th_Sem/Emergency_Medical_Support_System/Medical Supplies/Medical Supplies.php'
+         </script><?php
        }
 }
 

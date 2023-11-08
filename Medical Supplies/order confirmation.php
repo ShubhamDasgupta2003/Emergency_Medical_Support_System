@@ -18,6 +18,9 @@ $s="";
 $t=0;
 $j=0;
 $p=0;
+$a=0;
+$b=0;
+$c=0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,11 +72,22 @@ $p=0;
                     <div class="bton">
                     <?php 
                  
-                   
+                      
+                     $sql=$obj->viewtable("medical_supplies_order_table");
+                     foreach($sql as $rowl) 
+                      {
+                       $a=$rowl['user_id'];
+                       $b=$rowl['product_name'];
+                       $c=$rowl['quantity'];
+                      }
              
                      // $obj->insertrecord("medical_supplies_order_table",['user_id'=>$p,'product_name'=>$s,'quantity'=>$j,'date'=>$current_date,'time'=>$current_time,'user_fname'=>$ufname,'user_lname'=>$ulname,'user_email'=>$e,'price'=>$t]);
+                       if($a!=$s && $b!=$uid && $c!=$j)
+                       {
                         $obj->insertrecordorder($p,$s,$j,$current_date,$current_time,$ufname,$ulname,$e,$t);
                         $obj->insertallorder($uid,$ufname,$current_date,$current_time);
+                        
+                       }
                       echo "<a href='Receipt Generator.php?p= $t ' class='btn'>Receipt</a>"; 
                     ?>
                 
