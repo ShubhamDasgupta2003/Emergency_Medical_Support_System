@@ -27,22 +27,34 @@ $p=0;
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/medical supplies admin/adminb.php"><span class="las la-igloo"></span>
+                    <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/medical supplies admin/MedTechSupport/adminb.php"><span class="las la-igloo"></span>
                     <span>Dashboard</span></a>
                 </li>
                 
                 <li>
-                    <a href=""  class="active"><span class="las la-landmark"></span>
-                    <span>Blood Bank Service</span></a>
+                    <a href="http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/admin panel/MedTechSupport/medtech_admin.php" class="active"><span class="las la-landmark"></span>
+                    <span>Aya/Nurse/Medical Technician Support</span></a>
                 </li>
                <li>
-                    <a href="http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/db_insertions/db_config/BloodBanks.php"><span class="las la-clipboard-list"></span>
+               <li>
+                    <a href="http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/admin panel/MedTechSupport/medtech_org.php"><span class="las la-clipboard-list"></span>
+                    <span>Registered Organisations table</span></a>
+                </li>
+                <li>
+                    <a href="http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/admin panel/MedTechSupport/medtech_emp.php"><span class="las la-clipboard-list"></span>
+                    <span>Registered employees table</span></a>
+                </li>
+                <li>
+                    <a href="http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/admin panel/MedTechSupport/medtech_order.php"><span class="las la-clipboard-list"></span>
+                    <span>Order table</span></a>
+                </li>
+                    <!-- <a href="http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/db_insertions/db_config/BloodBanks.php"><span class="las la-clipboard-list"></span>
                     <span>Blood Banks</span></a>
                 </li>
                 <li>
                     <a href="http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/db_insertions/db_config/BloodDetails.php"><span class="las la-shopping-bag"></span>
                     <span>Blood</span></a>
-                </li>
+                </li> -->
                 <!-- <li>
                     <a href=""><span class="las la-circle"></span>
                     <span>Inventory</span></a>
@@ -133,7 +145,7 @@ $p=0;
             <div class="projects">
                   <div class="card">
                      <div class="card-header">
-                          <h2> Ride Requests</h2>
+                          <h2> Registered Employee</h2>
                           
                      </div>
                      <div class="card-body">
@@ -180,7 +192,6 @@ $p=0;
                                 <tr>
                                     <td>Name</td>
                                     <td>Employee Id</td>
-                                    <td>Assigned Employee Name</td>
                                     <td>Address</td>
                                     <td>Book Date</td>
                                     <td>Book Time</td>
@@ -197,10 +208,9 @@ $p=0;
                                                 echo"<tr>
                                                 <td >$rowa[name] </td>
                                                 <td>$rowa[eid]</td>
-                                                <td>$rowa[ename]</td>
                                                 <td>$rowa[user_book_address]</td>
                                                 <td>$rowa[booking_date]</td>
-                                                <td>$rowa[booking_name]</td>";
+                                                <td>$rowa[booking_time]</td>";
                                          }
                                          
                                         

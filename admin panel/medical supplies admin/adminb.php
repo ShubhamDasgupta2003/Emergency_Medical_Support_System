@@ -48,7 +48,7 @@ $p=0;
                     <span>Bed Booking Service</span></a>
                 </li>
                 <li>
-                    <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/MedTechSupport/admin.php" ><span class="las la-hospital"></span>
+                    <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/MedTechSupport/medtech_admin.php" ><span class="las la-hospital"></span>
                     <span>Aya/Nurse/Medical Technician</span></a>
                 </li>
               <!--  <li>
