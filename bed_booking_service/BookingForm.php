@@ -165,7 +165,7 @@ We are writing to confirm and provide important information regarding your reser
 
 ---------------------------------------------------------------------------
 
-Note : Your appointment at the hospital is automatically canceled if you do not arrive within four hours of the booking time.
+Note : Your appointment at the hospital is automatically cancelled if you do not arrive within four hours of the booking time.
 
 ---------------------------------------------------------------------------
 
@@ -243,6 +243,9 @@ Your reserved bed will be canceled on $deadline_date . We kindly request your ar
         </div>
         <div>
             <form method="post" class="form">
+            <div class="input-box">
+            <p class="warning">Your appointment at the hospital is automatically cancelled if you do not arrive within <b>four hours</b> of the booking time.</p>
+            </div>
                 <div class="input-box">
                     <label>Patient's Full Name</label>
                     <input type="text" name="name" placeholder="Enter full name" required />

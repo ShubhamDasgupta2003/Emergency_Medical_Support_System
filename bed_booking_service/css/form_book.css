@@ -12,8 +12,19 @@
     justify-content: center;
     padding: 20px;
     /* background: rgb(160, 228, 217); */
-    background: linear-gradient(rgb(255, 255, 255),rgb(206, 206, 206))
+    /* background: linear-gradient(rgb(255, 255, 255),rgb(206, 206, 206)); */
+    background: linear-gradient(rgb(255, 255, 255),rgb(120, 227, 248));
   }
+  .warning
+{
+    color: rgb(0, 0, 0);
+    border: 1px solid rgb(255, 194, 9);
+    padding: 0.76rem;
+    background-color: rgb(255, 229, 142);
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
   .container {
     position: relative;
     max-width: 700px;

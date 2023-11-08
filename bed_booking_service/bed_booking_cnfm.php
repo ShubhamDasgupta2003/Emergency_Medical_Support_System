@@ -113,7 +113,7 @@ header("Location: $googleMapsURL");
                  <div class='c2'><strong class='attribute6'>Deadline Date & Time:</strong>$deadline_date</div>"
                  ;}
                 ?>
-                <p class = 'notice'>Note: Your bed reservation will automatically canceled if you do not arrive at hospital within four hours of Booking time.</p>
+                <p class = 'notice'>Note: Your bed reservation will automatically cancelled if you do not arrive at hospital within four hours of Booking time.</p>
         </div>
         <!-- <p>Go back to <a href="/">Homepage</a></p> -->
         <div class="btns">
