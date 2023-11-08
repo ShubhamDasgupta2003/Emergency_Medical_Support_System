@@ -23,7 +23,7 @@
     $amb_driver_rows = $db->select('ambulance_info',"amb_name,amb_no,amb_status,amb_driver_name,amb_type","amb_no='$amb_no'")->fetch();
 
     $amb_patient_rows = $db->select('user_ambulance',"invoice_no,OTP,user_book_lat,user_book_long,patient_cont,patient_name,patient_age,patient_gender,total_fare,user_book_adrss,amb_no","amb_no='$amb_no' AND ride_status='accepted'")->fetch();
-    print_r($amb_patient_rows);
+    // print_r($amb_patient_rows);
 
     if(isset($_POST['start_ride']))
     {

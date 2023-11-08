@@ -130,7 +130,7 @@
                         </div>
                         <button class="btn" name="book_blood">Confirm Order</button>
                     </form>
-                    <a href="BloodB.php"><button class="btn-danger" name="cancel_ride">Cancel Ride</button></a>
+                    <a href="BloodB.php"><button class="btn-danger" name="cancel_ride">Cancel Order</button></a>
                 </div>
             </div>     
         </div>

@@ -1,47 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <title>Email</title>
-    <style>
-        body
-        {
-            overflow-y:hidden;
-            background-color:rgb(255,255,255);
-        }
-        #load-container
-        {
-            height:100vh;
-            width:100vw;
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            align-items:center;
-        }
-    </style>
-</head>
-<body onload=loadFunc()>
-    <div id="load-container">
-    <div class="d-flex justify-content-center">
-        <div class="spinner-border" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    </div>
-    <h3>Please wait Loading</h3>
-    </div>
-    <script>
-        const loader = document.getElementById('load-container');
-        function loadFunc()
-        {
-            loader.style.display = 'none';
-        }
-    </script>
-</body>
-</html>
-
 <?php
 
 session_start();
@@ -83,11 +39,9 @@ Your OTP is $otp_code
 Regards
 Emergency Medical Support System";
 
-
-
 $headers = "From: emergencymedicalservices23@gmail.com";//this email was created for this project
-
 if (mail($to_email, $subject, $body, $headers)) {
+
     echo "<script>alert('Ride Booked Successfully \\n A booking confirmation is sent to your mail');
     window.location.href = '/minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/amb_booking_cnfm.php?ambno=$ambno&dist=$ambdist&otp=$otp_code&fare=$amb_fare'</script>";
     
@@ -95,10 +49,52 @@ if (mail($to_email, $subject, $body, $headers)) {
     echo "Email failed";
 }
 
-
 //credentails for the sender's email
 /* Email is emergencymedicalservices23@gmail.com */
 /* user is user */
 /* Email Password is Password23!@$  */
 /* on app password  is kzlufembtfmlsyfr */
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <title>Email</title>
+    <style>
+        body
+        {
+            overflow-y:hidden;
+            background-color:rgb(255,255,255);
+        }
+        #load-container
+        {
+            height:100vh;
+            width:100vw;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+        }
+    </style>
+</head>
+<body>
+    <div id="load-container">
+    <div class="d-flex justify-content-center">
+        <h1><i class='fa-solid fa-envelope-circle-check fa-bounce fa-2xl' style='color: #00bd97;'></i></h1>
+        <h3>Mail Sent</h3>
+    </div>
+    </div>
+    <!-- <script>
+        const loader = document.getElementById('load-container');
+        function loadFunc()
+        {
+            loader.style.display = 'none';
+        }
+    </script> -->
+</body>
+</html>

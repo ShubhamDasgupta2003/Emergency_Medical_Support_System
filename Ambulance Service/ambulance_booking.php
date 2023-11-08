@@ -21,7 +21,7 @@
     //$loc_query = "SELECT lat_in_use,long_in_use,formatted_adrrs FROM user_info WHERE user_id='$uid'";
 
     //$loc_result = $con->query($loc_query);
-    $loc_rows = $loc_query->fetch();
+    $loc_rows = $loc_query->fetch(PDO::FETCH_ASSOC);
 
     if($loc_rows)
     {
