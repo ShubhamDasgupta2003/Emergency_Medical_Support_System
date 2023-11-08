@@ -19,6 +19,8 @@
     $driver_report1 = $db->select('user_ambulance',"COUNT(*) AS completed_rides,SUM(total_fare) AS earnings,SUM(ride_hrs) AS rideHrs","amb_no='$amb_no' AND ride_status='completed'")->fetch();
 
     $driver_report2 = $db->select('user_ambulance',"COUNT(*) AS rejected_rides","amb_no='$amb_no' AND ride_status='rejected'")->fetch();
+
+    $_SESSION['ambname'] = $amb_driver_rows['amb_name'];
     // print_r($driver_report);
     if($amb_patient_rows=="")
     {

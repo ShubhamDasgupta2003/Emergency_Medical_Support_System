@@ -13,13 +13,13 @@
    $secs = $_GET['sc'];
 
    $totalHrsRide = $hrs+($mins/60);
-   $servCharge = $totalHrsRide*$amb_driver_rows['amb_rate'];
+   $servCharge = round($totalHrsRide*$amb_driver_rows['amb_rate']);
 
    $ride_stat_updt = $db->update('user_ambulance'," SET ride_status='Completed',total_fare=$servCharge,ride_hrs=$totalHrsRide WHERE invoice_no='$invNo' AND amb_no='$amb_no'");
         
    $update_result = $db->update('ambulance_info'," SET amb_status='active' WHERE amb_no='$amb_no'");
 
-   $amb_patient_rows = $db->select('user_ambulance',"total_fare,invoice_no,user_book_lat,user_book_long,patient_cont,patient_name,patient_age,patient_gender,total_fare,user_book_adrss,amb_no","amb_no='$amb_no' AND ride_status='completed' AND invoice_no='$invNo'")->fetch();
+   $amb_patient_rows = $db->select('user_ambulance',"*","amb_no='$amb_no' AND ride_status='completed' AND invoice_no='$invNo'")->fetch();
 
 ?>
 
@@ -59,7 +59,7 @@
                         <h1 class='time_disp'>$mins mins&nbsp</h1>
                         <h1 class='time_disp'>$secs secs</h1>
                     </div>
-                    <a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/Payment/razor_pay.php?order_id=$amb_patient_rows[invoice_no]&amount=$amb_patient_rows[total_fare]'><button class='btn pay-btn'>Pay &#8377 $amb_patient_rows[total_fare]</button></a>
+                    <a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/Payment/razor_pay.php?order_id=$amb_patient_rows[invoice_no]&amount=$amb_patient_rows[total_fare]&user_id=$amb_patient_rows[user_id]'><button class='btn pay-btn'>Pay &#8377 $amb_patient_rows[total_fare]</button></a>
                 </div>
             </div>
             <div class='card'>
