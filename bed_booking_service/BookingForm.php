@@ -105,11 +105,16 @@ if(isset($_POST['submit'])){
     if(strlen($contact) != 10) //validating mobile number
     {
       echo "<script>alert('Please enter a valid mobile number')</script>";
-    }elseif(strlen($adhr_num) != 12){
-        echo "<script>alert('Please enter a valid aadhaar number')</script>";
-    }elseif(strlen($pin) != 6){
+    
+    }
+    // elseif(strlen($adhr_num) != 12){
+    //     echo "<script>alert('Please enter a valid aadhaar number')</script>";
+    // }
+    if(strlen($pin) != 6)
+    {
         echo "<script>alert('Please enter a valid pincode')</script>";
-    }else{
+    }
+    else{
 
         $insert_result = $dbname->insert('patient_booking_info',array("$row[Name]","$patient_id","$particular_hos_id","$uid","$name","$contact","$age","$gender","$dob","$p_email","$address2","$city","$pin","$bookdatetime","$bed_charge","$booking_status",$timestamp));
     

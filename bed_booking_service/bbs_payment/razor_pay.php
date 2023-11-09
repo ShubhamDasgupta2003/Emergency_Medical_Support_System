@@ -68,7 +68,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         var pnt_id = urlParams.get('pnt_id');   //Get orderid from url
         var amount = urlParams.get('amount');   //Get amount from url
-        var user_id = urlParams.get('user_id');
+        // var user_id = urlParams.get('user_id');
 
   function pay_now(){
 
@@ -127,7 +127,7 @@
                 jQuery.ajax({
                     type:'post',
                     url:'payment_process.php',
-                    data:"&amount="+amount+"&payment_id="+pid+"&pnt_id="+pnt_id+"&user_id="+user_id,
+                    data:"&amount="+amount+"&payment_id="+pid+"&pnt_id="+pnt_id,
                     success:function(result){
 
                         window.location.href = "payment_ackn.php?&payment_id="+pid+"&pnt_id="+pnt_id+"&amount="+amount;
