@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis&family=Montserrat&family=PT+Sans&family=Poppins:wght@100;200;300;400;500;600&family=Roboto:ital@1&display=swap');
+
+:root{
+    --green:#00a896;
+    --black:#444;
+    --light-color:#777;
+    --blue:dodgerblue;
+    --box-shadow:.5rem .5rem 0 rgba(22,160,133,.2);
+    --text-shadow:.4rem .4rem 0 rgba(0,0,0,.2);
+    --border:.2rem solid var(--green);
+}
+body
+{
+    background-color: rgb(243, 255, 253);
+}
+*{
+    font-family: 'Poppins',sans-serif;
+    margin:0; padding:0;
+    box-sizing:border-box;
+    outline:none;border:none;
+    text-transform:capitalize;
+    transition:all .2s ease-out;
+    text-decoration: none;
+}
+
+html{
+    font-size:62.5%;
+    overflow-x: hidden;
+    scroll-padding-top:7rem;
+    scroll-behavior: smooth;
+}
+/* search bar  */
+.search-bar {
+    display: flex;
+    margin: auto 35px;
+    width: 50rem;
+    /* gap: 10px; */
+}
+
+.search-bar input[type="text"] {
+    width: 400px;
+    padding: 5px 0px;
+    border: 1px solid #ccc;
+   
+}
+
+.search-bar button {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    padding: 5px 0px;
+    background-color: var(--green);
+    border: none;
+    border-radius: 0px 5px 5px 0px;
+    color: white;
+}
+
+/* navlink start  */
+.navlink{
+    position:relative;
+}
+.navlink::after{
+    content: '';
+    opacity: 0;
+    transition: all 0.2s;
+    height: 2.5px;
+    width: 100%;
+    background-color: var(--light-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.navlink:hover::after{
+    opacity: 1;
+}
+
+/* navlink end  */
+
+/* Get Location button start*/
+.get-location {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar .get-location {
+    cursor: pointer;
+    width: 100px;
+    padding: 5px;
+    background-color: var(--green);
+    border: none;
+    border-radius: 5px 0px 0px 5px;
+    color: white;
+}
+/* Get Location button end*/
+
+.search-navbar
+{
+    display: flex;
+    margin: 2px auto;
+    align-items:center;
+    justify-content:center;
+    position: absolute;
+    top: 8rem;
+    width: 100%;
+    padding:1.6rem 9%;
+    z-index:999;
+    box-shadow:0 .5rem 1.5rem rgba(0,0,0,.1);
+    background: #fff;
+}
+.header{
+    padding:2rem 9%;
+    position:fixed;
+    top:0; left:0;right:0;
+    z-index:1000;
+    box-shadow:0 .5rem 1.5rem rgba(0,0,0,.1);
+    display: flex;
+    align-items:center;
+    justify-content:space-between;
+    background: #fff;
+}
+
+
+.logo{
+    font-size: 2.5rem;
+    color: var(--black);
+}
+
+
+#user-avatar
+{
+    text-decoration: none;
+    color: var(--black);
+    font-size: 1.6rem;
+}
+
+.header .logo i{
+    color:var(--green);
+}
+
+.header .navbar a{
+    font-size:1.7rem;
+    color:var(--light-color);
+    margin-left:2rem;
+}
+.navbar a.active,
+.header .navbar a:hover{
+    color:var(--green);
+} 
+
+#menu-btn{
+    font-size:2.5rem;
+    border-radius:.5rem;
+    background:#eee;
+    color:var(--green);
+    padding:1rem 1.5rem;
+    cursor:pointer;
+    display: none;
+}
+
+/* media queries  */
+@media(max-width:991px){
+    html{
+        font-size: 55%;
+    }
+    .header{
+        padding:2rem;
+    }
+    
+}
+
+@media(max-width:768px){
+    #menu-btn{
+        display:initial;
+    } 
+    .header .navbar{
+        position:absolute;
+        top:115%;right:2rem;
+        border-radius: .5rem;
+        box-shadow:var(--box-shadow);
+        width:30rem;
+        border: var(--border);
+        background-color: #fff;
+        transform: scale(0);
+        opacity: 0;
+        transform-origin: top right;
+        transition: none;
+        
+    }
+    #user-avatar
+    {
+        display: flex;
+        color: var(--black);
+        position: relative;
+        right: 10px;
+        justify-content: right;
+        width: 19rem;
+        padding: 10px;
+    }
+
+    .header .navbar.active{
+        transform: scale(1);
+        opacity: 1;
+        transition:.2s ease-out;
+        z-index: 1001;
+    }
+    .header .navbar a{
+        font-size: 2rem;
+        display: block;
+        margin: 2.5rem;
+    }
+}
+@media(max-width:450px){
+
+    html{
+        font-size:50%; 
+    }
+}

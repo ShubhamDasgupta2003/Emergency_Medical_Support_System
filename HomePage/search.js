@@ -12,6 +12,9 @@ function search() {
         case "blood":
             window.location.href = 'http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/Blood_Booking/BloodB.php';
           break;
+        case "Blood":
+            window.location.href = 'http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/Blood_Booking/BloodB.php';
+          break;
         case "ambulance":
             window.location.href = 'http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/Ambulance%20Service/ambulance_booking.php';
           break;
@@ -26,10 +29,13 @@ function search() {
             break;
         case "technician":
             window.location.href='http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/nursetechniciansupport/technician.php';
-
+            break;
       case "medical suplies":
             window.location.href = 'http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/Medical%20Supplies/Medical%20Supplies.php';
+            break;
         default:
+          window.location.href = 'http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/HomePage';
+          break;
       }
 }
 

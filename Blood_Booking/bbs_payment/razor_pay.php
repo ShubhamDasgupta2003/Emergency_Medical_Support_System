@@ -12,13 +12,13 @@
         $rows = mysqli_fetch_assoc($result);
     }
     $amount = $_GET['amount'];
-    $patient_id = $_GET['pnt_id'];
+    $blood_bank_id=$_GET['blood_bank_id'];
+    $_SESSION['bank_id'] = $blood_bank_id;
 
-    $query2= "SELECT * FROM `patient_booking_info` WHERE Patient_id='$patient_id'";
-    $result= mysqli_query($conn,$query2);
-    if($result){
-        $row2= mysqli_fetch_assoc($result);
-    }
+    $pnt_name=$_GET['pname'];
+    // $order_id=$_GET['order_id'];
+    // $_SESSION['blood_order_id']='$order_id';
+   
 ?>
 
 <!DOCTYPE html>
@@ -40,20 +40,18 @@
                 <h2 id='label'>User name</h2>
                 <h2 id='value'>$rows[user_first_name] $rows[user_last_name]</h2>
             </div>
+            
             <div class='row'>
-                <h2 id='label'>Patient name</h2>
-                <h2 id='value'>$row2[Patient_name]</h2>
+                <h2 id='label'>Patient Name</h2>
+                <h2 id='value'>$pnt_name</h2>
             </div>
             <div class='row'>
                 <h2 id='label'>Email id</h2>
                 <h2 id='value'>$rows[user_email]</h2>
             </div>
-            <div class='row'>
-                <h2 id='label'>Patient id</h2>
-                <h2 id='value'>$patient_id</h2>
-            </div>
+            
             <div class='row' id='order_total'>
-                <h2 id='label'>Bed charge</h2>
+                <h2 id='label'>Payment amount</h2>
                 <h1 id='value'>&#8377 $amount/-</h1>
             </div>
             <input type='button' class='btn' name='btn' id='btn' value='Confirm & Pay' onclick='pay_now()'/>
@@ -129,7 +127,7 @@
                     data:"&amount="+amount+"&payment_id="+pid+"&order_id="+order_id,
                     success:function(result){
 
-                        window.location.href = "payment_ackn.php";
+                        window.location.href = "/Minor Project 5th_Sem/Emergency_Medical_Support_System/Blood_Booking/confirm.php?&order_id="+order_id;
                     }
                 })
                 },
