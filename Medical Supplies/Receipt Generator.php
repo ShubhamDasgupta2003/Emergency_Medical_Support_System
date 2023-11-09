@@ -38,7 +38,7 @@ if($records)
   $a.= '<p>'.$ufname.' '. $ulname.'</p>';
   $a.= '<p>'.$e.'</p>';
   $a.= '<p>'.$current_date.'</p>';
-  $a.= '<p>Hello '.$ufname.' '. $ulname.', Thnak You for using Medical Supplies Service.Here is your receipt of your order</p>';
+  $a.= '<p>Hello '.$ufname.' '. $ulname.',  Thank you for your recent purchase. We are honored to gain you as a customer and hope to serve you for a long time.Here is your receipt of your order</p>';
 
   $a .='<table>';
   $grand_total=0;
@@ -101,7 +101,7 @@ else
 
     $mailto = $e;
     $subject = 'Receipt Of Your Order';
-    $message = 'Here is the receipt of your order, hope you enjoyed our services!';
+    $message = 'Hello '.$ufname.' '. $ulname.',  Thank you for your recent purchase. We are honored to gain you as a customer and hope to serve you for a long time.Here is your receipt of your order';
 
     $content = file_get_contents($file);
     $content = chunk_split(base64_encode($content));

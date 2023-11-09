@@ -123,17 +123,16 @@ $p=0;
                           $t=0;
                           $j=0;
                           
-                          $sql=$obj->viewmedical_order();
+                          $sql=$obj->viewtable("payment");
                               foreach($sql as $rowl) 
                                  {
-                                    $t=$rowl['price'];
-                                    $j=$rowl['quantity'];
-                                       $s=$t*$j;
-                                       $p=$p+$s;
+                                    $t=$rowl['amount'];
+                                    $s=$s+$t;
+                                       
                                  }
                     
                       ?>
-                    <h1 style="color: #fff;"> &#8377 <?php echo $p ?></h1>
+                    <h1 style="color: #fff;"> &#8377 <?php echo $s?></h1>
                     <span>Income</span>
                 </div>
                 <div>

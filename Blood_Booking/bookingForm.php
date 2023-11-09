@@ -54,21 +54,30 @@
     if(isset($_POST['book_blood']))
     {
         $patient_name = $_POST['pat_name'];
+        // $_SESSION['pname'] ="$patient";
         // $patient_age = $_POST['pat_age'];
         $patient_gender = $_POST['gender'];
         $contact=$_POST['cont_num'];
         $blood_group=$_SESSION['bg'];
         $query = "INSERT INTO `blood_order` (`user_id`, `Patient_name`, `Blood_gr`, `Contact_No`, `Order_date`, `Order_id`, `Order_time`,`bloodbank_id`, `price`)
                                                  VALUES('$uid','$patient_name','$blood_group','$contact','$cur_date','$invoice_no','$cur_time','$bloodBank_id','$tot_fare')";
-                                                                                                                                
-        // $amb_stat_update_query = "UPDATE ambulance_info SET amb_status='busy' WHERE amb_no='$amb_no'";
 
+        $queryfor_blood_id="SELECT * FROM `blood_group` WHERE group_name='$blood_group'";
+        $result1= mysqli_query($con,$queryfor_blood_id);
+        $row1=mysqli_fetch_assoc($result1);
+        // print_r($row1);
+        $blood_id=$row1['blood_group_id'];
+
+        $blood_update_query = "UPDATE blood_bank_blood_group SET count = count - 1 WHERE blood_bank_id='$bloodBank_id' and blood_group_id='$blood_id' ";
         
+        mysqli_query($con,$blood_update_query);
+
             $insert_result = mysqli_query($con,$query);
             if($insert_result)
             {
                 // header("Location:invoice_mail.php?ambno=$amb_no&ambname=$amb_name&driver=$amb_driver&fare=$tot_fare&dist=$distance&billno=$invoice_no");
-                header("Location:http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/Blood_Booking/confirm.php?order_id=$invoice_no");
+                // header("Location:http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/Blood_Booking/confirm.php?order_id=$invoice_no");
+                 header("Location:http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/Blood_Booking/bbs_payment/razor_pay.php?order_id=$invoice_no&amount=$tot_fare&pname=$patient_name&blood_bank_id=$bloodBank_id");
                 // echo("confirm order");
             }else{
                 echo "error in sql query";

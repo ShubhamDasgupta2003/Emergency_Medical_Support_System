@@ -204,7 +204,7 @@ $query = "SELECT
                     </div>
                 </div>";
                 $_SESSION['bg'] = $arr['group_name'];
-                $_SESSION['Bank_id'] = $arr['blood_bank_id'];
+                // $_SESSION['Bank_id'] = $arr['blood_bank_id'];
                 }
                 ?>
             </div>

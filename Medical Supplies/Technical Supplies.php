@@ -1,5 +1,6 @@
 <?php
 include_once ('oop_connectionp.php');
+include_once ('location.php');
 $obj=new Database;
 session_start();
 

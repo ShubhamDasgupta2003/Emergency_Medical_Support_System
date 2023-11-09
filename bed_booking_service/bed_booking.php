@@ -115,7 +115,7 @@
         <a href="#" class="logo"><i class="fa-solid fa-heart-pulse"></i>medcare</a>
         <div class="search-bar" id="srchbar-above">
             <button class="get-location btn" id="get-location-btn"><i id="locationlogo" class="fas fa-map-marker-alt"></i> </i></button>
-            <input type="text" placeholder="Search...">
+            <input id="searchbar" onkeyup="search_hos_name()" name="search" type="text" placeholder="Search...">
             <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <nav class="navbar">
