@@ -62,10 +62,10 @@
     {
         $amb_filter_query = $_GET['q'];
     }
-    else
-    {
-        $amb_filter_query = "active";
-    }
+    // else
+    // {
+    //     $amb_filter_query = "active";
+    // }
     // $search_filter = ;
     $sqli_table = 'ambulance_info';
     $sqli_rows = "`amb_no`, `amb_name`, `amb_type`, `amb_status`, `amb_loc_lat`, `amb_loc_long`, `amb_rate`, `amb_contact`, `amb_driver_name`, `amb_state`, `amb_district`, `amb_town`, `amb_loc_pincode`,ROUND((
@@ -78,7 +78,7 @@
         sin(radians(amb_loc_lat)))
      ),1) AS distance";
 
-    $sqli_condition = "amb_town LIKE '$amb_filter_query%' OR amb_status='$amb_filter_query' OR amb_name='$amb_filter_query' OR amb_type = '$amb_filter_query' OR amb_district='$amb_filter_query'";
+    $sqli_condition = "amb_town LIKE '$amb_filter_query%' OR amb_name LIKE '$amb_filter_query%' OR amb_type = '$amb_filter_query' OR amb_district='$amb_filter_query' OR amb_status='$amb_filter_query'";
     $sqli_order = 'distance';
 ?>
 
@@ -152,7 +152,7 @@
                     
                         // echo $per5km_price."<br>";
                         $amb_fare = $rows['amb_rate'];
-                        echo "<div class='card'>
+                        echo "<div class='card' id='amb_card'>
                         <img src='https://images.jdmagicbox.com/comp/varanasi/e9/0542px542.x542.200517114047.g7e9/catalogue/narayan-ambulance-service-varanasi-cantt-varanasi-0jqwifqqzh.jpg?clr=' >
                         <div class='card-details'>
                             <p class='card-name'>$rows[amb_name]</p>
@@ -167,7 +167,7 @@
                                 <p class='card-fare'>&#8377 $amb_fare/- per hr</p>
                             </div>
                             <div class='card-row'>
-                                <a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/amb_booking_form.php?ambno=$rows[amb_no]&dist=$rows[distance]&booklat=$lat_in_use&booklon=$lon_in_use&amb_fare=$amb_fare&book_adrs=$full_address'><button class='btn btn-secondary-orange'>Book ride</button></a>
+                                <a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/Ambulance Service/amb_booking_form.php?ambno=$rows[amb_no]&dist=$rows[distance]&booklat=$lat_in_use&booklon=$lon_in_use&amb_fare=$amb_fare&book_adrs=$full_address'><button class='btn btn-secondary-orange' id='book_btn'>Book ride</button></a>
                                 <p id='card-status'>$rows[amb_status]</p>
                             </div>
                         </div>

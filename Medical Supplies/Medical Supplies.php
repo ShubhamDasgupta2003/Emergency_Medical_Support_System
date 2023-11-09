@@ -23,7 +23,7 @@ $ulname = $_SESSION['user_lname'];
 
 //-------------------search-----------------------------------
 
-$amb_filter_query = "active";
+$amb_filter_query = "a";
 
 if(@$_GET['q'])
 {
