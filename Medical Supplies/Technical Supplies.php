@@ -20,42 +20,29 @@ setcookie("loc_modify","false");
 $uid =  $_SESSION['user_id'];
 $ufname =  $_SESSION['user_fname'];
 $ulname = $_SESSION['user_lname'];
-/*
-$lat_in_use = 0.0;
-$lon_in_use = 0.0;
-$full_address = "";
-$loc_query = "SELECT lat_in_use,long_in_use,formatted_adrrs FROM user_info WHERE user_id='$uid'";
 
-$loc_result = mysqli_query($conn,$loc_query);
-$loc_rows = $loc_result->fetch_assoc();
 
-if($loc_result)
+
+//-------------------search-----------------------------------
+
+$amb_filter_query = "active";
+
+if(@$_GET['q'])
 {
-    $lat_in_use = $loc_rows['lat_in_use'];
-    $lon_in_use = $loc_rows['long_in_use'];
-    $full_address = $loc_rows['formatted_adrrs'];
+    $amb_filter_query = $_GET['q'];
 }
 else
 {
-    echo "error";
+    $amb_filter_query = "active";
 }
+// $search_filter = ;
+$sqli_table = 'medical_supplies_technical';
+$sqli_rows = "`product_id`, `source_id`, `product_name`, `product_rate`, `product_image`, `product_para`, `product_desc`, `product_makers`, `password`, `email`, `phone`";
 
-if($_COOKIE['loc_modify'] == 'true')
-{
-    $mod_lat = $_COOKIE['lat_in_use'];
-    $mod_lon = $_COOKIE['lon_in_use'];
-    $mod_addrs = $_COOKIE['address_in_use'];
+$sqli_condition = "product_name LIKE '$amb_filter_query%' OR product_rate='$amb_filter_query' OR product_para='$amb_filter_query' OR product_desc= '$amb_filter_query'";
+$sqli_order = 'product_id';
 
-    $loc_mod_query = "UPDATE user_info SET lat_in_use=$mod_lat,long_in_use=$mod_lon,formatted_adrrs='$mod_addrs' WHERE user_id='$uid'";
-
-    $mod_loc_result = mysqli_query($conn,$loc_mod_query);
-
-    if($mod_loc_result)
-    {
-        header("Refresh: 1");
-    }
-}
-//Backend for location modification ends here  */
+//---------------------------------------------------------------
 ?>
 
 <!DOCTYPE html>
