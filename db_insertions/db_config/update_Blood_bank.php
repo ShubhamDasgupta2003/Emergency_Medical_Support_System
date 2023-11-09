@@ -4,10 +4,10 @@ $obj = new Operation();
 // $_SERVER['REQUEST_METHOD']=='POST'
 
 
-if(isset($_GET['id'])){
-    $id=base64_decode($_GET['id']);
-  
-    }
+  session_start();
+    $id=$_SESSION['blood_bank_id'];
+    echo ''.$id.'';
+    
     if($_SERVER['REQUEST_METHOD']=='POST'){
         $register = $obj->update($_POST,$id);
     }
@@ -41,8 +41,9 @@ if(isset($_GET['id'])){
 
               <div class="card-header">
                  <div class="row "> <!--justify-content-center -->
-                    <div class="col-md-9 "><h2>Blood Bank's Registration form </h2></div>   <!-- text-center -->
-                    <div class="col-md-3"><a href="BloodBanks.php" class="btn btn-info">Blood Bank Info</a></div>
+                    <div class="col-md-8 "><h2>Updates Blood Bank's Details</h2></div>   <!-- text-center -->
+                    <div class="col-md-2"><a href="http://localhost/minor%20Project%205th_Sem/Emergency_Medical_Support_System/admin%20panel/Blood_Bank/bloodBooking_interface.php" class="btn btn-info">Dashboard</a></div>
+                    <div class="col-md-2"><a href="http://localhost/minor%20Project%205th_Sem/Emergency_Medical_Support_System/HomePage/logout.php" class="btn btn-danger">Logout</a></div>
                 </div>
               </div>
 

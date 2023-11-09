@@ -37,7 +37,7 @@ if(isset($_POST["submit"])){
               <div class="card-header">
                  <div class="row "> <!--justify-content-center -->
                     <div class="col-md-9 "><h2>Blood Bank's Registration form </h2></div>   <!-- text-center -->
-                    <div class="col-md-3"><a href="BloodBanks.php" class="btn btn-info">Blood Bank Info</a></div>
+                    <div class="col-md-3"><a href="BloodBanks.php" class="btn btn-info">login</a></div>
                 </div>
               </div>
 
@@ -45,6 +45,12 @@ if(isset($_POST["submit"])){
                 <form action="" method="post" enctype="multipart/form-data">
                     <label for="">Name</label>
                     <input type="text" name="name" placeholder="Enter your Blood bank name" class="form-control">
+
+                    <label for="">Email</label>
+                    <input type="email" name="email" placeholder="Enter email" class="form-control">
+
+                    <label for="">Password</label>
+                    <input type="password" name="pass" placeholder="Enter password" class="form-control">
 
                     <label for="">Latitude</label>
                     <input type="text" name="lat" placeholder="Enter your Latitude" class="form-control">

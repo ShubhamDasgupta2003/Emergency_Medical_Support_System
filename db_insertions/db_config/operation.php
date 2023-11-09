@@ -10,6 +10,8 @@ class Operation{
 
     public function addRegister($data){
         $name=$data['name'];
+        $email=$data['email'];
+        $pass=$data['pass'];
         $lat=$data['lat'];
         $lon=$data['lon'];
         $phone=$data['phone'];
@@ -19,19 +21,19 @@ class Operation{
         $city=$data['city'];
 
            
-        if(empty($name)||empty($lat)||empty($lon)||empty($phone)||empty($dist)||empty($pin)||empty($state)||empty($city)){
+        if(empty($name)||empty($lat)||empty($lon)||empty($phone)||empty($email)||empty($pass)||empty($dist)||empty($pin)||empty($state)||empty($city)){
             $msg="Filds must not be empty";
             return $msg;
 
         }
         else{  
-            $values=['name'=>$name,'latitude'=>$lat,'longitude'=>$lon,'state'=>$state,'city'=>$city,'phone'=>$phone,'dist'=>$dist,'pincode'=>$pin];
+            $values=['name'=>$name,'email'=>$email,'password'=>$pass,'latitude'=>$lat,'longitude'=>$lon,'state'=>$state,'city'=>$city,'phone'=>$phone,'dist'=>$dist,'pincode'=>$pin];
             $result=$this->db->insert('blood_bank',$values);
 
             // $result=$this->db->insert($sql);
             
             if($result){
-                // header("location:http://localhost/crud_oop/");
+                header("location:http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/admin%20panel/adminlogin.php");
                 $msg="Registration Confirmed";
                 return $msg;
             }

@@ -79,3 +79,9 @@
 {
     float:left;
 }
+@media (max-width:1356px) 
+{
+    .card{
+        width:100%;
+    }
+}

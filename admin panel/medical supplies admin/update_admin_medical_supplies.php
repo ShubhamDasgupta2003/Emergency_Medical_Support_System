@@ -74,19 +74,19 @@ session_start();
         <div class="column">
           <div class="input-box">
             <label>Product Info</label>
-            <input name="product_info" type="text" placeholder="Enter Product Info " maxlength="50" required/>
+            <input name="product_info" type="text" placeholder="Enter Product Info " required  minlength="148"  maxlength="150"/>
           </div>
         </div>
         <div class="column">
           <div class="input-box">
             <label>Product Description</label>
-            <input name="product_desc" type="text" placeholder="Enter Product Description" maxlength="50" required/>
+            <input name="product_desc" type="text" placeholder="Enter Product Description"  required/>
           </div>
         </div>
         <div class="column">
           <div class="input-box">
             <label>Product Makers</label>
-            <input name="product_makers" type="text" placeholder="Enter Product Makers" maxlength="50" required/>
+            <input name="product_makers" type="text" placeholder="Enter Product Makers" required/>
           </div>
         </div>
         <div class="column">

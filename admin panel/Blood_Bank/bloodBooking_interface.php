@@ -18,6 +18,15 @@ $p=0;
 
 $blood_bank_id=$_SESSION['blood_bank_id']; 
 $sql2=$obj->select('blood_bank','*',"blood_bank_id='$blood_bank_id'")->fetch_assoc();
+// query for update the blood details
+if(isset($_POST["submit"])){
+    $ucount = $_POST['ucount'];
+    $bg_id = $_POST['bg_id'];
+    $blood_bank_id=$_SESSION['blood_bank_id']; 
+
+    // echo 'count:'.$ucount.'bg:'.$bg_id.''.$blood_bank_id;
+    $obj->update('blood_bank_blood_group', ['count' => $ucount], 'blood_bank_id="' . $blood_bank_id . '" and blood_group_id="' . $bg_id . '"');
+}
 ?>
 
 <?php
@@ -96,7 +105,8 @@ $sql2=$obj->select('blood_bank','*',"blood_bank_id='$blood_bank_id'")->fetch_ass
             
             <div>
                 
-                <h5><i class="fa-solid fa-user fa-lg account-avatar"></i><?php echo "  ".$sql2['name']; ?></h5>
+                <h5><i class="fa-solid fa-user fa-lg account-avatar"></i><?php echo "  ".$sql2['name']; ?>
+                <a href="http://localhost/minor%20Project%205th_Sem/Emergency_Medical_Support_System/db_insertions/db_config/update_Blood_bank.php"><i class="fa-solid fa-pen-to-square"></i></a></h5>
             </div>
         </div>
     </header>
@@ -201,7 +211,7 @@ $sql2=$obj->select('blood_bank','*',"blood_bank_id='$blood_bank_id'")->fetch_ass
                                             <?Php
                                                 }
                                             ?>
-                                               <form action="update_bloodDetails.php" method="get">
+                                               <form action="" method="post">
                                                <td><input type="number" name="ucount" class="form-control" value="<?php echo $rowa['count'] ;
                                                 ?>"></td>
                                                 <!-- <td><a href='Update_BloodDetails.php?bg_id=?>'> </a></td> -->

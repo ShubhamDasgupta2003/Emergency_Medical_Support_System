@@ -51,7 +51,7 @@ if(isset($_POST['add_to_cart']))
        {$row=array();
         $row=$obj->viewrecorddm($s);
        ?>
-        <img src="image/pain relief/<?php echo $row['product_image'] ?>" alt="">
+        <img src="<?php echo $row['product_image'] ?>" alt="">
         <div class="column">
             <div class="amb_info_cont">
                 <h1 class="descp" id="title"><?php echo $row['product_name'] ?></h1>
@@ -98,7 +98,7 @@ if(isset($_POST['add_to_cart']))
         $row=array();
         $row=$obj->viewrecorddt($s);
        ?>
-        <img src="image/pain relief/<?php echo $row['product_image'] ?>" alt="">
+        <img src="<?php echo $row['product_image'] ?>" alt="">
         <div class="column">
             <div class="amb_info_cont">
                 <h1 class="descp" id="title"><?php echo $row['product_name'] ?></h1>
