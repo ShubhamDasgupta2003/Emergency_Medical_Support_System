@@ -66,8 +66,9 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script>
         const urlParams = new URLSearchParams(window.location.search);
-        var order_id = urlParams.get('order_id');   //Get orderid from url
+        var pnt_id = urlParams.get('pnt_id');   //Get orderid from url
         var amount = urlParams.get('amount');   //Get amount from url
+        var user_id = urlParams.get('user_id');
 
   function pay_now(){
 
@@ -79,8 +80,8 @@
                 "image": "https://s3.amazonaws.com/rzp-mobile/images/rzp.jpg",
                 "prefill":
                 {
-                "email": "gaurav.kumar@example.com",
-                "contact": +919900000000,
+                "email": "",
+                "contact": "<?php echo "+91$row2[ContactNo]"; ?>",
                 },
                 config: {
                 display: {
@@ -126,10 +127,10 @@
                 jQuery.ajax({
                     type:'post',
                     url:'payment_process.php',
-                    data:"&amount="+amount+"&payment_id="+pid+"&order_id="+order_id,
+                    data:"&amount="+amount+"&payment_id="+pid+"&pnt_id="+pnt_id+"&user_id="+user_id,
                     success:function(result){
 
-                        window.location.href = "payment_ackn.php";
+                        window.location.href = "payment_ackn.php?&payment_id="+pid+"&pnt_id="+pnt_id+"&amount="+amount;
                     }
                 })
                 },
