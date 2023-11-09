@@ -14,12 +14,12 @@
 
 if(isset($_POST['get_route'])){
     // $id=$_GET['hosid'];
-    session_start();
+    // session_start();
     $hosp_id = $_SESSION['id'];
 // $sql= "SELECT * FROM `hospital_info` where Id='$hosp_id'";
 // $result= mysqli_query($conn,$sql);
 // $row=mysqli_fetch_assoc($result);
-$sql_hos = $dbname->select("hospital_info","*","Id='$hosp_id'")->fetch_assoc();
+$sql_hos = $dbname->select("hospital_info","*","Id='$hosp_id'")->fetch();
 
 
 
@@ -27,7 +27,7 @@ $u_id= $_SESSION['user_id'];
 // $u_sql="SELECT `lat_in_use`,`long_in_use` FROM `user_info` WHERE user_id='$u_id'";
 // $result= mysqli_query($conn,$u_sql);
 // $u_row=mysqli_fetch_assoc($result);
-$sql_usr = $dbname->select("user_info","lat_in_use,long_in_use","user_id='$u_id'")->fetch_assoc();
+$sql_usr = $dbname->select("user_info","lat_in_use,long_in_use","user_id='$u_id'")->fetch();
 
 
 $currentlatitude = $sql_usr['lat_in_use'];
@@ -76,7 +76,7 @@ header("Location: $googleMapsURL");
             // $sql= "SELECT * FROM `hospital_info` where Id='$hosp_id'";
             // $result= mysqli_query($conn,$sql);
             $sql_hos2 = $dbname->select("hospital_info","*","Id='$hosp_id'");
-            while($rows=$sql_hos2->fetch_assoc())
+            while($rows=$sql_hos2->fetch())
             {
                 echo"
                 <div class='c1'><strong class='attribute1'>Name:</strong>$rows[Name]</div>
@@ -98,7 +98,7 @@ header("Location: $googleMapsURL");
                     // $result= mysqli_query($conn,$sql);
                     // while($row=mysqli_fetch_assoc($result))
                     $sql_pnt = $dbname->select("patient_booking_info","*","Patient_id ='$p_id'");
-                    while($row=$sql_pnt->fetch_assoc())
+                    while($row=$sql_pnt->fetch())
                     {
                         // $p= $row[booking_timestamp];
                         // $fourhourafter = $p + 14400;
