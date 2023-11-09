@@ -21,7 +21,7 @@ $ufname =  $_SESSION['user_fname'];
 $ulname = $_SESSION['user_lname'];
 
 
-
+//-------------------search-----------------------------------
 
 $amb_filter_query = "active";
 
@@ -35,18 +35,12 @@ else
 }
 // $search_filter = ;
 $sqli_table = 'medical_supplies_medical';
-$sqli_rows = "`amb_no`, `amb_name`, `amb_type`, `amb_status`, `amb_loc_lat`, `amb_loc_long`, `amb_rate`, `amb_contact`, `amb_driver_name`, `amb_state`, `amb_district`, `amb_town`, `amb_loc_pincode`,ROUND((
-    6371 *
-    acos(cos(radians($lat_in_use)) * 
-    cos(radians(amb_loc_lat)) * 
-    cos(radians($lon_in_use) - 
-    radians(amb_loc_long)) + 
-    sin(radians($lat_in_use)) * 
-    sin(radians(amb_loc_lat)))
- ),1) AS distance";
+$sqli_rows = "`product_id`, `source_id`, `product_name`, `product_rate`, `product_image`, `product_para`, `product_desc`, `product_makers`, `password`, `email`, `phone`";
 
-$sqli_condition = "amb_town LIKE '$amb_filter_query%' OR amb_status='$amb_filter_query' OR amb_name='$amb_filter_query' OR amb_type = '$amb_filter_query' OR amb_district='$amb_filter_query'";
-$sqli_order = 'distance';
+$sqli_condition = "product_name LIKE '$amb_filter_query%' OR product_rate='$amb_filter_query' OR product_para='$amb_filter_query' OR product_desc= '$amb_filter_query'";
+$sqli_order = 'product_id';
+
+//---------------------------------------------------------------
 ?>
 
 <!DOCTYPE html>
