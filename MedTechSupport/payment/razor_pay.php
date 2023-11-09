@@ -13,8 +13,9 @@
     {
         $rows = mysqli_fetch_assoc($result);
     }
-    $amount = $_GET['amount'];
-    $ord_id = $_GET['order_id'];
+    $amount = $_GET['salary'];
+    $ord_id = $_GET['billno'];
+    $name = $_GET['name'];
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +38,7 @@
             <div class='column'>
                 <h1 id='cnfm-msg' class='title'>Payment Details</h1>
                     <div class='amb_info_cont'>
-                    <h1 class='descp' id='title'>$rows[user_first_name] $rows[user_last_name]</h1>
+                    <h1 class='descp' id='title'>$name</h1>
                     <h3>Delivery address</h3>
                     <p class='descp' id='card-address'>$rows[formatted_adrrs]</p>
                     <h3>Email</h3>
@@ -59,8 +60,11 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script>
         const urlParams = new URLSearchParams(window.location.search);
-        var order_id = urlParams.get('order_id');   //Get orderid from url
-        var amount = urlParams.get('amount');   //Get amount from url
+        var order_id = urlParams.get('billno');  //Get orderid from url
+        var amount = urlParams.get('salary');   //Get amount from url
+        var name = urlParams.get('name');
+        var ename = urlParams.get('ename');
+        var eid = urlParams.get('eid');
 
   function pay_now(){
 
@@ -68,7 +72,7 @@
                 "key": "rzp_test_vgrShf9dHH7C80", // Enter the Key ID generated from the Dashboard
                 "amount": amount*100,
                 "currency": "INR",
-                "description": "Ambulance Service",
+                "description": "MedTech Support",
                 "image": "https://s3.amazonaws.com/rzp-mobile/images/rzp.jpg",
                 "prefill":
                 {
@@ -121,8 +125,8 @@
                     url:'payment_process.php',
                     data:"&amount="+amount+"&payment_id="+pid+"&order_id="+order_id,
                     success:function(result){
-
-                        window.location.href = "payment_ackn.php?&payment_id="+pid+"&order_id="+order_id;
+                        window.location.href = "/Minor Project 5th_Sem/Emergency_Medical_Support_System/MedTechSupport/invoice_mail.php?&payment_id="+pid+"&order_id="+order_id;
+                        //window.location.href = "payment_ackn.php?&payment_id="+pid+"&order_id="+order_id+"&name="+name+"&ename="+ename+"&eid="+eid +"&salary="+salary;
                     }
                 })
                 },
