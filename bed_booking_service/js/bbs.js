@@ -39,3 +39,22 @@ function search_hos_name() {
 	} 
 } 
 
+
+// js for 0 0 male female bed starts here
+// let boxes = document.getElementsByClassName('gender').value
+
+// // Loop through the boxes and check if the values are equal to 0
+// for (var i = 0; i < boxes.length; i++) {
+// 	if (boxes[i].innerHTML === 0) {
+// 		boxes[i].style.display = 'none';
+// 	}
+// }
+
+// var boxes = document.getElementsByClassName('gender');
+
+//     // Loop through the boxes and check if the values are equal to 0
+//     for (var i = 0; i < boxes.length; i++) {
+//         if (parseInt(boxes[i].innerText) === 0) {
+//             boxes[i].style.display = 'none';
+//         }
+//     }
