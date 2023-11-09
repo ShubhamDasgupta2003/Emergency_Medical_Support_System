@@ -307,7 +307,10 @@ tr td:last-child{
     margin-left: .5rem;
     color:var(--main-color)
 }
-
+.fa-pen-to-square:hover{
+    color:green;
+    cursor:pointer;
+}
 @media only screen and (max-width: 1200px)
 {
     .sidebar

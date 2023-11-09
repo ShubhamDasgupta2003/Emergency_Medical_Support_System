@@ -10,8 +10,9 @@ $product_rate=$_REQUEST['product_rate'];
 $file_name=$_FILES['photo']['name'];
 $file_name_temp_name=$_FILES['photo']['tmp_name'];
 $product_image_folder='../../Medical Supplies/'.$file_name;
+$product_image_foldera='../../Medical Supplies/image/pain relief/'.$file_name;
 move_uploaded_file($file_name_temp_name, $product_image_folder);
-
+move_uploaded_file($file_name_temp_name, $product_image_foldera);
 $table_name=$_REQUEST['tabletype'];
 $product_info=$_REQUEST['product_info'];
 $product_desc=$_REQUEST['product_desc'];

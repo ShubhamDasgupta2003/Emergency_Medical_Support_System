@@ -194,7 +194,12 @@ public function insertadminmedical($table_name,$product_id,$source_id,$product_n
     $statement->bindParam(':e', $product_password, PDO::PARAM_STR);
     $statement->bindParam(':o', $product_email, PDO::PARAM_STR);
     $statement->bindParam(':w', $product_phone, PDO::PARAM_INT);
-    $statement->execute();
+    try{
+      $statement->execute();
+    }catch(PDOException $e){ 
+      ?><script>alert("Data Entry have a problem");</script><?php
+    }
+   
   }elseif($table_name== 'medical_supplies_technical')
   {
     $sql= "INSERT INTO `medical_supplies_technical`(`product_id`, `source_id`, `product_name`, `product_rate`, `product_image`, `product_para`, `product_desc`, `product_makers`, `password`, `email`, `phone`) VALUES (:p,:s,:n,:r,:f,:i,:d,:m,:e,:o,:w)";
@@ -210,7 +215,11 @@ public function insertadminmedical($table_name,$product_id,$source_id,$product_n
     $statement->bindParam(':e', $product_password, PDO::PARAM_STR);
     $statement->bindParam(':o', $product_email, PDO::PARAM_STR);
     $statement->bindParam(':w', $product_phone, PDO::PARAM_INT);
-    $statement->execute();
+    try{
+      $statement->execute();
+    }catch(PDOException $e){ 
+      ?><script>alert("Data Entry have a problem");</script><?php
+    }
   }
 }
 public function updateadminmedical($table_name,$product_id,$source_id,$product_name,$product_rate,$file_name,$product_info,$product_desc,$product_makers,$product_password,$product_email,$product_phone,)
@@ -230,7 +239,11 @@ public function updateadminmedical($table_name,$product_id,$source_id,$product_n
     $statement->bindParam(':e', $product_password, PDO::PARAM_STR);
     $statement->bindParam(':o', $product_email, PDO::PARAM_STR);
     $statement->bindParam(':w', $product_phone, PDO::PARAM_INT);
-    $statement->execute();
+    try{
+      $statement->execute();
+    }catch(PDOException $e){ 
+      ?><script>alert("Data Entry have a problem");</script><?php
+    }
   }elseif($table_name== 'medical_supplies_technical')
   {
     $sql="UPDATE "."`$table_name`"." SET `source_id`=:s,`product_name`=:n,`product_rate`=:r,`product_image`=:f,`product_para`=:i,`product_desc`=:d,`product_makers`=:m,`password`=:e,`email`=:o,`phone`=:w  WHERE `product_id`=:p";
@@ -246,7 +259,11 @@ public function updateadminmedical($table_name,$product_id,$source_id,$product_n
     $statement->bindParam(':e', $product_password, PDO::PARAM_STR);
     $statement->bindParam(':o', $product_email, PDO::PARAM_STR);
     $statement->bindParam(':w', $product_phone, PDO::PARAM_INT);
-    $statement->execute();
+    try{
+      $statement->execute();
+    }catch(PDOException $e){ 
+      ?><script>alert("Data Entry have a problem");</script><?php
+    }
   }
 }
 public function deleteadminmedical($table_name,$product_id)
@@ -254,7 +271,11 @@ public function deleteadminmedical($table_name,$product_id)
   $sql="DELETE FROM "."`$table_name`"." WHERE `product_id`=:p";
   $statement = $this->conn->prepare($sql);
   $statement->bindParam(':p', $product_id, PDO::PARAM_INT);
-  $statement->execute();  
+  try{
+    $statement->execute();
+  }catch(PDOException $e){ 
+    ?><script>alert("Data Entry have a problem");</script><?php
+  } 
    return true;
 }
 
