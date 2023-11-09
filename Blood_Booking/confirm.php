@@ -30,25 +30,26 @@
     
     $to_email = "$mailid";      //the receiver email will be used here
     $subject = "Blood Booking Confirmation";
-    $body = "Hi $recp_name
-    Thank you for choosing our service! We're grateful for your trust and business. Your satisfaction is our priority, and we look forward to serving you again soon.
+$body = "Hi $recp_name,
+Thank you for choosing our service! We're grateful for your trust and business.
+Your satisfaction is our priority, and we look forward to serving you again soon.
 
-    The following is your Blood booking details:
-    Your invoice no: $Order_id
-    Blood Bank: $Bloodbank_name
-    Your subtotal amount is: Rs $Order_price /-
-    
-    Please get your blood from the blood bank just showing your invoice number.
-    
-    Regards
-    Emergency Medical Support System";
+The following is your Blood booking details:
+Your invoice no: $Order_id
+Blood Bank: $Bloodbank_name
+Your subtotal amount is: Rs $Order_price /-
+
+Please get your blood from the blood bank just showing your invoice number.
+
+Regards,
+Emergency Medical Support System";
     
     
     
     $headers = "From: emergencymedicalservices23@gmail.com";//this email was created for this project
     if (mail($to_email, $subject, $body, $headers)) {
 
-        echo "<script>alert('A booking confirmation is sent to your mail')";
+        echo "";
         
     }
     

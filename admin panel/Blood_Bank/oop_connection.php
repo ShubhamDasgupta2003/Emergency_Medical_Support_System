@@ -41,6 +41,30 @@ class Database
   }
   }
 
+  public function update($table,$parameters=array(), $where=null){
+    if($this->tableexists($table)){
+       $args=array();
+       foreach($parameters as $key=>$value){
+        $args[]="$key='$value' ";
+        }
+      $sql="UPDATE $table SET ". implode(', ',$args);
+      if($where != null){
+        $sql.=" WHERE $where";
+      }
+
+      // echo $sql;
+      if($this->conn->query($sql)){
+        // array_push($this->result,$this->link->affected_rows);
+        // header("refresh: 3"); 
+        return true;
+      }else{
+        $r=($this->conn->error);
+   
+        return false;
+      }
+    }
+  }
+
   public function updaterecord($t,$params=array())
   { 
    if($this->tableexists($t))
