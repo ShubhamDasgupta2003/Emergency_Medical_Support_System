@@ -129,10 +129,10 @@ $p=0;
                 <div><?php
                           $t=0;
                           $j=0;
-                          $sql=$obj->select('blood_order','SUM(price) AS earnings')->fetch_assoc();
+                          $sql=$obj->select('medtech_order','SUM(book_amount) AS earnings')->fetch_assoc();
                       ?>
                     <h1 style="color: #fff;"> &#8377 <?php echo $sql['earnings'] ?></h1>
-                    <span>Income</span>
+                    <span>Total Booked Amount</span>
                 </div>
                 <div>
                    <span class="las la-wallet" ></span>  
@@ -161,7 +161,7 @@ $p=0;
                             </thead>
                             <tbody>
                             <?php
-                                      $sqla=$obj->vieworder("medtech_emp");
+                                      $sqla=$obj->select('medtech_emp','*','','eid LIMIT 5');
                                       while($rowa=$sqla->fetch_assoc())
                                         {
                                          
