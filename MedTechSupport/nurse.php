@@ -51,7 +51,7 @@
     //Backend for location modification ends here
       //Query for displaying results on screen
 
-    $amb_filter_query = "n";
+    $amb_filter_query = "free";
 
     if(@$_GET['q'])
     {
@@ -59,12 +59,12 @@
     }
     else
     {
-        $amb_filter_query = "active";
+        $amb_filter_query = "free";
     }
     // $search_filter = ;
     $sqli_table = 'medtech_emp em INNER JOIN medtech_org om
     ON em.org_id = om.org_id';
-    $sqli_rows = "`ename`, `salary`,`eid`,ROUND((
+    $sqli_rows = "`ename`, `salary`,`eid`,`org_name`,`org_lmark`,ROUND((
         6371 *
         acos(cos(radians($lat_in_use)) * 
         cos(radians(org_location_lat)) * 
@@ -74,7 +74,7 @@
         sin(radians(org_location_lat)))
     ),1) AS distance";
 
-    $sqli_condition = "org_type='n'";
+    $sqli_condition = "(ename LIKE '$amb_filter_query%' OR e_status='$amb_filter_query' OR org_name='$amb_filter_query' OR org_dist='$amb_filter_query') AND org_type='n'";
     $sqli_order = 'distance';
     ?>
 <!DOCTYPE html>
@@ -82,7 +82,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aya</title>
+    <title>Nurse</title>
     <!-- cdn link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
@@ -106,8 +106,8 @@
         <a href="#" class="logo"><i class="fa-solid fa-heart-pulse"></i>medcare</a>
         <div class="search-bar" id="srchbar-above">
             <button class="get-location btn" id="get-location-btn" style="width:50px;"><i class="fas fa-map-marker-alt"></i></button>
-            <input type="text" placeholder="Search...">
-            <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <input type="text" id="searchInput" name="search" placeholder="Search...">
+            <button class="btn" onclick="search()"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <nav class="navbar">
             <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php">Home</a>
@@ -131,15 +131,15 @@
     <div class="search-navbar" id="srchbar-below">
         <div class="search-bar">
             <button class="get-location btn" id="get-location-btn" style="width:50px;"><i class="fas fa-map-marker-alt"></i></button>
-            <input type="text" placeholder="Search...">
-            <button class="srch-btn btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <input type="text" id="searchInput1" name="search" placeholder="Search...">
+            <button class="srch-btn btn" onclick="search1()"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
     </div>
 
     <section class="body-container">
         <div>
             <nav class="segmented-navigation">
-                <a href="aya.php" class="segmented-item">Aya</a>
+                <a href="aya.php" class="segmented-item ">Aya</a>
                 <a href="nurse.php" class="segmented-item active">Nurse</a>
                 <a href="technician.php" class="segmented-item">Technician</a>
               </nav>
@@ -150,26 +150,28 @@
             <div class="cards">
             <?php
             $result = $db->select($sqli_table,$sqli_rows,$sqli_condition,$sqli_order);
-            while($rows=$result->fetch_assoc())
+            while($rows=$result->fetch_assoc()){
+            if($rows>0)
             {
-            
-                // echo $per5km_price."<br>";
-                //$amb_fare = $rows['amb_rate'];
+                
                 echo "<div class='card'> 
                 <div class='card-part1'> <img
                 src='images/employee.png'
                 /></div>
                 <div class='card-part2'>
                 <strong>$rows[ename]</strong>
-                <p><strong>Organization:</strong> XYZ Service</p>
-                <p> A Medical Technician is a medical professional who plays a vital part in the health care industry by providing support for physicians and hospitals.</p>
-                <strong><span style='color: red;'>INR $rows[salary] per day</span></strong>
+                <p><strong>Organization:</strong> $rows[org_name]</p>
+                <strong><span style='color: red;'>INR $rows[salary] per day</span></strong><br>
+                <strong>Book Amount:<span style='color: blue;'> INR 500</span></strong>
                 <p class='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i> $rows[distance] Km</p>
                 <br>
                 <br>
                 <a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/MedTechSupport/bookingForm.php?eid=$rows[eid]&dist=$rows[distance]&booklat=$lat_in_use&booklon=$lon_in_use&book_adrs=$full_address'><button class='btn btn-secondary-orange'>Book</button></a>
                 </div> 
                 </div>";}
+                else{
+                    echo "<h1>No Data Found .....<h1>";
+                }}
     ?>
             
      <!-- Location window popup starts here -->
@@ -247,5 +249,6 @@
     </section>
     <script src="js/location.js"></script>
     <script src="js/hambargericon.js"></script>
+    <script src="search_nurse.js"></script>
 </body>
 </html>

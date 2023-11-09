@@ -35,7 +35,7 @@
     $rows = $db->select("medtech_emp","*","eid='$eid'")->fetch_assoc();
 
     $ename = $rows['ename'];
-    $salary = $rows['salary'];
+    $book_amount=500;
     // $amb_type = $rows['amb_type'];
     // $amb_driver = $rows['amb_driver_name'];
     // $amb_name = $rows['amb_name'];
@@ -55,7 +55,7 @@
             $insert_result = $db->insert('medtech_order',array("$invoice_no","$eid","$user_id","$name","$contno","$book_lat","$book_lon","$address","$lmark","$cur_date","$cur_time","$salary"));
             if($insert_result)
             {
-                header("Location:/Minor Project 5th_Sem/Emergency_Medical_Support_System/MedTechSupport/payment/razor_pay.php?eid=$eid&ename=$ename&name=$name&address=$address&billno=$invoice_no&contno=$contno&salary=$salary");
+                header("Location:/Minor Project 5th_Sem/Emergency_Medical_Support_System/MedTechSupport/payment/razor_pay.php?eid=$eid&ename=$ename&name=$name&address=$address&billno=$invoice_no&contno=$contno&salary=$book_amount");
             }
         }
     }

@@ -36,7 +36,7 @@
         echo "<div class='container'>
         <div class='card'>
             <div class='column'>
-                <h1 id='cnfm-msg' class='title'>Payment Details</h1>
+                    <h1 id='cnfm-msg' class='title'>Payment Details</h1>
                     <div class='amb_info_cont'>
                     <h1 class='descp' id='title'>$name</h1>
                     <h3>Delivery address</h3>
@@ -50,6 +50,8 @@
                     <h3>Total</h3>
                     <h2 class='descp' id='card-fare'>&#8377 $amount/-</h2>
             </div>
+            <br>
+            <br>
             <input type='button' class='btn' name='btn' id='btn' value='Confirm & Pay' onclick='pay_now()'/>
         </div>
     </div>";

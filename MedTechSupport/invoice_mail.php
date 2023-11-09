@@ -59,33 +59,34 @@ $eid=$rows['eid'];
 $rows1 = $db->select("medtech_emp","*","eid='$eid'")->fetch_assoc();
 $to_email = "$mailid";      //the receiver email will be used here
 $subject = "Aya/Nurse/Medical Techninian Booking Confirmation";
-$body = "Hi $recp_name
-Thank you for using our Aya/Nurse/Medical Techninian services.
-The following is your Aya/Nurse/Medical Techninian booking details:
+$body = "Hello $recp_name,
 
-Your invoice no: $billno
-Employee Id: $rows[eid]
-Assigned Employee Name: $row1[ename]
+Thank you for using our Aya/Nurse/Medical Technician services. We are glad to serve you and hope you have a pleasant experience with us.
 
-Your is payment sucessfull!!😊
-Employee will contact you when he reaches your destination with in 48 hours.
+Here are the details of your Aya/Nurse/Medical Technician booking:
 
-Your Details,
-Your name: $rows[name]
-Contact Number: $rows[contact_number]
-Full Address: $rows[user_book_address]
-Land Mark: $rows[lmark]
-Booking Date: $rows[booking_date]
-Booking Time: $rows[booking_time]
-Booking Amount: $rows[book_amount]
+Invoice number: $billno
+Salary: INR $rows1[salary]
+Employee ID: $rows[eid]
+Assigned employee name: $rows1[ename]
+Payment status: Successful 😊
+Employee contact: The employee will contact you when he/she reaches your destination within 48 hours.
+Your details:
+Name: $rows[name]
+Contact number: $rows[contact_number]
+Full address: $rows[user_book_address]
+Landmark: $rows[lmark]
+Booking date: $rows[booking_date]
+Booking time: $rows[booking_time]
+Booking amount: 500
 
+Please keep this email as a confirmation of your booking and payment. If you have any questions or concerns, please feel free to contact us at emergencymedicalservices23@gmail.com.
 
-Regards
-Emergency Medical Support System";
+Thank you for choosing us and have a great day!
 
+Sincerely, Emergency Medical Support System";
 
-
-$headers = "From: emergencymedicalservices23@gmail.com";//this email was created for this project
+$headers = "From: Emergency Medical Support System emergencymedicalservices23@gmail.com";//this email was created for this project
 
 if (mail($to_email, $subject, $body, $headers)) {
     echo "<script>alert('Booked Successfully \\n A booking confirmation is sent to your mail');
