@@ -132,7 +132,8 @@ $p=0;
                                  {
                                     $t=$rowl['amount'];
                                     $s=$s+$t;
-                                       
+                                    $l=$rowl['payment_id'];
+                                    $q=$rowl['payment_id'];
                                  }
                     
                       ?>
@@ -157,14 +158,14 @@ $p=0;
                            <table width="100%">
                             <thead>
                                 <tr>
+                                    <td>Payment ID</td>
                                     <td>User ID</td>
-                                    <td>Username</td>
                                     <td>Service</td>
                                 </tr>
                             </thead>
                             <tbody>
                             <?php
-                                      $sqla=$obj->viewall_order();
+                                     /* $sqla=$obj->viewall_order();
                                       foreach($sqla as $rowa) 
                                         {
                                           
@@ -174,6 +175,21 @@ $p=0;
                                                       <td>$rowa[service]</td>
                                                   </tr>";
                                             }
+                                     */
+                                            $sql=$obj->viewtable("payment");
+                                            foreach($sql as $rowl) 
+                                               {
+                                                   
+                                                  echo" <tr>
+                                                  <td>$rowl[payment_id]</td>
+                                                  <td>$rowl[user_id]</td>
+                                                  <td>$rowl[payment_type]</td>
+                                              </tr>";
+
+
+                                               }
+
+
                                         
                              ?>   
                             </tbody>
