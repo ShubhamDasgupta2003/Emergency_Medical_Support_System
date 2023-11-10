@@ -1,9 +1,10 @@
 <?php
 include_once ('oop_connectionp.php');
 include_once ('location.php');
+
 $obj=new Database;
 session_start();
-
+$n=0;
 
 $uid =  $_SESSION['user_id'];
 
@@ -43,6 +44,13 @@ $sqli_condition = "product_name LIKE '$amb_filter_query%' OR product_rate='$amb_
 $sqli_order = 'product_id';
 
 //---------------------------------------------------------------
+if(isset($_GET['search_data_product']))
+{
+    $search_data_value=$_GET['search_data'];
+    $search_data_value= trim($search_data_value);
+    $search_query="SELECT * FROM medical_supplies_technical WHERE product_keywords like '%$search_data_value%'";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -138,7 +146,12 @@ $sqli_order = 'product_id';
 
          <div class="cards">
           <?php
-            $records=$obj->viewrecordt();
+            $records=$obj->viewsearch( $search_query);
+            $n=$obj->viewsearch( $search_query);
+            if($n==0)
+            {
+                ?><script>alert("No results found");</script><?php
+            }
             foreach($records as $row)
             {
          

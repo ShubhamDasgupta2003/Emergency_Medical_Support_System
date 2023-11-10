@@ -177,6 +177,30 @@ public function viewtable($t)
     
     return $publisher;
 }
+public function viewsearch($q)
+{
+  $sql=$q;
+  $statement = $this->conn->prepare($sql);
+  try{
+  $statement->execute();
+  }catch (Exception $e)
+  {
+    $e->getMessage();
+    echo $sql;
+  }
+  $publisher = $statement->fetchAll();
+    
+    return $publisher;
+}
+public function numsearch($q)
+{ 
+$sql=$q;
+$statement = $this->conn->prepare($sql);
+$statement->execute();
+$publisher = $statement->rowCount();
+
+return $publisher;
+}
 }
 
 ?>

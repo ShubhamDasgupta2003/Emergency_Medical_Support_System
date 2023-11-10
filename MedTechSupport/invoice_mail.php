@@ -43,19 +43,20 @@
 </html>
 
 <?php
-
+include_once("db_config/main_config.php");
+$db = new Database();
+$con = $db->connect();
 session_start();
 
 $mailid = $_SESSION['user_email'];
 $recp_name = $_SESSION['user_fname'];
 $userid = $_SESSION['user_id'];
 
-$eid = $_GET['eid'];
-$ename = $_GET['ename'];
-$name=$_GET['name'];
-$addess = $_GET['address'];
-$billno = $_GET['billno'];
-
+$billno = $_GET['order_id'];
+$payment_id = $_GET['payment_id'];
+$rows = $db->select("medtech_order","*","invoice_no='$billno'")->fetch_assoc();
+$eid=$rows['eid'];
+$rows1 = $db->select("medtech_emp","*","eid='$eid'")->fetch_assoc();
 $to_email = "$mailid";      //the receiver email will be used here
 $subject = "Aya/Nurse/Medical Techninian Booking Confirmation";
 $body = "Hi $recp_name
@@ -63,15 +64,20 @@ Thank you for using our Aya/Nurse/Medical Techninian services.
 The following is your Aya/Nurse/Medical Techninian booking details:
 
 Your invoice no: $billno
-Employee Id: $eid
-Assigned Employee Name:$ename
+Employee Id: $rows[eid]
+Assigned Employee Name: $row1[ename]
 
-You can pay via any of your preferred payment method
-Employee will contact you when he reaches your destination.
+Your is payment sucessfull!!😊
+Employee will contact you when he reaches your destination with in 48 hours.
 
 Your Details,
-Your name: $name
-Assigned Employee Name:$ename
+Your name: $rows[name]
+Contact Number: $rows[contact_number]
+Full Address: $rows[user_book_address]
+Land Mark: $rows[lmark]
+Booking Date: $rows[booking_date]
+Booking Time: $rows[booking_time]
+Booking Amount: $rows[book_amount]
 
 
 Regards

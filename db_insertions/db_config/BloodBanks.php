@@ -44,8 +44,8 @@ if(isset($_GET['delstd'])){
               <div class="card-header">
                 
                  <div class="row "> <!--justify-content-center -->
-                    <div class="col-md-10 "><h2>Registered Blood Bank's Data </h2></div> <!--text-center-->
-                    <div  class="col-md-1"><a href="blood_bank_register.php" class="btn btn-info">Register</a></div>
+                    <div class="col-md-12 "><h2>Registered Blood Bank's Data </h2></div> <!--text-center-->
+                    <!-- <div  class="col-md-1"><a href="blood_bank_register.php" class="btn btn-info">Register</a></div> -->
                 </div>
               </div>
 
@@ -79,7 +79,7 @@ if(isset($_GET['delstd'])){
                                 <td><?=$city?></td>
                                 <td><?=$pin?></td>
                                 <td><?=$phone?></td>
-                                <td><a href='update_Blood_bank.php?id=<?=base64_encode($id);?>' class='btn btn-sm btn-warning '>Edit</a>
+                                <td><!-- <a href='update_Blood_bank.php?id=<?=base64_encode($id);?>' class='btn btn-sm btn-warning '>Edit</a> -->
                                  <a href="?delstd=<?=base64_encode($id);?>" onclick="return confirm('are your sure to delete this record')" class='btn btn-sm btn-danger '>Delete</a></td>
                               
                               </tr>

@@ -1,5 +1,8 @@
 <?php
 session_start();
+include_once ('oop_connection.php');
+date_default_timezone_set("Asia/calcutta");
+$obj=new Database;
 $blood_bank_id=$_SESSION['blood_bank_id']; 
 echo 'blood_bank:'.$blood_bank_id.'';
 if (isset($_GET['submit'])) {
@@ -9,7 +12,10 @@ if (isset($_GET['submit'])) {
     $ucount = $_GET['ucount'];
     $bg_id = $_GET['bg_id'];
 
+
     echo 'count:'.$ucount.'bg:'.$bg_id.'';
+    $obj->update('blood_bank_blood_group', ['count' => $ucount], 'blood_bank_id="' . $blood_bank_id . '" and blood_group_id="' . $bg_id . '"');
+
 }
 // $_SESSION["Blood_Bank_id"] = $id;
 // $_SESSION["Blood_id"] = $bg_id;
