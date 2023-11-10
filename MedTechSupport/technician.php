@@ -150,10 +150,13 @@
             <div class="cards">
             <?php
             $result = $db->select($sqli_table,$sqli_rows,$sqli_condition,$sqli_order);
-            while($rows=$result->fetch_assoc()){
-            if($rows>0)
+            $num_rows = $result->num_rows; // get the number of rows
+            
+            if($num_rows>0)//check if there are any results
             {
-                
+                while($rows=$result->fetch_assoc())// loop through the results
+                {
+                // display the card for each row
                 echo "<div class='card'> 
                 <div class='card-part1'> <img
                 src='images/employee.png'
@@ -161,17 +164,17 @@
                 <div class='card-part2'>
                 <strong>$rows[ename]</strong>
                 <p><strong>Organization:</strong> $rows[org_name]</p>
-                <strong><span style='color: red;'>INR $rows[salary] per visit</span></strong><br>
+                <strong><span style='color: red;'>INR $rows[salary] per day</span></strong><br>
                 <strong>Book Amount:<span style='color: blue;'> INR 500</span></strong>
                 <p class='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i> $rows[distance] Km</p>
                 <br>
                 <br>
                 <a href='/Minor Project 5th_Sem/Emergency_Medical_Support_System/MedTechSupport/bookingForm.php?eid=$rows[eid]&dist=$rows[distance]&booklat=$lat_in_use&booklon=$lon_in_use&book_adrs=$full_address'><button class='btn btn-secondary-orange'>Book</button></a>
                 </div> 
-                </div>";}
+                </div>";}}
                 else{
                     echo "<h1>No Data Found .....<h1>";
-                }}
+                }
     ?>
             
      <!-- Location window popup starts here -->

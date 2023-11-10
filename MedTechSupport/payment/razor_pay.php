@@ -64,9 +64,6 @@
         const urlParams = new URLSearchParams(window.location.search);
         var order_id = urlParams.get('billno');  //Get orderid from url
         var amount = urlParams.get('salary');   //Get amount from url
-        var name = urlParams.get('name');
-        var ename = urlParams.get('ename');
-        var eid = urlParams.get('eid');
 
   function pay_now(){
 

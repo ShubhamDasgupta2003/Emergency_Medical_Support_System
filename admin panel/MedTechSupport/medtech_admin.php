@@ -27,7 +27,7 @@ $p=0;
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/medical supplies admin/MedTechSupport/adminb.php"><span class="las la-igloo"></span>
+                    <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/medical supplies admin/adminb.php"><span class="las la-igloo"></span>
                     <span>Dashboard</span></a>
                 </li>
                 
