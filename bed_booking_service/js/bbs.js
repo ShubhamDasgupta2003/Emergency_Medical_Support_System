@@ -50,11 +50,17 @@ function search_hos_name() {
 // 	}
 // }
 
-// var boxes = document.getElementsByClassName('gender');
-
+// var boxes = document.getElementsByClassName('bed-zero');
+// let x = document.getElementsByClassName('card');
 //     // Loop through the boxes and check if the values are equal to 0
+// 	// let urlParams = new URLSearchParams(window.location.search);
+//     // let parentContainerId = urlParams.get('hospitalid');
+
 //     for (var i = 0; i < boxes.length; i++) {
 //         if (parseInt(boxes[i].innerText) === 0) {
-//             boxes[i].style.display = 'none';
+//             document.querySelector('<?php echo "$hos_uni_id"; ?>').style.display = 'none';
+//             // document.querySelector('parentContainerId').style.display = 'none';
+//             // document.getElementById('$hos_uni_id').style.display = 'none';
+
 //         }
 //     }

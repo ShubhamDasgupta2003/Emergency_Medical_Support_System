@@ -33,15 +33,24 @@
             $this->password = "";
             $this->dbname = "emgmedicalsystem";
 
-            $conn = new mysqli($this->servername,$this->username,$this->password,$this->dbname);
-            if($conn->connect_error)
-            {
-                die("Connection error".$conn->connect_error);
-            }
-            else
-            {
-                return $this->conn = $conn;
-            }
+            // $conn = new mysqli($this->servername,$this->username,$this->password,$this->dbname);
+            // if($conn->connect_error)
+            // {
+            //     die("Connection error".$conn->connect_error);
+            // }
+            // else
+            // {
+            //     return $this->conn = $conn;
+            // }
+            try {
+                $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
+                // set the PDO error mode to exception
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                // echo "Connected successfully";
+                return $this->conn=$conn;
+              } catch(PDOException $e) {
+                echo "Connection failed: " . $e->getMessage();
+              }
         }
         // Method to connect to  mysql databse ends here
 //---------------------------------------------------------------------------       
@@ -92,7 +101,7 @@
                 $insert .= ' ('.$rows.')';
             }
             for ($i = 0; $i < count($values); $i++) {
-                $values[$i] = mysqli_real_escape_string($this->conn, $values[$i]);
+                // $values[$i] = mysqli_real_escape_string($this->conn, $values[$i]);
                 if (is_string($values[$i])) {
                     $values[$i] = '"'.$values[$i].'"';
                 }
@@ -109,19 +118,30 @@
         // Method for INSERT query in mysql ends here
 //---------------------------------------------------------------------------
         // Method for UPDATE query in mysql 
-        public function update($table, $rows, $where)
+        // public function update($table, $rows, $where)
+        // {
+        //     $update = 'UPDATE ' . $table . ' SET ';
+        //     $keys = array_keys($rows);
+            
+        //     $setValues = [];
+        //     foreach ($keys as $key) {
+        //         $value = $rows[$key];
+        //         $setValues[] = "`$key` = '" . mysqli_real_escape_string($this->conn, $value)."'";
+        //     }
+            
+        //     $update .= implode(',', $setValues);
+        //     $update .= ' WHERE ' . $where;
+        //     $query = $this->conn->query($update);
+        //     if ($query) {
+        //         return true;
+        //     } 
+        //     else {
+        //         return false;
+        //     }
+        // }
+        public function update($table, $cond)
         {
-            $update = 'UPDATE ' . $table . ' SET ';
-            $keys = array_keys($rows);
-            
-            $setValues = [];
-            foreach ($keys as $key) {
-                $value = $rows[$key];
-                $setValues[] = "`$key` = '" . mysqli_real_escape_string($this->conn, $value)."'";
-            }
-            
-            $update .= implode(',', $setValues);
-            $update .= ' WHERE ' . $where;
+            $update = "UPDATE "  . $table." ".$cond;
             $query = $this->conn->query($update);
             if ($query) {
                 return true;

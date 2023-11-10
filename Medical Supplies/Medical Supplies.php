@@ -41,6 +41,10 @@ $sqli_condition = "product_name LIKE '$amb_filter_query%' OR product_rate='$amb_
 $sqli_order = 'product_id';
 
 //---------------------------------------------------------------
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -74,11 +78,14 @@ $sqli_order = 'product_id';
  <!-- header section start -->
  <header class="header">
     <a href="#" class="logo"><i class="fa-solid fa-heart-pulse"></i>medcare</a>
+    <form action="search supplies.php" method="get">
     <div class="search-bar" id="srchbar-above">
-        <button class="get-location btn" id="get-location-btn" style="width:50px;"><i class="fas fa-map-marker-alt"></i></button>
+        <button class="get-location btn" id="get-location-btn" style="width:50px;"><i class="fas fa-map-marker-alt"></i></button>       
         <input type="text" placeholder="Search" name=search_data>
-       <button class="btn" value="submit" name="search_data_product"><i class="fa-solid fa-magnifying-glass"></i></button>  
+       <button class="btn" value="submit" name="search_data_product"><i class="fa-solid fa-magnifying-glass"></i></button> 
+       
     </div>
+    </form> 
     <nav class="navbar">
         <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php">Home</a>
             <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php#services">Services</a>

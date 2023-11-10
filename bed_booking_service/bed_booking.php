@@ -27,7 +27,8 @@
 
     // $loc_result = mysqli_query($conn,$loc_query);
     // $loc_rows = $loc_result->fetch_assoc();
-    $loc_rows = $loc_query->fetch_assoc();
+    // $loc_rows = $loc_query->fetch_assoc();
+    $loc_rows = $loc_query->fetch(PDO::FETCH_ASSOC);
     
     $lat_in_use = $loc_rows['lat_in_use'];
     $lon_in_use = $loc_rows['long_in_use'];
@@ -160,7 +161,7 @@
                 $result = $dbname->select($sqli_table,$sqli_rows,'',$sqli_order);
                 // if($result){
                 //     while($row=mysqli_fetch_assoc($result))
-                while($rows=$result->fetch_assoc())
+                while($rows=$result->fetch())
                 {
 
                         echo " <div class='card'>
@@ -172,13 +173,13 @@
                                 <span class='material-symbols-outlined'>
                                     man
                                     </span>
-                                <strong>$rows[Male_bed_available]</strong>
+                                <strong class='bed-zero'>$rows[Male_bed_available]</strong>
                             </p>
                             <p class='card-type-female'>
                                 <span class='material-symbols-outlined'>
                                     woman
                                     </span>
-                                <strong>$rows[Female_bed_available]</strong>
+                                <strong class='bed-zero'>$rows[Female_bed_available]</strong>
                             </p>
                         <div class='card-row' >
                             <p class='card-distance'><i class='fa-solid fa-route fa-lg' style='color: #00b37d;'></i>$rows[distance] Km</p>

@@ -76,7 +76,7 @@ if(isset($_POST['submit'])){
     //  $result= mysqli_query($conn,$sql);
     //  $row=mysqli_fetch_assoc($result);
 
-    $row = $dbname->select("hospital_info","*","Id='$id'")->fetch_assoc();
+    $row = $dbname->select("hospital_info","*","Id='$id'")->fetch();
 
      $bed_charge= $row['bed_charge']; //storing bed charge 
     //  available bed updation code starts here 
@@ -89,14 +89,16 @@ if(isset($_POST['submit'])){
         // $sql3= "UPDATE `hospital_info` SET Male_bed_available=$malebed WHERE Id='$id'";
         // $result=mysqli_query($conn,$sql3);
 
-        $update_result = $dbname->update('hospital_info',array('Male_bed_available'=>$malebed),"Id='$id'");
+        // $update_result = $dbname->update('hospital_info',array('Male_bed_available'=>$malebed),"Id='$id'");
+        $update_result = $dbname->update('hospital_info',"SET Male_bed_available=$malebed WHERE Id='$id'");
      }
      else{
         $femalebed-=1;
         // $sql3= "UPDATE `hospital_info` SET Female_bed_available=$femalebed WHERE Id=$id";
         // $result=mysqli_query($conn,$sql3);
 
-        $update_result = $dbname->update('hospital_info',array('female_bed_available'=>$femalebed),"Id='$id'");
+        // $update_result = $dbname->update('hospital_info',array('female_bed_available'=>$femalebed),"Id='$id'");
+        $update_result = $dbname->update('hospital_info',"SET Female_bed_available=$femalebed WHERE Id='$id'");
      }
 
     if($update_result){
@@ -135,7 +137,7 @@ if(isset($_POST['submit'])){
 
 <?php
         $id=$_GET['hospitalid'];
-        $sql_mail = $dbname->select("hospital_info","*","Id='$id'")->fetch_assoc();
+        $sql_mail = $dbname->select("hospital_info","*","Id='$id'")->fetch();
         // $sql= "SELECT * FROM `hospital_info` where Id=$id";
         // $result= mysqli_query($conn,$sql);
         // $row=mysqli_fetch_assoc($result);
@@ -229,7 +231,7 @@ Your reserved bed will be canceled on $deadline_date . We kindly request your ar
                         // $sql= "SELECT * FROM `hospital_info` where Id='$id'";
                         // $result= mysqli_query($conn,$sql);
 
-                        $row = $dbname->select("hospital_info","*","Id='$id'")->fetch_assoc();
+                        $row = $dbname->select("hospital_info","*","Id='$id'")->fetch();
                         // while($row=mysqli_fetch_assoc($result)){
 
                         echo "<div style='font-size: 12pt;'><strong>$row[Name]</strong></div>
