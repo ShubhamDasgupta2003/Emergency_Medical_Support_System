@@ -100,6 +100,8 @@ if(isset($_POST['login'])){
     }
     else if($service == 'NurseTechnician Service'){
       echo "NurseTechnician Service";
+    }else if($service == 'Medical Supplies Service'){
+      echo "Medical Supplies Service";
     }
   }
 
@@ -175,6 +177,10 @@ if(isset($_POST['login'])){
           <div class="text">New user?</div>
           <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/Homepage/service_insert.php?refresh=0">click here</a>
         </div>
+        <div class="input-box2 check-box">
+              <!-- <div class="tick-mark-text">check here for add new service</div> -->
+              <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/admin_new_service_menu.php">click here to add new service</a>
+            </div>
         <!-- <div class="signuplink">
         <a href="signup.php?refresh=0">Forgot password</a>
         </div> -->

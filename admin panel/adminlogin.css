@@ -7,6 +7,7 @@
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -77,7 +78,8 @@ body {
 .input-box input:focus {
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
 }
-section .menu select{
+
+section .menu select {
     height: 50px;
     width: 100%;
     outline: none;
@@ -88,15 +90,22 @@ section .menu select{
     padding: 0 15px;
 }
 
-.signuplink{
+form .check-box a{
+   text-decoration: none;
+   color: #551A8B;
+   margin-left: 53px;
+}
+.signuplink {
     display: flex;
     margin: 8px;
     justify-content: center;
 }
-.signuplink a{
+
+.signuplink a {
     text-decoration: none;
     padding-left: 3px;
 }
+
 .form button {
     height: 40px;
     width: 100%;
