@@ -38,7 +38,7 @@ session_start();
                 <input name="product_id" type="number" placeholder="Enter Product Id" required maxlength="10"/>
             </div>
         </div>
-        <button id="sbmt-form" name="submit">Delete</button>
+        <button id="sbmt-form" name="submit"  onclick="return confirm('Are you sure you want to delete this product');">Delete</button>
       </form>
     </section>
     <script src="amb_admin_loc.js"></script>

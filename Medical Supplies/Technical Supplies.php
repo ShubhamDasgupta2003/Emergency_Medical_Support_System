@@ -2,7 +2,7 @@
 include_once ('oop_connectionp.php');
 include_once ('location.php');
 $obj=new Database;
-session_start();
+
 
 
 $uid =  $_SESSION['user_id'];
@@ -76,13 +76,13 @@ $sqli_order = 'product_id';
  <!-- header section start -->
  <header class="header">
     <a href="#" class="logo"><i class="fa-solid fa-heart-pulse"></i>medcare</a>
-    <form action="search_tech supplies.php" method="get">
+   
     <div class="search-bar" id="srchbar-above">
         <button class="get-location btn" id="get-location-btn" style="width:50px;"><i class="fas fa-map-marker-alt"></i></button>
-        <input type="text" placeholder="Search" name=search_data>
-       <button class="btn" value="submit" name="search_data_product"><i class="fa-solid fa-magnifying-glass"></i></button>  
+        <input type="text" placeholder="Search" name=search_data id="search_data">
+       <button class="btn" value="submit" name="search_data_product" onclick="myfunction()"><i class="fa-solid fa-magnifying-glass"></i></button>  
     </div>
-</form>
+
     <nav class="navbar">
         <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php">Home</a>
             <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php#services">Services</a>
@@ -240,5 +240,14 @@ $sqli_order = 'product_id';
         <!-- Footer bar -->
     <script src="location.js"></script>   
     <script src="common.js"></script>
+    <script>
+        
+        function myfunction()
+        {
+            var x=document.getElementById("search_data").value;
+            window.location.href = "search_tech supplies.php?search_data="+x;
+           
+        }
+    </script>
 </body>
 </html>

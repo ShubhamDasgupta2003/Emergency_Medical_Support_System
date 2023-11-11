@@ -12,15 +12,26 @@
     <p id="demo">
 
     </p>
-
+<?php
+ $search_data_value=$_GET['search_data'];
+ $search_query="SELECT * FROM medical_supplies_medical WHERE product_keywords like '%$search_data_value%'";
+ echo $search_query;
+if(isset($_GET['search_data_product']))
+{
+    $search_data_value=$_GET['search_data'];
+    $search_data_value= trim($search_data_value);
+    $search_query="SELECT * FROM medical_supplies_medical WHERE product_keywords like '%$search_data_value%'";
+    echo $search_query;
+}
+?>
 
     <script>
-        var test="success";
+        var test="success 2";
         function myfunction()
         {
             var x=document.getElementById("mytext").value;
             document.getElementById("demo").innerHTML= x;
-            window.location.href = "test3.php?search_data="+x;
+            window.location.href = "test3.php?q="+searchbar_text;
            
         }
     </script>

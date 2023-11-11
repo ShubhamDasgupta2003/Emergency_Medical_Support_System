@@ -99,7 +99,7 @@ session_start();
                 <input id="cnf-pswd"type="text" placeholder="Confirm your password" name ="pswd" required />
             </div>
         </div>
-        <button id="sbmt-form" name="submit">Update</button>
+        <button id="sbmt-form" name="submit" onclick="return confirm('Are you sure you want to update this product');">Update</button>
       </form>
     </section>
     <script src="amb_admin_loc.js"></script>

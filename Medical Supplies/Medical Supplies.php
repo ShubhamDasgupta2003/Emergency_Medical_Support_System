@@ -2,7 +2,7 @@
 include_once ('oop_connectionp.php');
 include_once ('location.php');
 $obj=new Database;
-session_start();
+
 
 
 $uid =  $_SESSION['user_id'];
@@ -20,27 +20,6 @@ $uid =  $_SESSION['user_id'];
 $ufname =  $_SESSION['user_fname'];
 $ulname = $_SESSION['user_lname'];
 
-
-//-------------------search-----------------------------------
-
-$amb_filter_query = "a";
-
-if(@$_GET['q'])
-{
-    $amb_filter_query = $_GET['q'];
-}
-else
-{
-    $amb_filter_query = "active";
-}
-// $search_filter = ;
-$sqli_table = 'medical_supplies_medical';
-$sqli_rows = "`product_id`, `source_id`, `product_name`, `product_rate`, `product_image`, `product_para`, `product_desc`, `product_makers`, `password`, `email`, `phone`";
-
-$sqli_condition = "product_name LIKE '$amb_filter_query%' OR product_rate='$amb_filter_query' OR product_para='$amb_filter_query' OR product_desc= '$amb_filter_query'";
-$sqli_order = 'product_id';
-
-//---------------------------------------------------------------
 
 
 
@@ -78,14 +57,16 @@ $sqli_order = 'product_id';
  <!-- header section start -->
  <header class="header">
     <a href="#" class="logo"><i class="fa-solid fa-heart-pulse"></i>medcare</a>
-    <form action="search supplies.php" method="get">
+   
     <div class="search-bar" id="srchbar-above">
         <button class="get-location btn" id="get-location-btn" style="width:50px;"><i class="fas fa-map-marker-alt"></i></button>       
-        <input type="text" placeholder="Search" name=search_data>
-       <button class="btn" value="submit" name="search_data_product"><i class="fa-solid fa-magnifying-glass"></i></button> 
+        <input type="text" placeholder="Search" name=search_data id="search_data">
+       <button class="btn" value="submit" name="search_data_product" onclick="myfunction()"><i class="fa-solid fa-magnifying-glass"></i></button> 
        
     </div>
-    </form> 
+
+
+   
     <nav class="navbar">
         <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php">Home</a>
             <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php#services">Services</a>
@@ -247,5 +228,14 @@ $sqli_order = 'product_id';
     <script src="location.js"></script>   
     <script src="common.js"></script>
     <script src="search.js"></script>
+    <script>
+        
+        function myfunction()
+        {
+            var x=document.getElementById("search_data").value;
+            window.location.href = "search supplies.php?search_data="+x;
+           
+        }
+    </script>
 </body>
 </html>

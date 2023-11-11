@@ -32,3 +32,18 @@
   font-size: 13px;
    padding-top:9px;
 }
+
+
+.forma
+{
+ display:inline-block
+}
+#myinput
+{
+  padding-right: 40px;
+}
+#mybutton
+{
+  position:absolute;
+  right:0;
+}
