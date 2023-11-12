@@ -1,8 +1,8 @@
 <?php
 
   include_once("config.php");
-  $db = new Database();
-  $conn = $db->connect();
+  $dbname = new Database();
+  $conn = $dbname->connect();
 //   date_default_timezone_set("Asia/calcutta");
 
 
@@ -62,12 +62,15 @@
 
     //Unique hospital Id generation php code ends here
 
-    $check_dup_reg = "SELECT * FROM hospital_info WHERE email='$email' OR ContactNo='$cont_num'";
+    // $check_dup_reg = "SELECT * FROM hospital_info WHERE email='$email' OR ContactNo='$cont_num'";
+    $row = $dbname->select("hospital_info","*","email='$email' OR ContactNo='$cont_num'")->fetch();
+    $rowCount=$row->num_rows;
 
-    $insert_records ="INSERT INTO `hospital_info` (`Id`, `Name`,`ContactNo`,`email`,`password`,`Address`, `State`, `District`, `City`, `Pincode`, `Latitude`, `Longitude`,`Male_bed_available`,`Female_bed_available`,`bed_charge`)VALUES('$hosp_id','$name',$cont_num,'$email','$password','$address','$state','$district','$city_town',$postcode,$lat,$long,$m_bed_avail,$f_bed_avail,$bed_charge)";
+    // $insert_records ="INSERT INTO `hospital_info` (`Id`, `Name`,`ContactNo`,`email`,`password`,`Address`, `State`, `District`, `City`, `Pincode`, `Latitude`, `Longitude`,`Male_bed_available`,`Female_bed_available`,`bed_charge`)VALUES('$hosp_id','$name',$cont_num,'$email','$password','$address','$state','$district','$city_town',$postcode,$lat,$long,$m_bed_avail,$f_bed_avail,$bed_charge)";
 
-    $result = mysqli_query($conn,$check_dup_reg);
-    $rows = mysqli_num_rows($result);
+    // $result = mysqli_query($conn,$check_dup_reg);
+    // $rows = mysqli_num_rows($result);
+    // $insert_result = $dbname->insert('hospital_info',array("$hosp_id","$name","$cont_num","$email","$password","$address","$state","$district","$city_town","$postcode","$lat","$long","$m_bed_avail","$f_bed_avail","$bed_charge"));
 
     if(strlen($cont_num) != 10) //validating mobile number
     {
@@ -77,14 +80,15 @@
     {
       echo "<script>alert('Password should be minimum of 5 characters')</script>";
     }
-    else if($rows>=1)
+    else if($rowCount >=1)
     {
       echo "<script>alert('email-id or mobile number is already registered with us')</script>";
     }
     else
     {
-      $result =mysqli_query($conn,$insert_records);
-      if($result)
+      $insert_result = $dbname->insert('hospital_info',array("$hosp_id","$name","$cont_num","$email","$password","$address","$state","$district","$city_town","$postcode","$lat","$long","$m_bed_avail","$f_bed_avail","$bed_charge"));
+      // $result =mysqli_query($conn,$insert_records);
+      if($insert_result)
       {
         echo "<script>alert('Successfully Registered')</script>";
         // header("Location:verification_email.php?emailid=$email&name=$fname&userid=$user_id");
@@ -100,7 +104,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!--<title>Registration Form in HTML CSS</title>-->
+    <title>Hospital Registration Form</title>
     <!---Custom CSS File--->
     <link rel="stylesheet" href="css/hosp_register.css" />
   </head>
@@ -183,8 +187,8 @@
                 <select name="district">
                 <option value="" selected disabled>Select District</option >
                 <?php
-                    $res= $db->select('districts',"*",'','');
-                    while($row=$res->fetch_assoc()){
+                    $res= $dbname->select('districts',"*",'','');
+                    while($row=$res->fetch()){
                     echo"
                     <option value=$row[value]>$row[name]</option>";
                     }?>

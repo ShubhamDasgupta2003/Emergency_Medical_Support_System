@@ -108,15 +108,60 @@ if(isset($_POST['submit'])){
     {
       echo "<script>alert('Please enter a valid mobile number')</script>";
     
-    }
-    // elseif(strlen($adhr_num) != 12){
-    //     echo "<script>alert('Please enter a valid aadhaar number')</script>";
-    // }
-    if(strlen($pin) != 6)
+    }elseif(strlen($adhr_num) != 12){
+        echo "<script>alert('Please enter a valid aadhaar number')</script>";
+    }elseif(strlen($pin) != 6)
     {
         echo "<script>alert('Please enter a valid pincode')</script>";
-    }
-    else{
+    }else{
+
+        $fourhourafter = $timestamp+ 14400;
+        $deadline_date = date('Y-m-d H:i:s', $fourhourafter);
+        $_SESSION["deadline_date"] = $deadline_date;
+        $email = $p_email;
+        $recp_name = $name;
+        $p_contact = $contact;
+        $p_id= $patient_id;
+        $curr_time= $bookdatetime;
+        // $deadline= "$fourhourafter"; 
+        $hosp_name= "$sql_mail[Name]";
+        $hosp_contact= "$sql_mail[ContactNo]";
+        $hosp_address= "$sql_mail[Address]";
+
+
+        $to_email = "$email";
+        $subject = "Confirmation and Information for Your Hospital Bed Reservation";
+        $body = "Dear $recp_name,
+
+We are writing to confirm and provide important information regarding your reservation for the hospital bed at $hosp_name . We appreciate your trust in our services and look forward to assisting you in future.
+
+---------------------------------------------------------------------------
+
+Note : Your appointment at the hospital is automatically cancelled if you do not arrive within four hours of the booking time.
+
+---------------------------------------------------------------------------
+
+
+Patient details:
+
+Patient name: $recp_name
+Patient id: $p_id
+
+Hospital details:
+
+Name: $hosp_name
+Contact number: $hosp_contact
+Address: $hosp_address
+
+Your reserved bed will be canceled on $deadline_date . We kindly request your arrival at the hospital before the time. Thank you for your understanding and cooperation.";
+
+        $headers = "From: emergencymedicalservices23@gmail.com";
+
+        if (mail($to_email, $subject, $body, $headers)) {
+            echo "Email sent ";
+        } else {
+            echo "Email failed";
+        }
 
         $insert_result = $dbname->insert('patient_booking_info',array("$row[Name]","$patient_id","$particular_hos_id","$uid","$name","$contact","$age","$gender","$dob","$p_email","$address2","$city","$pin","$bookdatetime","$bed_charge","$booking_status",$timestamp));
     
@@ -135,7 +180,7 @@ if(isset($_POST['submit'])){
 
 
 
-<?php
+<!-- <php
         $id=$_GET['hospitalid'];
         $sql_mail = $dbname->select("hospital_info","*","Id='$id'")->fetch();
         // $sql= "SELECT * FROM `hospital_info` where Id=$id";
@@ -199,7 +244,7 @@ Your reserved bed will be canceled on $deadline_date . We kindly request your ar
         }
 } 
 
-?>
+?> -->
 
 
 <!DOCTYPE html>

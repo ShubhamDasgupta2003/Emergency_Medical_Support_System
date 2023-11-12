@@ -3,7 +3,7 @@ include_once ('oop_connectionp.php');
 $obj=new Database;
 session_start();
 
-
+$d=0;
 $s=0;
 $p=0;
 ?>
@@ -109,11 +109,13 @@ $p=0;
                 <div>
                     <?php
                         $ord_count=0;
-                        $sql=$obj->viewall_order();
-                        foreach($sql as $row)    
-                        {
-                            $ord_count=$ord_count+1; 
-                        }
+                        $sql=$obj->viewtable("payment");
+                        foreach($sql as $rowl) 
+                           {
+                             
+                            $ord_count= $ord_count+1;
+                           }
+
                      ?>
                     <h1 style="color: #fff;"><?php echo $ord_count ?></h1>
                     <span>orders</span>
@@ -126,19 +128,22 @@ $p=0;
                 <div><?php
                           $t=0;
                           $j=0;
-                          
-                          $sql=$obj->viewtable("payment");
-                              foreach($sql as $rowl) 
-                                 {
-                                    $t=$rowl['amount'];
-                                    $s=$s+$t;
-                                    $l=$rowl['payment_id'];
-                                    $q=$rowl['payment_id'];
-                                 }
-                    
+                          $x= date('m');
+                          $z= date('Y');
+                          $sqla=$obj->admindate("payment");
+                          foreach($sqla as $rowl) 
+                             {
+                                $a=$rowl['amount'];  
+                                $m=$rowl['month'];
+                                $y=$rowl['year'];
+                                if($x==$m && $z==$y)
+                                {
+                                  $s=$s+$a;
+                                }
+                             }
                       ?>
                     <h1 style="color: #fff;"> &#8377 <?php echo $s?></h1>
-                    <span>Income</span>
+                    <span>Income(Current Month)</span>
                 </div>
                 <div>
                    <span class="lab la-google-wallet" ></span>  
@@ -159,7 +164,7 @@ $p=0;
                             <thead>
                                 <tr>
                                     <td>Payment ID</td>
-                                    <td>User ID</td>
+                                    <td>Amount</td>
                                     <td>Service</td>
                                 </tr>
                             </thead>
@@ -179,10 +184,10 @@ $p=0;
                                             $sql=$obj->viewtable("payment");
                                             foreach($sql as $rowl) 
                                                {
-                                                   
+                                                  $z=substr($rowl['payment_id'],0,10);
                                                   echo" <tr>
-                                                  <td>$rowl[payment_id]</td>
-                                                  <td>$rowl[user_id]</td>
+                                                  <td>$z</td>
+                                                  <td>$rowl[amount]</td>
                                                   <td>$rowl[payment_type]</td>
                                               </tr>";
 

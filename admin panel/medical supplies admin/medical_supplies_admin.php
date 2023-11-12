@@ -129,18 +129,23 @@ $p=0;
                 <div><?php
                           $t=0;
                           $j=0;
-                          $sql=$obj->viewmedical_order();
-                          foreach($sql as $rowl) 
+                          $x= date('m');
+                          $z= date('Y');
+                          $sqla=$obj->admindateq("medical_supplies_order_table","price");
+                          foreach($sqla as $rowl) 
                              {
-                                $t=$rowl['price'];
-                                $j=$rowl['quantity'];
-                                   $s=$t*$j;
-                                   $p=$p+$s;
+                                $a=$rowl['price'];  
+                                $m=$rowl['month'];
+                                $y=$rowl['year'];
+                                if($x==$m && $z==$y)
+                                {
+                                  $s=$s+$a;
+                                }
                              }
                     
                       ?>
-                    <h1 style="color: #fff;"> &#8377 <?php echo $p ?></h1>
-                    <span>Income</span>
+                    <h1 style="color: #fff;"> &#8377 <?php echo $s?></h1>
+                    <span>Income(Current Month)</span>
                 </div>
                 <div>
                    <span class="lab la-google-wallet" ></span>  
@@ -228,7 +233,7 @@ $p=0;
                                      $sql=$obj->viewmedical_order();
                                      foreach($sql as $rowa) 
                                         {
-                                          $s=$rowa['price']*$rowa['quantity'];
+                                          $s=$rowa['price'];
                                                  echo" <tr>
                                                       <td>$rowa[order_id]</td>
                                                       <td>$rowa[user_fname] $rowa[user_lname]</td>

@@ -289,5 +289,39 @@ public function viewtable($t)
     
     return $publisher;
 }
+public function admindate($t)
+{
+  $sql="SELECT EXTRACT(YEAR FROM date) AS year,EXTRACT(MONTH FROM date) AS month,amount FROM ";
+  $sql.=$t;
+ 
+ $statement = $this->conn->prepare($sql);
+  $statement->execute();
+  $publisher = $statement->fetchAll();
+    
+    return $publisher;
+}
+public function admindateq($t,$p)
+{
+  $sql="SELECT EXTRACT(YEAR FROM date) AS year,EXTRACT(MONTH FROM date) AS month,$p FROM ";
+  $sql.=$t;
+ 
+
+ $statement = $this->conn->prepare($sql);
+  $statement->execute();
+  $publisher = $statement->fetchAll();
+    
+    return $publisher;
+}
+public function numrecorda($t)
+{ 
+    
+  $sql="SELECT * FROM $t ";
+
+$statement = $this->conn->prepare($sql);
+$statement->execute();
+$publisher = $statement->rowCount();
+
+return $publisher;
+}
 }
 ?>
