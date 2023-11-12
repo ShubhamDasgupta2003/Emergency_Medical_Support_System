@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&family=Poppins&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+body{
+ background-color: #00A896;
+ padding: 0 10px;
+}
+.container{
+    max-width: 500px;
+    /* width: 100%; */
+    background-color: white;
+    margin: 20px auto;
+    padding:30px;
+    box-shadow: 10px 10px 2px rgba(0,0,0,0,0.5);
+}
+.container .title
+{
+    font-size:24px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #00A896;
+    text-transform: uppercase;
+    text-align: center;
+}
+.container .form{
+    width: 100%;
+}
+.container .form .input_field{
+    margin-bottom: 15px;
+    display: flex;
+    align-items:center;
+}
+.container .form .input_field label{
+    width: 200px;
+    margin-right: 10px;
+    font-size: 14px;
+}
+.container .form .input_field .input{
+    width: 100%;
+    outline: none;
+    border: 1px solid #00A896;
+    font-size: 15px;
+    padding: 8px 10px;
+    border-radius: 3px;
+    transition: all 0.5s ease;
+}
+.container .form .input_field .selectbox{
+    position: relative;
+    width: 100%;
+    height: 37px;
+   
+}
+.container .form .input_field .selectbox select{
+    
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 100%;
+    padding: 8px 10px;
+    border: 1px solid #00A896;
+    border-radius: 3px;
+    outline: none;
+    
+}
+.container .form .input_field .selectbox::before{
+    content: "";
+    position: absolute;
+    top:12px;
+    right: 10px;
+    border: 8px solid black;
+    border-color: #00A896 transparent transparent transparent;
+    pointer-events: none;
+}
+.container .form .input_field .input:focus,
+.container .form .input_field .textarea:focus,
+.container .form .input_field select:focus{
+    border: 1px solid #047368;
+}
+.container .form .input_field p{
+    font-size: 14px;
+}
+.container .form .input_field .check{
+    width: 15px;
+    height: 15px;
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+.container .form .input_field .btn{
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 15px;
+    border: 0;
+    background: #00A896;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
+    outline: none;
+}
+.container .form .input_field:last-child{
+    margin-bottom: 0;
+}
+.container .form .input_field .btn:hover{
+    background: #047368;
+}
