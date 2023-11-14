@@ -114,7 +114,8 @@ if(isset($_POST['submit'])){
     {
         echo "<script>alert('Please enter a valid pincode')</script>";
     }else{
-
+        
+        $sql_mail = $dbname->select("hospital_info","*","Id='$id'")->fetch();
         $fourhourafter = $timestamp+ 14400;
         $deadline_date = date('Y-m-d H:i:s', $fourhourafter);
         $_SESSION["deadline_date"] = $deadline_date;
