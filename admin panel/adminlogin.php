@@ -123,7 +123,30 @@ if(isset($_POST['login'])){
           echo "<script>alert('Invalid username or password!')</script>";
         }
     }else if($service == 'Medical Supplies Service'){
-      echo "Medical Supplies Service";
+      // echo "Medical Supplies Service";
+      $sql_a="SELECT * FROM `medical_supplies_medical` WHERE email = '$email_num' OR phone = '$email_num'";
+      $result= mysqli_query($conn,$sql_a);
+  
+      // if($result && $result-> num_rows==1){
+  
+          if($result){
+            $row=mysqli_fetch_assoc($result);
+            $storedpassword= $row['password'];
+            
+            if($password==$storedpassword){
+  //  echo "done";
+              // $_SESSION['blood_bank_id'] = $row['blood_bank_id'];
+              // $_SESSION['user_fname'] = $row['user_first_name'];
+              // $_SESSION['user_lname'] = $row['user_last_name'];
+              // $_SESSION['user_email'] = $row['user_email'];
+              $_SESSION['is_medical_login'] = 1;
+              header("location:/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/medical supplies admin/medical_supplies_admin.php");
+            }else{
+              $_SESSION['is_medical_login'] = 0;
+              echo "<script>alert('Password incorrect! Enter a valid password')</script>";
+            }
+          }
+      //  }
     }
   }
 

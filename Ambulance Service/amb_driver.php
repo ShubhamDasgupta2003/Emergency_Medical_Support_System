@@ -55,7 +55,7 @@
         <div class="user-greets">
             <h1 class='user-name'>Hello, <?php echo"$amb_driver_rows[amb_driver_name]"; ?></h1>
             <div class="user-btn">
-                <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/logout.php"><button class="btn-danger">Logout</button></a>
+                <a href="amb_drv_logout.php"><button class="btn-danger">Logout</button></a>
                 <a href="amb_admin_update.php?refresh=0"><button class="btn">Update</button></a>
             </div>
         </div>
