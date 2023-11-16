@@ -37,7 +37,8 @@
 
     if($amb_adm_inst)
     {
-      echo "<script>alert('Ambulance registered successfully!')</script>";
+      echo "<script>alert('Ambulance registered successfully!');
+            window.location.href = '/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/adminlogin.php'</script>";
     }
   }
 
@@ -99,7 +100,7 @@
         <div class="column">
             <div class="input-box">
                 <label>Ambulance Rate(in Rs)</label>
-                <input name="ambrate" type="number" placeholder="Enter ambulance rate per 5Km" required maxlength="10"/>
+                <input name="ambrate" type="number" placeholder="Enter ambulance rate per hour" required maxlength="10"/>
             </div>
         </div>
         <div class="input-box address">
