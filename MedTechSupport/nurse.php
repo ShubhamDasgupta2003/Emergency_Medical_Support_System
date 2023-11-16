@@ -176,7 +176,7 @@
                     echo "<h1>No Data Found .....<h1>";
                 }
     ?>
-            
+     </div>       
      <!-- Location window popup starts here -->
      <div class="location-window" id="loc-win">
                 <div class="card popup">
