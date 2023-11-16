@@ -98,8 +98,30 @@ if(isset($_POST['login'])){
         echo "<script>alert('Invalid username or password!')</script>";
       }
     }
-    else if($service == 'NurseTechnician Service'){
-      echo "NurseTechnician Service";
+    else if($service == 'Aya/Nurse/Technician Service'){
+      //echo "NurseTechnician Service";
+      $sql="SELECT * FROM `medtech_org` WHERE org_email = '$email_num'";
+      $result= mysqli_query($conn,$sql);
+  
+      if($result && $result-> num_rows==1){
+  
+          if($result){
+            $row=mysqli_fetch_assoc($result);
+            $storedpassword= $row['org_password'];
+  
+            if(password_verify($password,$storedpassword)){
+   
+              $_SESSION['adm_hos_id'] = $row['org_id'];
+              $_SESSION['is_adm_login'] = 1;
+              header("location:/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/MedTechSupport/medtech_org_admin.php");
+            }else{
+              $_SESSION['is_adm_login'] = 0;
+              echo "<script>alert('Password incorrect! Enter a valid password')</script>";
+            }
+          }
+        }else{
+          echo "<script>alert('Invalid username or password!')</script>";
+        }
     }else if($service == 'Medical Supplies Service'){
       echo "Medical Supplies Service";
     }
@@ -167,7 +189,7 @@ if(isset($_POST['login'])){
                 <option value = "Blood Bank Service">Blood Bank Service</option>
                 <option value = "Hospital Bed Booking Service">Hospital Bed Booking Service</option>
                 <option value = "Medical Supplies Service">Medical Supplies Service</option>
-                <option value = "NurseTechnician Service">NurseTechnician Service</option>
+                <option value = "Aya/Nurse/Technician Service">Aya/Nurse/Technician Service</option>
             </select>
             </div>
             
@@ -175,12 +197,8 @@ if(isset($_POST['login'])){
         <button name="login" id="sbmt-form">login</button>
         <div class="signuplink">
           <div class="text">New user?</div>
-          <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/Homepage/service_insert.php?refresh=0">click here</a>
+          <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/admin_new_service_menu.php">click here</a>
         </div>
-        <div class="input-box2 check-box">
-              <!-- <div class="tick-mark-text">check here for add new service</div> -->
-              <a href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/admin panel/admin_new_service_menu.php">click here to add new service</a>
-            </div>
         <!-- <div class="signuplink">
         <a href="signup.php?refresh=0">Forgot password</a>
         </div> -->

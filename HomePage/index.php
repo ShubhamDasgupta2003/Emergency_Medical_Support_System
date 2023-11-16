@@ -99,8 +99,8 @@
         </nav>
         
         
-        <div class="user-avatar-container">
-            <a href="profile.php" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
+        <div class="user-avatar-container" style="text-align:center;">
+            <a href="profile.php"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
             <?php
                 if(@$_SESSION['is_logged_in'] == 1)
                 {

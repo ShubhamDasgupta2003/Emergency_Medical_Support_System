@@ -26,8 +26,9 @@ else if($service == 'Medical Supplies Service'){
     // echo "Medical Supplies Service";
     header("location:\Minor Project 5th_Sem\Emergency_Medical_Support_System\admin panel\medical supplies admin\input.php");
   }
-else if($service == 'NurseTechnician Service'){
+else if($service == 'Aya/Nurse/Technician Service'){
     // echo "NurseTechnician Service";
+    header("location:/minor Project 5th_Sem/Emergency_Medical_Support_System/MedTechSupport/org_registration.php");
   }
 }
 
@@ -59,10 +60,10 @@ else if($service == 'NurseTechnician Service'){
                         <option value = "Blood Bank Service">Blood Bank Service</option>
                         <option value = "Hospital Bed Booking Service">Hospital Bed Booking Service</option>
                         <option value = "Medical Supplies Service">Medical Supplies Service</option>
-                        <option value = "NurseTechnician Service">NurseTechnician Service</option>
+                        <option value = "Aya/Nurse/Technician Service">Aya/Nurse/Technician Service</option>
                     </select>
                 </div>
-                <button name="submit" id="sbmt-form">submit</button>
+                <button name="submit" id="sbmt-form">Submit</button>
             </div>
         </form>
     </section>

@@ -126,7 +126,7 @@ header{
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
     position:fixed;
     left:345px;
-    width:calc(100% - 345px);
+    width:100%;
     top:0;
     z-index: 100;
     transition: left 300ms;
@@ -172,6 +172,7 @@ header label span{
   
 }
 main{
+    width: 100vw;
     margin-top:90px;
     padding:2rem 1.5rem;
     background:#f1f5f9;
@@ -217,14 +218,13 @@ header h1{
     
 }
 .recent-grid
-{
-    /* margin-top:3.5rem;
+{  
+    margin-top:3.5rem;
     display:grid;
     grid-gap: 2rem;
-    grid-template-columns: 65% auto; */
+    grid-template-columns: 65% auto;
     display: flex;
     flex-direction: column;
-    /* margin: 1.3rem; */
 }
 table{
     border-collapse:collapse;
@@ -233,7 +233,6 @@ table{
 {
    background:#fff;
    border-radius: 5px;
-   margin-top: 15px;
 }
 .card-header,
 .card-body
@@ -255,7 +254,7 @@ table{
     padding: .5rem 1rem;
     border:1px solid var(--main-color);
 }
-thead tr{
+thead tr, tbody tr{
     border-top:1px solid #f0f0f0;
     border-bottom:1px solid #f0f0f0;
 }
@@ -307,6 +306,22 @@ tr td:last-child{
     margin-left: .5rem;
     color:var(--main-color)
 }
+.btn{
+    
+    color: white;
+    margin: 3px;
+    outline: none;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn_red{
+    background-color: red;
+}
+.btn_blue{
+    background-color: blue;
+}
 @media only screen and (max-width: 1200px)
 {
     .sidebar
@@ -356,11 +371,13 @@ tr td:last-child{
 }
 @media only screen and (max-width:768px)
 {
-    .cards{
+    main{
+        width: max-content;
+    }.cards{
         grid-template-columns: repeat(2,1fr);
     }
     .recent-grid
-    {
+    {   width: max-content;
         grid-template-columns: 100%;
     }
     .search-wrapper

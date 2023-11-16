@@ -52,7 +52,7 @@
         if($update_result)
         {
              //INSERT method called from Database class
-            $insert_result = $db->insert('medtech_order',array("$invoice_no","$eid","$user_id","$name","$contno","$book_lat","$book_lon","$address","$lmark","$cur_date","$cur_time","$salary"));
+            $insert_result = $db->insert('medtech_order',array("$invoice_no","$eid","$user_id","$name","$contno","$book_lat","$book_lon","$address","$lmark","$cur_date","$cur_time","$book_amount","Booked"));
             if($insert_result)
             {
                 header("Location:/Minor Project 5th_Sem/Emergency_Medical_Support_System/MedTechSupport/payment/razor_pay.php?eid=$eid&ename=$ename&name=$name&address=$address&billno=$invoice_no&contno=$contno&salary=$book_amount");

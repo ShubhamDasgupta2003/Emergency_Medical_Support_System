@@ -116,7 +116,7 @@
             <a class="navlink" href="/Minor Project 5th_Sem/Emergency_Medical_Support_System/HomePage/index.php#footer">contact Us</a>
         </nav>
 
-        <div class="user-avatar-container">
+        <div class="user-avatar-container"style="text-align:center;">
         <a href="http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/HomePage/profile.php" id="user-avatar"><i class="fa-solid fa-user fa-lg account-avatar"></i></a>
             <?php
                 

@@ -41,14 +41,36 @@ class Database
   }
   }
 
-  public function updaterecord($t,$params=array())
+  public function update($t, $where = null, $params=array())
   { 
    if($this->tableexists($t))
    {
-    $table_columns=implode(", ",array_keys($params));
-    $table_values=implode("', '",$params);
-    $sql="INSERT INTO $t($table_columns) VALUES('$table_values')";
-    $query=$this->conn->query($sql);
+    // create an array to store the column-value pairs
+    $set = array();
+    // loop through the params array and append the column name and the placeholder to the set array
+    foreach ($params as $column => $value) {
+      $set[] = "$column = $value";
+    }
+    // implode the set array with commas to create the set clause
+    $set = implode(", ", $set);
+    // create the SQL query with the UPDATE statement, the set clause, and the WHERE clause
+    // $q = 'SELECT '.$rows.' FROM '.$table;
+      
+    $sql = "UPDATE $t SET $set";
+    if($where != null)
+          $sql .= ' WHERE '.$where;
+    // prepare the statement
+    $stmt = $this->conn->prepare($sql);
+    // bind the values from the params array to the placeholders
+    // $i = 1;
+    // foreach ($params as $value) {
+    //   $stmt->bindValue($i, $value);
+    //   $i++;
+    // }
+    // // bind the id value to the last placeholder
+    $stmt->bindValue($i, $id);
+    // execute the statement
+    $query = $stmt->execute();
     
     if($query)
    {
@@ -60,6 +82,7 @@ class Database
    }
   }
   }
+
 
   public function select($table, $rows = '*', $where = null, $order = null) 
   {

@@ -70,8 +70,9 @@ $p=0;
             </ul>
         </div>
     </div>
+    
 
-   <div class="main-content">
+    <div class="main-content">
     <header>
         <h3>
            <label for="nav-toggle">
@@ -95,16 +96,11 @@ $p=0;
         <div class="cards">
             <div class="card-single">
                 <div>
-                    <?php
-                        $row_count=0;
-                        $select_pro=$obj->viewrecord("medtech_emp","null") ;
-                        foreach($select_pro as $row)
-                        {
-                            $row_count+=1;
-                        }
-
-                     ?>
-                    <h1 style="color: #fff;"><?php echo $row_count ?></h1>
+                <?php
+                        $ord_count=0;
+                        $sqlr1=$obj->select('medtech_emp','COUNT(*) AS row_count')->fetch_assoc();    
+                ?>
+                    <h1 style="color: #fff;"><?php echo $sqlr1['row_count']?></h1>
                     <span>Registered Employees</span>
                 </div>
                 <div>
@@ -139,14 +135,12 @@ $p=0;
                 </div>
             </div>
         </div>
-
-
         <div class="recent-grid">
+
             <div class="projects">
                   <div class="card">
                      <div class="card-header">
                           <h2> Registered Employee</h2>
-                          
                      </div>
                      <div class="card-body">
                            <table width="100%">
@@ -157,36 +151,43 @@ $p=0;
                                     <td>Contact Number</td>
                                     <td>ORG ID</td>
                                     <td>Salary</td>
+                                    <td>Operations</td>
                                 </tr>
                             </thead>
                             <tbody>
                             <?php
-                                      $sqla=$obj->select('medtech_emp','*','','eid LIMIT 5');
-                                      while($rowa=$sqla->fetch_assoc())
-                                        {
-                                         
-                                            echo"<tr>
-                                            <td >$rowa[eid] </td>
-                                            <td >$rowa[ename] </td>
-                                            <td >$rowa[e_cont_number]</td>
-                                            <td >$rowa[org_id] </td>
-                                            <td>&#8377 $rowa[salary]</td>";
-                                        }
-                                        
-                             ?>   
+                                // Assuming you have already established a database connection and defined the $obj variable
+
+                                $sqla = $obj->select('medtech_emp', '*', '', 'eid LIMIT 5');
+
+                                while ($rowa = $sqla->fetch_assoc()) {
+                                    echo "<tr>
+                                            <td>$rowa[eid]</td>
+                                            <td>$rowa[ename]</td>
+                                            <td>$rowa[e_cont_number]</td>
+                                            <td>$rowa[org_id]</td>
+                                            <td>&#8377; $rowa[salary]</td>
+                                            <td>
+                                                <a href=\"medtech_emp_update.php?eid=$rowa[eid]\">
+                                                    <button class=\"btn btn_blue\">Update</button>
+                                                </a>
+                                                <button class=\"btn btn_red\">Delete</button>
+                                            </td>
+                                        </tr>";
+                                }
+                                ?>
                             </tbody>
                            </table>
                      </div>
                   </div>
             </div>
-         </div>
+
          <div class="projects">
-                  <div class="card">
-                     <div class="card-header">
-                          <h2> Orders</h2>
-                          
-                     </div>
-                     <div class="card-body">
+                <div class="card">
+                    <div class="card-header">
+                        <h2> Orders</h2> 
+                    </div>
+                    <div class="card-body">
                            <table width="100%">
                             <thead>
                                 <tr>
@@ -195,8 +196,7 @@ $p=0;
                                     <td>Address</td>
                                     <td>Book Date</td>
                                     <td>Book Time</td>
-                                    
-                                    <!-- <td>Price</td> -->
+                                    <td>Operations<td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -210,16 +210,24 @@ $p=0;
                                                 <td>$rowa[eid]</td>
                                                 <td>$rowa[user_book_address]</td>
                                                 <td>$rowa[booking_date]</td>
-                                                <td>$rowa[booking_time]</td>";
+                                                <td>$rowa[booking_time]</td>
+                                                <td>
+                                                <a href=\"medtech_emp_update.php?eid=$rowa[eid]\">
+                                                    <button class=\"btn btn_blue\">Update</button>
+                                                </a>
+                                                <button class=\"btn btn_red\">Delete</button>
+                                            </td>
+                                        </tr>";
                                          }
                                          
                                         
                              ?>   
                             </tbody>
                            </table>
-                     </div>
-                  </div>
+                    </div>
+                </div>
             </div>
+        </div>
     
 </body>
 </html>

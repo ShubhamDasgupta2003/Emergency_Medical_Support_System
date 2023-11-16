@@ -48,25 +48,6 @@ $p=0;
                     <a href="http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/admin panel/MedTechSupport/medtech_order.php"><span class="las la-clipboard-list"></span>
                     <span>Order table</span></a>
                 </li>
-                    <!-- <a href="http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/db_insertions/db_config/BloodBanks.php"><span class="las la-clipboard-list"></span>
-                    <span>Blood Banks</span></a>
-                </li>
-                <li>
-                    <a href="http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/db_insertions/db_config/BloodDetails.php"><span class="las la-shopping-bag"></span>
-                    <span>Blood</span></a>
-                </li> -->
-                <!-- <li>
-                    <a href=""><span class="las la-circle"></span>
-                    <span>Inventory</span></a>
-                </li>
-                <li>
-                    <a href=""><span class="las la-circle"></span>
-                <span>Accounts</span></a>
-                </li>
-                <li>
-                    <a href=""><span class="las la-clipboard-list"></span>
-                    <span>Inventory</span></a>
-                </li>   -->
             </ul>
         </div>
     </div>
@@ -158,7 +139,7 @@ $p=0;
                                     <td>ORG ID</td>
                                     <td>Salary</td>
                                     <td>Status</td>
-                                    <td>Rating</td>
+                                    <td>Operations<td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -174,8 +155,13 @@ $p=0;
                                             <td >$rowa[org_id] </td>
                                             <td>&#8377 $rowa[salary]</td>
                                             <td >$rowa[e_status] </td>
-                                            <td >$rowa[e_rating] </td>
-                                            ";
+                                            <td>
+                                                <a href=\"medtech_emp_update.php?eid=$rowa[eid]\">
+                                                    <button class=\"btn btn_blue\">Update</button>
+                                                </a>
+                                                <button class=\"btn btn_red\">Delete</button>
+                                            </td>
+                                        </tr>";
                                         }
                                         
                              ?>   

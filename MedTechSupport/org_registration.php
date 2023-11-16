@@ -149,11 +149,12 @@ if(isset($_POST['register'])){
     $org_contno1,
     $org_contno1,
     $org_contno2,
-    $org_contno3,
+    $org_type,
     $cur_date,
     $cur_time
 ));
    if($insert_result){
-        echo "Data Insert Sucessfull";
+    header("Location:/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/admin%20panel/adminlogin.php");
     }
 }
+?>

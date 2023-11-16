@@ -48,22 +48,6 @@ $p=0;
                     <a href="http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/admin panel/MedTechSupport/medtech_order.php"><span class="las la-clipboard-list"></span>
                     <span>Order table</span></a>
                 </li>
-                <!-- <li>
-                    <a href="http://localhost/Minor%20Project%205th_Sem/Emergency_Medical_Support_System/db_insertions/db_config/BloodDetails.php"><span class="las la-shopping-bag"></span>
-                    <span>Blood</span></a>
-                </li> -->
-                <!-- <li>
-                    <a href=""><span class="las la-circle"></span>
-                    <span>Inventory</span></a>
-                </li>
-                <li>
-                    <a href=""><span class="las la-circle"></span>
-                <span>Accounts</span></a>
-                </li>
-                <li>
-                    <a href=""><span class="las la-clipboard-list"></span>
-                    <span>Inventory</span></a>
-                </li>   -->
             </ul>
         </div>
     </div>
@@ -158,6 +142,7 @@ $p=0;
                                     <td>Org Contact numbers</td>
                                     <td>Registation Date</td>
                                     <td>Registation Time</td>
+                                    <td>Operations</td>
 
                                 </tr>
                             </thead>
@@ -176,7 +161,13 @@ $p=0;
                                             <td >$rowa[org_cont_number1], $rowa[org_cont_number2], $rowa[org_cont_number3] </td>
                                             <td >$rowa[reg_date] </td>
                                             <td >$rowa[reg_time] </td>
-
+                                            <td>
+                                                <a href=\"medtech_emp_update.php?eid=$row[eid]\">
+                                                    <button class=\"btn btn_blue\">Update</button>
+                                                </a>
+                                                <button class=\"btn btn_red\">Delete</button>
+                                            </td>
+                                        </tr>
                                             ";
                                         }
                                         
@@ -187,45 +178,6 @@ $p=0;
                   </div>
             </div>
          </div>
-         <!-- <div class="projects">
-                  <div class="card">
-                     <div class="card-header">
-                          <h2> Orders</h2>
-                          
-                     </div>
-                     <div class="card-body">
-                           <table width="100%">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Employee Id</td>
-                                    <td>Address</td>
-                                    <td>Book Date</td>
-                                    <td>Book Time</td>
-                                    
-                                     <td>Price</td> 
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                                       $sqla=$obj->select('medtech_order','*','','booking_date DESC LIMIT 5');
-                                       while($rowa=mysqli_fetch_array($sqla))
-                                         {
-                                          
-                                                echo"<tr>
-                                                <td >$rowa[name] </td>
-                                                <td>$rowa[eid]</td>
-                                                <td>$rowa[user_book_address]</td>
-                                                <td>$rowa[booking_date]</td>
-                                                <td>$rowa[booking_time]</td>";
-                                         }
-                                         
-                                        
-                             ?>   
-                            </tbody>
-                           </table>
-                     </div>
-                  </div> -->
             </div>
     
 </body>
