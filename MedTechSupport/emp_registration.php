@@ -15,7 +15,7 @@
         <div class="form">
             <div class="input_field">
                 <label>Employee Full Name:</label>
-                <input type="text" class="input" name="ename">
+                <input type="text" class="input" name="ename" required>
             </div>
             <div class="input_field">
                 <label>Gender:</label>
@@ -30,15 +30,15 @@
             </div>
             <div class="input_field">
                 <label>Email:</label>
-                <input type="text" class="input" name="emp_email">
+                <input type="email" class="input" name="emp_email" required>
             </div>
             <div class="input_field">
                 <label>Contact Number:</label>
-                <input type="text" class="input" name="emp_contno">
+                <input type="text" class="input" name="emp_contno" required>
             </div>
             <div class="input_field">
                 <label>Salary</label>
-                <input type="number" class="input" name="salary">
+                <input type="number" class="input" name="salary" required>
             </div>
             <div class="input_field">
                 <input type="submit"  value="Register" class="btn" name="register">
