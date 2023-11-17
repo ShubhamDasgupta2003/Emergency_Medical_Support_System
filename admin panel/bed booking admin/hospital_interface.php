@@ -41,7 +41,7 @@ while($rowa=$sql3->fetch_assoc()){
     $diff = ($curr_timestamp - $stored_timestamp);
     // echo $diff."<br>";
     // echo $diff."<br>";
-    if($diff >= 120){
+    if($diff >= 300){
         $booking_status = "expired";
         $exp_ptn =  $rowa['Patient_id'];
         $sql4=$obj->update("patient_booking_info",array("booking_status"=>$booking_status),"Patient_id ='$exp_ptn'");
