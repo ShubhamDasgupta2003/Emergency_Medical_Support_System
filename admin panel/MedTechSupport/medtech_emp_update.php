@@ -27,7 +27,7 @@ $org_id=$sql['org_id'];
             </div>
             <div class="input_field">
                 <label>Email:</label>
-                <input type="text" class="input" value="<?php echo $sql['emp_email']?>"name="emp_email">
+                <input type="email" class="input" value="<?php echo $sql['emp_email']?>"name="emp_email">
             </div>
             <div class="input_field">
                 <label>Contact Number:</label>
@@ -59,7 +59,7 @@ $org_id=$sql['org_id'];
                 </div>
             </div>
             <div class="input_field">
-                <label>Gender:</label>
+                <label>Status:</label>
                 <div class="selectbox">
                     <select name="emp_status">
                         <option value="free">Free</option>

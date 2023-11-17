@@ -15,59 +15,59 @@
         <div class="form">
             <div class="input_field">
                 <label>Organisation Name:</label>
-                <input type="text" class="input" name="org_name">
+                <input type="text" class="input" name="org_name" required>
             </div>
             <div class="input_field">
                 <label>Email:</label>
-                <input type="text" class="input" name="org_email">
+                <input type="email" class="input" name="org_email" required>
             </div>
             <div class="input_field">
                 <label>Password:</label>
-                <input type="text" class="input" name="org_password">
+                <input type="password" class="input" name="org_password" required>
             </div>
             <div class="input_field">
                 <label>Latitude:</label>
-                <input type="text" class="input" name="org_lat">
+                <input type="text" class="input" name="org_lat" required>
             </div>
             <div class="input_field">
                 <label>Longitude:</label>
-                <input type="text" class="input" name="org_long">
+                <input type="text" class="input" name="org_long" required>
             </div>
             <div class="input_field">
                 <label>Vill/Town:</label>
-                <input type="text" class="input" name="org_vill_or_town">
+                <input type="text" class="input" name="org_vill_or_town" required>
             </div>
             <div class="input_field">
                 <label>Post Office:</label>
-                <input type="text" class="input" name="org_po">
+                <input type="text" class="input" name="org_po" required>
             </div>
             <div class="input_field">
                 <label>District:</label>
-                <input type="text" class="input" name="org_dist">
+                <input type="text" class="input" name="org_dist" required>
             </div>
             <div class="input_field">
                 <label>PIN Code:</label>
-                <input type="text" class="input" name="org_pin">
+                <input type="text" class="input" name="org_pin" required>
             </div>
             <div class="input_field">
                 <label>State:</label>
-                <input type="text" class="input" name="org_state">
+                <input type="text" class="input" name="org_state" required>
             </div>
             <div class="input_field">
                 <label>land Mark:</label>
-                <input type="text" class="input" name="org_lmark">
+                <input type="text" class="input" name="org_lmark" required>
             </div>
             <div class="input_field">
                 <label>Contact Number 1:</label>
-                <input type="text" class="input" name="org_contno1">
+                <input type="text" class="input" name="org_contno1" required>
             </div>
             <div class="input_field">
                 <label>Contact Number 2:</label>
-                <input type="text" class="input" name="org_contno2">
+                <input type="text" class="input" name="org_contno2" required>
             </div>
             <div class="input_field">
                 <label>Contact Number 3:</label>
-                <input type="text" class="input" name="org_contno3">
+                <input type="text" class="input" name="org_contno3" required>
             </div>
             <div class="input_field">
                 <label>Organisation Type:</label>
@@ -82,7 +82,7 @@
             </div>
             <div class="input_field terms">
                 <label class="check">
-                    <input type="checkbox">
+                    <input type="checkbox" required>
                 </label>
                 <p>Agree to terms and conditions</p>
             </div>
